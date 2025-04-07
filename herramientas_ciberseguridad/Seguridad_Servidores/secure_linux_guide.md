@@ -1,4 +1,8 @@
 # Seguridad en Linux: Guía Rápida para Proteger tu Sistema
+## 5 Pasos para Asegurar tu Sistema Linux (Protección contra Hackers)
+Basado en el video: 
+5 Steps to Secure Linux (protect from hackers)" thanks to  networkchuck
+[Video tutorial by NetworkChuck](https://youtu.be/ZhMw53Ud2tY?si=L5sn-OvT-4U8CeM1)
 
 ## Introducción
 Esta guía está diseñada para ayudarte a asegurar tu sistema Linux de forma rápida y efectiva. Asegúrate de seguir cada paso cuidadosamente.
