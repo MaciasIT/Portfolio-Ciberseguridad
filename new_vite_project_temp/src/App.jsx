@@ -1,10 +1,10 @@
-import Header from './components/Header'; // New import
+import Header from './components/Header';
 import MarkdownViewer from './components/MarkdownViewer';
 import './App.css'; // Keep existing CSS if any
 
 function App() {
   return (
-    <div className="min-h-screen bg-red-500 text-gray-800 font-sans flex flex-col"> {/* Añadido bg-red-500 */}
+    <div className="min-h-screen bg-gray-100 text-gray-800 font-sans flex flex-col">
       <Header />
       <main className="flex-grow flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-8">
@@ -15,4 +15,4 @@ function App() {
   );
 }
 
-export default App;;;;
+export default App;

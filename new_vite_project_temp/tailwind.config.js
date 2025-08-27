@@ -8,6 +8,6 @@ export default {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/typography'), // <-- Añadir esta línea
+    require('@tailwindcss/typography'),
   ],
 }
