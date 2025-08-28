@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Botium Toys: Alcance, objetivos e informe de evaluación de riesgos</title>
+  <meta name="description" content="Informe de evaluación de riesgos para Botium Toys." />
+  <meta name="theme-color" content="#0b1220" />
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#0f172a; --muted:#94a3b8; --text:#e5e7eb; --brand:#38bdf8; --accent:#22c55e; --danger:#ef4444; --card:#111827;
+      --ring: rgba(56,189,248,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(1200px 600px at 75% -10%,#0d1b2a00 30%,#0d1b2a66 60%,#0b1220 100%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(10px);background:rgba(11,18,32,.6);border-bottom:1px solid #1f2937;z-index:50}
+    .nav{max-width:1100px;margin:auto;display:flex;align-items:center;gap:16px;padding:10px 16px}
+    .nav .logo{font-weight:700;letter-spacing:.4px}
+    .nav a{color:#cbd5e1;margin-left:auto}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0 0 0 24px;padding:0}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid #1f2937;background:linear-gradient(180deg,#111827,#0b1220);color:#e5e7eb}
+    .btn:hover{box-shadow:0 0 0 4px var(--ring)}
+    .btn.brand{border-color:#0ea5e9;background:linear-gradient(180deg,#0ea5e933,#0ea5e908)}
+    .btn.ghost{background:transparent;border-color:#1f2937}
+    .container{max-width:1100px;margin:auto;padding:56px 16px}
+    .hero{padding:80px 16px 72px;background:radial-gradient(1000px 400px at 10% -10%,#0ea5e922,transparent),radial-gradient(800px 500px at 90% 10%,#22c55e22,transparent)}
+    .hero h1{font-size:clamp(32px,4.5vw,56px);line-height:1.1;margin:0 0 14px}
+    .hero p.lead{color:var(--muted);font-size:clamp(16px,2.2vw,20px);max-width:800px}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #1f2937;background:#0d1322;color:#a5b4fc;font-size:12px;letter-spacing:.4px}
+    .stack{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{background:linear-gradient(180deg,#0f172a,#0b1220);border:1px solid #172036;border-radius:16px;padding:18px}
+    .shadow{box-shadow:0 10px 30px -15px rgba(0,0,0,.5)}
+    .section-title{font-size:22px;margin:0 0 6px}
+    .muted{color:var(--muted)}
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{padding:8px 10px;border:1px solid #1f2937;background:#0b1220;border-radius:10px}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0}
+    .kpi{flex:1 1 160px;border:1px solid #172036;background:#0b1220;border-radius:14px;padding:14px;text-align:center}
+    .kpi b{font-size:22px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .pill{font-size:12px;border:1px solid #1f2937;border-radius:999px;padding:4px 8px;color:#93c5fd}
+    footer{border-top:1px solid #1f2937;padding:40px 16px;color:#94a3b8}
+    .timeline{position:relative;padding-left:22px}
+    .timeline:before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:#1f2937}
+    .tl{position:relative;margin:0 0 18px}
+    .tl:before{content:"";position:absolute;left:-2px;top:5px;width:10px;height:10px;border-radius:50%;background:#38bdf8;box-shadow:0 0 0 3px #0b1220}
+    .badge-row{display:flex;gap:8px;flex-wrap:wrap}
+    .bad{background:#0b1220;border:1px solid #1f2937;border-radius:8px;padding:6px 8px;font-size:12px;color:#cbd5e1}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    @media (max-width:680px){.nav ul{display:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">🔐 Michel Macías</div>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Sección 1</a></li>
+        <li><a href="#">Sección 2</a></li>
+      </ul>
+      <a class="btn" href="#">Botón</a>
+    </nav>
+  </header>
+
+  <section class="container">
+    <div class="markdown-body">
+      <h1>Botium Toys: Alcance, objetivos e informe de evaluación de riesgos</h1>
+
+      <h2>Alcance y objetivos de la auditoría</h2>
+
+      <h3>Alcance:</h3>
+
+      <p>El alcance de esta auditoría se define como el programa de seguridad completo de Botium Toys. Esto incluye sus activos, como equipos y dispositivos de los empleados, su red interna y sus sistemas. Deberemos revisar los activos que tiene Botium Toys y los controles y prácticas de cumplimiento que tiene implementados.</p>
+
+      <h3>Objetivos:</h3>
+
+      <p>Evaluar los activos existentes y completar la lista de verificación de controles y cumplimiento para determinar qué controles y prácticas recomendadas de cumplimiento deben implementarse para mejorar la postura de seguridad de Botium Toys.</p>
+
+      <h2>Activos actuales</h2>
+
+      <p>Los activos administrados por el Departamento de TI incluyen:</p>
+
+      <ul>
+        <li>Equipos locales para las necesidades comerciales en la oficina</li>
+        <li>Equipos de los empleados: dispositivos de usuario final (computadoras de escritorio/portátiles, teléfonos inteligentes), estaciones de trabajo remotas, auriculares, cables, teclados, ratones, estaciones de acoplamiento, cámaras de vigilancia, etc.</li>
+        <li>Productos de escaparate disponibles para la venta minorista en el sitio y en línea; almacenados en el almacén contiguo de la empresa</li>
+        <li>Gestión de sistemas, software y servicios: contabilidad, telecomunicaciones, base de datos, seguridad, comercio electrónico y gestión de inventario</li>
+        <li>Acceso a Internet</li>
+        <li>Red interna</li>
+        <li>Retención y almacenamiento de datos</li>
+        <li>Mantenimiento de sistemas heredados: sistemas al final de su vida útil que requieren supervisión humana</li>
+        <li>Evaluación de riesgos</li>
+        <li>Descripción de riesgos</li>
+      </ul>
+
+      <p>Actualmente, existe una gestión inadecuada de los activos. Además, Botium Toys no cuenta con todos los controles adecuados y es posible que no cumpla plenamente con las normas y regulaciones europeas e internacionales.</p>
+
+      <h2>Mejores prácticas de control</h2>
+
+      <p>La primera de las cinco funciones del CSF del NIST es <strong>Identificar</strong>. Botium Toys deberá dedicar recursos a identificar los activos para poder gestionarlos adecuadamente. Además, deberá clasificar los activos existentes y determinar el impacto de la pérdida de los activos existentes, incluidos los sistemas, en la continuidad del negocio.</p>
+
+      <h2>Puntuación de riesgo</h2>
+
+      <p>En una escala del 1 al 10, la puntuación de riesgo es <strong>8</strong>, que es bastante alta. Esto se debe a la falta de controles y de adhesión a las mejores prácticas de cumplimiento.</p>
+
+      <h2>Comentarios adicionales</h2>
+
+      <p>El impacto potencial de la pérdida de un activo se clasifica como medio, porque el departamento de TI no sabe qué activos estarían en riesgo. El riesgo de que se produzcan multas por parte de los organismos reguladores es alto porque Botium Toys no cuenta con todos los controles necesarios y no cumple plenamente con las mejores prácticas relacionadas con las normas de cumplimiento que mantienen la privacidad y seguridad de los datos críticos.</p>
+
+      <p>Revise los siguientes puntos para obtener detalles específicos:</p>
+
+      <ul>
+        <li>Actualmente, todos los empleados de Botium Toys tienen acceso a los datos almacenados internamente y pueden acceder a los datos de los titulares de tarjetas y a la información personal identificable (PII) y la información personal identificable (SPII) de los clientes.</li>
+        <li>Actualmente, no se utiliza el cifrado para garantizar la confidencialidad de la información de las tarjetas de crédito de los clientes que se acepta, procesa, transmite y almacena localmente en la base de datos interna de la empresa.</li>
+        <li>No se han implementado controles de acceso relacionados con el privilegio mínimo y la separación de funciones.</li>
+        <li>El departamento de TI ha garantizado la disponibilidad y ha integrado controles para garantizar la integridad de los datos.</li>
+        <li>El departamento de TI tiene un cortafuegos que bloquea el tráfico en función de un conjunto de reglas de seguridad definidas adecuadamente.</li>
+        <li>El departamento de TI instala y supervisa periódicamente un software antivirus. El departamento de TI no ha instalado un sistema de detección de intrusiones (IDS).</li>
+        <li>Actualmente no hay planes de recuperación de desastres en marcha y la empresa no tiene copias de seguridad de los datos críticos.</li>
+        <li>El departamento de TI ha establecido un plan para notificar a los clientes de la UE en un plazo de 72 horas si se produce una violación de seguridad. Además, se han desarrollado políticas, procedimientos y procesos de privacidad que se aplican entre los miembros del departamento de TI y otros empleados para documentar y mantener los datos de forma adecuada.</li>
+        <li>Aunque existe una política de contraseñas, sus requisitos son nominales y no están en línea con los requisitos mínimos actuales de complejidad de contraseñas (por ejemplo, al menos ocho caracteres, una combinación de letras y al menos un número; caracteres especiales).</li>
+        <li>No hay un sistema de gestión de contraseñas centralizado que haga cumplir los requisitos mínimos de la política de contraseñas, lo que a veces afecta a la productividad cuando los empleados o proveedores envían un ticket al departamento de TI para recuperar o restablecer una contraseña.</li>
+        <li>Si bien los sistemas heredados se supervisan y mantienen, no hay un cronograma regular establecido para estas tareas y los métodos de intervención no están claros.</li>
+        <li>La ubicación física de la tienda, que incluye las oficinas principales de Botium Toys, el frente de la tienda y el almacén de productos, cuenta con cerraduras suficientes, vigilancia por circuito cerrado de televisión (CCTV) actualizada, así como sistemas de detección y prevención de incendios en funcionamiento.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Michel Macías · Ciberseguridad
+      <span class="muted" style="float:right">Hecho con GitHub Pages</span>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
