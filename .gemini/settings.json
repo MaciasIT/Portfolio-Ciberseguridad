@@ -1,0 +1,10 @@
+{
+  "hideTips": true,
+  "hideFooter": true,
+  "showMemoryUsage": true,
+  "disableAutoUpdate": true,
+  "loadMemoryFromIncludeDirectories": true,
+  "folderTrustFeature": true,
+  "folderTrust": true,
+  "showLineNumbers": true
+}

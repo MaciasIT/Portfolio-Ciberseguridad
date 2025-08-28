@@ -29,3 +29,5 @@ El contenido está organizado en las siguientes categorías:
 Este directorio está destinado a ser utilizado como un portafolio profesional para mostrar las capacidades y conocimientos del autor en ciberseguridad. Los archivos Markdown (`.md`) se pueden ver directamente en un visor de Markdown o en la interfaz de GitHub. Los archivos PDF contienen información adicional y guías de referencia.
 
 El portafolio está diseñado para ser compartido con reclutadores y posibles empleadores para demostrar la experiencia práctica y el conocimiento teórico en diversas áreas de la seguridad informática.
+
+Usa • Ciclo de Desarrollo Guiado por Pruebas (TDD Cycle)
