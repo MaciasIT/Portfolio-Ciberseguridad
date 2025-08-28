@@ -52,6 +52,32 @@
     .bad{background:#0b1220;border:1px solid #1f2937;border-radius:8px;padding:6px 8px;font-size:12px;color:#cbd5e1}
     .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
     @media (max-width:680px){.nav ul{display:none}}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border: 1px solid var(--panel);
+    }
+
+    th {
+      background-color: var(--card);
+      color: var(--text);
+      font-weight: bold;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: var(--bg);
+    }
+
+    tbody tr:hover {
+      background-color: var(--panel);
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -59,11 +85,13 @@
     <nav class="nav">
       <div class="logo">🔐 Michel Macías</div>
       <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Sección 1</a></li>
-        <li><a href="#">Sección 2</a></li>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="curriculum/Declaración.md">Curriculum</a></li>
+        <li><a href="documentos_portafolio/portfolio/habilidades&tecnicas.md">Portafolio</a></li>
+        <li><a href="glosario/Curso1/Curso1mod1.md">Glosario</a></li>
+        <li><a href="herramientas_ciberseguridad/SIEM/Herramientas_SIEM.md">Herramientas</a></li>
       </ul>
-      <a class="btn" href="#">Botón</a>
+      <a class="btn" href="index.html">Volver a Inicio</a>
     </nav>
   </header>
 
