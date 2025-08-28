@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botium Toys: Informe de Evaluación de Riesgos</title>
+    <!-- Incluye Tailwind CSS para un diseño responsivo y moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define la fuente Inter para todo el documento */
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply bg-gray-50 text-gray-800; /* Estilos de fondo y texto generales */
+        }
+        /* Estilos para contenedores de sección */
+        section {
+            @apply mb-8 p-6 bg-white rounded-xl shadow-lg;
+        }
+        /* Estilos generales de encabezados y párrafos */
+        h1 {
+            @apply text-5xl font-extrabold mb-8 text-center text-blue-900;
+        }
+        h2 {
+            @apply text-4xl font-bold mb-6 text-blue-800 border-b-2 border-blue-200 pb-2;
+        }
+        h3 {
+            @apply text-3xl font-semibold mb-4 text-blue-700;
+        }
+        p {
+            @apply mb-4 leading-relaxed text-gray-700;
+        }
+        ul {
+            @apply list-disc list-inside mb-4 pl-5 text-gray-700;
+        }
+        li {
+            @apply mb-2;
+        }
+        strong {
+            @apply text-blue-600;
+        }
+        /* Estilo para las tablas */
+        table {
+            @apply w-full text-left border-collapse rounded-lg overflow-hidden shadow-md;
+        }
+        th, td {
+            @apply px-4 py-3 border border-gray-200;
+        }
+        th {
+            @apply bg-blue-600 text-white font-semibold uppercase tracking-wider;
+        }
+        tr:nth-child(odd) {
+            @apply bg-blue-50;
+        }
+        tr:hover {
+            @apply bg-blue-100 transition duration-150 ease-in-out;
+        }
+        /* Estilos para la puntuación de riesgo */
+        .risk-score {
+            @apply text-center text-6xl font-extrabold text-red-600 my-8 p-6 bg-red-50 rounded-2xl shadow-inner border-red-200 border-4;
+        }
+        .risk-description {
+            @apply text-center text-xl font-medium text-gray-700;
+        }
+    </style>
+</head>
+<body class="p-8 bg-gradient-to-r from-blue-50 to-indigo-100">
+    <div class="max-w-7xl mx-auto space-y-12">
+        <!-- Título principal de la página -->
+        <h1 class="animate-fade-in">Botium Toys: Informe de Evaluación de Riesgos</h1>
+
+        <section>
+            <!-- Alcance y objetivos de la auditoría -->
+            <h2 id="alcance-objetivos">Alcance y Objetivos de la Auditoría</h2>
+            <p>
+                Esta auditoría se ha centrado en el <strong>programa de seguridad completo de Botium Toys</strong>. Esto abarca todos sus activos, incluyendo equipos de empleados, la red interna y sus sistemas. Nuestro objetivo principal fue revisar los activos existentes y los controles de cumplimiento implementados.
+            </p>
+            <h3>Objetivos:</h3>
+            <ul>
+                <li>Evaluar los activos existentes.</li>
+                <li>Completar la lista de verificación de controles y cumplimiento.</li>
+                <li>Determinar qué controles y prácticas recomendadas deben implementarse para <strong>mejorar la postura de seguridad de Botium Toys</strong>.</li>
+            </ul>
+        </section>
+
+        <section>
+            <!-- Activos actuales -->
+            <h2 id="activos-actuales">Activos Actuales</h2>
+            <p>
+                El Departamento de TI de Botium Toys gestiona una variedad de activos críticos para las operaciones de la empresa:
+            </p>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <li>Equipos locales para las necesidades comerciales en la oficina.</li>
+                <li>Equipos de los empleados: dispositivos de usuario final (computadoras, portátiles, teléfonos), estaciones de trabajo remotas, auriculares, cables, etc.</li>
+                <li>Productos de escaparate disponibles para la venta (física y online), almacenados en el almacén.</li>
+                <li>Gestión de sistemas, software y servicios: contabilidad, telecomunicaciones, base de datos, seguridad, comercio electrónico y gestión de inventario.</li>
+                <li>Acceso a Internet.</li>
+                <li>Red interna.</li>
+                <li>Retención y almacenamiento de datos.</li>
+                <li>Mantenimiento de sistemas heredados: sistemas al final de su vida útil que requieren supervisión humana.</li>
+                <li>Evaluación de riesgos y descripción de riesgos.</li>
+            </ul>
+            <p class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 rounded-md">
+                <strong>Observación Crítica:</strong> Actualmente, existe una gestión inadecuada de los activos. Botium Toys no cuenta con todos los controles adecuados y es posible que no cumpla plenamente con las normas y regulaciones europeas e internacionales.
+            </p>
+        </section>
+
+        <section>
+            <!-- Mejores prácticas de control -->
+            <h2 id="mejores-practicas">Mejores Prácticas de Control</h2>
+            <p>
+                La función de <strong>Identificar</strong> del <a href="https://www.nist.gov/cyberframework" target="_blank" class="text-blue-600 hover:underline">CSF del NIST</a> (Cybersecurity Framework del National Institute of Standards and Technology) es crucial. Botium Toys debe:
+            </p>
+            <ul>
+                <li>Dedicar recursos a <strong>identificar y clasificar adecuadamente todos los activos</strong>.</li>
+                <li>Determinar el <strong>impacto de la pérdida de activos</strong> (incluidos los sistemas) en la continuidad del negocio.</li>
+            </ul>
+        </section>
+
+        <section>
+            <!-- Puntuación de riesgo -->
+            <h2 id="puntuacion-riesgo">Puntuación de Riesgo</h2>
+            <div class="risk-score">
+                8 / 10
+            </div>
+            <p class="risk-description">
+                Esta puntuación de riesgo es <strong>alta</strong>, debido a la falta de controles y la no adhesión a las mejores prácticas de cumplimiento. Esto indica una necesidad urgente de implementar mejoras en la seguridad.
+            </p>
+        </section>
+
+        <section>
+            <!-- Comentarios adicionales -->
+            <h2 id="comentarios-adicionales">Comentarios Adicionales y Hallazgos Específicos</h2>
+            <p>
+                El impacto potencial de la pérdida de un activo se clasifica como <strong>medio</strong>, principalmente porque el departamento de TI carece de un inventario claro de qué activos estarían en mayor riesgo. El riesgo de multas regulatorias es <strong>alto</strong> debido al incumplimiento de normativas de privacidad y seguridad de datos.
+            </p>
+            <h3 class="mt-6">Detalles específicos a revisar:</h3>
+            <ul class="list-none space-y-3">
+                <li class="p-3 bg-red-50 border-l-4 border-red-400 rounded-md">
+                    <strong class="text-red-700">Acceso no restringido:</strong> Todos los empleados tienen acceso a datos internos, incluyendo información de tarjetas y PII/SPII de clientes.
+                </li>
+                <li class="p-3 bg-red-50 border-l-4 border-red-400 rounded-md">
+                    <strong class="text-red-700">Falta de cifrado:</strong> No se utiliza cifrado para la información de tarjetas de crédito de clientes almacenada localmente.
+                </li>
+                <li class="p-3 bg-red-50 border-l-4 border-red-400 rounded-md">
+                    <strong class="text-red-700">Controles de acceso ausentes:</strong> No se han implementado controles de acceso basados en el privilegio mínimo y la separación de funciones.
+                </li>
+                <li class="p-3 bg-green-50 border-l-4 border-green-400 rounded-md">
+                    <strong class="text-green-700">Disponibilidad e integridad:</strong> El departamento de TI ha garantizado la disponibilidad y ha integrado controles para asegurar la integridad de los datos.
+                </li>
+                <li class="p-3 bg-green-50 border-l-4 border-green-400 rounded-md">
+                    <strong class="text-green-700">Cortafuegos:</strong> Existe un cortafuegos que bloquea el tráfico según reglas de seguridad definidas.
+                </li>
+                <li class="p-3 bg-orange-50 border-l-4 border-orange-400 rounded-md">
+                    <strong class="text-orange-700">Antivirus y IDS:</strong> Se supervisa el antivirus, pero no se ha instalado un Sistema de Detección de Intrusiones (IDS).
+                </li>
+                <li class="p-3 bg-red-50 border-l-4 border-red-400 rounded-md">
+                    <strong class="text-red-700">Sin planes de recuperación ante desastres:</strong> No hay planes de recuperación de desastres ni copias de seguridad de datos críticos.
+                </li>
+                <li class="p-3 bg-green-50 border-l-4 border-green-400 rounded-md">
+                    <strong class="text-green-700">Plan de notificación de brechas:</strong> Existe un plan para notificar a clientes de la UE en 72 horas en caso de violación de seguridad, y se han desarrollado políticas de privacidad.
+                </li>
+                <li class="p-3 bg-orange-50 border-l-4 border-orange-400 rounded-md">
+                    <strong class="text-orange-700">Política de contraseñas débil:</strong> La política de contraseñas es nominal y no cumple con los requisitos mínimos de complejidad actuales.
+                </li>
+                <li class="p-3 bg-red-50 border-l-4 border-red-400 rounded-md">
+                    <strong class="text-red-700">Sin gestor de contraseñas centralizado:</strong> No hay un sistema centralizado para gestionar contraseñas, afectando la productividad.
+                </li>
+                <li class="p-3 bg-orange-50 border-l-4 border-orange-400 rounded-md">
+                    <strong class="text-orange-700">Mantenimiento de sistemas heredados:</strong> Los sistemas heredados se supervisan, pero sin un cronograma regular ni métodos de intervención claros.
+                </li>
+                <li class="p-3 bg-green-50 border-l-4 border-green-400 rounded-md">
+                    <strong class="text-green-700">Controles físicos adecuados:</strong> La tienda cuenta con cerraduras suficientes, CCTV actualizado y sistemas contra incendios operativos.
+                </li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
