@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio SQL & Filtros</title>
+</head>
+<body>
+
+    <h1>Laboratorio SQL & Filtros</h1>
+
+    <h2>Contexto de la base de datos y sus tablas.</h2>
+
+    <p>
+            </p>
+
+    <h3>MariaDB [organization]> SHOW TABLES;</h3>
+<pre><code>+-----------------------+
+| Tables in organization|
++-----------------------+
+| employees             |
+| log_in_attempts       |
+| machines              |
++-----------------------+
+3 rows in set (0.001 sec)
+</code></pre>
+
+    <h3>MariaDB [organization]> DESC employees;</h3>
+<pre><code>+-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| employee_id | int(11)     | NO   | PRI | NULL    |       |
+| device_id   | varchar(16) | YES  |     | NULL    |       |
+| username  | varchar(16) | NO   |     | NULL    |       |
+| department| varchar(32) | NO   |     | NULL    |       |
+| office    | varchar(32) | NO   |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+</code></pre>
+
+    <h3>MariaDB [organization]> DESC log_in_attempts;</h3>
+<pre><code>+------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| event_id   | int(11)     | NO   | PRI | NULL    |       |
+| username   | varchar(16) | NO   |     | NULL    |       |
+| login_date | date        | NO   |     | NULL    |       |
+| login_time | time        | NO   |     | NULL    |       |
+| country    | varchar(16) | NO   |     | NULL    |       |
+| ip_address | varchar(16) | NO   |     | NULL    |       |
+| success    | tinyint(1)  | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+7 rows in set (0.001 sec)
+</code></pre>
+
+    <h3>MariaDB [organization]> DESC machines;</h3>
+<pre><code>+----------------+-------------+------+-----+---------+-------+
+| Field          | Type        | Null | Key | Default | Extra |
++----------------+-------------+------+-----+---------+-------+
+| device_id      | varchar(16) | NO   | PRI | NULL    |       |
+| operating_system | varchar(16) | NO   |     | NULL    |       |
+| email_client   | varchar(16) | NO   |     | NULL    |       |
+| os_patch_date  | date        | NO   |     | NULL    |       |
+| employee_id    | int(11)     | YES  |     | NULL    |       |
++----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+</code></pre>
+
+    <hr>
+
+    <h2>Tarea 1: Recupera intentos de acceso fallidos después del horario laboral</h2>
+    <p>Tu equipo está investigando intentos de acceso fallidos realizados después del horario laboral. Quieres recuperar esta información de la actividad de acceso. Identificarás todos los intentos fallidos después de las 6:00 p.m.</p>
+    <p>La columna <code>login_time</code> de la tabla <code>log_in_attempts</code> contiene información sobre cuándo se realizaron los intentos de acceso. El horario laboral finaliza a las '18:00'.</p>
+    <p>La columna <code>success</code> de la tabla <code>log_in_attempts</code> contiene valores de <code>TRUE</code> / <code>FALSE</code> para indicar si el acceso se concretó. MySQL almacena valores booleanos como 1 para <code>TRUE</code> y 0 para <code>FALSE</code>. Esto significa que <code>TRUE</code> se representa como 1 y <code>FALSE</code> se representa como 0 en la columna <code>success</code>.</p>
+    <p>Usa el operador <code>AND</code> para recuperar todos los intentos de acceso fallidos ocurridos después del horario laboral. Reemplaza la X y la Y con los valores correctos para filtrar según los registros que necesitas:</p>
+<pre><code>SELECT *
+FROM log_in_attempts
+WHERE login_time > 'X' AND success = Y;
+</code></pre>
+
+    <h3>Ejemplo: Filtra con AND, OR Y NOT</h3>
+<pre><code>MariaDB [organization]> select
+-> from log_in_attempts
+-> where login_time > '18:00'
+-> and
+-> success = 'FALSE';
++----------+----------+------------+------------+-----------+-------------------+---------+
+| event_id | username | login_date | login_time | country   | ip_address        | success |
++----------+----------+------------+------------+-----------+-------------------+---------+
+| 2        | apatel   | 2022-05-10 | 20:27:27   | CAN       | 192.168.205.12    | 0       |
+| 18       | pwashing | 2022-05-11 | 19:28:50   | US        | 192.168.66.142    | 0       |
+| 20       | tshah    | 2022-05-12 | 18:56:36   | MEXICO    | 192.168.109.50    | 0       |
+| 28       | aestrada | 2022-05-09 | 19:28:12   | MEXICO    | 192.168.27.57     | 0       |
+| 34       | drosas   | 2022-05-11 | 21:02:04   | US        | 192.168.45.93     | 0       |
+| 42       | cgriffin | 2022-05-09 | 23:04:05   | US        | 192.168.4.157     | 0       |
+| 52       | cjackson | 2022-05-10 | 22:07:07   | CAN       | 192.168.58.57     | 0       |
+| 69       | wjaffrey | 2022-05-11 | 19:55:15   | USA       | 192.168.100.17    | 0       |
+| 82       | abernard | 2022-05-12 | 23:38:46   | MEX       | 192.168.234.49    | 0       |
+| 87       | apatel   | 2022-05-08 | 22:38:31   | CANADA    | 192.168.132.153   | 0       |
+| 96       | ivelasco | 2022-05-09 | 22:36:36   | CAN       | 192.168.84.194    | 0       |
+| 104      | asundara | 2022-05-11 | 18:38:07   | US        | 192.168.96.200    | 0       |
+| 107      | bisles   | 2022-05-12 | 20:25:57   | USA       | 192.168.116.187   | 0       |
+| 111      | aestrada | 2022-05-10 | 22:00:26   | MEXICO    | 192.168.76.27     | 0       |
+| 127      | abellmas | 2022-05-09 | 21:20:51   | CANADA    | 192.168.70.122    | 0       |
+| 131      | bisles   | 2022-05-09 | 20:03:55   | US        | 192.168.113.171   | 0       |
+| 155      | cgriffin | 2022-05-12 | 22:18:42   | USA       | 192.168.236.176   | 0       |
+| 160      | jclark   | 2022-05-10 | 20:49:00   | CANADA    | 192.168.214.49    | 0       |
+| 199      | yappiah  | 2022-05-11 | 19:34:48   | MEXICO    | 192.168.44.232    | 0       |
++----------+----------+------------+------------+-----------+-------------------+---------+
+19 rows in set, 1 warning (0.001 sec)
+</code></pre>
+
+    <hr>
+
+    <h2>Tarea 2: Recupera intentos de acceso en fechas específicas</h2>
+    <p>Tu equipo está investigando un evento sospechoso que ocurrió el '2022-05-09'. Quieres recuperar todos los intentos de acceso que ocurrieron ese día y el anterior ('2022-05-08').</p>
+    <p>La columna <code>login_date</code> de la tabla <code>log_in_attempts</code> contiene información sobre cuándo se realizaron los intentos de acceso.</p>
+    <p>Usa el operador <code>OR</code> para recuperar los intentos de acceso fallidos durante esos días específicos. Reemplaza la X y la Y con los valores correctos para filtrar según los registros que necesitas:</p>
+<pre><code>SELECT *
+FROM log_in_attempts
+WHERE login_date = 'X' OR login_date = 'Y';
+</code></pre>
+
+<pre><code>MariaDB [organization]> select *
+-> from log_in_attempts
+-> where login_date = '2022-05-09' or
+-> login_date = '2022-05-08';
++----------+----------+------------+------------+-----------+-------------------+---------+
+| event_id | username | login_date | login_time | country   | ip_address        | success |
++----------+----------+------------+------------+-----------+-------------------+---------+
+| 1        | jrafael  | 2022-05-09 | 04:56:27   | CAN       | 192.168.243.140   | 1       |
+| 3        | dkot     | 2022-05-09 | 06:47:41   | USA       | 192.168.151.162   | 1       |
+| 4        | dkot     | 2022-05-08 | 02:00:39   | USA       | 192.168.178.71    | 0       |
+| 8        | bisles   | 2022-05-08 | 01:30:17   | US        | 192.168.119.173   | 0       |
+| 12       | dkot     | 2022-05-08 | 09:11:34   | USA       | 192.168.100.158   | 1       |
+| 15       | lyamamot | 2022-05-08 | 17:17:26   | USA       | 192.168.183.51    | 0       |
+| 24       | aruss30  | 2022-05-09 | 06:49:39   | MEXICO    | 192.168.171.192   | 1       |
+| 25       | sbaelish | 2022-05-09 | 07:04:02   | US        | 192.168.33.137    | 1       |
+| 26       | apatel   | 2022-05-08 | 17:27:00   | CANADA    | 192.168.123.105   | 1       |
+| 28       | aestrada | 2022-05-09 | 19:28:12   | MEXICO    | 192.168.27.57     | 0       |
+| 30       | yappiah  | 2022-05-09 | 03:22:22   | MEX       | 192.168.124.48    | 1       |
+| 32       | acook    | 2022-05-09 | 02:52:02   | CANADA    | 192.168.142.239   | 0       |
+| 36       | asundara | 2022-05-08 | 09:00:42   | US        | 192.168.78.151    | 1       |
+| 38       | sbaelish | 2022-05-09 | 14:40:01   | USA       | 192.168.60.42     | 1       |
+| 39       | yappiah  | 2022-05-09 | 07:56:40   | MEXICO    | 192.168.57.115    | 1       |
+| 42       | cgriffin | 2022-05-09 | 23:04:05   | US        | 192.168.4.157     | 0       |
+| 43       | couliba  | 2022-05-08 | 02:35:34   | CANADA    | 192.168.16.208    | 0       |
+| 44       | daquino  | 2022-05-08 | 07:02:35   | CANADA    | 192.168.168.144   | 0       |
+| 47       | dkot     | 2022-05-08 | 05:06:45   | US        | 192.168.233.24    | 1       |
+| 49       | asundara | 2022-05-08 | 14:00:01   | US        | 192.168.173.213   | 0       |
+| 53       | mason    | 2022-05-08 | 11:51:38   | CAN       | 192.168.133.188   | 1       |
+| 56       | acook    | 2022-05-08 | 04:56:30   | CAN       | 192.168.209.130   | 1       |
+| 58       | ivelasco | 2022-05-09 | 17:20:54   | CAN       | 192.168.57.162    | 0       |
+| 61       | dtanaka  | 2022-05-09 | 09:45:18   | USA       | 192.168.98.221    | 1       |
+| 65       | aalonso  | 2022-05-09 | 23:42:12   | MEX       | 192.168.52.37     | 1       |
+| 66       | aestrada | 2022-05-08 | 21:58:32   | MEX       | 192.168.67.223    | 1       |
+| 67       | abernard | 2022-05-09 | 11:53:41   | MEX       | 192.168.118.29    | 1       |
+| 68       | mrah     | 2022-05-08 | 17:16:13   | US        | 192.168.42.248    | 1       |
+| 70       | twitchel | 2022-05-09 | 10:55:17   | MEXICO    | 192.168.87.199    | 1       |
+| 71       | mcouliba | 2022-05-09 | 06:57:42   | CAN       | 192.168.55.169    | 0       |
+| 72       | alevitsk | 2022-05-08 | 12:09:10   | CANADA    | 192.168.139.176   | 1       |
+| 79       | abernard | 2022-05-09 | 11:41:15   | MEX       | 192.168.158.170   | 0       |
+| 80       | cjackson | 2022-05-08 | 02:18:10   | CANADA    | 192.168.33.140    | 1       |
++----------+----------+------------+------------+-----------+-------------------+---------+
+</code></pre>
+
+    <hr>
+
+    <h2>Tarea 3: Recupera intentos de acceso realizados fuera de México</h2>
+    <p>Ahora, el equipo está investigando accesos que no se originaron en México y necesitas encontrar esa información. Ten en cuenta que el campo del país incluye entradas con 'MEX' y 'MEXICO'. Debes usar los operadores <code>NOT</code> y <code>LIKE</code> junto con el patrón de coincidencia 'MEX%'.</p>
+    <ul>
+        <li>Ejecuta la siguiente consulta en SQL para recuperar información sobre los intentos de acceso que no se originaron en México. Reemplaza la X con el operador adecuado y la Y con el patrón correcto para filtrar la información que necesitas:</li>
+    </ul>
+<pre><code>SELECT *
+FROM log_in_attempts
+WHERE X country LIKE 'Y';
+</code></pre>
+
+<pre><code>MariaDB [organization]> select
+-> from log_in_attempts
+-> where NOT country LIKE 'MEX';
++----------+----------+------------+------------+-----------+-------------------+---------+
+| event_id | username | login_date | login_time | country   | ip_address        | success |
++----------+----------+------------+------------+-----------+-------------------+---------+
+| 1        | jrafael  | 2022-05-09 | 04:56:27   | CAN       | 192.168.243.140   | 1       |
+| 2        | apatel   | 2022-05-10 | 20:27:27   | CAN       | 192.168.205.12    | 0       |
+| 3        | dkot     | 2022-05-09 | 06:47:41   | USA       | 192.168.151.162   | 1       |
+| 4        | dkot     | 2022-05-08 | 02:00:39   | USA       | 192.168.178.71    | 0       |
+| 5        | jrafael  | 2022-05-11 | 03:05:59   | CANADA    | 192.168.86.232    | 0       |
+| 7        | eraab    | 2022-05-11 | 01:45:14   | CAN       | 192.168.170.243   | 1       |
+| 8        | bisles   | 2022-05-08 | 01:30:17   | US        | 192.168.119.173   | 0       |
+| 10       | jrafael  | 2022-05-12 | 09:33:19   | CANADA    | 192.168.228.221   | 0       |
+| 11       | sgilmore | 2022-05-11 | 10:16:29   | CANADA    | 192.168.140.81    | 0       |
+| 12       | dkot     | 2022-05-08 | 09:11:34   | USA       | 192.168.100.158   | 1       |
+| 13       | mrah     | 2022-05-11 | 09:29:34   | USA       | 192.168.246.135   | 1       |
+| 14       | sbaelish | 2022-05-10 | 10:20:18   | US        | 192.168.16.99     | 1       |
+| 15       | lyamamot | 2022-05-09 | 17:17:26   | USA       | 192.168.183.51    | 0       |
+| 16       | mcouliba | 2022-05-11 | 06:44:22   | CAN       | 192.168.172.189   | 1       |
+| 17       | pwashing | 2022-05-11 | 02:33:02   | USA       | 192.168.81.89     | 1       |
+| 18       | pwashing | 2022-05-11 | 19:28:50   | US        | 192.168.66.142    | 0       |
+| 19       | jhill1   | 2022-05-12 | 13:09:04   | US        | 192.168.142.245   | 1       |
+| 21       | iuduike  | 2022-05-11 | 17:50:00   | US        | 192.168.131.147   | 1       |
+| 25       | sbaelish | 2022-05-09 | 07:04:02   | US        | 192.168.33.137    | 1       |
+| 26       | apatel   | 2022-05-08 | 17:27:00   | CANADA    | 192.168.123.105   | 1       |
+| 29       | bisles   | 2022-05-11 | 01:21:22   | US        | 192.168.85.186    | 0       |
+| 31       | acook    | 2022-05-12 | 17:36:45   | CANADA    | 192.168.58.232    | 0       |
+| 32       | acook    | 2022-05-09 | 02:52:02   | CANADA    | 192.168.142.239   | 0       |
+| 33       | zbernal  | 2022-05-11 | 02:52:10   | US        | 192.168.72.59     | 1       |
+| 34       | drosas   | 2022-05-11 | 21:02:04   | US        | 192.168.45.93     | 0       |
+| 36       | asundara | 2022-05-08 | 09:00:42   | US        | 192.168.78.151    | 1       |
+| 37       | eraab    | 2022-05-10 | 06:03:41   | CANADA    | 192.168.152.148   | 0       |
+| 38       | sbaelish | 2022-05-09 | 14:40:01   | USA       | 192.168.60.42     | 1       |
+| 41       | apatel   | 2022-05-10 | 17:39:42   | CANADA    | 192.168.46.207    | 0       |
+| 42       | cgriffin | 2022-05-09 | 23:04:05   | US        | 192.168.4.157     | 0       |
+| 43       | couliba  | 2022-05-08 | 02:35:34   | CANADA    | 192.168.16.208    | 0       |
+| 44       | daquino  | 2022-05-08 | 07:02:35   | CANADA    | 192.168.168.144   | 0       |
+| 45       | dtanaka  | 2022-05-11 | 10:28:54   | US        | 192.168.223.157   | 1       |
++----------+----------+------------+------------+-----------+-------------------+---------+
+</code></pre>
+    <p>En esta consulta nos devuelve más registros (196) ya que está mal formulada. La correcta es:</p>
+<pre><code>select *
+from log_in_attempts
+where not country like 'MEX%';
+</code></pre>
+    <p>La diferencia es el carácter '%' al final de MEX. Esta diferencia ajusta la salida ya que incluye 'MEX', 'MEXICO' y 'MEXI'.</p>
+    <p>Esta vez nos devuelve 144 registros.</p>
+
+    <hr>
+
+    <h2>Tarea 4: Recupera información de los empleados de Marketing</h2>
+    <p>Para las tareas 4, 5 y 6, necesitas recuperar la información de las columnas <code>department</code> y <code>office</code> de la tabla <code>employees</code>.</p>
+    <p>Puedes ejecutar la siguiente consulta en SQL si necesitas ver las columnas y los valores en la tabla <code>employees</code>:</p>
+<pre><code>SELECT *
+FROM employees;
+</code></pre>
+    <p>El equipo está actualizando las máquinas de los empleados y debes obtener información sobre los empleados del departamento de 'Marketing' de todas las oficinas del edificio East, como 'East-170' o 'East-320'.</p>
+    <ul>
+        <li>Escribe una consulta en SQL para recuperar esta información de la tabla <code>employees</code>. Selecciona todas las columnas y, luego, incluye filtros en las columnas <code>department</code> y <code>office</code> para mostrar solo los registros necesarios.</li>
+    </ul>
+
+    <hr>
+
+    <h2>Tarea 5: Recupera información de los empleados de Finanzas o Ventas</h2>
+    <p>Ahora, el equipo necesita realizar una actualización diferente en las computadoras de todos los empleados del departamento de Finanzas o de Ventas, y debes encontrar la información correspondiente.</p>
+    <p>Escribe una consulta en SQL para recuperar los registros de los empleados del departamento 'Finance' o 'Sales'.</p>
+<pre><code>MariaDB [organization]> SELECT
+->
+-> FROM employees
+->
+-> WHERE department = 'Finance' OR department = 'Sales';
++-------------+-----------+----------+------------+-------------+
+| employee_id | device_id | username | department | office      |
++-------------+-----------+----------+------------+-------------+
+| 1003        | d394e816f943 | sgilmore | Finance    | South-153   |
+| 1007        | h1741497j413 | wjaffrey | Finance    | North-406   |
+| 1008        | 1858j583k571 | abernard | Finance    | South-170   |
+| 1009        | NULL      | lrodriqu | Sales      | South-134   |
+| 1010        | k2421212m542 | jlansky  | Finance    | South-109   |
+| 1011        | 1748m120n401 | drosas   | Sales      | South-292   |
+| 1015        | p611q262r945 | jsoto    | Finance    | North-271   |
+| 1017        | 5505824t230  | jclark   | Finance    | North-188   |
+| 1018        | 310t540u653  | abellwas | Finance    | North-403   |
+| 1022        | 237x430y567  | arusso   | Finance    | West-465    |
+| 1024        | y976z753a267 | iuduike  | Sales      | South-215   |
+| 1025        | z381a365b233 | jhill    | Sales      | North-115   |
+| 1029        | d336e475f676 | ivelasco | Finance    | East-156    |
+| 1035        | j236k3031245 | bisles   | Sales      | South-171   |
+| 1039        | n2530917p623 | cjackson | Sales      | East-378    |
+| 1041        | p929q222x778 | cgriffin | Sales      | North-208   |
+| 1044        | 429t157u159  | tbarnes  | Finance    | West-415    |
+| 1045        | t567u844v434 | pwashing | Finance    | East-115    |
+| 1046        | u429v921w138 | daquino  | Finance    | West-280    |
+| 1047        | 109587x644   | cward    | Finance    | West-373    |
+| 1048        | w167x592y375 | twitchel | Finance    | South-288   |
+| 1049        | NULL      | jreckley | Finance    | Central-295 |
+| 1050        | y132z930a114 | csimmons | Finance    | North-468   |
+| 1057        | f370g535h632 | mscott   | Sales      | South-270   |
+| 1062        | k3671639697  | redwards | Finance    | North-180   |
+| 1063        | 1686m140n569 | 1pope    | Sales      | East-226    |
+| 1066        | 0678p794g957 | ttyrell  | Sales      | Central-444 |
+| 1069        | NULL      | jpark    | Finance    | East110-    |
+| 1071        | 2448290723   | zdutchwa | Sales      | West-348    |
+| 1072        | 1905920w694  | esmith   | Sales      | East-421    |
+| 1076        | y347z204a710 | fgarcia  | Finance    | Central-270 |
+| 1078        | a667b270c984 | sharley  | Sales      | North-418   |
+| 1081        | d647e310f618 | georbit  | Finance    | South-290   |
+| 1083        | 840g812h544  | gkoshi   | Finance    | West-165    |
+| 1085        | h3391498j269 | cperez   | Sales      | East-325    |
+| 1086        | 1281j129k749 | imajumda | Sales      | West-499    |
+| 1089        | 1358m929n154 | jpark2   | Sales      | West-251    |
+| 1091        | 3780313p469  | rtran    | Sales      | Central-230 |
++-------------+-----------+----------+------------+-------------+
+</code></pre>
+
+    <hr>
+
+    <h2>Tarea 6: Recupera información de los empleados que no pertenecen al departamento de TI</h2>
+    <p>El equipo necesita hacer una actualización más. Esta actualización ya se realizó en las computadoras de los empleados del departamento de Tecnologia de la información. El equipo necesita información sobre los empleados que no pertenecen a ese departamento. Debes usar el operador <code>NOT</code> para identificar a esos empleados.</p>
+    <ul>
+        <li>Escribe una consulta en SQL para recuperar los registros de los empleados que no pertenecen al departamento 'Information Technology'.</li>
+    </ul>
+
+<pre><code>MariaDB [organization]> SELECT
+->
+FROM employees
+WHERE NOT department = 'Information Technology'
++-------------+------------+----------+-------------------+-------------+
+| employee_id | device_id  | username | department        | office      |
++-------------+------------+----------+-------------------+-------------+
+| 1000        | a320b137c219 | elarson  | Marketing         | East-170    |
+| 1001        | b239c825d303 | bmoreno  | Marketing         | Central-276 |
+| 1002        | c116d593558  | tshah    | Human Resources   | North-434   |
+| 1003        | d394e816f943 | sgilmore | Finance           | South-153   |
+| 1004        | e218f877g788 | eraab    | Human Resources   | South-127   |
+| 1005        | f551g340h864 | gesparza | Human Resources   | South-366   |
+| 1007        | h1741497j413 | wjaffrey | Finance           | North-406   |
+| 1008        | 1858j583k571 | abernard | Finance           | South-170   |
+| 1009        | NULL       | lrodriqu | Sales             | South-134   |
+| 1010        | k2421212m542 | jlansky  | Finance           | South-109   |
+| 1011        | 1748m120n401 | drosas   | Sales             | South-292   |
+| 1015        | p611q262r945 | jsoto    | Finance           | North-271   |
+| 1016        | g793r736s288 | sbaelish | Human Resources   | North-229   |
+| 1017        | 1550-824230  | jclark   | Finance           | North-188   |
+| 1018        | 9310t540u653 | abellwas | Finance           | North-403   |
+| 1020        | 1899v381w363 | arutley  | Marketing         | South-351   |
+| 1022        | 237x430y567  | arusso   | Finance           | West-465    |
+| 1024        | y976z753a267 | iuduike  | Sales             | South-215   |
+| 1025        | z381a365b233 | jhill    | Sales             | North-115   |
+| 1026        | a998b568c863 | apatel   | Human Resources   | West-320    |
+| 1027        | b806c503d354 | mrah     | Marketing         | West-246    |
+| 1028        | c603d749e374 | aestrada | Human Resources   | West-121    |
+| 1029        | d336e475f676 | ivelasco | Finance           | East-156    |
+| 1030        | e391f189g913 | mabadi   | Marketing         | West-375    |
+| 1031        | f419g188h578 | dkot     | Marketing         | West-408    |
+| 1034        | 1679j565k940 | bsand    | Human Resources   | East-484    |
+| 1035        | j236k3031245 | bisles   | Sales             | South-171   |
+| 1036        | k5501533m205 | rjensen  | Marketing         | Central-239 |
+| 1038        | 873n6360225  | btang    | Human Resources   | Central-260 |
+| 1039        | 2530917p623  | cjackson | Sales             | East-378    |
+| 1040        | 0783p832q294 | dtarly   | Human Resources   | East-237    |
+| 1041        | p929q222r778 | cgriffin | Sales             | North-208   |
+| 1042        | q175x338s833 | acook    | Human Resources   | West-381    |
+| 1044        | 429t157u159  | tbarnes  | Finance           | West-415    |
+| 1045        | t567u844v434 | pwashing | Finance           | East-115    |
+| 1046        | u429v921w138 | daquino  | Finance           | West-280    |
+| 1047        | 109587x644   | cward    | Finance           | West-373    |
+| 1048        | w167x592y375 | twitchel | Finance           | South-288   |
+| 1049        | NULL       | jreckley | Finance           | Central-295 |
+| 1050        | y132z930a114 | csimmons | Finance           | North-468   |
++-------------+------------+----------+-------------------+-------------+
+</code></pre>
+
+</body>
+</html>

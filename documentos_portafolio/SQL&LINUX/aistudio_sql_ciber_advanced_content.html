@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SQL para Ciberseguridad: Guía Detallada</title>
+  <meta name="description" content="Contenido de un documento del portafolio." />
+  <meta name="theme-color" content="#0b1220" />
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#0f172a; --muted:#94a3b8; --text:#e5e7eb; --brand:#38bdf8; --accent:#22c55e; --danger:#ef4444; --card:#111827;
+      --ring: rgba(56,189,248,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(1200px 600px at 75% -10%,#0d1b2a00 30%,#0d1b2a66 60%,#0b1220 100%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(10px);background:rgba(11,18,32,.6);border-bottom:1px solid #1f2937;z-index:50}
+    .nav{max-width:1100px;margin:auto;display:flex;align-items:center;gap:16px;padding:10px 16px}
+    .nav .logo{font-weight:700;letter-spacing:.4px}
+    .nav a{color:#cbd5e1;margin-left:auto}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0 0 0 24px;padding:0}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid #1f2937;background:linear-gradient(180deg,#111827,#0b1220);color:#e5e7eb}
+    .btn:hover{box-shadow:0 0 0 4px var(--ring)}
+    .btn.brand{border-color:#0ea5e9;background:linear-gradient(180deg,#0ea5e933,#0ea5e908)}
+    .btn.ghost{background:transparent;border-color:#1f2937}
+    .container{max-width:1100px;margin:auto;padding:56px 16px}
+    .hero{padding:80px 16px 72px;background:radial-gradient(1000px 400px at 10% -10%,#0ea5e922,transparent),radial-gradient(800px 500px at 90% 10%,#22c55e22,transparent)}
+    .hero h1{font-size:clamp(32px,4.5vw,56px);line-height:1.1;margin:0 0 14px}
+    .hero p.lead{color:var(--muted);font-size:clamp(16px,2.2vw,20px);max-width:800px}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #1f2937;background:#0d1322;color:#a5b4fc;font-size:12px;letter-spacing:.4px}
+    .stack{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{background:linear-gradient(180deg,#0f172a,#0b1220);border:1px solid #172036;border-radius:16px;padding:18px}
+    .shadow{box-shadow:0 10px 30px -15px rgba(0,0,0,.5)}
+    .section-title{font-size:22px;margin:0 0 6px}
+    .muted{color:var(--muted)}
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{padding:8px 10px;border:1px solid #1f2937;background:#0b1220;border-radius:10px}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0}
+    .kpi{flex:1 1 160px;border:1px solid #172036;background:#0b1220;border-radius:14px;padding:14px;text-align:center}
+    .kpi b{font-size:22px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .pill{font-size:12px;border:1px solid #1f2937;border-radius:999px;padding:4px 8px;color:#93c5fd}
+    footer{border-top:1px solid #1f2937;padding:40px 16px;color:#94a3b8}
+    .timeline{position:relative;padding-left:22px}
+    .timeline:before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:#1f2937}
+    .tl{position:relative;margin:0 0 18px}
+    .tl:before{content:"";position:absolute;left:-2px;top:5px;width:10px;height:10px;border-radius:50%;background:#38bdf8;box-shadow:0 0 0 3px #0b1220}
+    .badge-row{display:flex;gap:8px;flex-wrap:wrap}
+    .bad{background:#0b1220;border:1px solid #1f2937;border-radius:8px;padding:6px 8px;font-size:12px;color:#cbd5e1}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    @media (max-width:680px){.nav ul{display:none}}
+    pre { background-color: #0f172a; padding: 1em; border-radius: 0.5em; overflow-x: auto; color: #e5e7eb; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">🔐 Michel Macías</div>
+      <ul>
+        <li><a href="../../index.html">Inicio</a></li>
+        <li><a href="../../curriculum/Declaración.md">Curriculum</a></li>
+        <li><a href="../../documentos_portafolio/portfolio/habilidades&tecnicas.md">Portafolio</a></li>
+        <li><a href="../../glosario/Curso1/Curso1mod1.md">Glosario</a></li>
+        <li><a href="../../herramientas_ciberseguridad/SIEM/Herramientas_SIEM.md">Herramientas</a></li>
+      </ul>
+      <a class="btn" href="../../index.html">Volver a Inicio</a>
+    </nav>
+  </header>
+
+  <section class="container">
+    <h1>SQL para Ciberseguridad: Guía Detallada con Explicaciones Exhaustivas para Estudiantes</h1>
+
+    <h2>Introducción</h2>
+    <p>Este documento está diseñado para estudiantes de SQL que desean aplicar sus conocimientos al campo de la ciberseguridad. Aprenderás a utilizar SQL para analizar datos de seguridad, detectar amenazas y responder a incidentes. Cada consulta se explica en detalle, paso a paso, para que comprendas el propósito de cada cláusula y función.</p>
+
+    <h2>I. Fundamentos Avanzados de SQL para Ciberseguridad (con Explicaciones Detalladas)</h2>
+
+    <h3>1. Funciones de Ventana (Window Functions):</h3>
+    <p>Descripción: Las funciones de ventana realizan cálculos sobre un conjunto de filas relacionadas con la fila actual, sin agrupar los resultados. Son ideales para análisis de tendencias y detección de anomalías.</p>
+
+    <h4>Ejemplo: Calcular el promedio móvil de intentos de inicio de sesión fallidos por usuario:</h4>
+<pre><code>SELECT
+    username,
+    login_date,
+    failed_attempts,
+    AVG(failed_attempts) OVER (PARTITION BY username ORDER BY login_date ASC ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS rolling_average
+FROM
+    (SELECT username, login_date, COUNT(*) AS failed_attempts FROM log_in_attempts WHERE success = 0 GROUP BY username, login_date) AS subquery
+ORDER BY
+    username,
+    login_date;
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>SELECT username, login_date, failed_attempts:</strong> Selecciona el nombre de usuario, la fecha de inicio de sesión y el número de intentos fallidos.</li>
+        <li><strong>AVG(failed_attempts) OVER (PARTITION BY username ORDER BY login_date ASC ROWS BETWEEN 6 PRECEDING AND CURRENT ROW):</strong> Calcula el promedio móvil de intentos fallidos.
+            <ul>
+                <li><strong>AVG(failed_attempts):</strong> Calcula el promedio de la columna <code>failed_attempts</code>.</li>
+                <li><strong>OVER (PARTITION BY username):</strong> Divide los datos en particiones basadas en el nombre de usuario. El cálculo del promedio se realiza por separado para cada usuario.</li>
+                <li><strong>ORDER BY login_date ASC:</strong> Ordena los datos dentro de cada partición por fecha de inicio de sesión en orden ascendente.</li>
+                <li><strong>ROWS BETWEEN 6 PRECEDING AND CURRENT ROW:</strong> Define la ventana de filas para el cálculo del promedio. Incluye las 6 filas anteriores a la fila actual y la fila actual.</li>
+            </ul>
+        </li>
+        <li><strong>FROM (SELECT username, login_date, COUNT(*) AS failed_attempts FROM log_in_attempts WHERE success = 0 GROUP BY username, login_date) AS subquery:</strong> Crea una subconsulta para obtener el número de intentos fallidos por usuario y fecha.
+            <ul>
+                <li><strong>SELECT username, login_date, COUNT(*) AS failed_attempts:</strong> Selecciona el nombre de usuario, la fecha de inicio de sesión y cuenta el número de intentos fallidos.</li>
+                <li><strong>FROM log_in_attempts WHERE success = 0:</strong> Selecciona los registros de la tabla <code>log_in_attempts</code> donde el inicio de sesión falló (<code>success=0</code>).</li>
+                <li><strong>GROUP BY username, login_date:</strong> Agrupa los resultados por nombre de usuario y fecha de inicio de sesión.</li>
+            </ul>
+        </li>
+        <li><strong>ORDER BY username, login_date:</strong> Ordena los resultados por nombre de usuario y fecha de inicio de sesión.</li>
+    </ul>
+    <p><strong>Análisis:</strong> Esta consulta calcula el promedio móvil de intentos fallidos de inicio de sesión para cada usuario durante los últimos 7 días. Un aumento significativo en el promedio móvil podría indicar un ataque de fuerza bruta.</p>
+
+    <hr>
+
+    <h3>2. Expresiones de Tabla Comunes (Common Table Expressions - CTEs):</h3>
+    <p>Descripción: Las CTEs permiten definir consultas temporales que se pueden utilizar dentro de una consulta principal. Mejoran la legibilidad y la modularidad de las consultas complejas.</p>
+
+    <h4>Ejemplo: Identificar usuarios que han iniciado sesión desde múltiples ubicaciones en un corto período de tiempo:</h4>
+<pre><code>WITH
+LoginLocations AS (
+    SELECT
+        username,
+        COUNT(DISTINCT ip_address) AS location_count
+    FROM
+        log_in_attempts
+    WHERE
+        login_date BETWEEN DATE('now', '-1 day') AND DATE('now')
+    GROUP BY
+        username
+)
+SELECT
+    username,
+    location_count
+FROM
+    LoginLocations
+WHERE
+    location_count > 3
+ORDER BY
+    location_count DESC;
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>WITH LoginLocations AS (...):</strong> Define una CTE llamada <code>LoginLocations</code>.</li>
+        <li><strong>SELECT username, COUNT(DISTINCT ip_address) AS location_count:</strong> Selecciona el nombre de usuario y cuenta el número de direcciones IP distintas desde las que ha iniciado sesión.</li>
+        <li><strong>FROM log_in_attempts WHERE login_date BETWEEN DATE('now', '-1 day') AND DATE('now'):</strong> Selecciona los registros de la tabla <code>log_in_attempts</code> donde la fecha de inicio de sesión está dentro del último día.</li>
+        <li><strong>GROUP BY username:</strong> Agrupa los resultados por nombre de usuario.</li>
+        <li><strong>SELECT username, location_count FROM LoginLocations WHERE location_count > 3:</strong> Selecciona el nombre de usuario y el número de ubicaciones de la CTE <code>LoginLocations</code> donde el número de ubicaciones es mayor que 3.</li>
+        <li><strong>ORDER BY location_count DESC:</strong> Ordena los resultados por número de ubicaciones en orden descendente.</li>
+    </ul>
+    <p><strong>Análisis:</strong> Esta consulta utiliza una CTE para contar el número de ubicaciones distintas desde las que cada usuario ha iniciado sesión en el último día. Los usuarios que han iniciado sesión desde más de 3 ubicaciones podrían ser objeto de una investigación más profunda.</p>
+
+    <hr>
+
+    <h3>3. Funciones de Cadena Avanzadas:</h3>
+    <p>Descripción: Las funciones de cadena permiten manipular y analizar datos de texto. Son útiles para extraer información de registros de eventos y detectar patrones maliciosos.</p>
+
+    <h4>Ejemplo: Extraer dominios de URLs en registros de navegación web:</h4>
+<pre><code>SELECT
+    url,
+    SUBSTR(url, INSTR(url, '//') + 2, INSTR(SUBSTR(url, INSTR(url, '//') + 2), '/') - 1) AS domain
+FROM
+    web_access_logs
+WHERE
+    url LIKE '%//%';
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>SELECT url, SUBSTR(url, INSTR(url, '//') + 2, INSTR(SUBSTR(url, INSTR(url, '//') + 2), '/') - 1) AS domain:</strong> Selecciona la URL y extrae el dominio.
+            <ul>
+                <li><strong>SUBSTR(url, start, length):</strong> Extrae una subcadena de la URL.</li>
+                <li><strong>INSTR(url, '//') + 2:</strong> Encuentra la posición de "//" en la URL y suma 2 para obtener la posición del primer carácter del dominio.</li>
+                <li><strong>INSTR(SUBSTR(url, INSTR(url, '//') + 2), '/') - 1:</strong> Encuentra la posición de "/" en la subcadena que comienza después de "//" y resta 1 para obtener la longitud del dominio.</li>
+            </ul>
+        </li>
+        <li><strong>FROM web_access_logs WHERE url LIKE '%//%':</strong> Selecciona los registros de la tabla <code>web_access_logs</code> donde la URL contiene "//".</li>
+    </ul>
+    <p><strong>Análisis:</strong> Esta consulta extrae el dominio de cada URL en los registros de acceso web. Esto puede ayudar a identificar sitios web maliciosos o sospechosos a los que los usuarios están accediendo.</p>
+
+    <hr>
+
+    <h3>4. Funciones de Fecha y Hora Avanzadas:</h3>
+    <p>Descripción: Las funciones de fecha y hora permiten manipular y analizar datos de tiempo. Son útiles para detectar anomalías temporales y patrones de comportamiento inusuales.</p>
+
+    <h4>Ejemplo: Identificar intentos de inicio de sesión fuera del horario laboral normal:</h4>
+<pre><code>SELECT
+    username,
+    login_time
+FROM
+    log_in_attempts
+WHERE
+    STRFTIME('%H', login_time) NOT BETWEEN '08' AND '17'
+ORDER BY
+    login_time DESC;
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>SELECT username, login_time:</strong> Selecciona el nombre de usuario y la hora de inicio de sesión.</li>
+        <li><strong>FROM log_in_attempts WHERE STRFTIME('%H', login_time) NOT BETWEEN '08' AND '17':</strong> Selecciona los registros de la tabla <code>log_in_attempts</code> donde la hora de inicio de sesión no está entre las 8 AM y las 5 PM.
+            <ul>
+                <li><strong>STRFTIME('%H', login_time):</strong> Extrae la hora de la columna <code>login_time</code> en formato de 24 horas.</li>
+                <li><strong>NOT BETWEEN '08' AND '17':</strong> Verifica que la hora no esté entre las 8 AM y las 5 PM.</li>
+            </ul>
+        </li>
+        <li><strong>ORDER BY login_time DESC:</strong> Ordena los resultados por hora de inicio de sesión en orden descendente.</li>
+    </ul>
+    <p><strong>Análisis:</strong> Esta consulta identifica los intentos de inicio de sesión que ocurrieron fuera del horario laboral normal (8 AM a 5 PM). Esto podría indicar un acceso no autorizado o un comportamiento sospechoso.</p>
+
+    <hr>
+
+    <h2>II. Técnicas Avanzadas de Análisis de Seguridad con SQL (con Explicaciones Detalladas)</h2>
+
+    <h3>1. Análisis de Comportamiento Basado en Perfiles:</h3>
+    <p>Descripción: Crear perfiles de comportamiento para usuarios, sistemas o redes y detectar desviaciones de estos perfiles.</p>
+
+    <h4>Ejemplo: Crear un perfil de acceso a recursos para un usuario y detectar accesos inusuales:</h4>
+    <p><strong>Crear un perfil de acceso a recursos para un usuario</strong></p>
+<pre><code>CREATE TABLE user_resource_profile AS
+SELECT
+    username,
+    resource_accessed,
+    COUNT(*) AS access_count
+FROM
+    access_logs
+WHERE
+    username = 'usuario_especifico'
+GROUP BY
+    username,
+    resource_accessed;
+</code></pre>
+
+    <p><strong>Detectar accesos inusuales</strong></p>
+<pre><code>SELECT
+    a.username,
+    resource_accessed,
+    a.access_time
+FROM
+    access_logs a
+LEFT JOIN
+    user_resource_profile p ON a.username = p.username AND a.resource_accessed = p.resource_accessed
+WHERE
+    a.username = 'usuario_especifico'
+    AND p.resource_accessed IS NULL
+ORDER BY
+    a.access_time DESC;
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>CREATE TABLE user_resource_profile AS...</strong> Crea una tabla llamada <code>user_resource_profile</code> con los resultados de la consulta.</li>
+        <li><strong>SELECT username, resource_accessed, COUNT(*) AS access_count:</strong> Selecciona el nombre de usuario, el recurso accedido y cuenta el número de accesos.</li>
+        <li><strong>FROM access_logs WHERE username = 'usuario_especifico':</strong> Selecciona los registros de la tabla <code>access_logs</code> donde el nombre de usuario es <code>'usuario_especifico'</code>.</li>
+        <li><strong>GROUP BY username, resource_accessed:</strong> Agrupa los resultados por nombre de usuario y recurso accedido.</li>
+        <li><strong>SELECT a.username, a.resource_accessed, a.access_time:</strong> Selecciona el nombre de usuario, el recurso accedido y la hora de acceso de la tabla <code>access_logs</code>.</li>
+        <li><strong>FROM access_logs a LEFT JOIN user_resource_profile p ON a.username = p.username AND a.resource_accessed = p.resource_accessed:</strong> Realiza una unión izquierda entre la tabla <code>access_logs</code> y la tabla <code>user_resource_profile</code> basada en el nombre de usuario y el recurso accedido.</li>
+        <li><strong>WHERE a.username = 'usuario_especifico' AND p.resource_accessed IS NULL:</strong> Selecciona los registros donde el nombre de usuario es <code>'usuario_especifico'</code> y el recurso accedido no está en la tabla <code>user_resource_profile</code>.</li>
+        <li><strong>ORDER BY a.access_time DESC:</strong> Ordena los resultados por hora de acceso en orden descendente.</li>
+    </ul>
+    <p><strong>Análisis:</strong> Esta técnica crea un perfil de acceso a recursos para un usuario específico y luego detecta los accesos a recursos que no están en su perfil. Esto podría indicar un comportamiento anómalo o un intento de acceso no autorizado.</p>
+
+    <hr>
+
+    <h3>2. Análisis de Anomalías Basado en Estadísticas:</h3>
+    <p>Descripción: Utilizar técnicas estadísticas para identificar valores atípicos en los datos de seguridad.</p>
+
+    <h4>Ejemplo: Detectar transferencias de datos inusualmente grandes utilizando la desviación estándar:</h4>
+<pre><code>SELECT
+    source_ip,
+    destination_ip,
+    bytes_transferred,
+    timestamp
+FROM
+    network_traffic_logs
+WHERE
+    bytes_transferred > (SELECT AVG(bytes_transferred) + (3 * STDDEV(bytes_transferred)) FROM network_traffic_logs)
+ORDER BY
+    bytes_transferred DESC;
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>SELECT source_ip, destination_ip, bytes_transferred, timestamp:</strong> Selecciona la dirección IP de origen, la dirección IP de destino, el número de bytes transferidos y la marca de tiempo.</li>
+        <li><strong>FROM network_traffic_logs WHERE bytes_transferred > (SELECT AVG(bytes_transferred) + (3 * STDDEV(bytes_transferred)) FROM network_traffic_logs):</strong> Selecciona los registros de la tabla <code>network_traffic_logs</code> donde el número de bytes transferidos es mayor que el promedio más 3 veces la desviación estándar.
+            <ul>
+                <li><strong>AVG(bytes_transferred):</strong> Calcula el promedio del número de bytes transferidos.</li>
+                <li><strong>STDDEV(bytes_transferred):</strong> Calcula la desviación estándar del número de bytes transferidos.</li>
+            </ul>
+        </li>
+        <li><strong>ORDER BY bytes_transferred DESC:</strong> Ordena los resultados por número de bytes transferidos en orden descendente.</li>
+    </ul>
+    <p><strong>Análisis:</strong> Esta consulta identifica las transferencias de datos que son más de 3 desviaciones estándar por encima del promedio. Esto podría indicar un intento de exfiltración de datos o un comportamiento anómalo.</p>
+
+    <hr>
+
+    <h3>3. Análisis de Grafos:</h3>
+    <p>Descripción: Utilizar bases de datos de grafos y consultas SQL para analizar las relaciones entre entidades de seguridad (usuarios, sistemas, redes, etc.).</p>
+
+    <h4>Ejemplo: Identificar usuarios que están conectados a sistemas comprometidos:</h4>
+    <p>-- Asumiendo que tienes una base de datos de grafos con nodos para usuarios y sistemas, y aristas para conexiones</p>
+<pre><code>SELECT
+    u.name AS username,
+    s.name AS system_name
+FROM
+    users u
+JOIN
+    connections c ON u.id = c.user_id
+JOIN
+    systems s ON c.system_id = s.id
+WHERE
+    s.compromised = TRUE;
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>SELECT u.name AS username, s.name AS system_name:</strong> Selecciona el nombre de usuario de la tabla <code>users</code> y el nombre del sistema de la tabla <code>systems</code>.</li>
+        <li><strong>FROM users u JOIN connections c ON u.id = c.user_id JOIN systems s ON c.system_id = s.id:</strong> Realiza una unión entre las tablas <code>users</code>, <code>connections</code> y <code>systems</code> basada en las relaciones entre usuarios, conexiones y sistemas.</li>
+        <li><strong>WHERE s.compromised = TRUE:</strong> Selecciona los registros donde el sistema está comprometido.</li>
+    </ul>
+    <p><strong>Análisis:</strong> Esta consulta identifica a los usuarios que están conectados a sistemas que han sido comprometidos. Esto puede ayudar a determinar el alcance del compromiso y a tomar medidas para proteger otros sistemas.</p>
+
+    <hr>
+
+    <h2>III. Casos de Uso Avanzados y Ejemplos Prácticos (con Explicaciones Detalladas)</h2>
+
+    <h3>1. Detección de Ataques de Phishing:</h3>
+    <p>Escenario: Identificar correos electrónicos de phishing que están llegando a los usuarios.</p>
+
+    <h4>SQL:</h4>
+<pre><code>SELECT
+    sender_email,
+    subject,
+    body
+FROM
+    email_logs
+WHERE
+    subject LIKE '%urgente%'
+    AND body LIKE '%haga clic aquí%'
+    AND sender_email NOT IN (SELECT email FROM trusted_senders)
+ORDER BY
+    timestamp DESC;
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>SELECT sender_email, subject, body:</strong> Selecciona el correo electrónico del remitente, el asunto y el cuerpo del correo electrónico.</li>
+        <li><strong>FROM email_logs WHERE subject LIKE '%urgente%' AND body LIKE '%haga clic aquí%' AND sender_email NOT IN (SELECT email FROM trusted_senders):</strong> Selecciona los registros de la tabla <code>email_logs</code> donde el asunto contiene la palabra "urgente", el cuerpo contiene la frase "haga clic aquí" y el correo electrónico del remitente no está en la tabla <code>trusted_senders</code>.
+            <ul>
+                <li><strong>subject LIKE '%urgente%':</strong> Verifica que el asunto contenga la palabra "urgente".</li>
+                <li><strong>body LIKE '%haga clic aquí%':</strong> Verifica que el cuerpo contenga la frase "haga clic aquí".</li>
+                <li><strong>sender_email NOT IN (SELECT email FROM trusted_senders):</strong> Verifica que el correo electrónico del remitente no esté en la tabla <code>trusted_senders</code>.</li>
+            </ul>
+        </li>
+        <li><strong>ORDER BY timestamp DESC:</strong> Ordena los resultados por marca de tiempo en orden descendente.</li>
+    </ul>
+    <p><strong>Análisis:</strong> Esta consulta identifica los correos electrónicos que tienen un asunto urgente, un cuerpo que contiene un enlace para hacer clic y un remitente que no está en la lista de remitentes de confianza. Esto podría indicar un correo electrónico de phishing.</p>
+
+    <hr>
+
+    <h3>2. Análisis de Vulnerabilidades:</h3>
+    <p>Escenario: Identificar sistemas que tienen vulnerabilidades conocidas.</p>
+
+    <h4>SQL:</h4>
+<pre><code>SELECT
+    s.name AS system_name,
+    v.name AS vulnerability_name,
+    v.severity
+FROM
+    systems s
+JOIN
+    vulnerabilities v ON s.os = v.os AND s.version = v.version
+WHERE
+    v.severity = 'critical'
+ORDER BY
+    s.name;
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>SELECT s.name AS system_name, v.name AS vulnerability_name, v.severity:</strong> Selecciona el nombre del sistema de la tabla <code>systems</code>, el nombre de la vulnerabilidad de la tabla <code>vulnerabilities</code> y la gravedad de la vulnerabilidad.</li>
+        <li><strong>FROM systems s JOIN vulnerabilities v ON s.os = v.os AND s.version = v.version:</strong> Realiza una unión entre la tabla <code>systems</code> y la tabla <code>vulnerabilities</code> basada en el sistema operativo y la versión.</li>
+        <li><strong>WHERE v.severity = 'critical':</strong> Selecciona los registros donde la gravedad de la vulnerabilidad es "critical".</li>
+        <li><strong>ORDER BY s.name:</strong> Ordena los resultados por nombre del sistema.</li>
+    </ul>
+    <p><strong>Análisis:</strong> Esta consulta identifica los sistemas que tienen vulnerabilidades críticas conocidas. Esto puede ayudar a priorizar la aplicación de parches y otras medidas de seguridad.</p>
+
+    <hr>
+
+    <h3>3. Detección de Malware:</h3>
+    <p>Escenario: Identificar sistemas que están infectados con malware.</p>
+
+    <h4>SQL:</h4>
+<pre><code>SELECT
+    s.name AS system_name,
+    m.name AS malware_name,
+    m.detection_time
+FROM
+    systems s
+JOIN
+    malware_detections m ON s.id = m.system_id
+ORDER BY
+    m.detection_time DESC;
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>SELECT s.name AS system_name, m.name AS malware_name, m.detection_time:</strong> Selecciona el nombre del sistema de la tabla <code>systems</code>, el nombre del malware de la tabla <code>malware_detections</code> y la hora de detección.</li>
+        <li><strong>FROM systems s JOIN malware_detections m ON s.id = m.system_id:</strong> Realiza una unión entre la tabla <code>systems</code> y la tabla <code>malware_detections</code> basada en el ID del sistema.</li>
+        <li><strong>ORDER BY m.detection_time DESC:</strong> Ordena los resultados por hora de detección en orden descendente.</li>
+    </ul>
+    <p><strong>Análisis:</strong> Esta consulta identifica los sistemas que han sido detectados con malware. Esto puede ayudar a tomar medidas para aislar y limpiar los sistemas infectados.</p>
+
+    <hr>
+
+    <h2>IV. Optimización de Consultas SQL para Ciberseguridad (con Explicaciones Detalladas)</h2>
+
+    <h3>1. Indexación:</h3>
+    <p>Descripción: Crear índices en las columnas que se utilizan con frecuencia en las cláusulas WHERE y JOIN para acelerar las consultas.</p>
+
+    <h4>Ejemplo: Crear un índice en la columna username de la tabla <code>log_in_attempts</code>:</h4>
+<pre><code>CREATE INDEX idx_username ON log_in_attempts (username);
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>CREATE INDEX idx_username ON log_in_attempts (username):</strong> Crea un índice llamado <code>idx_username</code> en la columna <code>username</code> de la tabla <code>log_in_attempts</code>. Esto permite que las consultas que filtran por nombre de usuario se ejecuten más rápido.</li>
+    </ul>
+
+    <hr>
+
+    <h3>2. Particionamiento:</h3>
+    <p>Descripción: Dividir las tablas grandes en particiones más pequeñas para mejorar el rendimiento de las consultas.</p>
+
+    <h4>Ejemplo: Particionar la tabla <code>log_in_attempts</code> por fecha:</h4>
+<pre><code>CREATE TABLE log_in_attempts_2023 PARTITION OF log_in_attempts FOR VALUES FROM ('2023-01-01') TO ('2023-12-31');
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>CREATE TABLE log_in_attempts_2023 PARTITION OF log_in_attempts FOR VALUES FROM ('2023-01-01') TO ('2023-12-31'):</strong> Crea una tabla llamada <code>log_in_attempts_2023</code> que es una partición de la tabla <code>log_in_attempts</code> para los valores de fecha entre el 1 de enero de 2023 y el 31 de diciembre de 2023. Esto permite que las consultas que filtran por fecha se ejecuten más rápido.</li>
+    </ul>
+
+    <hr>
+
+    <h3>3. Utilización de Vistas Materializadas:</h3>
+    <p>Descripción: Crear vistas materializadas para almacenar los resultados de consultas complejas que se ejecutan con frecuencia.</p>
+
+    <h4>Ejemplo: Crear una vista materializada para almacenar el número de intentos de inicio de sesión fallidos por usuario:</h4>
+<pre><code>CREATE MATERIALIZED VIEW failed_login_counts AS
+SELECT
+    username,
+    COUNT(*) AS failed_attempts
+FROM
+    log_in_attempts
+WHERE
+    success = 0
+GROUP BY
+    username;
+</code></pre>
+
+    <h4>Explicación Detallada:</h4>
+    <ul>
+        <li><strong>CREATE MATERIALIZED VIEW failed_login_counts AS ...:</strong> Crea una vista materializada llamada <code>failed_login_counts</code> con los resultados de la consulta.</li>
+        <li><strong>SELECT username, COUNT(*) AS failed_attempts:</strong> Selecciona el nombre de usuario y cuenta el número de intentos fallidos.</li>
+        <li><strong>FROM log_in_attempts WHERE success = 0:</strong> Selecciona los registros de la tabla <code>log_in_attempts</code> donde el inicio de sesión falló.</li>
+        <li><strong>GROUP BY username:</strong> Agrupa los resultados por nombre de usuario.</li>
+    </ul>
+
+    <hr>
+
+    <h2>V. Herramientas y Técnicas Adicionales</h2>
+
+    <h3>1. SIEM (Security Information and Event Management):</h3>
+    <p>Integrar consultas SQL en SIEMs para automatizar la detección de amenazas y la respuesta a incidentes.</p>
+
+    <h3>2. Threat Intelligence:</h3>
+    <p>Utilizar fuentes de inteligencia de amenazas para enriquecer los datos de seguridad y mejorar la precisión de las consultas SQL.</p>
+
+    <h3>3. Machine Learning:</h3>
+    <p>Utilizar técnicas de aprendizaje automático para detectar anomalías y patrones complejos en los datos de seguridad.</p>
+
+    <hr>
+
+    <h2>VI. Consideraciones de Seguridad</h2>
+
+    <h3>1. Inyección SQL:</h3>
+    <p>Proteger las bases de datos de seguridad contra ataques de inyección SQL.</p>
+
+    <h3>2. Control de Acceso:</h3>
+    <p>Limitar el acceso a las bases de datos de seguridad solo a los analistas autorizados.</p>
+
+    <h3>3. Auditoría:</h3>
+    <p>Habilitar la auditoría de las consultas SQL para rastrear las acciones de los analistas y detectar posibles abusos.</p>
+
+    <hr>
+
+    <h2>Conclusión</h2>
+    <p>SQL es una herramienta esencial para los analistas de ciberseguridad. Al dominar las técnicas avanzadas de SQL y comprender cómo aplicarlas a casos de uso específicos, los analistas pueden mejorar significativamente su capacidad para detectar amenazas, responder a incidentes y proteger los activos de una organización. La integración de SQL con otras herramientas y técnicas de seguridad puede potenciar aún más la eficacia del análisis de seguridad.</p>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Michel Macías · Ciberseguridad
+      <span class="muted" style="float:right">Hecho con GitHub Pages</span>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

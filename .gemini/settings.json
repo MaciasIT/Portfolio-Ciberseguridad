@@ -1,0 +1,8 @@
+{
+  "hideTips": true,
+  "hideFooter": true,
+  "showMemoryUsage": true,
+  "disableAutoUpdate": true,
+  "loadMemoryFromIncludeDirectories": true,
+  "showLineNumbers": true
+}
