@@ -1,0 +1,1243 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alcance y Planificación de Pruebas de Penetración</title>
+  <meta name="description" content="Contenido de un documento del portafolio." />
+  <meta name="theme-color" content="#0b1220" />
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#0f172a; --muted:#94a3b8; --text:#e5e7eb; --brand:#38bdf8; --accent:#22c55e; --danger:#ef4444; --card:#111827;
+      --ring: rgba(56,189,248,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(1200px 600px at 75% -10%,#0d1b2a00 30%,#0d1b2a66 60%,#0b1220 100%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(10px);background:rgba(11,18,32,.6);border-bottom:1px solid #1f2937;z-index:50}
+    .nav{max-width:1100px;margin:auto;display:flex;align-items:center;gap:16px;padding:10px 16px}
+    .nav .logo{font-weight:700;letter-spacing:.4px}
+    .nav a{color:#cbd5e1;margin-left:auto}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0 0 0 24px;padding:0}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid #1f2937;background:linear-gradient(180deg,#111827,#0b1220);color:#e5e7eb}
+    .btn:hover{box-shadow:0 0 0 4px var(--ring)}
+    .btn.brand{border-color:#0ea5e9;background:linear-gradient(180deg,#0ea5e933,#0ea5e908)}
+    .btn.ghost{background:transparent;border-color:#1f2937}
+    .container{max-width:1100px;margin:auto;padding:56px 16px}
+    .hero{padding:80px 16px 72px;background:radial-gradient(1000px 400px at 10% -10%,#0ea5e922,transparent),radial-gradient(800px 500px at 90% 10%,#22c55e22,transparent)}
+    .hero h1{font-size:clamp(32px,4.5vw,56px);line-height:1.1;margin:0 0 14px}
+    .hero p.lead{color:var(--muted);font-size:clamp(16px,2.2vw,20px);max-width:800px}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #1f2937;background:#0d1322;color:#a5b4fc;font-size:12px;letter-spacing:.4px}
+    .stack{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{background:linear-gradient(180deg,#0f172a,#0b1220);border:1px solid #172036;border-radius:16px;padding:18px}
+    .shadow{box-shadow:0 10px 30px -15px rgba(0,0,0,.5)}
+    .section-title{font-size:22px;margin:0 0 6px}
+    .muted{color:var(--muted)}
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{padding:8px 10px;border:1px solid #1f2937;background:#0b1220;border-radius:10px}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0}
+    .kpi{flex:1 1 160px;border:1px solid #172036;background:#0b1220;border-radius:14px;padding:14px;text-align:center}
+    .kpi b{font-size:22px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .pill{font-size:12px;border:1px solid #1f2937;border-radius:999px;padding:4px 8px;color:#93c5fd}
+    footer{border-top:1px solid #1f2937;padding:40px 16px;color:#94a3b8}
+    .timeline{position:relative;padding-left:22px}
+    .timeline:before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:#1f2937}
+    .tl{position:relative;margin:0 0 18px}
+    .tl:before{content:"";position:absolute;left:-2px;top:5px;width:10px;height:10px;border-radius:50%;background:#38bdf8;box-shadow:0 0 0 3px #0b1220}
+    .badge-row{display:flex;gap:8px;flex-wrap:wrap}
+    .bad{background:#0b1220;border:1px solid #1f2937;border-radius:8px;padding:6px 8px;font-size:12px;color:#cbd5e1}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    @media (max-width:680px){.nav ul{display:none}}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border: 1px solid var(--panel);
+    }
+
+    th {
+      background-color: var(--card);
+      color: var(--text);
+      font-weight: bold;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: var(--bg);
+    }
+
+    tbody tr:hover {
+      background-color: var(--panel);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">🔐 Michel Macías</div>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="curriculum/Declaración.md">Curriculum</a></li>
+        <li><a href="documentos_portafolio/portfolio/habilidades&tecnicas.md">Portafolio</a></li>
+        <li><a href="glosario/Curso1/Curso1mod1.md">Glosario</a></li>
+        <li><a href="herramientas_ciberseguridad/SIEM/Herramientas_SIEM.md">Herramientas</a></li>
+      </ul>
+      <a class="btn" href="index.html">Volver a Inicio</a>
+    </nav>
+  </header>
+
+  <section class="container">
+    <div class="max-w-8xl mx-auto space-y-12">
+        <!-- Título principal de la página -->
+        <h1 class="animate-fade-in">Documento de Alcance y Planificación para Pruebas de Penetración</h1>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Introducción -->
+            <h2 id="introduccion">1. Introducción</h2>
+            <p>
+                Este documento define el alcance, las reglas de enfrentamiento (RoE) y los requisitos para las pruebas de penetración que se llevarán a cabo en los sistemas y redes de <strong>Nexus Plaza</strong>. El objetivo es garantizar que tanto la empresa de ciberseguridad como el cliente tengan una comprensión clara de los términos, límites y expectativas del compromiso.
+            </p>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Entrevista con CEO y director de TI -->
+            <h2 id="entrevista-ceo-ti">Entrevista con CEO y Director de TI</h2>
+            <p>
+                <strong>CEO:</strong> "Bienvenido a Nexus Plaza. Lo invitamos a iniciar nuestro compromiso y analizar lo que esperamos de esta auditoría de seguridad. Estamos ansiosos por garantizar que nuestra infraestructura de seguridad cumpla o supere las salvaguardas necesarias. Le pasaré esto a nuestro director de TI para que describa nuestro entorno de red."
+            </p>
+            <p>
+                <strong>Director de TI:</strong> "Como sabe, somos principalmente una empresa minorista en línea. Nuestros sitios de comercio electrónico orientados al cliente se alojan en Amazon, pero todas nuestras comunicaciones, almacenamiento y servicios de TI de envío se manejan internamente. Operamos un centro de datos local en Houston que respalda nuestras instalaciones de fabricación y almacenamiento. Actualmente hay 25 servidores separados en tres clústeres: administración, operaciones y logística. Además, operamos un clúster que brinda soporte para nuestra tienda de Amazon. El acceso remoto a estos sistemas se realiza a través de SSL o IPsec VPN. Usamos dos ISP para conectarnos a Internet, pero uno se usa principalmente para las comunicaciones con Amazon para admitir pedidos en tiempo real, inventario y contacto con clientes."
+            </p>
+            <p class="warning-box">
+                <strong>CEO:</strong> "Recientemente, uno de nuestros competidores sufrió un ataque de ransomware dirigido a su sistema de inventario de producción. Perdieron una cantidad significativa de pedidos de clientes debido a que no podían recoger y enviar el inventario a tiempo. Nos preocupa que nuestros sistemas de depósito y envío puedan tener vulnerabilidades que podrían cerrarnos de manera similar si se produce una infracción. Cuando depende de una entrega rápida a los clientes, cualquier demora es un desastre."
+            </p>
+            <p>
+                <strong>Director de TI:</strong> "Los sistemas que soportan nuestro almacenamiento y envío se encuentran en dos clústeres en el centro de datos: operaciones y logística. El acceso interno a estos sistemas está restringido al personal de administración del almacén, el personal de TI y los empleados de control de inventario. Nuestro sistema de control de inventario es compatible con una base de datos Microsoft SQL Server. Como puede ver en el diagrama, la base de datos SQL se aloja en una SAN separada con conexiones tanto al almacén como a los sistemas de producción. Nuestro negocio depende de nuestro acceso a Amazon; por lo tanto, <strong>ninguna prueba debe invadir los clústeres de centros de datos que contienen los datos y el inventario de la tienda de Amazon.</strong> Estos se identifican en el diagrama."
+            </p>
+            <p>
+                <strong>CEO:</strong> "Queremos que pruebe los controles de seguridad para garantizar que un atacante que obtenga correctamente el acceso a una cuenta de usuario final y una computadora dentro del depósito no pueda obtener acceso de administrador a ninguno de los servidores o tener acceso al inventario de producción base de datos. También queremos asegurarnos de que el software y los sistemas operativos estén actualizados y que no haya vulnerabilidades conocidas en nuestras aplicaciones."
+            </p>
+            <p>
+                <strong>Director de TI:</strong> "Le brindaremos acceso interno a través de una VLAN aislada dentro del departamento de TI desde la que podrá realizar las pruebas. Hay un cortafuego con IDS integrado que separa las redes del centro de datos de la LAN corporativa, incluido el departamento de TI. Dentro del centro de datos, cada servidor tiene un cortafuego local habilitado. El DNS interno se proporciona a través de los servicios de Microsoft Active Directory y el DNS externo es un servidor Linux ubicado en una DMZ separada. El acceso externo a los clústeres de operaciones y logística se limita a los empleados que se conectan a través de VPN. No se permite el acceso HTTP a estos clústeres. Los servidores de estos dos clústeres no tienen acceso a Internet, excepto para obtener actualizaciones de software automáticas."
+            </p>
+            <p class="highlight-box">
+                <strong>CEO:</strong> "Debido a que los sistemas que queremos que pruebe son sistemas de producción, esperamos limitar al mínimo las interrupciones causadas por las pruebas. Le daremos acceso a un sistema de desarrollo Microsoft SQL Server que está configurado de manera idéntica al sistema de producción con un espejo de la base de datos."
+            </p>
+            <p>
+                <strong>Director de TI:</strong> "Sí, quiero reforzar la necesidad de mantener las interrupciones al mínimo. Le daremos un intervalo de tiempo durante nuestro período de mantenimiento programado normal para realizar pruebas de carga y simulaciones de ataques de denegación de servicio. Nuestro período de mantenimiento programado es entre las 2:00 a. m. y las 6:00 a. m. Los viernes, sábados y domingos. Se pueden ejecutar otras pruebas no disruptivas durante el horario comercial normal."
+            </p>
+            <p class="warning-box">
+                <strong>CEO:</strong> "Estamos limitando la cantidad de personal de TI que está al tanto de las pruebas. Solo se notificará al personal de TI directamente responsable del monitoreo de las operaciones y los sistemas de logística cuando se realizarán las pruebas. Proporcionaremos una lista de direcciones de correo electrónico del personal de operaciones y depósitos, ya que nos preocupa que la mayoría de los ransomware y las infracciones de datos comiencen con un ataque de ingeniería social exitoso. Los usuarios finales no se darán cuenta de que se están realizando las pruebas. Esperamos que el compromiso comience dos semanas después de la firma del contrato y el acuerdo de confidencialidad. Esperamos el informe final en un plazo de 60 días."
+            </p>
+            <p>
+                Sus contactos principales para esta interacción son el director de TI, el gerente de depósito y el gerente de operaciones. Programe un informe de actualización semanal y una teleconferencia para informarles sobre el progreso de las pruebas y los resultados intermedios.
+            </p>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Factores que Influyen en el Alcance del Proyecto -->
+            <h2 id="factores-alcance">2. Factores que Influyen en el Alcance del Proyecto</h2>
+
+            <h3 id="sistemas-redes-criticas">2.1. Sistemas y Redes Críticas</h3>
+            <h4>Incluidos:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li>Clústeres de operaciones y logística: Sistemas de almacenamiento, envío y control de inventario (base de datos SQL Server).</li>
+                <li>VLAN del departamento de TI: Punto de acceso interno para las pruebas.</li>
+                <li>Redes del centro de datos: Separadas por un cortafuegos con IDS integrado.</li>
+                <li>DNS interno (Active Directory) y DNS externo (servidor Linux en DMZ).</li>
+                <li>Sistemas de desarrollo: Espejo de la base de datos SQL Server para pruebas no disruptivas.</li>
+            </ul>
+            <h4>Excluidos:</h4>
+            <ul class="list-disc list-inside ml-4 text-red-700">
+                <li>Clúster de soporte de Amazon: Prohibido probar sistemas relacionados con la tienda de Amazon.</li>
+                <li>Sistemas de producción SQL Server: Solo se probará el entorno de desarrollo configurado de manera idéntica.</li>
+                <li>Acceso HTTP externo a clústeres críticos: No permitido según las políticas del cliente.</li>
+            </ul>
+
+            <h3 id="objetivos-cliente">2.2. Objetivos del Cliente</h3>
+            <h4>Prioridades:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li>Evaluar la posibilidad de que un atacante con acceso a una cuenta de usuario final en el depósito escale privilegios a administrador.</li>
+                <li>Identificar vulnerabilidades en el software, sistemas operativos y aplicaciones.</li>
+                <li>Probar la resistencia contra ataques de ingeniería social (phishing a empleados del almacén y operaciones).</li>
+            </ul>
+            <h4>Preocupaciones clave:</h4>
+            <ul class="list-disc list-inside ml-4 text-orange-700">
+                <li>Evitar interrupciones en los sistemas de producción.</li>
+                <li>Proteger la integridad del inventario y los datos de pedidos en tiempo real.</li>
+            </ul>
+
+            <h3 id="restricciones-operativas">2.3. Restricciones Operativas</h3>
+            <h4>Horarios de prueba:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Pruebas disruptivas</strong> (ej: DoS, pruebas de carga): Solo durante el período de mantenimiento (2:00 a. m. – 6:00 a. m., viernes a domingo).</li>
+                <li><strong>Pruebas no disruptivas:</strong> Durante horario laboral normal.</li>
+            </ul>
+            <h4>Acceso limitado:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li>Solo personal de TI específico estará al tanto de las pruebas.</li>
+                <li>Los empleados finales no deben ser notificados para simular condiciones realistas.</li>
+            </ul>
+
+            <h3 id="entorno-tecnico">2.4. Entorno Técnico</h3>
+            <h4>Infraestructura:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li>25 servidores en clústeres (administración, operaciones, logística, soporte de Amazon).</li>
+                <li>Acceso remoto mediante SSL/IPsec VPN.</li>
+                <li>Dos ISPs: Uno dedicado a comunicaciones con Amazon.</li>
+            </ul>
+            <h4>Seguridad existente:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li>Cortafuegos locales en servidores del centro de datos.</li>
+                <li>Sistemas de operaciones y logística sin acceso a Internet (excepto actualizaciones automáticas).</li>
+            </ul>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Reglas de Enfrentamiento (RoE) -->
+            <h2 id="reglas-enfrentamiento">3. Reglas de Enfrentamiento (RoE)</h2>
+
+            <h3 id="autorizacion-limites">3.1. Autorización y Límites Legales</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Autorización escrita:</strong> Requerida antes de iniciar cualquier prueba.</li>
+                <li><strong>Contrato de confidencialidad (NDA):</strong> Protección de datos sensibles y resultados de las pruebas.</li>
+                <li><strong>Cumplimiento normativo:</strong> Respetar GDPR (protección de datos de clientes) y políticas internas de Nexus Plaza.</li>
+            </ul>
+
+            <h3 id="metodos-permitidos">3.2. Métodos Permitidos</h3>
+            <h4>Pruebas de vulnerabilidades:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li>Escaneo de puertos y servicios.</li>
+                <li>Explotación controlada de vulnerabilidades (ej: SQLi, XSS).</li>
+                <li>Simulación de escalada de privilegios desde una cuenta de usuario.</li>
+            </ul>
+            <h4>Ingeniería social:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li>Pruebas de phishing dirigido a empleados del almacén y operaciones (usando la lista de correos proporcionada).</li>
+            </ul>
+            <h4>Pruebas de configuración:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li>Verificación de parches y actualizaciones en sistemas operativos y software.</li>
+            </ul>
+
+            <h3 id="metodos-prohibidos">3.3. Métodos Prohibidos</h3>
+            <h4>Ataques disruptivos:</h4>
+            <ul class="list-disc list-inside ml-4 text-red-700">
+                <li>Denegación de servicio (DoS/DDoS) fuera de las ventanas de mantenimiento.</li>
+                <li>Manipulación o eliminación de datos en sistemas de producción.</li>
+            </ul>
+            <h4>Áreas excluidas:</h4>
+            <ul class="list-disc list-inside ml-4 text-red-700">
+                <li>Clústeres de soporte de Amazon.</li>
+                <li>Sistemas de producción SQL Server (solo se prueba el entorno espejo).</li>
+                <li>Redes externas de pedidos en tiempo real con Amazon.</li>
+            </ul>
+
+            <h3 id="comunicacion-reportes">3.4. Comunicación y Reportes</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Contactos principales:</strong> Director de TI, Gerente de Almacén y Gerente de Operaciones.</li>
+                <li><strong>Frecuencia de actualizaciones:</strong> Informes semanales y teleconferencias para revisar el progreso.</li>
+                <li><strong>Gestión de incidentes:</strong> Cualquier impacto no planificado en sistemas de producción debe reportarse inmediatamente.</li>
+            </ul>
+
+            <h3 id="seguridad-etica">3.5. Seguridad y Ética</h3>
+            <h4>Privacidad:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li>No se revelará información sensible fuera del equipo autorizado.</li>
+                <li>Los datos recopilados se eliminarán tras la entrega del informe final.</li>
+            </ul>
+            <h4>Simulación realista:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li>Los empleados no serán informados de las pruebas de ingeniería social para mantener la autenticidad.</li>
+            </ul>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Consideraciones Adicionales -->
+            <h2 id="consideraciones-adicionales">4. Consideraciones Adicionales</h2>
+            <h4>Plazos:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Inicio:</strong> 2 semanas después de la firma del contrato.</li>
+                <li><strong>Duración:</strong> 60 días desde el inicio.</li>
+                <li><strong>Entrega del informe final:</strong> Al finalizar el plazo acordado.</li>
+            </ul>
+            <h4>Recursos proporcionados por el cliente:</h4>
+            <ul class="list-disc list-inside ml-4">
+                <li>Acceso a la VLAN aislada del departamento de TI.</li>
+                <li>Lista de direcciones de correo para pruebas de phishing.</li>
+                <li>Entorno de desarrollo SQL Server espejado.</li>
+            </ul>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Riesgos y Mitigación -->
+            <h2 id="riesgos-mitigacion">5. Riesgos y Mitigación</h2>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Riesgo de interrupción en producción:</strong> Mitigación: Usar el entorno de desarrollo para pruebas críticas y limitar pruebas disruptivas a ventanas de mantenimiento.</li>
+                <li><strong>Falsos positivos en IDS/IPS:</strong> Mitigación: Coordinar con el equipo de TI para filtrar alertas relacionadas con las pruebas.</li>
+                <li><strong>Exposición accidental de datos:</strong> Mitigación: Cifrar todos los informes y comunicaciones.</li>
+            </ul>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Mayores Preocupaciones de Seguridad del Cliente -->
+            <h2 id="preocupaciones-seguridad">6. Mayores Preocupaciones de Seguridad del Cliente</h2>
+            <p>A partir de la información proporcionada por Nexus Plaza, se identifican las siguientes preocupaciones clave:</p>
+
+            <h3 class="mt-6">6.1. Interrupción de Operaciones Críticas (Ransomware/DoS)</h3>
+            <ul class="list-none space-y-2 ml-4">
+                <li><strong>Contexto:</strong> Un competidor sufrió un ataque de ransomware que paralizó su sistema de inventario.</li>
+                <li><strong>Preocupación específica:</strong> Un ataque similar que afecte los sistemas de almacenamiento, envío o control de inventario de Nexus Plaza.</li>
+                <li><strong>Impacto:</strong> Pérdida de ingresos, daño a la reputación y posibles multas.</li>
+            </ul>
+
+            <h3 class="mt-6">6.2. Escalada de Privilegios en Sistemas Internos</h3>
+            <ul class="list-none space-y-2 ml-4">
+                <li><strong>Contexto:</strong> Asegurarse de que un atacante con acceso a una cuenta de usuario estándar no obtenga privilegios de administrador.</li>
+                <li><strong>Preocupación específica:</strong> Vulnerabilidades que permitan movimientos laterales o escalada de privilegios.</li>
+                <li><strong>Impacto:</strong> Acceso no autorizado a la base de datos de inventario o sabotaje interno.</li>
+            </ul>
+
+            <h3 class="mt-6">6.3. Vulnerabilidades en Software y Sistemas Operativos</h3>
+            <ul class="list-none space-y-2 ml-4">
+                <li><strong>Contexto:</strong> Verificar la ausencia de vulnerabilidades conocidas en aplicaciones, sistemas operativos o SQL Server.</li>
+                <li><strong>Preocupación específica:</strong> Parches no aplicados, configuraciones inseguras o servicios expuestos.</li>
+                <li><strong>Impacto:</strong> Explotación de vulnerabilidades para robo de datos o toma de control.</li>
+            </ul>
+
+            <h3 class="mt-6">6.4. Ataques de Ingeniería Social</h3>
+            <ul class="list-none space-y-2 ml-4">
+                <li><strong>Contexto:</strong> La mayoría de los ransomware comienzan con ataques de ingeniería social.</li>
+                <li><strong>Preocupación específica:</strong> Empleados que caigan en phishing o revelen credenciales.</li>
+                <li><strong>Impacto:</strong> Inicio de una cadena de compromisos.</li>
+            </ul>
+
+            <h3 class="mt-6">6.5. Exposición de Datos Sensibles</h3>
+            <ul class="list-none space-y-2 ml-4">
+                <li><strong>Contexto:</strong> La base de datos SQL Server contiene información crítica de inventario y pedidos.</li>
+                <li><strong>Preocupación específica:</strong> Acceso no autorizado o filtración de datos.</li>
+                <li><strong>Impacto:</strong> Pérdida de información confidencial, incumplimiento del GDPR.</li>
+            </ul>
+
+            <h3 class="mt-6">6.6. Interrupciones en Sistemas de Producción</h3>
+            <ul class="list-none space-y-2 ml-4">
+                <li><strong>Contexto:</strong> Minimizar interrupciones durante las pruebas.</li>
+                <li><strong>Preocupación específica:</strong> Pruebas invasivas que afecten la disponibilidad de los sistemas críticos.</li>
+                <li><strong>Impacto:</strong> Parálisis operativa, retrasos y costos financieros.</li>
+            </ul>
+
+            <h3 class="mt-6">6.7. Dependencia de Sistemas Externos (Amazon)</h3>
+            <ul class="list-none space-y-2 ml-4">
+                <li><strong>Contexto:</strong> La comunicación con Amazon es vital para el procesamiento de pedidos en tiempo real.</li>
+                <li><strong>Preocupación específica:</strong> Ataques que afecten la conectividad con Amazon (ej: compromiso de la VPN).</li>
+                <li><strong>Impacto:</strong> Interrupción del flujo de pedidos.</li>
+            </ul>
+
+            <h3 class="mt-6">6.8. Configuraciones Inseguras en Redes Internas</h3>
+            <ul class="list-none space-y-2 ml-4">
+                <li><strong>Contexto:</strong> Servidores protegidos por cortafuegos locales sin acceso a Internet (excepto actualizaciones).</li>
+                <li><strong>Preocupación específica:</strong> Configuraciones erróneas en el cortafuegos, VLANs mal segmentadas o reglas IDS/IPS ineficaces.</li>
+                <li><strong>Impacto:</strong> Exposición de sistemas críticos.</li>
+            </ul>
+
+            <h3 class="mt-6">6.9. Reputación y Confianza del Cliente</h3>
+            <ul class="list-none space-y-2 ml-4">
+                <li><strong>Contexto:</strong> Nexus Plaza depende de su imagen como empresa confiable.</li>
+                <li><strong>Preocupación específica:</strong> Una brecha de seguridad pública o retrasos visibles para los clientes.</li>
+                <li><strong>Impacto:</strong> Pérdida de participación en el mercado y reputación dañada.</li>
+            </ul>
+
+            <h3 class="mt-6">6.10. Cumplimiento Legal y Normativo</h3>
+            <ul class="list-none space-y-2 ml-4">
+                <li><strong>Contexto:</strong> El cliente opera con datos de clientes y transacciones que deben cumplir con regulaciones como el GDPR.</li>
+                <li><strong>Preocupación específica:</strong> Sanciones legales o multas debido a fallos de seguridad.</li>
+            <li><strong>Impacto:</strong> Sanciones legales o multas debido a fallos de seguridad que expongan datos personales.</li>
+            </ul>
+
+            <h4 class="mt-8">Resumen de Prioridades del Cliente</h4>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Preocupación</th>
+                            <th>Ejemplo del Escenario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Interrupción operativa</td>
+                            <td>Ataque de ransomware en sistemas de envío.</td>
+                        </tr>
+                        <tr>
+                            <td>Escalada de privilegios</td>
+                            <td>Usuario del almacén accediendo a la base de datos.</td>
+                        </tr>
+                        <tr>
+                            <td>Ingeniería social</td>
+                            <td>Phishing a empleados de logística.</td>
+                        </tr>
+                        <tr>
+                            <td>Exposición de datos</td>
+                            <td>Filtración de la base de datos SQL.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Clústeres de Servidores, Rangos de Red y Aplicaciones a Probar -->
+            <h2 id="areas-a-probar">7. Clústeres de Servidores, Rangos de Red y Aplicaciones a Probar</h2>
+            <p>Se detallan a continuación los sistemas y redes específicos que serán objeto de las pruebas:</p>
+
+            <h3 id="servidores-a-probar">7.1. Clústeres de Servidores a Probar</h3>
+            <h4 class="mt-4">7.1.1. Clúster de Operaciones</h4>
+            <ul class="list-none space-y-1 ml-4">
+                <li><strong>Función:</strong> Respalda los sistemas de almacenamiento y envío.</li>
+                <li><strong>Servicios clave:</strong> Base de datos SQL Server (espejo de desarrollo), sistemas de control de inventario, aplicaciones de gestión de almacén.</li>
+                <li><strong>Preocupación principal:</strong> Vulnerabilidades que permitan la escalada de privilegios o acceso no autorizado.</li>
+            </ul>
+            <h4 class="mt-4">7.1.2. Clúster de Logística</h4>
+            <ul class="list-none space-y-1 ml-4">
+                <li><strong>Función:</strong> Gestiona el control de inventario y producción.</li>
+                <li><strong>Servicios clave:</strong> Base de datos SQL Server (espejo de desarrollo), sistemas de seguimiento de pedidos, aplicaciones de planificación de envíos.</li>
+                <li><strong>Preocupación principal:</strong> Exposición de datos sensibles o interrupción del flujo de operaciones.</li>
+            </ul>
+            <h4 class="mt-4">7.1.3. Clúster de Administración</h4>
+            <ul class="list-none space-y-1 ml-4">
+                <li><strong>Función:</strong> Gestiona la infraestructura interna de TI.</li>
+                <li><strong>Servicios clave:</strong> Active Directory, servidores de correo electrónico, herramientas de monitoreo y gestión de red.</li>
+                <li><strong>Preocupación principal:</strong> Configuraciones inseguras que permitan acceso no autorizado.</li>
+            </ul>
+
+            <h3 id="rangos-red-a-probar">7.2. Rangos de Direcciones de Red a Probar</h3>
+            <h4 class="mt-4">7.2.1. Redes del Centro de Datos</h4>
+            <ul class="list-none space-y-1 ml-4">
+                <li><strong>Clúster de Operaciones:</strong> Rango de IP: 172.16.33.0/30 (Administración). Máscara: 255.255.255.192.</li>
+                <li><strong>Clúster de Logística:</strong> Rango de IP: 172.26.0.0/21. Máscara: 255.255.255.0.</li>
+                <li><strong>Clúster de Administración:</strong> Rango de IP: 172.24.1.0/24. Máscara: 255.255.255.192.</li>
+            </ul>
+            <h4 class="mt-4">7.2.2. VLANs de la LAN Corporativa</h4>
+            <ul class="list-none space-y-1 ml-4">
+                <li><strong>VLAN 120 (Administración):</strong> Rango de IP: 172.16.1.0. Máscara: 255.255.255.0.</li>
+                <li><strong>VLAN 130 (Subred de Tecnología de la Información):</strong> Rango de IP: 172.16.4.0. Máscara: 255.255.255.0.</li>
+                <li><strong>VLAN 140 (Tecnología de la Información):</strong> Rango de IP: 172.16.8.0. Máscara: 255.255.255.0.</li>
+                <li><strong>VLAN 150 (Depósito):</strong> Rango de IP: 172.16.12.0. Máscara: 255.255.255.0.</li>
+                <li><strong>VLAN 160 (Atención al Cliente):</strong> Rango de IP: 172.16.16.0. Máscara: 255.255.255.0.</li>
+                <li><strong>VLAN 170 (Envío):</strong> Rango de IP: 172.16.20.0. Máscara: 255.255.255.0.</li>
+            </ul>
+            <h4 class="mt-4">7.2.3. Redes Excluidas</h4>
+            <ul class="list-none space-y-1 ml-4 text-red-700">
+                <li><strong>Clúster de Soporte de Amazon:</strong> Rango de IP: 172.25.0.0/16. Máscara: 255.255.252.0. <strong>Motivo:</strong> Prohibido probar sistemas relacionados con la tienda de Amazon.</li>
+            </ul>
+
+            <h3 id="aplicaciones-a-probar">7.3. Aplicaciones Específicas a Probar</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Base de Datos SQL Server:</strong> Entorno de pruebas espejado. Objetivo: inyecciones SQL, configuraciones inseguras, permisos excesivos.</li>
+                <li><strong>Active Directory:</strong> Gestión de usuarios y permisos. Objetivo: cuentas con privilegios excesivos o configuraciones inseguras.</li>
+                <li><strong>Aplicaciones de Gestión de Almacén:</strong> Control de inventario y seguimiento de pedidos. Objetivo: seguridad de interfaces e integridad de datos.</li>
+                <li><strong>VPN (SSL/IPsec):</strong> Acceso remoto. Objetivo: resistencia contra fuerza bruta o explotación de vulnerabilidades.</li>
+                <li><strong>Servidores DNS:</strong> Interno (Active Directory) y Externo (Linux en DMZ). Objetivo: configuraciones inseguras o vulnerabilidades conocidas.</li>
+            </ul>
+
+            <h3 class="mt-8">7.4. Resumen de Áreas de Prueba</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Área</th>
+                            <th>Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Clúster de Operaciones</td>
+                            <td>Sistemas de almacenamiento y envío.</td>
+                        </tr>
+                        <tr>
+                            <td>Clúster de Logística</td>
+                            <td>Control de inventario y producción.</td>
+                        </tr>
+                        <tr>
+                            <td>Clúster de Administración</td>
+                            <td>Active Directory y servidores de gestión.</td>
+                        </tr>
+                        <tr>
+                            <td>Base de Datos SQL</td>
+                            <td>Espejo de desarrollo para pruebas no disruptivas.</td>
+                        </tr>
+                        <tr>
+                            <td>VLANs Corporativas</td>
+                            <td>VLANs 120-170 (Administración, TI, Depósito, etc.).</td>
+                        </tr>
+                        <tr>
+                            <td>Aplicaciones</td>
+                            <td>SQL Server, Active Directory, VPN, DNS.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Áreas Excluidas Explícitamente -->
+            <h2 id="areas-excluidas">8. Áreas Excluidas Explícitamente</h2>
+            <p>Se detallan los sistemas y redes que **no** deben ser probados, basados en la criticidad y las directrices del cliente:</p>
+
+            <h3 id="servidores-excluidos">8.1. Clústeres de Servidores Excluidos</h3>
+            <h4 class="mt-4">8.1.1. Clúster de Soporte de Amazon</h4>
+            <ul class="list-none space-y-1 ml-4 text-red-700">
+                <li><strong>Función:</strong> Respalda las comunicaciones con Amazon para pedidos en tiempo real, inventario y atención al cliente.</li>
+                <li><strong>Razón de exclusión:</strong> El cliente ha indicado explícitamente que no se deben probar los sistemas relacionados con la tienda de Amazon, ya que son críticos y cualquier interrupción podría afectar gravemente las operaciones.</li>
+            </ul>
+
+            <h3 id="redes-excluidas">8.2. Rangos de Direcciones de Red Excluidos</h3>
+            <h4 class="mt-4">8.2.1. Redes del Clúster de Soporte de Amazon</h4>
+            <ul class="list-none space-y-1 ml-4 text-red-700">
+                <li><strong>Rango de IP:</strong> 172.25.0.0/16. Máscara: 255.255.252.0.</li>
+                <li><strong>Razón de exclusión:</strong> Estas redes están dedicadas a la comunicación con Amazon y no deben ser perturbadas.</li>
+            </ul>
+            <h4 class="mt-4">8.2.2. Redes de Producción SQL Server</h4>
+            <ul class="list-none space-y-1 ml-4 text-red-700">
+                <li><strong>Rango de IP:</strong> No especificado (pero se excluyen los sistemas de producción).</li>
+                <li><strong>Razón de exclusión:</strong> El cliente ha proporcionado un entorno de desarrollo espejado para pruebas, por lo que los sistemas de producción no deben ser probados directamente.</li>
+            </ul>
+
+            <h3 id="aplicaciones-excluidas">8.3. Aplicaciones Específicas Excluidas</h3>
+            <ul class="list-disc list-inside ml-4 text-red-700">
+                <li><strong>Sistemas de Producción SQL Server:</strong> Base de datos de inventario y pedidos en tiempo real. Razón: Se prueba el entorno de desarrollo espejado.</li>
+                <li><strong>Servicios de Comunicación con Amazon:</strong> Procesamiento de pedidos en tiempo real y gestión de inventario con Amazon. Razón: Vitales para el negocio, no deben interrumpirse.</li>
+                <li><strong>Sistemas de Producción de Envíos:</strong> Gestión de envíos y logística en tiempo real. Razón: Podrían interrumpir las operaciones diarias.</li>
+            </ul>
+
+            <h3 class="mt-8">8.4. Resumen de Áreas Excluidas</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Área</th>
+                            <th>Detalles</th>
+                            <th>Razón de Exclusión</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Clúster de Soporte de Amazon</td>
+                            <td>Sistemas de comunicación con Amazon.</td>
+                            <td>Críticos para el negocio; prohibido por el cliente.</td>
+                        </tr>
+                        <tr>
+                            <td>Redes de Soporte de Amazon</td>
+                            <td>Rango de IP: 172.25.0.0/16.</td>
+                            <td>Dedicadas a Amazon; no deben ser perturbadas.</td>
+                        </tr>
+                        <tr>
+                            <td>Sistemas de Producción SQL</td>
+                            <td>Base de datos de inventario y pedidos.</td>
+                            <td>Se prueba el entorno espejado; producción es crítica.</td>
+                        </tr>
+                        <tr>
+                            <td>Servicios de Comunicación</td>
+                            <td>Pedidos en tiempo real con Amazon.</td>
+                            <td>Vitales para el negocio; no deben interrumpirse.</td>
+                        </tr>
+                        <tr>
+                            <td>Sistemas de Envíos</td>
+                            <td>Gestión de envíos y logística en tiempo real.</td>
+                            <td>Pruebas podrían afectar operaciones diarias.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Entorno de Producción vs. Entorno de Prueba -->
+            <h2 id="entorno-produccion-prueba">9. Entorno de Producción vs. Entorno de Prueba</h2>
+            <p>Las pruebas se realizarán principalmente en un entorno de prueba para evitar interrupciones en las operaciones críticas.</p>
+
+            <h3 id="entorno-prueba">9.1. Entorno de Prueba</h3>
+            <h4 class="mt-4">9.1.1. Base de Datos SQL Server (Espejo de Desarrollo)</h4>
+            <ul class="list-none space-y-1 ml-4">
+                <li><strong>Descripción:</strong> Réplica de la base de datos SQL Server de producción.</li>
+                <li><strong>Uso:</strong> Pruebas de vulnerabilidades (SQLi, configuraciones inseguras), simulación de ataques sin riesgo.</li>
+                <li><strong>Ventajas:</strong> Permite pruebas exhaustivas sin interrumpir operaciones, reduce riesgo de pérdida de datos.</li>
+            </ul>
+            <h4 class="mt-4">9.1.2. VLAN Aislada del Departamento de TI</h4>
+            <ul class="list-none space-y-1 ml-4">
+                <li><strong>Descripción:</strong> Red aislada que simula el entorno de red del centro de datos.</li>
+                <li><strong>Uso:</strong> Escaneo de puertos y servicios, simulación de ataques internos.</li>
+                <li><strong>Ventajas:</strong> Entorno controlado para pruebas no disruptivas, evalúa seguridad de red sin afectar sistemas críticos.</li>
+            </ul>
+
+            <h3 id="limitaciones-produccion">9.2. Limitaciones en el Entorno de Producción</h3>
+            <h4 class="mt-4">9.2.1. Pruebas No Invasivas</h4>
+            <ul class="list-none space-y-1 ml-4">
+                <li><strong>Descripción:</strong> Revisión de configuraciones, verificación de parches.</li>
+                <li><strong>Condiciones:</strong> Solo durante horario laboral normal, con supervisión del equipo de TI.</li>
+            </ul>
+            <h4 class="mt-4">9.2.2. Pruebas Disruptivas (Solo en Ventanas de Mantenimiento)</h4>
+            <ul class="list-none space-y-1 ml-4">
+                <li><strong>Descripción:</strong> Pruebas que podrían afectar la disponibilidad (carga, DoS).</li>
+                <li><strong>Horarios:</strong> Viernes, sábados y domingos, entre las 2:00 a. m. y las 6:00 a. m.</li>
+                <li><strong>Condiciones:</strong> Coordinación previa con TI, monitoreo constante.</li>
+            </ul>
+
+            <h3 class="mt-8">9.3. Resumen de Entornos de Prueba</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Entorno</th>
+                            <th>Tipo de Pruebas</th>
+                            <th>Condiciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Entorno de Prueba</td>
+                            <td>Pruebas de vulnerabilidades, simulaciones de ataques.</td>
+                            <td>Uso exclusivo del entorno espejado y VLAN aislada.</td>
+                        </tr>
+                        <tr>
+                            <td>Entorno de Producción</td>
+                            <td>Pruebas no disruptivas (ej: revisión de configuraciones).</td>
+                            <td>Solo durante horario laboral y con supervisión.</td>
+                        </tr>
+                        <tr>
+                            <td>Ventanas de Mantenimiento</td>
+                            <td>Pruebas disruptivas (ej: DoS, pruebas de carga).</td>
+                            <td>Viernes a domingo, 2:00 a. m. – 6:00 a. m.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Pruebas de Red Interna -->
+            <h2 id="pruebas-red-interna">10. Pruebas de Red Interna</h2>
+            <p>Se incluirán pruebas de red internas para evaluar la seguridad de los sistemas internos y la posibilidad de escalada de privilegios o movimientos laterales.</p>
+
+            <h3 id="acceso-red-interna">10.1. Acceso a la Red Interna</h3>
+            <h4 class="mt-4">10.1.1. VLAN Aislada del Departamento de TI</h4>
+            <ul class="list-none space-y-1 ml-4">
+                <li><strong>Descripción:</strong> El cliente proporcionará acceso a una VLAN aislada que simula el entorno del centro de datos.</li>
+                <li><strong>Uso:</strong> Escaneo de puertos y servicios, simulación de ataques internos.</li>
+                <li><strong>Acceso:</strong> Remoto a través de VPN (SSL/IPsec) configurada para este propósito, limitado a esta VLAN.</li>
+            </ul>
+            <h4 class="mt-4">10.1.2. Credenciales de Usuario Estándar</h4>
+            <ul class="list-none space-y-1 ml-4">
+                <li><strong>Descripción:</strong> Credenciales de usuario estándar (empleado de almacén o logística).</li>
+                <li><strong>Uso:</strong> Pruebas de escalada de privilegios, evaluación de controles de seguridad internos.</li>
+                <li><strong>Acceso:</strong> Las credenciales se proporcionarán de manera segura (gestor de contraseñas o cifrado PGP).</li>
+            </ul>
+
+            <h3 id="tipos-pruebas-red-interna">10.2. Pruebas de Red Interna</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Escaneo de Puertos y Servicios:</strong> Objetivo: identificar servicios expuestos, puertos abiertos. Herramientas: Nmap, Nessus, OpenVAS.</li>
+                <li><strong>Movimientos Laterales:</strong> Objetivo: simular cómo un atacante podría moverse lateralmente. Herramientas: Mimikatz, BloodHound, CrackMapExec.</li>
+                <li><strong>Escalada de Privilegios:</strong> Objetivo: verificar si un usuario estándar puede obtener privilegios de administrador. Herramientas: Metasploit, PowerShell Empire.</li>
+                <li><strong>Pruebas de Configuración de Red:</strong> Objetivo: evaluar la seguridad de configuraciones (cortafuegos, VLANs, IDS/IPS). Herramientas: Wireshark, Nessus.</li>
+            </ul>
+
+            <h3 class="mt-8">10.3. Consideraciones de Seguridad</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Supervisión del Cliente:</strong> El equipo de TI del cliente supervisará las pruebas en tiempo real.</li>
+                <li><strong>Minimización de Impactos:</strong> Las pruebas se diseñarán para minimizar el riesgo de interrupciones.</li>
+                <li><strong>Confidencialidad:</strong> Toda la información recopilada se manejará de manera confidencial y se cifrará.</li>
+            </ul>
+
+            <h3 class="mt-8">10.4. Resumen de Acceso y Pruebas Internas</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Acceso</th>
+                            <th>Detalles</th>
+                            <th>Pruebas Relacionadas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>VLAN Aislada de TI</td>
+                            <td>Acceso remoto mediante VPN (SSL/IPsec).</td>
+                            <td>Escaneo de puertos, movimientos laterales.</td>
+                        </tr>
+                        <tr>
+                            <td>Credenciales de Usuario</td>
+                            <td>Cuenta estándar (simulación de empleado).</td>
+                            <td>Escalada de privilegios, pruebas de configuración.</td>
+                        </tr>
+                        <tr>
+                            <td>Supervisión del Cliente</td>
+                            <td>Monitoreo en tiempo real por el equipo de TI.</td>
+                            <td>Coordinación para minimizar impactos.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Pruebas en Sistemas de Cliente / Usuario Final -->
+            <h2 id="pruebas-usuarios-finales">11. Pruebas en Sistemas de Cliente / Usuario Final</h2>
+            <p>Los sistemas de cliente/usuario final externo no están explícitamente en el alcance, pero se abordará la posibilidad de compromiso de cuentas de usuario final interno para movimientos laterales o escalada de privilegios.</p>
+
+            <h3 id="enfoque-usuarios-internos">11.1. Enfoque en Usuarios Internos (No Clientes Externos)</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Contexto:</strong> Los ataques de ingeniería social suelen ser el inicio de brechas de seguridad.</li>
+                <li><strong>Alcance:</strong> Usuarios finales internos (empleados del almacén, logística y operaciones).</li>
+                <li><strong>Exclusión:</strong> Clientes externos (usuarios de la tienda online de Amazon).</li>
+            </ul>
+
+            <h3 id="ingenieria-social">11.2. Pruebas de Ingeniería Social</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Phishing Dirigido:</strong> Objetivo: evaluar la susceptibilidad. Métodos: correos electrónicos falsos, enlaces maliciosos. Limitaciones: solo empleados específicos, no clientes externos.</li>
+                <li><strong>Simulación de Ataques de Credenciales:</strong> Objetivo: evaluar si los empleados revelan credenciales. Métodos: páginas de inicio de sesión falsas, llamadas telefónicas simuladas (vishing).</li>
+            </ul>
+
+            <h3 id="escalada-privilegios-usuario">11.3. Escalada de Privilegios desde Cuentas de Usuario Final</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Simulación de Acceso Inicial:</strong> Objetivo: evaluar cómo un atacante aprovecharía una cuenta comprometida. Métodos: uso de credenciales proporcionadas, pruebas de movimientos laterales y escalada.</li>
+                <li><strong>Evaluación de Controles de Seguridad:</strong> Objetivo: verificar que los controles impidan la escalada. Métodos: uso de herramientas como Mimikatz, BloodHound o Metasploit.</li>
+            </ul>
+
+            <h3 class="mt-8">11.4. Consideraciones Éticas y Legales</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Autorización del Cliente:</strong> Todas las pruebas se realizarán con autorización explícita y documentada.</li>
+                <li><strong>Minimización de Impactos:</strong> Las pruebas evitarán daños o molestias, con posible notificación posterior y capacitación.</li>
+                <li><strong>Confidencialidad:</strong> Los resultados se manejarán de manera confidencial, cifrando datos y destruyendo información sensible.</li>
+            </ul>
+
+            <h3 class="mt-8">11.5. Resumen de Pruebas en Usuarios Finales</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Objetivo</th>
+                            <th>Métodos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Phishing Dirigido</td>
+                            <td>Evaluar susceptibilidad a ataques de phishing.</td>
+                            <td>Correos electrónicos falsos, enlaces maliciosos.</td>
+                        </tr>
+                        <tr>
+                            <td>Simulación de Credenciales</td>
+                            <td>Verificar si los empleados revelan información.</td>
+                            <td>Páginas de inicio de sesión falsas, vishing.</td>
+                        </tr>
+                        <tr>
+                            <td>Escalada de Privilegios</td>
+                            <td>Evaluar controles de seguridad internos.</td>
+                            <td>Uso de herramientas como Mimikatz, BloodHound.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h3 class="mt-8">11.6. Exclusión de Clientes Externos</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Razón:</strong> El alcance se centra en sistemas internos y empleados.</li>
+                <li><strong>Impacto:</strong> Las pruebas no afectarán a clientes externos ni a la experiencia de usuario en Amazon.</li>
+            </ul>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Ingeniería Social Permitida (con Limitaciones) -->
+            <h2 id="ingenieria-social-permitida">12. Ingeniería Social Permitida (con Limitaciones)</h2>
+            <p>La ingeniería social está permitida, pero con limitaciones estrictas para garantizar la ética y la seguridad.</p>
+
+            <h3 id="alcance-ingenieria-social">12.1. Alcance de la Ingeniería Social</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Phishing Dirigido:</strong> Objetivo: evaluar susceptibilidad. Métodos: correos falsos, enlaces/archivos adjuntos maliciosos. Limitaciones: solo empleados específicos (almacén, logística, operaciones), no clientes externos.</li>
+                <li><strong>Simulación de Ataques de Credenciales:</strong> Objetivo: verificar revelación de credenciales. Métodos: páginas de inicio de sesión falsas, llamadas telefónicas (vishing). Limitaciones: solo sistemas de prueba, no credenciales reales.</li>
+                <li><strong>Pruebas de Concienciación:</strong> Objetivo: evaluar nivel de concienciación. Métodos: intentos de acceso físico (aprobado por cliente), entrega de USB maliciosos (simulados). Limitaciones: solo en áreas no críticas, con supervisión.</li>
+            </ul>
+
+            <h3 id="limitaciones-ingenieria-social">12.2. Limitaciones y Condiciones</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Autorización Explícita:</strong> Todas las pruebas con autorización escrita del cliente.</li>
+                <li><strong>Empleados Objetivo:</strong> Limitadas a empleados específicos, excluyendo clientes externos.</li>
+                <li><strong>Minimización de Impactos:</strong> Evitar daños o molestias innecesarias, con posible notificación posterior y capacitación.</li>
+                <li><strong>Confidencialidad:</strong> Resultados confidenciales, cifrado de datos, destrucción segura de información.</li>
+            </ul>
+
+            <h3 class="mt-8">12.3. Resumen de Pruebas de Ingeniería Social</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Objetivo</th>
+                            <th>Limitaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Phishing Dirigido</td>
+                            <td>Evaluar susceptibilidad a ataques de phishing.</td>
+                            <td>Solo empleados específicos; no clientes externos.</td>
+                        </tr>
+                        <tr>
+                            <td>Simulación de Credenciales</td>
+                            <td>Verificar si los empleados revelan información.</td>
+                            <td>Uso de sistemas de prueba; no credenciales reales.</td>
+                        </tr>
+                        <tr>
+                            <td>Pruebas de Concienciación</td>
+                            <td>Evaluar concienciación sobre seguridad.</td>
+                            <td>Solo en áreas no críticas y con supervisión.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="mt-8">12.4. Consideraciones Éticas</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Transparencia:</strong> Informar a los empleados después de las pruebas (si es necesario).</li>
+                <li><strong>Capacitación:</strong> Proporcionar capacitación en concienciación de seguridad.</li>
+                <li><strong>Protección de Datos:</strong> Manejar la información recopilada según normativas (GDPR).</li>
+            </ul>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Pruebas Disruptivas (DoS) Permitidas (con Limitaciones) -->
+            <h2 id="pruebas-disruptivas">13. Pruebas Disruptivas (DoS) Permitidas (con Limitaciones)</h2>
+            <p>Las pruebas de denegación de servicio (DoS) y otros ataques disruptivos están permitidos, pero con limitaciones estrictas.</p>
+
+            <h3 id="tipos-pruebas-disruptivas">13.1. Pruebas Disruptivas Permitidas</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Denegación de Servicio (DoS/DDoS):</strong> Objetivo: evaluar resistencia. Métodos: simulación de tráfico malicioso (LOIC, Hping, Metasploit), pruebas de estrés.</li>
+                <li><strong>Pruebas de Carga:</strong> Objetivo: verificar manejo de cargas extremas. Métodos: JMeter, Gatling, Locust.</li>
+                <li><strong>Simulación de Ataques de Ransomware:</strong> Objetivo: evaluar detección y mitigación. Métodos: Cobalt Strike, scripts personalizados. Realizar en entorno de desarrollo.</li>
+            </ul>
+
+            <h3 id="limitaciones-pruebas-disruptivas">13.2. Limitaciones y Condiciones</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Ventanas de Mantenimiento:</strong> Solo durante viernes a domingo, 2:00 a. m. – 6:00 a. m.</li>
+                <li><strong>Entornos de Prueba:</strong> Principalmente en entorno de desarrollo espejado, no en producción (salvo autorización explícita).</li>
+                <li><strong>Supervisión del Cliente:</strong> El equipo de TI del cliente supervisará en tiempo real.</li>
+                <li><strong>Duración Limitada:</strong> DoS: máximo 30 minutos por sesión; Carga: máximo 1 hora por sesión.</li>
+            </ul>
+
+            <h3 class="mt-8">13.3. Resumen de Pruebas Disruptivas</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Objetivo</th>
+                            <th>Limitaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Denegación de Servicio (DoS)</td>
+                            <td>Evaluar resistencia ante ataques de agotamiento.</td>
+                            <td>Solo en ventanas de mantenimiento; duración limitada.</td>
+                        </tr>
+                        <tr>
+                            <td>Pruebas de Carga</td>
+                            <td>Verificar manejo de cargas extremas.</td>
+                            <td>En entorno de desarrollo; supervisión del cliente.</td>
+                        </tr>
+                        <tr>
+                            <td>Simulación de Ransomware</td>
+                            <td>Evaluar detección y mitigación de ransomware.</td>
+                            <td>Solo en entorno de desarrollo espejado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Dispositivos y Configuraciones de Red que Afectan las Pruebas -->
+            <h2 id="dispositivos-afectan-pruebas">14. Dispositivos y Configuraciones de Red que Afectan las Pruebas</h2>
+            <p>Se detallan los dispositivos y configuraciones que pueden influir en los resultados de una prueba de penetración.</p>
+
+            <h3 id="dispositivos-afectan">14.1. Dispositivos que Afectan los Resultados</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Cortafuegos (Firewalls):</strong> Impacto: bloqueo de tráfico, falsos positivos/negativos. Manejo: coordinar con TI para desactivar reglas o verificar configuraciones.</li>
+                <li><strong>Sistemas de Detección/Prevención de Intrusos (IDS/IPS):</strong> Impacto: detectan y bloquean actividades de prueba. Manejo: desactivar IPS temporalmente o configurar excepciones.</li>
+                <li><strong>Balanceadores de Carga (Load Balancers):</strong> Impacto: distribuyen tráfico, dificultan identificación de vulnerabilidades. Manejo: desactivar balanceo o probar servidores individuales.</li>
+                <li><strong>Proxies y Gateways de Seguridad:</strong> Impacto: filtran o modifican tráfico. Manejo: configurar herramientas para evitar proxy o probar desde dentro de la red.</li>
+                <li><strong>Sistemas de Prevención de Pérdida de Datos (DLP):</strong> Impacto: bloquean transferencia de datos sensibles. Manejo: desactivar reglas DLP temporalmente.</li>
+                <li><strong>Redes Privadas Virtuales (VPN):</strong> Impacto: limitan acceso. Manejo: usar credenciales proporcionadas.</li>
+                <li><strong>Sistemas de Detección de Honeypots:</strong> Impacto: generan falsos positivos. Manejo: identificar y excluir honeypots.</li>
+            </ul>
+
+            <h3 id="configuraciones-afectan">14.2. Configuraciones que Afectan los Resultados</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Segmentación de Red (VLANs):</strong> Impacto: limita movimiento lateral. Manejo: verificar configuraciones y ajustar pruebas.</li>
+                <li><strong>Políticas de Control de Acceso (ACL):</strong> Impacto: bloquean tráfico de prueba. Manejo: revisar y ajustar ACL.</li>
+                <li><strong>Cifrado de Tráfico (SSL/TLS):</strong> Impacto: dificulta inspección de tráfico. Manejo: usar herramientas que soporten inspección de tráfico cifrado.</li>
+            </ul>
+
+            <h3 class="mt-8">14.3. Resumen de Dispositivos y Configuraciones</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dispositivo/Configuración</th>
+                            <th>Impacto en las Pruebas</th>
+                            <th>Manejo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cortafuegos</td>
+                            <td>Bloqueo de tráfico de prueba.</td>
+                            <td>Desactivar reglas restrictivas temporalmente.</td>
+                        </tr>
+                        <tr>
+                            <td>IDS/IPS</td>
+                            <td>Detección y bloqueo de actividades de prueba.</td>
+                            <td>Desactivar IPS o configurar excepciones.</td>
+                        </tr>
+                        <tr>
+                            <td>Balanceadores de Carga</td>
+                            <td>Distribución de tráfico entre servidores.</td>
+                            <td>Desactivar balanceo de carga temporalmente.</td>
+                        </tr>
+                        <tr>
+                            <td>Proxies</td>
+                            <td>Filtrado o modificación de tráfico.</td>
+                            <td>Evitar el uso de proxies durante las pruebas.</td>
+                        </tr>
+                        <tr>
+                            <td>DLP</td>
+                            <td>Bloqueo de transferencia de datos sensibles.</td>
+                            <td>Desactivar reglas de DLP temporalmente.</td>
+                        </tr>
+                        <tr>
+                            <td>VPN</td>
+                            <td>Limitación de acceso a redes restringidas.</td>
+                            <td>Utilizar credenciales de acceso proporcionadas.</td>
+                        </tr>
+                        <tr>
+                            <td>Honeypots</td>
+                            <td>Generación de falsos positivos.</td>
+                            <td>Identificar y excluir honeypots.</td>
+                        </tr>
+                        <tr>
+                            <td>Segmentación de Red</td>
+                            <td>Limitación del movimiento lateral.</td>
+                            <td>Evaluar la efectividad de la segmentación.</td>
+                        </tr>
+                        <tr>
+                            <td>ACL</td>
+                            <td>Bloqueo de tráfico de prueba.</td>
+                            <td>Ajustar ACL para permitir tráfico de prueba.</td>
+                        </tr>
+                        <tr>
+                            <td>Cifrado SSL/TLS</td>
+                            <td>Dificultad en la inspección de tráfico.</td>
+                            <td>Usar herramientas con soporte para SSL/TLS.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Acceso Inalámbrico -->
+            <h2 id="acceso-inalambrico">15. Acceso Inalámbrico</h2>
+            <p>El acceso inalámbrico no se menciona explícitamente, pero se recomienda evaluarlo si existe, ya que es un punto de entrada común para atacantes.</p>
+
+            <h3 id="evaluacion-acceso-inalambrico">15.1. Evaluación del Acceso Inalámbrico</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Verificación de Redes Inalámbricas:</strong> Objetivo: identificar si Nexus Plaza usa Wi-Fi. Métodos: revisión de documentación, escaneo pasivo.</li>
+                <li><strong>Pruebas de Seguridad Wi-Fi (Si Aplicable):</strong> Objetivo: evaluar seguridad de redes. Métodos: escaneo de redes, pruebas de autenticación (WPA2, WPA3), cifrado (AES, TKIP), fuerza bruta, detección de rogue AP.</li>
+            </ul>
+
+            <h3 id="limitaciones-acceso-inalambrico">15.2. Limitaciones y Condiciones</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Autorización del Cliente:</strong> Solo con aprobación explícita e inclusión en contrato.</li>
+                <li><strong>Minimización de Impactos:</strong> Pruebas fuera de horario laboral o en ventanas de mantenimiento, evitar pruebas disruptivas.</li>
+                <li><strong>Confidencialidad:</strong> Resultados confidenciales, cifrado de datos, destrucción segura de información.</li>
+            </ul>
+
+            <h3 class="mt-8">15.3. Resumen de Pruebas de Acceso Inalámbrico</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Objetivo</th>
+                            <th>Limitaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Escaneo de Redes Wi-Fi</td>
+                            <td>Identificar puntos de acceso y redes visibles.</td>
+                            <td>Solo si el cliente aprueba explícitamente.</td>
+                        </tr>
+                        <tr>
+                            <td>Pruebas de Autenticación</td>
+                            <td>Verificar la fortaleza de los métodos de autenticación.</td>
+                            <td>Evitar interrupciones en operaciones críticas.</td>
+                        </tr>
+                        <tr>
+                            <td>Pruebas de Cifrado</td>
+                            <td>Evaluar la robustez del cifrado utilizado.</td>
+                            <td>Realizar en ventanas de mantenimiento.</td>
+                        </tr>
+                        <tr>
+                            <td>Pruebas de Fuerza Bruta</td>
+                            <td>Descifrar contraseñas débiles.</td>
+                            <td>Solo en redes de prueba o con autorización.</td>
+                        </tr>
+                        <tr>
+                            <td>Detección de Rogue APs</td>
+                            <td>Identificar puntos de acceso no autorizados.</td>
+                            <td>Sin impacto en operaciones.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="mt-8">15.4. Recomendación</h4>
+            <p class="highlight-box">
+                Dado que el acceso inalámbrico puede ser un vector de ataque común, se recomienda incluir estas pruebas en el alcance del compromiso, siempre que el cliente lo apruebe. Esto permitirá una evaluación más completa de la postura de seguridad de Nexus Plaza.
+            </p>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Servicios Web -->
+            <h2 id="servicios-web">16. Servicios Web</h2>
+            <p>Los servicios web están incluidos en el alcance, ya que son críticos para Nexus Plaza como empresa minorista online.</p>
+
+            <h3 id="tipos-servicios-web">16.1. Servicios Web a Probar</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Aplicaciones Web de Comercio Electrónico:</strong> Objetivo: inyecciones SQL, XSS, fallos de autenticación. Métodos: escaneo automatizado (Burp Suite, OWASP ZAP), pruebas manuales.</li>
+                <li><strong>Portales Internos:</strong> Objetivo: seguridad de interfaces, integridad de datos. Métodos: pruebas de autenticación y autorización, verificación de configuraciones seguras (headers HTTP, SSL/TLS).</li>
+                <li><strong>APIs:</strong> Objetivo: inyecciones, autenticación débil, exposición de datos. Métodos: fuzzing (Postman, SoapUI), análisis de respuestas.</li>
+            </ul>
+
+            <h3 id="tipos-pruebas-servicios-web">16.2. Tipos de Pruebas en Servicios Web</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Pruebas de Vulnerabilidades Comunes:</strong> Inyecciones SQL, XSS, CSRF, Fallas de Autenticación y Autorización.</li>
+                <li><strong>Pruebas de Configuración:</strong> Cifrado SSL/TLS, Headers de Seguridad (CSP, X-Content-Type-Options, HSTS).</li>
+                <li><strong>Pruebas de Carga y Estrés:</strong> Objetivo: cómo manejan cargas extremas. Métodos: JMeter, Gatling, Locust.</li>
+            </ul>
+
+            <h3 id="limitaciones-servicios-web">16.3. Limitaciones y Condiciones</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Entornos de Prueba:</strong> Principalmente en entorno de desarrollo espejado.</li>
+                <li><strong>Horarios de Prueba:</strong> Disruptivas (carga) en ventanas de mantenimiento (viernes a domingo, 2:00 a. m. – 6:00 a. m.).</li>
+                <li><strong>Supervisión del Cliente:</strong> El equipo de TI supervisará las pruebas en tiempo real.</li>
+            </ul>
+
+            <h3 class="mt-8">16.4. Resumen de Pruebas en Servicios Web</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Prueba</th>
+                            <th>Objetivo</th>
+                            <th>Limitaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Inyecciones SQL</td>
+                            <td>Verificar manipulación de consultas a la base de datos.</td>
+                            <td>Solo en entorno de desarrollo espejado.</td>
+                        </tr>
+                        <tr>
+                            <td>Cross-Site Scripting (XSS)</td>
+                            <td>Evaluar ejecución de scripts maliciosos.</td>
+                            <td>Pruebas no disruptivas en horario laboral.</td>
+                        </tr>
+                        <tr>
+                            <td>Pruebas de Carga</td>
+                            <td>Verificar manejo de cargas extremas.</td>
+                            <td>Solo en ventanas de mantenimiento.</td>
+                        </tr>
+                        <tr>
+                            <td>Configuración SSL/TLS</td>
+                            <td>Evaluar robustez del cifrado.</td>
+                            <td>Sin impacto en operaciones críticas.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Notificación a Empleados -->
+            <h2 id="notificacion-empleados">17. Notificación a Empleados</h2>
+            <p>Los empleados no serán notificados sobre las pruebas de penetración, excepto el personal de TI responsable del monitoreo de operaciones y logística, para simular condiciones realistas.</p>
+
+            <h3 id="notificacion-limitada">17.1. Notificación Limitada a Personal Específico</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Personal de TI Responsable:</strong> Notificado para supervisión en tiempo real y mitigación rápida de impactos.</li>
+                <li><strong>Gerentes y Contactos Principales:</strong> Director de TI, gerente de almacén y gerente de operaciones serán los contactos principales.</li>
+            </ul>
+
+            <h3 id="empleados-finales-no-notificados">17.2. Empleados Finales No Notificados</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Pruebas de Ingeniería Social:</strong> Sin notificar para evaluar susceptibilidad real e identificar mejoras.</li>
+                <li><strong>Pruebas en Sistemas de Producción:</strong> Sin notificar para evitar cambios en el comportamiento que afecten los resultados.</li>
+            </ul>
+
+            <h3 id="plazo-horarios-pruebas">17.3. Plazo y Horarios de Pruebas</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Plazo General:</strong> Inicio 2 semanas post-contrato, duración 60 días. Solo contactos principales conocerán el plazo completo.</li>
+                <li><strong>Ventanas de Mantenimiento:</strong> Disruptivas (DoS, carga) en ventanas programadas (viernes a domingo, 2:00 a. m. – 6:00 a. m.). Solo personal de TI responsable será notificado.</li>
+            </ul>
+
+            <h3 id="consideraciones-eticas-legales-notificacion">17.4. Consideraciones Éticas y Legales</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Autorización del Cliente:</strong> Todas las pruebas con autorización explícita, documentada en el contrato.</li>
+                <li><strong>Minimización de Impactos:</strong> Evitar daños o molestias, con posible notificación posterior y capacitación.</li>
+                <li><strong>Confidencialidad:</strong> Resultados confidenciales, cifrado de datos, destrucción segura de información.</li>
+            </ul>
+
+            <h3 class="mt-8">17.5. Resumen de Comunicación y Notificación</h3>
+            <div class="overflow-x-auto rounded-lg shadow-md">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Grupo</th>
+                            <th>Notificación</th>
+                            <th>Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Personal de TI</td>
+                            <td>Sí</td>
+                            <td>Solo personal responsable de monitoreo.</td>
+                        </tr>
+                        <tr>
+                            <td>Gerentes y Contactos</td>
+                            <td>Sí</td>
+                            <td>Director de TI, gerente de almacén y operaciones.</td>
+                        </tr>
+                        <tr>
+                            <td>Empleados Finales</td>
+                            <td>No</td>
+                            <td>Pruebas de ingeniería social y sistemas de producción.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="mt-8">17.6. Recomendación</h4>
+            <p class="highlight-box">
+                Para garantizar que las pruebas sean éticas y efectivas, se recomienda: capacitación posterior en seguridad a los empleados afectados, e informar sobre las pruebas solo si es necesario para mejorar la seguridad a largo plazo.
+            </p>
+        </section>
+
+        <hr class="border-t-2 border-indigo-200 my-10">
+
+        <section>
+            <!-- Línea de Tiempo y Comunicación -->
+            <h2 id="linea-tiempo-comunicacion">18. Línea de Tiempo y Comunicación</h2>
+
+            <h3 id="explicacion-linea-tiempo">18.1. Explicación de la Línea de Tiempo</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Inicio del Compromiso:</strong> 2 semanas después de la firma del contrato.</li>
+                <li><strong>Duración del Compromiso:</strong> 60 días totales.</li>
+                <li><strong>Ventanas de Pruebas:</strong> Disruptivas (DoS, carga) en ventanas de mantenimiento (viernes a domingo, 2:00 a. m. – 6:00 a. m.); No disruptivas en horario laboral normal.</li>
+                <li><strong>Entregables:</strong> Informe de actualización semanal y informe final a los 60 días.</li>
+            </ul>
+
+            <h3 id="resumen-linea-tiempo">18.2. Resumen de Línea de Tiempo</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li><strong>Inicio:</strong> 2 semanas post-contrato; duración: 60 días.</li>
+                <li><strong>Pruebas disruptivas:</strong> viernes a domingo (2:00 a. m. – 6:00 a. m.); no disruptivas: horario laboral. Informes semanales y final en 60 días.</li>
+            </ul>
+
+            <h3 id="ubicacion-prueba">18.3. Ubicación de la Prueba</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li>Pruebas remotas desde la VLAN aislada del departamento de TI y entorno de desarrollo espejado. Exclusión de sistemas de producción y clústeres de Amazon.</li>
+            </ul>
+
+            <h3 id="ventanas-tiempo-prueba">18.4. Ventanas de Tiempo para la Prueba</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li>Pruebas disruptivas: viernes a domingo (2:00 a. m. – 6:00 a. m.). Pruebas no disruptivas: horario laboral normal.</li>
+            </ul>
+
+            <h3 id="metodo-comunicacion">18.5. Método de Comunicación Preferido</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li>Informes semanales y teleconferencias con el director de TI, gerente de almacén y gerente de operaciones.</li>
+            </ul>
+
+            <h3 id="controles-seguridad-detectan">18.6. Controles de Seguridad que Podrían Detectar o Evitar las Pruebas</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li>Cortafuegos, IDS/IPS, DLP, y sistemas de detección de honeypots. Coordinación con el equipo de TI para ajustar configuraciones.</li>
+            </ul>
+
+            <h3 id="manejo-datos-sensibles">18.7. Manejo de Datos Sensibles</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li>Cifrado de datos y comunicaciones; destrucción segura de información sensible tras la entrega del informe final.</li>
+            </ul>
+
+            <h3 id="direcciones-ip-origen">18.8. Direcciones IP o Redes de Origen de las Pruebas</h3>
+            <ul class="list-disc list-inside ml-4">
+                <li>VLAN aislada del departamento de TI (172.16.33.0/30) y entorno de desarrollo espejado.</li>
+            </ul>
+        </section>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Michel Macías · Ciberseguridad
+      <span class="muted" style="float:right">Hecho con GitHub Pages</span>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
