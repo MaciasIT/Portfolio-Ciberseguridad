@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicando Filtros SQL - Guía de Seguridad</title>
+    <!-- Incluye Tailwind CSS para un diseño responsivo y moderno -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define la fuente Inter para todo el documento */
+        body {
+            font-family: 'Inter', sans-serif;
+            @apply bg-gray-900 text-gray-200; /* Fondo muy oscuro y texto claro */
+        }
+        /* Estilos generales para el contenedor principal, imitando la captura */
+        .main-container {
+            @apply max-w-7xl mx-auto py-12 px-6 lg:px-8; /* Ancho máximo, centrado, padding */
+        }
+        /* Estilos para las secciones de contenido (tarjetas) */
+        .content-card {
+            @apply bg-gray-800 rounded-xl shadow-lg p-8 mb-10 border border-gray-700; /* Fondo oscuro, esquinas redondeadas, sombra, padding, borde */
+        }
+        /* Estilos para encabezados */
+        h1 {
+            @apply text-5xl font-extrabold mb-8 text-center text-blue-400; /* Azul claro para el título principal */
+        }
+        h2 {
+            @apply text-3xl font-bold mb-6 text-blue-300 border-b border-gray-700 pb-2; /* Azul más oscuro para h2, borde inferior */
+        }
+        h3 {
+            @apply text-2xl font-semibold mb-4 text-blue-200; /* Azul más suave para h3 */
+        }
+        h4 {
+            @apply text-xl font-medium mb-3 text-blue-100; /* Azul muy suave para h4 */
+        }
+        p {
+            @apply mb-4 leading-relaxed text-gray-300; /* Texto más claro para párrafos */
+        }
+        ul {
+            @apply list-disc list-inside mb-4 pl-5 text-gray-300;
+        }
+        ol {
+            @apply list-decimal list-inside mb-4 pl-5 text-gray-300;
+        }
+        li {
+            @apply mb-2;
+        }
+        strong {
+            @apply text-blue-400; /* Azul claro para texto en negrita */
+        }
+        /* Estilos para bloques de código SQL */
+        pre {
+            @apply bg-gray-700 text-green-300 p-4 rounded-md overflow-x-auto text-sm my-4; /* Fondo oscuro, texto verde, padding, esquinas redondeadas */
+        }
+        code {
+            @apply font-mono; /* Fuente monoespaciada para código */
+        }
+        /* Estilos para cajas de información/alerta */
+        .info-box {
+            @apply p-4 mt-4 bg-blue-700 bg-opacity-30 border-l-4 border-blue-400 text-blue-200 rounded-md;
+        }
+        .warning-box {
+            @apply p-4 mt-4 bg-yellow-700 bg-opacity-30 border-l-4 border-yellow-400 text-yellow-200 rounded-md;
+        }
+        .error-box {
+            @apply p-4 mt-4 bg-red-700 bg-opacity-30 border-l-4 border-red-400 text-red-200 rounded-md;
+        }
+        /* Estilo para iconos de check/cross */
+        .check-icon {
+            @apply text-green-400 inline-block mr-2;
+        }
+        .cross-icon {
+            @apply text-red-400 inline-block mr-2;
+        }
+        .rocket-icon {
+            @apply text-purple-400 inline-block ml-2;
+        }
+        .alert-icon {
+            @apply text-red-400 inline-block mr-2;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Título principal -->
+        <h1>Aplicando Filtros SQL para la Seguridad</h1>
+
+        <div class="content-card">
+            <h2 id="project-description">Descripción del Proyecto</h2>
+            <p>
+                Este proyecto se enfoca en la aplicación de <strong>consultas SQL para la investigación y detección de posibles problemas de seguridad</strong> dentro de una organización. A través del análisis de las bases de datos <code>employees</code> y <code>log_in_attempts</code>, se desarrollaron consultas para identificar:
+            </p>
+            <ul>
+                <li><span class="check-icon">☑</span> Intentos de acceso fallidos fuera del horario laboral.</li>
+                <li><span class="check-icon">☑</span> Empleados que han iniciado sesión desde ubicaciones inusuales.</li>
+                <li><span class="check-icon">☑</span> Intentos de acceso desde múltiples direcciones IP en un corto período de tiempo.</li>
+                <li><span class="check-icon">☑</span> Empleados de departamentos específicos para aplicar medidas de seguridad.</li>
+                <li><span class="check-icon">☑</span> Empleados que aún requieren actualizaciones en sus dispositivos.</li>
+            </ul>
+            <p>
+                Este trabajo demuestra habilidades clave en <strong>seguridad informática, análisis de datos y optimización de consultas SQL</strong>, proporcionando información crítica para la protección de la infraestructura de TI de una empresa. Se incluyen recomendaciones de seguridad para mitigar posibles amenazas, asegurando un enfoque proactivo en la gestión de accesos y dispositivos corporativos.
+            </p>
+        </div>
+
+        <div class="content-card">
+            <h2 id="failed-logins-after-hours">Recuperar Intentos de Inicio de Sesión Fallidos Fuera de Horario</h2>
+            <h3>Consulta SQL para identificar intentos de inicio de sesión fallidos después del horario laboral:</h3>
+<pre><code>SELECT event_id, username, login_date, login_time, country,
+       ip_address, success
+FROM log_in_attempts
+WHERE login_time > '18:00:00'
+AND success = 0;
+</code></pre>
+            <h4>Explicación de la consulta:</h4>
+            <ol>
+                <li><strong><code>SELECT event_id, username, login_date, login_time, country, ip_address, success</code></strong>
+                    <p>Extraemos las columnas relevantes de la tabla <code>log_in_attempts</code> para analizar los intentos fallidos.</p>
+                </li>
+                <li><strong><code>FROM log_in_attempts</code></strong>
+                    <p>Especificamos la tabla que contiene los registros de intentos de inicio de sesión.</p>
+                </li>
+                <li><strong><code>WHERE login_time > '18:00:00'</code></strong>
+                    <p>Filtramos los registros donde la hora del intento de inicio de sesión (<code>login_time</code>) es después de las 18:00 (6:00 PM).</p>
+                </li>
+                <li><strong><code>AND success = 0</code></strong>
+                    <p>La columna <code>success</code> es de tipo TINYINT (1), lo que significa que puede almacenar valores 0 (fallido) o 1 (exitoso). Filtramos solo los intentos de inicio de sesión que fallaron (<code>success = 0</code>).</p>
+                </li>
+            </ol>
+            <h4>Posibles Mejoras y Análisis Adicional:</h4>
+            <ul class="list-none">
+                <li><span class="check-icon">✅</span> <strong>Ordenar los resultados para priorizar la investigación:</strong>
+<pre><code>ORDER BY login_date DESC, login_time DESC;
+</code></pre>
+                    <p>Esto permitirá ver primero los intentos más recientes.</p>
+                </li>
+                <li><span class="check-icon">✅</span> <strong>Investigar intentos desde países inusuales:</strong>
+<pre><code>WHERE login_time > '18:00:00'
+AND success = 0
+AND country NOT IN ('USA', 'Mexico', 'Canada');
+</code></pre>
+                    <p>Esto ayuda a detectar intentos desde ubicaciones sospechosas.</p>
+                </li>
+                <li><span class="check-icon">✅</span> <strong>Cruzar datos con la tabla <code>employees</code> para ver el departamento del usuario:</strong>
+<pre><code>SELECT l.event_id, l.username, e.department, l.login_date,
+       l.login_time, l.country, l.ip_address
+FROM log_in_attempts l
+JOIN employees e ON l.username = e.username
+WHERE l.login_time > '18:00:00'
+AND l.success = 0;
+</code></pre>
+                    <p>Esto permitirá identificar si ciertos departamentos están siendo atacados con más frecuencia.</p>
+                </li>
+            </ul>
+            <div class="info-box">
+                <h4 class="mb-2 text-blue-100">Conclusión</h4>
+                <p>Esta consulta ayuda a detectar actividad sospechosa fuera del horario laboral, lo que podría indicar intentos de acceso no autorizados. Si se identifican múltiples intentos fallidos para el mismo usuario o desde una ubicación desconocida, sería recomendable investigar más a fondo y posiblemente bloquear las direcciones IP sospechosas.</p>
+                <p><strong>Acción recomendada:</strong> Si la consulta devuelve múltiples intentos fallidos para un mismo usuario desde distintas ubicaciones, es posible que su cuenta esté siendo objeto de un ataque de fuerza bruta. Se recomienda bloquear temporalmente la cuenta y notificar al usuario afectado.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 id="login-attempts-specific-dates">Recuperar Intentos de Inicio de Sesión en Fechas Específicas</h2>
+            <p>Para investigar los intentos de inicio de sesión que ocurrieron los días <strong>2022-05-09 y 2022-05-08</strong>, podemos utilizar la cláusula <code>WHERE</code> en SQL para filtrar los registros por la columna <code>login_date</code>.</p>
+            <h3>Consulta SQL:</h3>
+<pre><code>SELECT event_id, username, login_date, login_time, country,
+       ip_address, success
+FROM log_in_attempts
+WHERE login_date IN ('2022-05-09', '2022-05-08');
+</code></pre>
+            <h4>Explicación de la consulta:</h4>
+            <ol>
+                <li><strong><code>SELECT event_id, username, login_date, login_time, country, ip_address, success</code></strong>
+                    <p>Extraemos los datos más relevantes de la tabla <code>log_in_attempts</code> para el análisis.</p>
+                </li>
+                <li><strong><code>FROM log_in_attempts</code></strong>
+                    <p>Especificamos la tabla de la que se tomarán los datos.</p>
+                </li>
+                <li><strong><code>WHERE login_date IN ('2022-05-09', '2022-05-08')</code></strong>
+                    <p>Filtramos los registros para obtener solo aquellos intentos de inicio de sesión que ocurrieron en las fechas 2022-05-09 y 2022-05-08. La cláusula <code>IN</code> nos permite especificar múltiples valores de fecha sin necesidad de usar múltiples condiciones <code>OR</code>.</p>
+                </li>
+            </ol>
+            <h4>Posibles Mejoras y Extensiones:</h4>
+            <ul class="list-none">
+                <li><span class="check-icon">✅</span> <strong>Ordenar los resultados para facilitar el análisis:</strong>
+<pre><code>ORDER BY login_date DESC, login_time DESC;
+</code></pre>
+                    <p>Esto nos ayuda a ver primero los intentos más recientes.</p>
+                </li>
+                <li><span class="check-icon">✅</span> <strong>Incluir solo intentos fallidos para detectar posibles ataques:</strong>
+<pre><code>WHERE login_date IN ('2022-05-09', '2022-05-08')
+AND success = 0;
+</code></pre>
+                    <p>Esto filtrará solo los intentos fallidos (<code>success = 0</code>), lo cual es útil para detectar intentos de acceso no autorizados.</p>
+                </li>
+                <li><span class="check-icon">✅</span> <strong>Ampliar el rango de fechas si es necesario:</strong>
+                    <p>Si queremos incluir más días antes o después, podemos usar <code>BETWEEN</code> en lugar de <code>IN</code>:</p>
+<pre><code>WHERE login_date BETWEEN '2022-05-07' AND '2022-05-09';
+</code></pre>
+                </li>
+            </ul>
+            <div class="info-box">
+                <h4 class="mb-2 text-blue-100">Conclusión</h4>
+                <p>Esta consulta permite investigar actividad sospechosa en fechas específicas. Si se detectan múltiples intentos de inicio de sesión fallidos desde ubicaciones inusuales, esto podría indicar un posible ataque de fuerza bruta o acceso no autorizado, por lo que se recomienda realizar un análisis más detallado de las IPs y los usuarios involucrados.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 id="login-attempts-outside-mexico">Recuperar Intentos de Inicio de Sesión Fuera de México</h2>
+            <p>Para investigar los intentos de inicio de sesión que no se originaron en México, utilizaremos la cláusula <code>WHERE</code> con el operador <strong><code><></code></strong> o <strong><code>NOT IN</code></strong> para excluir a México de los resultados.</p>
+            <h3>Consulta SQL:</h3>
+<pre><code>SELECT event_id, username, login_date, login_time, country,
+       ip_address, success
+FROM log_in_attempts
+WHERE country <> 'Mexico';
+</code></pre>
+            <h4>Explicación de la consulta:</h4>
+            <ol>
+                <li><strong><code>SELECT event_id, username, login_date, login_time, country, ip_address, success</code></strong>
+                    <p>Seleccionamos las columnas más relevantes de la tabla <code>log_in_attempts</code> para analizar los registros sospechosos.</p>
+                </li>
+                <li><strong><code>FROM log_in_attempts</code></strong>
+                    <p>Especificamos la tabla de donde extraemos los datos.</p>
+                </li>
+                <li><strong><code>WHERE country <> 'Mexico'</code></strong>
+                    <p>Filtramos los registros para excluir los intentos de inicio de sesión que provienen de México (<code><></code> significa "distinto de"). Solo se mostrarán los intentos de inicio de sesión que ocurrieron en otros países.</p>
+                </li>
+            </ol>
+            <h4>Alternativa con <code>NOT IN</code> (si hay más países a excluir):</h4>
+            <p>Si en el futuro queremos excluir más países (por ejemplo, México y EE.UU.), podemos usar <code>NOT IN</code>:</p>
+<pre><code>WHERE country NOT IN ('Mexico', 'USA');
+</code></pre>
+            <h4>Posibles Mejoras y Extensiones:</h4>
+            <ul class="list-none">
+                <li><span class="check-icon">✅</span> <strong>Ordenar los intentos de inicio de sesión por fecha y hora para priorizar la investigación:</strong>
+<pre><code>ORDER BY login_date DESC, login_time DESC;
+</code></pre>
+                </li>
+                <li><span class="check-icon">✅</span> <strong>Incluir solo intentos fallidos para detectar posibles ataques:</strong>
+<pre><code>WHERE country <> 'Mexico'
+AND success = 0;
+</code></pre>
+                    <p>Esto filtrará solo los intentos fallidos (<code>success = 0</code>), lo cual es útil para detectar accesos no autorizados.</p>
+                </li>
+                <li><span class="check-icon">✅</span> <strong>Ampliar la consulta para ver intentos en un rango de fechas específico:</strong>
+<pre><code>WHERE country <> 'Mexico'
+AND login_date BETWEEN '2024-02-01' AND '2024-02-29';
+</code></pre>
+                </li>
+                <li><span class="check-icon">✅</span> <strong>Cruzar datos con la tabla <code>employees</code> para obtener información adicional sobre los usuarios:</strong>
+<pre><code>SELECT l.event_id, l.username, e.department, l.login_date,
+       l.login_time, l.country, l.ip_address
+FROM log_in_attempts l
+JOIN employees e ON l.username = e.username
+WHERE l.country <> 'Mexico';
+</code></pre>
+                    <p>Esto ayuda a identificar si ciertos departamentos están siendo objetivo de intentos de acceso desde el extranjero.</p>
+                </li>
+            </ul>
+            <div class="info-box">
+                <h4 class="mb-2 text-blue-100">Conclusión</h4>
+                <p>Esta consulta nos permitirá detectar intentos de inicio de sesión fuera de México, lo que puede indicar actividad sospechosa si los empleados normalmente inician sesión solo desde este país. Si se identifican intentos recurrentes desde ubicaciones desconocidas, puede ser señal de un ataque de fuerza bruta o de credenciales comprometidas, lo que requeriría tomar medidas como bloquear las IPs sospechosas o forzar cambios de contraseñas.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 id="employees-in-marketing">Recuperar Empleados en Marketing</h2>
+            <p>Para obtener información sobre los empleados del departamento de <strong>Marketing que trabajan en cualquier oficina del edificio Este</strong>, podemos utilizar la cláusula <code>WHERE</code> con las condiciones adecuadas en SQL.</p>
+            <h3>Consulta SQL:</h3>
+<pre><code>SELECT employee_id, device_id, username, department, office
+FROM employees
+WHERE department = 'Marketing'
+AND office LIKE 'Este-%';
+</code></pre>
+            <h4>Explicación de la consulta:</h4>
+            <ol>
+                <li><strong><code>SELECT employee_id, device_id, username, department, office</code></strong>
+                    <p>Seleccionamos las columnas relevantes de la tabla <code>employees</code> para identificar a los empleados de Marketing y sus dispositivos.</p>
+                </li>
+                <li><strong><code>FROM employees</code></strong>
+                    <p>Especificamos la tabla de donde se tomarán los datos.</p>
+                </li>
+                <li><strong><code>WHERE department = 'Marketing'</code></strong>
+                    <p>Filtramos para obtener solo los empleados cuyo departamento es "Marketing".</p>
+                </li>
+                <li><strong><code>AND office LIKE 'Este-%'</code></strong>
+                    <p>La columna <code>office</code> contiene valores como "Este-170", "Este-320", etc. <code>LIKE 'Este-%'</code> selecciona todas las oficinas que comienzan con "Este-", asegurando que solo obtenemos los empleados del edificio Este, sin importar el número de oficina.</p>
+                </li>
+            </ol>
+            <h4>Posibles Mejoras y Extensiones:</h4>
+            <ul class="list-none">
+                <li><span class="check-icon">✅</span> <strong>Ordenar los resultados para facilitar la revisión:</strong>
+<pre><code>ORDER BY office, username;
+</code></pre>
+                    <p>Esto organizará la lista por oficina y por nombre de usuario.</p>
+                </li>
+                <li><span class="check-icon">✅</span> <strong>Cruzar datos con la tabla <code>machines</code> para obtener detalles sobre los dispositivos de estos empleados:</strong>
+<pre><code>SELECT e.employee_id, e.username, e.department, e.office,
+       m.device_id, m.operating_system, m.os_patch_date
+FROM employees e
+JOIN machines m ON e.device_id = m.device_id
+WHERE e.department = 'Marketing'
+AND e.office LIKE 'Este-%';
+</code></pre>
+                    <p>Esto nos permitirá obtener información adicional sobre los sistemas operativos y parches de seguridad de los equipos asignados a estos empleados.</p>
+                </li>
+            </ul>
+            <div class="info-box">
+                <h4 class="mb-2 text-blue-100">Conclusión</h4>
+                <p>Esta consulta nos ayudará a identificar a los empleados del departamento de Marketing en el edificio Este, lo que es clave para coordinar actualizaciones de seguridad en sus dispositivos. Si encontramos empleados con sistemas desactualizados, podemos priorizar sus máquinas para recibir los parches de seguridad lo antes posible.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 id="employees-in-finance-or-sales">Recuperar Empleados en Finanzas o Ventas</h2>
+            <h3>Consulta SQL para recuperar empleados en Finanzas o Ventas:</h3>
+<pre><code>SELECT employee_id, username, department, device_id, office
+FROM employees
+WHERE department IN ('Ventas', 'Finanzas');
+</code></pre>
+            <h4>Explicación de la consulta:</h4>
+            <ol>
+                <li><strong><code>SELECT employee_id, username, department, device_id, office</code></strong>
+                    <p>Extraemos las columnas relevantes de la tabla <code>employees</code> para identificar los empleados y sus dispositivos asignados.</p>
+                </li>
+                <li><strong><code>FROM employees</code></strong>
+                    <p>Especificamos que la información proviene de la tabla <code>employees</code>.</p>
+                </li>
+                <li><strong><code>WHERE department IN ('Ventas', 'Finanzas')</code></strong>
+                    <p>Filtramos los registros para incluir solo a los empleados cuyo departamento sea Ventas o Finanzas. La condición <code>IN ('Ventas', 'Finanzas')</code> es equivalente a usar <code>department = 'Ventas' OR department = 'Finanzas'</code>, pero más eficiente y fácil de leer.</p>
+                </li>
+            </ol>
+            <h4>Posibles Mejoras y Análisis Adicional:</h4>
+            <ul class="list-none">
+                <li><span class="check-icon">☑</span> <strong>Ordenar los resultados por oficina para facilitar la gestión:</strong>
+<pre><code>ORDER BY office, username;
+</code></pre>
+                    <p>Esto agrupa los resultados por ubicación de la oficina y los ordena alfabéticamente por usuario.</p>
+                </li>
+                <li><span class="check-icon">☑</span> <strong>Verificar empleados sin un <code>device_id</code> asignado:</strong>
+<pre><code>WHERE department IN ('Ventas', 'Finanzas') AND device_id IS NULL;
+</code></pre>
+                    <p>Esto ayuda a identificar empleados que no tienen un dispositivo registrado, lo cual puede ser un riesgo de seguridad.</p>
+                </li>
+                <li><span class="check-icon">☑</span> <strong>Cruzar con la tabla <code>log_in_attempts</code> para detectar accesos sospechosos:</strong>
+<pre><code>SELECT e.employee_id, e.username, e.department, l.ip_address,
+       l.login_date, l.success
+FROM employees e
+JOIN log_in_attempts l ON e.username = l.username
+WHERE e.department IN ('Ventas', 'Finanzas')
+AND l.success = 0;
+</code></pre>
+                    <p>Esto permite ver qué empleados de estos departamentos han tenido intentos fallidos de inicio de sesión recientemente.</p>
+                </li>
+            </ul>
+            <div class="info-box">
+                <h4 class="mb-2 text-blue-100">Conclusión</h4>
+                <p>Esta consulta permite identificar a los empleados de Ventas y Finanzas para aplicar actualizaciones de seguridad específicas en sus dispositivos. Además, cruzar esta información con los intentos de acceso puede revelar posibles riesgos de seguridad.</p>
+                <p><strong>Acción recomendada:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Aplicar parches de seguridad en los dispositivos de estos empleados.</li>
+                    <li>Investigar intentos de inicio de sesión fallidos en estos departamentos.</li>
+                    <li>Asegurar que cada empleado tenga un <code>device_id</code> registrado en la base de datos.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <h2 id="employees-not-in-it">Recuperar Todos los Empleados que No Están en TI</h2>
+            <h3>Consulta SQL para recuperar a todos los empleados que no estén en Tecnología de la Información:</h3>
+<pre><code>SELECT employee_id, username, department, device_id, office
+FROM employees
+WHERE department <> 'Tecnología de la Información';
+</code></pre>
+            <h4>Explicación de la consulta:</h4>
+            <ol>
+                <li><strong><code>SELECT employee_id, username, department, device_id, office</code></strong>
+                    <p>Extraemos las columnas clave de la tabla <code>employees</code> para identificar a los empleados y sus dispositivos asignados.</p>
+                </li>
+                <li><strong><code>FROM employees</code></strong>
+                    <p>Indicamos que la información proviene de la tabla <code>employees</code>.</p>
+                </li>
+                <li><strong><code>WHERE department <> 'Tecnología de la Información'</code></strong>
+                    <p>Excluimos a los empleados que pertenecen al departamento de Tecnología de la Información. El operador <code><></code> significa "distinto de", por lo que solo se seleccionarán empleados que no estén en este departamento.</p>
+                </li>
+            </ol>
+            <h4>Posibles Mejoras y Análisis Adicional:</h4>
+            <ul class="list-none">
+                <li><span class="check-icon">✅</span> <strong>Ordenar los resultados por departamento para facilitar la gestión:</strong>
+<pre><code>ORDER BY department, office, username;
+</code></pre>
+                    <p>Esto agrupa los empleados por departamento y oficina, permitiendo aplicar la actualización de manera organizada.</p>
+                </li>
+                <li><span class="check-icon">✅</span> <strong>Verificar empleados sin <code>device_id</code> asignado para evitar problemas en la actualización:</strong>
+<pre><code>WHERE department <> 'Tecnología de la Información' AND device_id IS NULL;
+</code></pre>
+                    <p>Esto ayuda a identificar empleados que no tienen un dispositivo registrado, lo cual puede requerir una revisión antes de la actualización.</p>
+                </li>
+                <li><span class="check-icon">✅</span> <strong>Cruzar con la tabla <code>log_in_attempts</code> para verificar intentos de acceso recientes:</strong>
+<pre><code>SELECT e.employee_id, e.username, e.department, l.ip_address,
+       l.login_date, l.success
+FROM employees e
+JOIN log_in_attempts l ON e.username = l.username
+WHERE e.department <> 'Tecnología de la Información'
+AND l.success = 0;
+</code></pre>
+                    <p>Esto permite identificar si alguno de estos empleados ha tenido intentos fallidos de inicio de sesión, lo que podría indicar problemas de seguridad.</p>
+                </li>
+            </ul>
+            <div class="error-box">
+                <h4 class="mb-2 text-red-100"><span class="alert-icon">🚨</span> Conclusión</h4>
+                <p>Esta consulta permite identificar a los empleados que aún necesitan actualizaciones en sus dispositivos, asegurando que solo aquellos fuera del departamento de TI reciban los parches correspondientes. Estas consultas permiten mejorar la seguridad del sistema y optimizar la gestión de accesos y dispositivos en la empresa. <span class="rocket-icon">🚀</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
