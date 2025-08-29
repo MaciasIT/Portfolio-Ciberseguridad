@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guía para la Evaluación de Riesgos (NIST SP 800-30)</title>
+  <meta name="description" content="Contenido de un documento del portafolio." />
+  <meta name="theme-color" content="#0b1220" />
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#0f172a; --muted:#94a3b8; --text:#e5e7eb; --brand:#38bdf8; --accent:#22c55e; --danger:#ef4444; --card:#111827;
+      --ring: rgba(56,189,248,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(1200px 600px at 75% -10%,#0d1b2a00 30%,#0d1b2a66 60%,#0b1220 100%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(10px);background:rgba(11,18,32,.6);border-bottom:1px solid #1f2937;z-index:50}
+    .nav{max-width:1100px;margin:auto;display:flex;align-items:center;gap:16px;padding:10px 16px}
+    .nav .logo{font-weight:700;letter-spacing:.4px}
+    .nav a{color:#cbd5e1;margin-left:auto}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0 0 0 24px;padding:0}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid #1f2937;background:linear-gradient(180deg,#111827,#0b1220);color:#e5e7eb}
+    .btn:hover{box-shadow:0 0 0 4px var(--ring)}
+    .btn.brand{border-color:#0ea5e9;background:linear-gradient(180deg,#0ea5e933,#0ea5e908)}
+    .btn.ghost{background:transparent;border-color:#1f2937}
+    .container{max-width:1100px;margin:auto;padding:56px 16px}
+    .hero{padding:80px 16px 72px;background:radial-gradient(1000px 400px at 10% -10%,#0ea5e922,transparent),radial-gradient(800px 500px at 90% 10%,#22c55e22,transparent)}
+    .hero h1{font-size:clamp(32px,4.5vw,56px);line-height:1.1;margin:0 0 14px}
+    .hero p.lead{color:var(--muted);font-size:clamp(16px,2.2vw,20px);max-width:800px}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #1f2937;background:#0d1322;color:#a5b4fc;font-size:12px;letter-spacing:.4px}
+    .stack{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{background:linear-gradient(180deg,#0f172a,#0b1220);border:1px solid #172036;border-radius:16px;padding:18px}
+    .shadow{box-shadow:0 10px 30px -15px rgba(0,0,0,.5)}
+    .section-title{font-size:22px;margin:0 0 6px}
+    .muted{color:var(--muted)}
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{padding:8px 10px;border:1px solid #1f2937;background:#0b1220;border-radius:10px}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0}
+    .kpi{flex:1 1 160px;border:1px solid #172036;background:#0b1220;border-radius:14px;padding:14px;text-align:center}
+    .kpi b{font-size:22px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .pill{font-size:12px;border:1px solid #1f2937;border-radius:999px;padding:4px 8px;color:#93c5fd}
+    footer{border-top:1px solid #1f2937;padding:40px 16px;color:#94a3b8}
+    .timeline{position:relative;padding-left:22px}
+    .timeline:before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:#1f2937}
+    .tl{position:relative;margin:0 0 18px}
+    .tl:before{content:"";position:absolute;left:-2px;top:5px;width:10px;height:10px;border-radius:50%;background:#38bdf8;box-shadow:0 0 0 3px #0b1220}
+    .badge-row{display:flex;gap:8px;flex-wrap:wrap}
+    .bad{background:#0b1220;border:1px solid #1f2937;border-radius:8px;padding:6px 8px;font-size:12px;color:#cbd5e1}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    @media (max-width:680px){.nav ul{display:none}}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border: 1px solid var(--panel);
+    }
+
+    th {
+      background-color: var(--card);
+      color: var(--text);
+      font-weight: bold;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: var(--bg);
+    }
+
+    tbody tr:hover {
+      background-color: var(--panel);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">🔐 Michel Macías</div>
+      <ul>
+        <li><a href="../../index.html">Inicio</a></li>
+        <li><a href="../../curriculum/Declaración.md">Curriculum</a></li>
+        <li><a href="../../documentos_portafolio/portfolio/habilidades&tecnicas.md">Portafolio</a></li>
+        <li><a href="../../glosario/Curso1/Curso1mod1.md">Glosario</a></li>
+        <li><a href="../../herramientas_ciberseguridad/SIEM/Herramientas_SIEM.md">Herramientas</a></li>
+      </ul>
+      <a class="btn" href="../../index.html">Volver a Inicio</a>
+    </nav>
+  </header>
+
+  <section class="container">
+    <h1>NIST SP 800-30 Rev. 1</h1>
+    <h2>Guía para la evaluación de riesgos</h2>
+    <p><strong>NIST SP 800-30</strong> es una publicación que ofrece orientación sobre la realización de evaluaciones de riesgos. Describe estrategias para identificar, analizar y remediar riesgos. Las organizaciones utilizan NIST SP 800-30 para comprender la <strong>probabilidad</strong> y la <strong>gravedad</strong> de los riesgos, lo que les ayuda a tomar decisiones informadas sobre la asignación de recursos, la implementación de controles y la priorización de las medidas de remediación.</p>
+    <p>Este documento de cuatro páginas es una adaptación de <strong>NIST SP 800-30 Rev. 1</strong>. El término <em>"Rev. 1"</em> significa que es la primera versión actualizada de esta publicación. El NIST revisa ocasionalmente sus documentos para incorporar nueva información, reflejar cambios en la tecnología y los requisitos regulatorios, o atender comentarios.</p>
+    <blockquote><strong>Nota:</strong> El Centro de Recursos de Seguridad Informática del NIST contiene más información sobre SP 800-30 Rev. 1.</blockquote>
+    <hr>
+    <h2>Fuentes de amenazas</h2>
+    <p>La norma NIST SP 800-30 define y clasifica las <strong>fuentes de amenazas</strong> como entidades o circunstancias que pueden afectar negativamente a los sistemas de información de una organización. Esta información es útil para identificar y evaluar riesgos potenciales. Al consultarla, considere la <strong>intención</strong> y las <strong>capacidades</strong> de las fuentes de amenazas internas y externas.</p>
+    <blockquote><strong>Nota:</strong> La siguiente tabla enumera algunas posibles fuentes de amenazas que podrían comprometer un servidor de base de datos de acceso público.</blockquote>
+    <table>
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Ejemplos</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Usuario estándar</td>
+          <td>Empleado, Cliente</td>
+          <td>Amenazas derivadas de individuos o grupos que podrían explotar recursos cibernéticos, ya sea intencional o accidentalmente. Por ejemplo, podrían alterar datos o robar información.</td>
+        </tr>
+        <tr>
+          <td>Usuario privilegiado</td>
+          <td>Administrador del sistema</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Grupo</td>
+          <td>Competidor, Proveedor, Socio comercial</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Estado-nación</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Foráneo</td>
+          <td>Hacker, Hacktivista, APT</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Hardware</td>
+          <td>Almacenamiento, Procesamiento, Comunicaciones</td>
+          <td>Amenazas que se originan por factores no humanos, como fallas de equipos.</td>
+        </tr>
+        <tr>
+          <td>Software</td>
+          <td>Sistemas operativos, Redes, Malware</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Entorno operativo</td>
+          <td>Control de temperatura, humedad, alimentación</td>
+          <td>Amenazas derivadas de factores accidentales y no humanos.</td>
+        </tr>
+        <tr>
+          <td>Riesgos naturales</td>
+          <td>Cortes de energía, Clima extremo</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <h2>Eventos de amenaza</h2>
+    <p>La norma NIST SP 800-30 define y categoriza los <strong>eventos de amenaza</strong> como instancias reales en las que una fuente de amenaza explota una vulnerabilidad y causa daños o perjuicios a los sistemas de información de una organización. Esta información es útil para comprender mejor los tipos de riesgos a los que se enfrentan los activos.</p>
+    <blockquote><strong>Nota:</strong> La siguiente tabla enumera solo algunos posibles eventos de amenaza que podrían comprometer un servidor de base de datos de acceso público.</blockquote>
+    <table>
+      <thead>
+        <tr>
+          <th>Ejemplo</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Realizar reconocimiento y vigilancia de la organización</td>
+          <td>Uso de herramientas como escaneo o vigilancia física para evaluar vulnerabilidades.</td>
+        </tr>
+        <tr>
+          <td>Obtener información sensible mediante exfiltración</td>
+          <td>Instalación de malware para adquirir datos confidenciales.</td>
+        </tr>
+        <tr>
+          <td>Modificar o eliminar información crítica</td>
+          <td>Alteración de datos clave para las operaciones.</td>
+        </tr>
+        <tr>
+          <td>Falsificación de certificados</td>
+          <td>Compromiso de una CA para hacer conexiones aparentes legítimas.</td>
+        </tr>
+        <tr>
+          <td>Instalar rastreadores de red persistentes</td>
+          <td>Software espía que rastrea el tráfico durante largos períodos.</td>
+        </tr>
+        <tr>
+          <td>Ataques de denegación de servicio (DoS)</td>
+          <td>Saturación del sistema mediante solicitudes automatizadas.</td>
+        </tr>
+        <tr>
+          <td>Interrupción de operaciones críticas</td>
+          <td>Compromiso de la integridad de la información empresarial.</td>
+        </tr>
+        <tr>
+          <td>Ofuscación de ataques futuros</td>
+          <td>Ocultamiento de actividades maliciosas ante sistemas de monitoreo.</td>
+        </tr>
+        <tr>
+          <td>Ataques de tipo "hombre en el medio"</td>
+          <td>Intercepción de comunicaciones entre sistemas internos y externos.</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <h2>Probabilidad de un evento de amenaza</h2>
+    <p>En general, la <strong>probabilidad</strong> de un evento de amenaza debe calcularse como una puntuación basada en una combinación de factores: evidencia disponible, experiencia previa y juicio experto. Se deben considerar la intención y las capacidades de la fuente de amenaza, así como los eventos potenciales.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Valor cualitativo</th>
+          <th>Valor cuantitativo</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Alta</td>
+          <td>3</td>
+          <td>Es casi seguro que ocurra un evento con efectos graves o catastróficos.</td>
+        </tr>
+        <tr>
+          <td>Moderada</td>
+          <td>2</td>
+          <td>Probable que ocurra, con efectos significativos.</td>
+        </tr>
+        <tr>
+          <td>Baja</td>
+          <td>1</td>
+          <td>Muy improbable, con efectos mínimos.</td>
+        </tr>
+      </tbody>
+    </table>
+    <hr>
+    <h2>Gravedad de un evento de amenaza</h2>
+    <p>La <strong>gravedad</strong> mide el impacto potencial de un evento en las operaciones comerciales. Por ejemplo:</p>
+    <ul>
+      <li>¿Podría detener completamente una función crítica?</li>
+      <li>¿Podría pasar desapercibido pero interrumpir procesos?</li>
+    </ul>
+    <p>Se debe evaluar el <strong>impacto comercial</strong> para generar una puntuación adecuada de gravedad.</p>
+    <hr>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Michel Macías · Ciberseguridad
+      <span class="muted" style="float:right">Hecho con GitHub Pages</span>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
