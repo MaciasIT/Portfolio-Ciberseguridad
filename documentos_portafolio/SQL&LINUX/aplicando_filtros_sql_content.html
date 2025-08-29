@@ -71,6 +71,95 @@
   </header>
 
   <section class="container">
+    <h1>Portfolio Ciberseguridad. SQL & Filtros</h1>
+
+    <p>Usted es un profesional de seguridad en una gran organización. Parte de su trabajo es investigar problemas de seguridad para ayudar a mantener el sistema seguro. Recientemente descubrió algunos problemas potenciales de seguridad que involucran intentos de inicio de sesión y máquinas de empleados.</p>
+
+    <p>Su tarea es examinar los datos de la organización en sus tablas <code>employees</code> y <code>log_in_attempts</code>. Deberá utilizar filtros SQL para recuperar registros de diferentes conjuntos de datos e investigar los posibles problemas de seguridad.</p>
+
+    <h2>Formatos de Tablas</h2>
+
+    <p>Este documento describe cómo se organizan las tablas utilizadas para esta actividad de portfolio. La base de datos de la organización contiene las siguientes dos tablas:</p>
+
+    <ul>
+        <li><code>log_in_attempts</code></li>
+        <li><code>employees</code></li>
+    </ul>
+
+    <h3>Tabla <code>log_in_attempts</code></h3>
+    <p>La tabla <code>log_in_attempts</code> tiene las siguientes columnas:</p>
+    <ul>
+        <li><strong>event_id:</strong> El número de identificación asignado a cada evento de inicio de sesión.</li>
+        <li><strong>username:</strong> El nombre de usuario del empleado.</li>
+        <li><strong>login_date:</strong> La fecha en que se registró el intento de inicio de sesión.</li>
+        <li><strong>login_time:</strong> La hora en que se registró el intento de inicio de sesión.</li>
+        <li><strong>country:</strong> El país donde ocurrió el intento de inicio de sesión.</li>
+        <li><strong>ip_address:</strong> La dirección IP de la máquina de ese empleado.</li>
+        <li><strong>success:</strong> El éxito del intento de inicio de sesión; <code>FALSE</code> indica un intento fallido.</li>
+    </ul>
+    <p>En la consola de MariaDB, estas columnas se devuelven como:</p>
+<pre><code>" event_id | username |
+","login_date | login_time | country | ip_address  success |
+ +
+"
+</code></pre>
+
+    <h3>Tabla <code>employees</code></h3>
+    <p>La tabla <code>employees</code> tiene las siguientes columnas:</p>
+    <ul>
+        <li><strong>employee_id:</strong> El número de identificación asignado a cada empleado.</li>
+        <li><strong>device_id:</strong> El número de identificación asignado a cada dispositivo utilizado por el empleado.</li>
+        <li><strong>username:</strong> El nombre de usuario del empleado.</li>
+        <li><strong>department:</strong> El departamento en el que se encuentra el empleado.</li>
+        <li><strong>office:</strong> La oficina donde se encuentra el empleado.</li>
+    </ul>
+    <p>En la consola de MariaDB, estas columnas se devuelven como:</p>
+<pre><code> employee_id | device_id  username | department   office
+</code></pre>
+
+    <hr>
+
+    <h2>Recuperar Intentos de Acceso Fallidos Después de Horas</h2>
+    <p>Recientemente ha descubierto un posible incidente de seguridad ocurrido fuera del horario laboral. Para investigarlo, necesita consultar la tabla <code>log_in_attempts</code> y revisar la actividad de inicio de sesión fuera del horario laboral. Utilice filtros en SQL para crear una consulta que identifique todos los intentos de inicio de sesión fallidos que se produjeron después de las 18:00. (La hora del intento de inicio de sesión se encuentra en la columna <code>login_time</code>. La columna <code>success</code> contiene un valor de 0 cuando un intento de inicio de sesión falló; puede utilizar un valor de 0 o <code>FALSE</code> en su consulta para identificar los intentos de inicio de sesión fallidos)</p>
+    <p>Describa su consulta y cómo funciona en la sección "Recuperar tras horas de intentos de inicio de sesión fallidos" de la plantilla "Aplicar filtros a consultas SQL".</p>
+
+    <hr>
+
+    <h2>Recuperar los Intentos de Inicio de Sesión en Fechas Concretas</h2>
+    <p>Un evento sospechoso ocurrió el 2022-05-09. Para investigar este evento, desea revisar todos los intentos de inicio de sesión que se produjeron ese día y el día anterior. Utilice filtros en SQL para crear una consulta que identifique todos los intentos de inicio de sesión que se produjeron el 2022-05-09 o el 2022-05-08. (La fecha del intento de inicio de sesión se encuentra en la columna <code>login_date</code>). (La fecha del intento de inicio de sesión se encuentra en la columna <code>login_date</code>)</p>
+    <p>Describa su consulta y cómo funciona en la sección "Recuperar intentos de inicio de sesión en fechas específicas" de la plantilla "Aplicar filtros a consultas SQL".</p>
+
+    <hr>
+
+    <h2>Recuperar Intentos de Inicio de Sesión Fuera de México</h2>
+    <p>Ha habido actividad sospechosa con intentos de inicio de sesión, pero el equipo ha determinado que esta actividad no se originó en México. Ahora, necesita investigar los intentos de inicio de sesión que ocurrieron fuera de México. Utilice filtros en SQL para crear una consulta que identifique todos los intentos de inicio de sesión que se produjeron fuera de México. Describa su consulta y cómo funciona en la sección "Recuperar intentos de inicio de sesión en fechas específicas" de la plantilla "Aplicar filtros a consultas SQL".</p>
+
+    <hr>
+
+    <h2>Recuperar Empleados en Marketing</h2>
+    <p>Su equipo desea realizar actualizaciones de seguridad en máquinas específicas de empleados en el departamento de Marketing. Usted es responsable de obtener información sobre estos equipos de empleados y necesitará consultar la tabla de empleados. Utilice filtros en SQL para crear una consulta que identifique a todos los empleados del departamento de Marketing de todas las oficinas del edificio Este.</p>
+    <p>(El departamento del empleado se encuentra en la columna <code>departamento</code>, que contiene valores que incluyen Marketing. La oficina se encuentra en la columna <code>oficina</code>. Algunos ejemplos de valores en esta columna son Este-170, Este-320 y Norte-434. Tendrá que utilizar la palabra clave <code>LIKE</code> con <code>%</code> para filtrar el edificio Este)</p>
+    <p>Describa su consulta y cómo funciona en la sección "Recuperar empleados en Marketing" de la plantilla "Aplicar filtros a consultas SQL".</p>
+
+    <hr>
+
+    <h2>Recuperar Empleados en Finanzas o Ventas</h2>
+    <p>Su equipo necesita ahora realizar una actualización de seguridad diferente en las máquinas para los empleados de los departamentos de Ventas y Finanzas. Utilice filtros en SQL para crear una consulta que identifique a todos los empleados de los departamentos de Ventas o Finanzas. (El departamento del empleado se encuentra en la columna <code>departamento</code>, que contiene valores que incluyen Ventas y Finanzas)</p>
+    <p>Describa su consulta y cómo funciona en la sección "Recuperar empleados en Finanzas o Ventas" de la plantilla "Aplicar filtros a consultas SQL".</p>
+
+    <hr>
+
+    <h2>Recuperar a Todos los Empleados que No Estén en IT</h2>
+    <p>Su equipo necesita realizar una actualización más en las máquinas de los empleados. Los empleados que pertenecen al departamento de tecnología de la información ya han recibido esta actualización, pero los empleados de todos los demás departamentos la necesitan. Utilice filtros en SQL para crear una consulta que identifique a todos los empleados que no pertenezcan al departamento de informática. (El departamento del empleado se encuentra en la columna <code>departamento</code>, que contiene valores que incluyen Tecnología de la información)</p>
+    <p>Describa su consulta y cómo funciona en la sección "Recuperar todos los empleados que no pertenecen a TI" de la plantilla "Aplicar filtros a consultas SQL".</p>
+
+    <hr>
+
+    <h2>Finalizar Documento</h2>
+    <p>Para finalizar el documento y dejar claro su propósito a los posibles empleadores, asegúrate de completar las secciones Descripción del proyecto y Resumen de la plantilla Aplicar filtros a consultas SQL.</p>
+    <p>En la sección Descripción del proyecto, ofrece una visión general del escenario y de lo que consigues mediante SQL. Escribe de dos a cuatro frases.</p>
+    <p>En la sección Resumen, proporcione un breve resumen de las tareas anteriores y conéctelas con el escenario. Escribe aproximadamente de dos a cuatro frases.</p>
+    <hr>
     <div class="main-container">
         <!-- Título principal -->
         <h1>Aplicando Filtros SQL para la Seguridad</h1>
