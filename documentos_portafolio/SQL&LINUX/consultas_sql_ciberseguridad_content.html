@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consultas SQL Aplicadas a la Ciberseguridad</title>
+  <meta name="description" content="Contenido de un documento del portafolio." />
+  <meta name="theme-color" content="#0b1220" />
+  <style>
+    :root{
+      --bg:#0b1220; --panel:#0f172a; --muted:#94a3b8; --text:#e5e7eb; --brand:#38bdf8; --accent:#22c55e; --danger:#ef4444; --card:#111827;
+      --ring: rgba(56,189,248,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(1200px 600px at 75% -10%,#0d1b2a00 30%,#0d1b2a66 60%,#0b1220 100%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(10px);background:rgba(11,18,32,.6);border-bottom:1px solid #1f2937;z-index:50}
+    .nav{max-width:1100px;margin:auto;display:flex;align-items:center;gap:16px;padding:10px 16px}
+    .nav .logo{font-weight:700;letter-spacing:.4px}
+    .nav a{color:#cbd5e1;margin-left:auto}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0 0 0 24px;padding:0}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid #1f2937;background:linear-gradient(180deg,#111827,#0b1220);color:#e5e7eb}
+    .btn:hover{box-shadow:0 0 0 4px var(--ring)}
+    .btn.brand{border-color:#0ea5e9;background:linear-gradient(180deg,#0ea5e933,#0ea5e908)}
+    .btn.ghost{background:transparent;border-color:#1f2937}
+    .container{max-width:1100px;margin:auto;padding:56px 16px}
+    .hero{padding:80px 16px 72px;background:radial-gradient(1000px 400px at 10% -10%,#0ea5e922,transparent),radial-gradient(800px 500px at 90% 10%,#22c55e22,transparent)}
+    .hero h1{font-size:clamp(32px,4.5vw,56px);line-height:1.1;margin:0 0 14px}
+    .hero p.lead{color:var(--muted);font-size:clamp(16px,2.2vw,20px);max-width:800px}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #1f2937;background:#0d1322;color:#a5b4fc;font-size:12px;letter-spacing:.4px}
+    .stack{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{background:linear-gradient(180deg,#0f172a,#0b1220);border:1px solid #172036;border-radius:16px;padding:18px}
+    .shadow{box-shadow:0 10px 30px -15px rgba(0,0,0,.5)}
+    .section-title{font-size:22px;margin:0 0 6px}
+    .muted{color:var(--muted)}
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{padding:8px 10px;border:1px solid #1f2937;background:#0b1220;border-radius:10px}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0}
+    .kpi{flex:1 1 160px;border:1px solid #172036;background:#0b1220;border-radius:14px;padding:14px;text-align:center}
+    .kpi b{font-size:22px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .pill{font-size:12px;border:1px solid #1f2937;border-radius:999px;padding:4px 8px;color:#93c5fd}
+    footer{border-top:1px solid #1f2937;padding:40px 16px;color:#94a3b8}
+    .timeline{position:relative;padding-left:22px}
+    .timeline:before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:#1f2937}
+    .tl{position:relative;margin:0 0 18px}
+    .tl:before{content:"";position:absolute;left:-2px;top:5px;width:10px;height:10px;border-radius:50%;background:#38bdf8;box-shadow:0 0 0 3px #0b1220}
+    .badge-row{display:flex;gap:8px;flex-wrap:wrap}
+    .bad{background:#0b1220;border:1px solid #1f2937;border-radius:8px;padding:6px 8px;font-size:12px;color:#cbd5e1}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    @media (max-width:680px){.nav ul{display:none}}
+    pre { background-color: #0f172a; padding: 1em; border-radius: 0.5em; overflow-x: auto; color: #e5e7eb; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">🔐 Michel Macías</div>
+      <ul>
+        <li><a href="../../index.html">Inicio</a></li>
+        <li><a href="../../curriculum/Declaración.md">Curriculum</a></li>
+        <li><a href="../../documentos_portafolio/portfolio/habilidades&tecnicas.md">Portafolio</a></li>
+        <li><a href="../../glosario/Curso1/Curso1mod1.md">Glosario</a></li>
+        <li><a href="../../herramientas_ciberseguridad/SIEM/Herramientas_SIEM.md">Herramientas</a></li>
+      </ul>
+      <a class="btn" href="../../index.html">Volver a Inicio</a>
+    </nav>
+  </header>
+
+  <section class="container">
+    <h1>Consultas SQL Aplicadas a la Ciberseguridad</h1>
+
+    <h2>1. Subconsultas y Análisis de Patrones Complejos en Ciberseguridad</h2>
+    <p>Las subconsultas son una herramienta muy potente en SQL que nos permiten ejecutar una consulta dentro de otra. En ciberseguridad, son fundamentales para detectar patrones de comportamiento anómalos o complejos que no serían evidentes con consultas simples.</p>
+
+    <h3>Consulta Avanzada para Detección de Ataques de Fuerza Bruta/Distribuidos</h3>
+    <p>Aquí mejoramos la consulta para identificar usuarios con múltiples intentos fallidos desde diferentes direcciones IP en un corto periodo.</p>
+<pre><code>SELECT
+    username,
+    COUNT(DISTINCT ip_address) AS unique_ips,
+    COUNT(*) AS total_failed_attempts,
+    MIN(login_date) AS first_failed_attempt,
+    MAX(login_date) AS last_failed_attempt
+FROM
+    log_in_attempts
+WHERE
+    success = 0
+    AND login_date >= CURRENT_DATE - INTERVAL 1 DAY
+GROUP BY
+    username
+HAVING
+    COUNT(DISTINCT ip_address) > 5 OR COUNT(*) > 15;
+</code></pre>
+
+    <h3>Explicación Detallada:</h3>
+    <ul>
+        <li><strong><code>SELECT username, COUNT(DISTINCT ip_address) AS unique_ips, COUNT(*) AS total_failed_attempts, MIN(login_date) AS first_failed_attempt, MAX(login_date) AS last_failed_attempt</code></strong>:
+            <ul>
+                <li>Además del <code>username</code>, contamos la cantidad de <strong>IPs únicas (<code>unique_ips</code>)</strong> desde las que se intentó iniciar sesión y el <strong>número total de intentos fallidos (<code>total_failed_attempts</code>)</strong>.</li>
+                <li>Hemos añadido <code>MIN(login_date)</code> y <code>MAX(login_date)</code> para ver el <strong>rango de tiempo</strong> en el que ocurrieron estos intentos, lo que es útil para el análisis forense.</li>
+            </ul>
+        </li>
+        <li><strong><code>FROM log_in_attempts</code></strong>: Especificamos la tabla de origen de los datos.</li>
+        <li><strong><code>WHERE success = 0 AND login_date >= CURRENT_DATE - INTERVAL 1 DAY</code></strong>:
+            <ul>
+                <li><code>success = 0</code>: Filtra solo los <strong>intentos de inicio de sesión fallidos</strong>.</li>
+                <li><code>login_date >= CURRENT_DATE - INTERVAL 1 DAY</code>: Restringe el análisis a los <strong>últimos 24 horas</strong>. Esto es crucial para detectar ataques en curso o recientes.</li>
+            </ul>
+        </li>
+        <li><strong><code>GROUP BY username</code></strong>: Agrupamos los resultados por nombre de usuario para consolidar la información de cada cuenta.</li>
+        <li><strong><code>HAVING COUNT(DISTINCT ip_address) > 5 OR COUNT(*) > 15</code></strong>:
+            <ul>
+                <li>Esta cláusula es fundamental. Filtra los grupos (usuarios) que cumplen con una o ambas condiciones:
+                    <ul>
+                        <li><code>COUNT(DISTINCT ip_address) > 5</code>: Más de 5 direcciones IP únicas.</li>
+                        <li><code>COUNT(*) > 15</code>: Más de 15 intentos fallidos en total.</li>
+                    </ul>
+                </li>
+                <li>Estos umbrales (<code>5</code> y <code>15</code>) son ejemplos y deberían <strong>ajustarse según el patrón de tráfico normal de tu red</strong> para evitar falsos positivos o negativos. Un ataque de fuerza bruta distribuido podría usar muchas IPs, mientras que uno no distribuido podría centrarse en una o pocas IPs pero con muchos intentos.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Relevancia en Ciberseguridad:</h3>
+    <p>Esta consulta es vital para <strong>detectar ataques de fuerza bruta o de diccionario</strong>, incluyendo aquellos que son <strong>distribuidos</strong> (cuando se usan múltiples IPs para evitar bloqueos). Una alta <code>unique_ips</code> junto con <code>total_failed_attempts</code> indica una anomalía clara que requiere investigación inmediata. También nos permite ver la <strong>persistencía del ataque</strong> al analizar <code>first_failed_attempt</code> y <code>last_failed_attempt</code>.</p>
+
+    <hr>
+
+    <h2>2. Funciones de Ventana para Análisis Temporal Avanzado</h2>
+    <p>Las funciones de ventana (<code>Window Functions</code>) en SQL nos permiten realizar cálculos sobre un conjunto de filas relacionadas con la fila actual, sin colapsar las filas como lo haría un <code>GROUP BY</code>. Son extremadamente útiles para análisis temporales y de tendencias en ciberseguridad, como la detección de picos de actividad.</p>
+
+    <h3>Consulta para Identificar Picos Sospechosos de Intentos Fallidos por Hora</h3>
+<pre><code>WITH hourly_failed_attempts AS (
+    SELECT
+        DATE_FORMAT(login_time, '%Y-%m-%d %H:00:00') AS hour_interval,
+        COUNT(*) AS attempts
+    FROM
+        log_in_attempts
+    WHERE
+        success = 0
+    GROUP BY
+        hour_interval
+),
+hourly_avg_trend AS (
+    SELECT
+        hour_interval,
+        attempts,
+        AVG(attempts) OVER (
+            ORDER BY hour_interval
+            ROWS BETWEEN 7 PRECEDING AND CURRENT ROW
+        ) AS seven_hour_moving_avg
+    FROM
+        hourly_failed_attempts
+)
+SELECT
+    hour_interval,
+    attempts,
+    seven_hour_moving_avg
+FROM
+    hourly_avg_trend
+WHERE
+    attempts > seven_hour_moving_avg * 2.5;
+</code></pre>
+
+    <h3>Explicación Detallada:</h3>
+    <ol>
+        <li><strong><code>WITH hourly_failed_attempts AS (...)</code></strong>:
+            <ul>
+                <li>Esta CTE (Common Table Expression) calcula el número total de intentos de inicio de sesión fallidos por cada hora.</li>
+                <li><code>DATE_FORMAT(login_time, '%Y-%m-%d %H:00:00') AS hour_interval</code>: Trunca la marca de tiempo a la hora más cercana, creando intervalos de una hora. Esto es crucial para analizar la actividad horaria.</li>
+                <li><code>COUNT(*) AS attempts</code>: Cuenta los intentos fallidos dentro de cada <code>hour_interval</code>.</li>
+                <li><code>WHERE success = 0</code>: Asegura que solo se consideren los intentos fallidos.</li>
+                <li><code>GROUP BY hour_interval</code>: Agrupa los resultados por cada intervalo horario.</li>
+            </ul>
+        </li>
+        <li><strong><code>WITH hourly_avg_trend AS (...)</code></strong>:
+            <ul>
+                <li>Esta segunda CTE construye sobre la primera para calcular una <strong>media móvil</strong>.</li>
+                <li><code>AVG(attempts) OVER (ORDER BY hour_interval ROWS BETWEEN 7 PRECEDING AND CURRENT ROW) AS seven_hour_moving_avg</code>: Esta es la función de ventana clave.
+                    <ul>
+                        <li><code>OVER (ORDER BY hour_interval)</code>: Define el orden en que se aplica la ventana (por intervalos de hora).</li>
+                        <li><code>ROWS BETWEEN 7 PRECEDING AND CURRENT ROW</code>: Especifica que la ventana para el cálculo de la media incluye la hora actual y las 7 horas anteriores, creando una <strong>media móvil de 8 horas</strong>. Esto suaviza las fluctuaciones y ayuda a identificar desviaciones significativas.</li>
+                        <li>La media móvil es un excelente <strong>indicador de referencia</strong> para el comportamiento "normal" en un periodo de tiempo.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><strong><code>SELECT ... FROM hourly_avg_trend WHERE attempts > seven_hour_moving_avg * 2.5</code></strong>:
+            <ul>
+                <li>Finalmente, seleccionamos los intervalos horarios donde los intentos fallidos (<code>attempts</code>) superan un <strong>umbral</strong> (en este caso, 2.5 veces) de la media móvil.</li>
+                <li>El multiplicador <code>2.5</code> es un ejemplo. Debería ajustarse basándose en el análisis de tu línea base de tráfico para minimizar falsos positivos (actividad normal que parece anómala) y falsos negativos (actividad anómala que pasa desapercibida).</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h3>Relevancia en Ciberseguridad:</h3>
+    <p>Esta consulta es fundamental para la <strong>detección temprana de anomalías</strong>. Permite identificar <strong>picos súbitos de actividad maliciosa</strong>, como ataques de <strong>DDoS (Distributed Denial of Service)</strong> en la capa de aplicación o <strong>escaneos masivos</strong> que buscan vulnerabilidades, los cuales se manifestarían como un aumento drástico en los intentos fallidos en un corto período de tiempo, superando la media histórica. Es una forma de aplicar el <strong>análisis de comportamiento</strong> para la seguridad.</p>
+
+    <hr>
+
+    <h2>3. Optimización de Consultas con Índices para la Eficiencia Forense</h2>
+    <p>En la ciberseguridad, a menudo trabajamos con grandes volúmenes de datos de logs. La <strong>optimización de consultas</strong> es crucial para obtener resultados rápidamente, especialmente en un escenario de incidente donde cada segundo cuenta. Los <strong>índices</strong> son estructuras de datos que mejoran la velocidad de las operaciones de recuperación en las tablas de una base de datos.</p>
+
+    <h3>Creación de Índice para Búsquedas por Fecha y Usuario</h3>
+<pre><code>CREATE INDEX idx_login_date_username ON log_in_attempts (login_date, username, success);
+</code></pre>
+
+    <h3>Explicación Detallada:</h3>
+    <ul>
+        <li><strong><code>CREATE INDEX idx_login_date_username</code></strong>: Creamos un índice con un nombre descriptivo.</li>
+        <li><strong><code>ON log_in_attempts (login_date, username, success)</code></strong>:
+            <ul>
+                <li>Indicamos que el índice se creará en la tabla <code>log_in_attempts</code>.</li>
+                <li>Las columnas <code>login_date</code>, <code>username</code> y <code>success</code> se incluyen en el índice.</li>
+                <li>El orden de las columnas es importante: si tus consultas suelen filtrar primero por <code>login_date</code> y luego por <code>username</code>, este orden es óptimo. Incluir <code>success</code> también es beneficioso ya que muchas de nuestras consultas de seguridad filtran por intentos fallidos (<code>success = 0</code>). Este tipo de índice se conoce como <strong>índice compuesto</strong>.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Relevancia en Ciberseguridad:</h3>
+    <ul>
+        <li><strong>Aceleración de Búsquedas</strong>: Al buscar registros por <code>login_date</code>, <code>username</code> o <code>success</code> (o una combinación), el motor de la base de datos no tiene que escanear toda la tabla. En su lugar, puede usar el índice, lo que reduce drásticamente el tiempo de respuesta. Esto es vital en <strong>análisis forenses</strong> o durante una <strong>respuesta a incidentes</strong>, donde la rapidez es crítica.</li>
+        <li><strong>Eficiencia en Agregaciones</strong>: Las consultas que realizan <code>GROUP BY</code> en estas columnas también se benefician, ya que el índice ya tiene los datos ordenados.</li>
+        <li><strong>Consideraciones</strong>: Si bien los índices mejoran la lectura, pueden ralentizar las operaciones de escritura (INSERT, UPDATE, DELETE) ligeramente, ya que el índice también debe mantenerse. Por ello, la creación de índices debe ser una <strong>decisión estratégica</strong> basada en los patrones de uso de la base de datos.</li>
+    </ul>
+
+    <hr>
+
+    <h2>4. Seguridad en Consultas: Prevención de Inyección SQL</h2>
+    <p>La <strong>inyección SQL</strong> sigue siendo una de las vulnerabilidades más críticas y comunes en aplicaciones web. Ocurre cuando un atacante inserta código SQL malicioso en una entrada de datos de la aplicación, que luego es ejecutado por la base de datos.</p>
+
+    <h3>Ejemplo de Prevención en Python con Marcadores de Posición</h3>
+<pre><code>import mysql.connector
+
+# Simulación de entrada de usuario (¡potencialmente maliciosa!)
+user_input = "admin' OR '1'='1"
+department_input = "IT"
+
+try:
+    # Configuración de la conexión a la base de datos (ejemplo)
+    db_config = {
+        'host': 'localhost',
+        'user': 'your_user',
+        'password': 'your_password',
+        'database': 'your_database'
+    }
+    cnx = mysql.connector.connect(**db_config)
+    cursor = cnx.cursor()
+
+    # Consulta SEGURA usando marcadores de posición (placeholders)
+    query = "SELECT employee_id, username, department FROM employees WHERE username = %s AND department = %s"
+
+    # Los valores se pasan como una tupla, no se concatenan directamente
+    cursor.execute(query, (user_input, department_input))
+
+    results = cursor.fetchall()
+
+    if results:
+        print("Resultados encontrados:")
+        for row in results:
+            print(f"ID: {row[0]}, Usuario: {row[1]}, Departamento: {row[2]}")
+    else:
+        print("No se encontraron resultados.")
+
+except mysql.connector.Error as err:
+    print(f"Error de base de datos: {err}")
+finally:
+    if 'cnx' in locals() and cnx.is_connected():
+        cursor.close()
+        cnx.close()
+        print("Conexión a la base de datos cerrada.")
+</code></pre>
+
+    <h3>Explicación Detallada:</h3>
+    <ul>
+        <li><strong>Marcadores de Posición (<code>%s</code> en Python con <code>mysql.connector</code>)</strong>:
+            <ul>
+                <li>En lugar de concatenar directamente las entradas del usuario en la cadena SQL, utilizamos marcadores de posición (también llamados <em>parámetros vinculados</em> o <em>prepared statements</em>).</li>
+                <li><code>query = "SELECT ... WHERE username = %s AND department = %s"</code>: La consulta SQL se define con <code>%s</code> donde deberían ir los valores.</li>
+                <li><code>cursor.execute(query, (user_input, department_input))</code>: Los valores (<code>user_input</code>, <code>department_input</code>) se pasan como una tupla al método <code>execute()</code>.</li>
+            </ul>
+        </li>
+        <li><strong>Cómo Funciona la Protección</strong>:
+            <ul>
+                <li>El controlador de la base de datos toma la consulta con los marcadores de posición y los valores por separado.</li>
+                <li><strong>Escapa automáticamente</strong> cualquier carácter especial (<code>'</code>, <code>"</code>, <code>;</code>, etc.) en los valores de entrada, antes de insertarlos en la consulta.</li>
+                <li>Esto garantiza que las entradas del usuario siempre se traten como <strong>datos</strong>, nunca como parte de la <strong>estructura SQL</strong> de la consulta. Por lo tanto, <code>admin' OR '1'='1</code> se trataría como un literal de cadena, no como código SQL ejecutable.</li>
+            </ul>
+        </li>
+        <li><strong>Separación de Datos y Estructura</strong>: Este es el principio fundamental. El motor de la base de datos sabe qué es la estructura de la consulta y qué son los datos, impidiendo que los datos alteren la estructura.</li>
+    </ul>
+
+    <h3>Relevancia en Ciberseguridad:</h3>
+    <p>La prevención de inyección SQL es una de las prácticas de desarrollo más básicas y cruciales para construir aplicaciones seguras. Ignorarla abre la puerta a:</p>
+    <ul>
+        <li><strong>Acceso no autorizado</strong>: Un atacante puede eludir la autenticación.</li>
+        <li><strong>Exfiltración de datos</strong>: Robar información sensible de la base de datos.</li>
+        <li><strong>Modificación/Borrado de datos</strong>: Manipular o destruir información crítica.</li>
+        <li><strong>Denegación de Servicio</strong>: Bloquear la funcionalidad de la aplicación.</li>
+        <li><strong>Ejecución remota de comandos</strong>: En algunos casos, puede permitir la ejecución de comandos en el servidor.</li>
+    </ul>
+    <p>Siempre que interactúes con una base de datos desde una aplicación, utiliza <strong>parámetros vinculados</strong> o <strong>consultas preparadas</strong>.</p>
+
+    <hr>
+
+    <h2>5. Análisis Forense con Triggers y Auditorías</h2>
+    <p>En el ámbito de la ciberseguridad, el <strong>análisis forense</strong> y la <strong>auditoría</strong> son fundamentales para detectar actividades maliciosas, entender cómo ocurrieron los incidentes y cumplir con las normativas. Los <strong>triggers (disparadores)</strong> de SQL son una herramienta poderosa para implementar mecanismos de auditoría a nivel de base de datos.</p>
+
+    <h3>Auditoría de Cambios en la Tabla <code>employees</code> con un Trigger</h3>
+<pre><code>-- 1. Crear la tabla de auditoría para registrar los cambios
+CREATE TABLE employees_audit (
+    audit_id INT AUTO_INCREMENT PRIMARY KEY,
+    action VARCHAR(10) NOT NULL,
+    old_data JSON,
+    new_data JSON,
+    changed_by VARCHAR(50),
+    change_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 2. Crear el trigger AFTER UPDATE en la tabla employees
+DELIMITER //
+CREATE TRIGGER audit_employees_after_update
+AFTER UPDATE ON employees
+FOR EACH ROW
+BEGIN
+    INSERT INTO employees_audit (action, old_data, new_data, changed_by)
+    VALUES (
+        'UPDATE',
+        JSON_OBJECT(
+            'employee_id', OLD.employee_id,
+            'username', OLD.username,
+            'department', OLD.department,
+            'device_id', OLD.device_id,
+            'office', OLD.office
+        ),
+        JSON_OBJECT(
+            'employee_id', NEW.employee_id,
+            'username', NEW.username,
+            'department', NEW.department,
+            'device_id', NEW.device_id,
+            'office', NEW.office
+        ),
+        CURRENT_USER()
+    );
+END;
+//
+DELIMITER ;
+
+-- Puedes crear triggers similares para INSERT y DELETE:
+-- DELIMITER //
+-- CREATE TRIGGER audit_employees_after_insert
+-- AFTER INSERT ON employees
+-- FOR EACH ROW
+-- BEGIN
+--     INSERT INTO employees_audit (action, new_data, changed_by)
+--     VALUES ('INSERT', JSON_OBJECT(
+--            'employee_id', NEW.employee_id,
+--            'username', NEW.username,
+--            'department', NEW.department,
+--            'device_id', NEW.device_id,
+--            'office', NEW.office
+--        )), CURRENT_USER());
+-- END;
+-- //
+-- DELIMITER ;
+
+-- DELIMITER //
+-- CREATE TRIGGER audit_employees_after_delete
+-- AFTER DELETE ON employees
+-- FOR EACH ROW
+-- BEGIN
+--     INSERT INTO employees_audit (action, old_data, changed_by)
+--     VALUES ('DELETE', JSON_OBJECT(
+--            'employee_id', OLD.employee_id,
+--            'username', OLD.username,
+--            'department', OLD.department,
+--            'device_id', OLD.device_id,
+--            'office', OLD.office
+--        )), CURRENT_USER());
+-- END;
+-- //
+-- DELIMITER ;
+</code></pre>
+
+    <h3>Explicación Detallada:</h3>
+    <ul>
+        <li><strong>Tabla <code>employees_audit</code></strong>:
+            <ul>
+                <li>Es una tabla dedicada exclusivamente a almacenar el <strong>registro de auditoría</strong>.</li>
+                <li><code>audit_id</code>: Una clave primaria auto-incrementable para identificar cada evento de auditoría.</li>
+                <li><code>action</code>: Registra el tipo de operación (<code>'UPDATE'</code>, <code>'INSERT'</code>, <code>'DELETE'</code>).</li>
+                <li><code>old_data JSON</code>: Almacena el estado de la fila <strong>antes</strong> de la modificación. Usar el tipo de dato <code>JSON</code> es muy práctico, ya que nos permite guardar un objeto completo con todos los campos relevantes de la fila modificada de manera estructurada.</li>
+                <li><code>new_data JSON</code>: Almacena el estado de la fila <strong>después</strong> de la modificación. Para un <code>UPDATE</code>, contendrá los nuevos valores; para un <code>INSERT</code>, solo los datos de la fila insertada.</li>
+                <li><code>changed_by</code>: Captura el <strong>usuario de la base de datos</strong> que realizó la operación. Esto es crucial para la trazabilidad.</li>
+                <li><code>change_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP</code>: Registra automáticamente el momento exacto en que ocurrió el cambio.</li>
+            </ul>
+        </li>
+        <li><strong>Trigger <code>audit_employees_after_update</code></strong>:
+            <ul>
+                <li><strong><code>AFTER UPDATE ON employees</code></strong>: Este trigger se activa <strong>después</strong> de cada operación <code>UPDATE</code> en la tabla <code>employees</code>.</li>
+                <li><strong><code>FOR EACH ROW</code></strong>: Indica que el trigger se ejecuta para cada fila que es afectada por el <code>UPDATE</code>.</li>
+                <li><strong><code>BEGIN ... END</code></strong>: Define el cuerpo del trigger.</li>
+                <li><strong><code>INSERT INTO employees_audit (...) VALUES (...)</code></strong>: Aquí es donde se inserta el registro en la tabla de auditoría.</li>
+                <li><strong><code>OLD.column_name</code> y <code>NEW.column_name</code></strong>: Dentro de un trigger <code>AFTER UPDATE</code>, <code>OLD</code> hace referencia a los valores de las columnas antes del <code>UPDATE</code>, y <code>NEW</code> a los valores después del <code>UPDATE</code>. Esto nos permite capturar qué cambió exactamente.</li>
+                <li><strong><code>JSON_OBJECT(...)</code></strong>: Esta función (disponible en MySQL, PostgreSQL, etc.) es excelente para construir objetos JSON a partir de pares clave-valor, facilitando el almacenamiento de la fila completa en un solo campo. Asegúrate de incluir todas las columnas de interés de la tabla original.</li>
+                <li><strong><code>CURRENT_USER()</code></strong>: Función SQL que devuelve el usuario autenticado en la base de datos que está ejecutando la operación.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Relevancia en Ciberseguridad:</h3>
+    <p>Los triggers de auditoría son una <strong>medida de control detective</strong> invaluable para:</p>
+    <ul>
+        <li><strong>Análisis Forense</strong>: Permiten reconstruir la secuencia de eventos que llevaron a una brecha o un cambio no autorizado. Si un atacante modifica datos o crea usuarios, el trigger lo registrará.</li>
+        <li><strong>Cumplimiento Normativo</strong>: Muchas regulaciones (GDPR, PCI DSS, SOX) exigen un registro de auditoría detallado de los accesos y modificaciones a datos sensibles.</li>
+        <li><strong>Detección de Amenazas Internas</strong>: Ayudan a identificar a empleados que realizan cambios fuera de su rol o de forma maliciosa.</li>
+        <li><strong>Trazabilidad</strong>: Proporcionan un historial inmutable de quién hizo qué y cuándo, lo que es esencial para la responsabilidad.</li>
+        <li><strong>Integridad de Datos</strong>: Monitorizan cambios inesperados que podrían indicar corrupción o manipulación.</li>
+    </ul>
+    <p>Un sistema de auditoría robusto es una capa de seguridad fundamental en cualquier infraestructura de TI.</p>
+
+    <hr>
+
+    <h2>6. Integración con Herramientas de Monitoreo (SIEM)</h2>
+    <p>En la ciberseguridad moderna, la <strong>integración de datos</strong> de diversas fuentes es clave para obtener una visibilidad completa de la postura de seguridad de una organización. Los <strong>SIEM (Security Information and Event Management)</strong> son plataformas que agregan y analizan logs de múltiples sistemas, permitiendo la detección de amenazas, el cumplimiento y la respuesta a incidentes.</p>
+
+    <h3>Consulta para Exportar Datos Relevantes a un SIEM (ej. Splunk)</h3>
+    <p>Esta consulta combina información de intentos de inicio de sesión, empleados y máquinas para identificar patrones de riesgo.</p>
+<pre><code>SELECT
+    lla.ip_address,
+    lla.username,
+    lla.login_time,
+    e.department,
+    m.operating_system,
+    m.os_patch_date,
+    lla.country,
+    lla.success
+FROM
+    log_in_attempts lla
+JOIN
+    employees e ON lla.username = e.username
+JOIN
+    machines m ON e.device_id = m.device_id
+WHERE
+    lla.country NOT IN ('Spain', 'Portugal')
+    AND m.os_patch_date < '2024-06-01'
+    AND lla.success = 0;
+</code></pre>
+
+    <h3>Explicación Detallada:</h3>
+    <ul>
+        <li><strong><code>SELECT ... FROM log_in_attempts lla JOIN employees e ON ... JOIN machines m ON ...</code></strong>:
+            <ul>
+                <li>Realizamos <code>JOIN</code> entre tres tablas: <code>log_in_attempts</code>, <code>employees</code> y <code>machines</code>. Esto nos permite correlacionar un intento de inicio de sesión (desde dónde, cuándo, si falló) con el empleado asociado (a qué departamento pertenece) y la máquina asignada (qué SO usa, cuándo se parcheó).</li>
+                <li>Los <strong>alias</strong> (<code>lla</code>, <code>e</code>, <code>m</code>) son una buena práctica para hacer las consultas más legibles, especialmente con múltiples joins.</li>
+            </ul>
+        </li>
+        <li><strong><code>WHERE lla.country NOT IN ('Spain', 'Portugal') AND m.os_patch_date < '2024-06-01' AND lla.success = 0</code></strong>:
+            <ul>
+                <li><code>lla.country NOT IN ('Spain', 'Portugal')</code>: Filtra intentos de inicio de sesión desde países que no son los habituales o esperados. He puesto "Spain" y "Portugal" como ejemplo, deberías ajustarlo a las ubicaciones geográficas de tu empresa.</li>
+                <li><code>m.os_patch_date < '2024-06-01'</code>: Identifica máquinas con sistemas operativos <strong>desactualizados</strong> (fecha de parche anterior a un umbral). Las máquinas sin parches son un vector de ataque conocido.</li>
+                <li><code>lla.success = 0</code>: Nos centramos en los <strong>intentos fallidos</strong>, que suelen ser indicadores de actividad sospechosa.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Relevancia en Ciberseguridad:</h3>
+    <p>Esta consulta es un ejemplo de cómo podemos enriquecer los datos de seguridad antes de enviarlos a un SIEM.</p>
+    <ul>
+        <li><strong>Correlación de Eventos</strong>: Un SIEM puede tomar esta información y correlacionarla con otros eventos (ej. alertas de firewall, tráfico de red anómalo) para identificar patrones de ataque más complejos.</li>
+        <li><strong>Detección Proactiva</strong>: Permite detectar accesos desde ubicaciones inusuales combinados con el uso de sistemas desactualizados, lo que eleva significativamente el nivel de riesgo.</li>
+        <li><strong>Generación de Alertas</strong>: Un SIEM puede configurarse para generar alertas críticas cuando se cumplan estas condiciones, notificando al equipo de SOC (Security Operations Center).</li>
+        <li><strong>Análisis de Vulnerabilidades</strong>: Ayuda a visualizar qué usuarios o departamentos están siendo blanco de ataques y si las vulnerabilidades de los sistemas están siendo explotadas.</li>
+        <li><strong>Cumplimiento</strong>: Proporciona los datos necesarios para demostrar la monitorización de accesos y la gestión de vulnerabilidades, lo cual es vital para auditorías de cumplimiento.</li>
+    </ul>
+
+    <hr>
+
+    <h2>7. Manejo de Grandes Volúmenes de Datos: Particionamiento de Tabla</h2>
+    <p>En entornos donde las tablas de logs de seguridad crecen a un ritmo acelerado (miles o millones de registros diarios), el rendimiento de las consultas puede degradarse significativamente. El <strong>particionamiento de tablas</strong> es una técnica de optimización de bases de datos que divide una tabla grande en partes más pequeñas y manejables, llamadas particiones.</p>
+
+    <h3>Particionamiento de la Tabla <code>log_in_attempts</code> por Rango de Año</h3>
+<pre><code>-- Sentencia para alterar la tabla y añadir particiones por rango de año
+ALTER TABLE log_in_attempts
+PARTITION BY RANGE (YEAR(login_date)) (
+    PARTITION p_before_2020 VALUES LESS THAN (2020),
+    PARTITION p2020 VALUES LESS THAN (2021),
+    PARTITION p2021 VALUES LESS THAN (2022),
+    PARTITION p2022 VALUES LESS THAN (2023),
+    PARTITION p2023 VALUES LESS THAN (2024),
+    PARTITION p2024 VALUES LESS THAN (2025),
+    PARTITION p_future VALUES LESS THAN MAXVALUE
+);
+
+-- NOTA: Para añadir una nueva partición para el año 2025 en el futuro, harías:
+-- ALTER TABLE log_in_attempts REORGANIZE PARTITION p_future INTO (
+--     PARTITION p2025 VALUES LESS THAN (2026),
+--     PARTITION p_future VALUES LESS THAN MAXVALUE
+-- );
+</code></pre>
+
+    <h3>Explicación Detallada:</h3>
+    <ul>
+        <li><strong><code>ALTER TABLE log_in_attempts PARTITION BY RANGE (YEAR(login_date))</code></strong>:
+            <ul>
+                <li>Indicamos que vamos a modificar la tabla <code>log_in_attempts</code> y que el particionamiento se basará en el <strong>rango de un valor</strong>.</li>
+                <li><code>YEAR(login_date)</code>: La función <code>YEAR()</code> extrae el año de la columna <code>login_date</code>. Esta será la <strong>clave de particionamiento</strong>.</li>
+            </ul>
+        </li>
+        <li><strong><code>PARTITION p_before_2020 VALUES LESS THAN (2020)</code></strong>:
+            <ul>
+                <li>Creamos particiones para cada año. Por ejemplo, <code>p_before_2020</code> almacenará todos los registros cuya <code>login_date</code> sea anterior al año 2020.</li>
+                <li><code>VALUES LESS THAN (X)</code>: Define el límite superior exclusivo para la partición. Todos los valores hasta <code>X-1</code> (en este caso, hasta el 31 de diciembre de 2019) irán a esta partición.</li>
+            </ul>
+        </li>
+        <li><strong><code>PARTITION p_future VALUES LESS THAN MAXVALUE</code></strong>:
+            <ul>
+                <li>Es crucial tener una partición para valores futuros (<code>MAXVALUE</code>). Esto asegura que cualquier nuevo registro (con un año posterior a las particiones definidas) tenga un lugar donde ir sin causar errores. Posteriormente, esta partición se puede dividir para crear nuevas particiones anuales.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Relevancia en Ciberseguridad:</h3>
+    <p>El particionamiento es una estrategia clave para gestionar bases de datos de seguridad a gran escala:</p>
+    <ul>
+        <li><strong>Mejora del Rendimiento de Consultas</strong>: Si una consulta filtra por <code>login_date</code> (ej. <code>WHERE YEAR(login_date) = 2024</code>), el motor de la base de datos solo necesita buscar en la partición <code>p2024</code>, ignorando las demás. Esto reduce el conjunto de datos a escanear, acelerando drásticamente la consulta.</li>
+        <li><strong>Facilita el Mantenimiento y Archivamiento</strong>:
+            <ul>
+                <li><strong>Borrado Rápido de Datos Antiguos</strong>: Si necesitas eliminar datos de auditoría muy antiguos (ej. de 2020), puedes simplemente eliminar la partición <code>p2020</code> completa (<code>ALTER TABLE log_in_attempts DROP PARTITION p2020;</code>) en lugar de ejecutar un <code>DELETE</code> lento que afecte a toda la tabla.</li>
+                <li><strong>Archivado Eficiente</strong>: Las particiones de años anteriores pueden ser movidas o archivadas fácilmente a almacenamiento más económico (ej. <em>cold storage</em>) si las políticas de retención de datos lo permiten, liberando recursos en la base de datos principal.</li>
+            </ul>
+        </li>
+        <li><strong>Disponibilidad y Respaldo</strong>: En algunos sistemas, las operaciones de respaldo pueden realizarse a nivel de partición, lo que permite respaldos más rápidos y granulares.</li>
+    </ul>
+    <p>La implementación del particionamiento requiere una planificación cuidadosa, pero los beneficios en rendimiento y gestión de datos son significativos para bases de datos transaccionales y de logs de seguridad.</p>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Michel Macías · Ciberseguridad
+      <span class="muted" style="float:right">Hecho con GitHub Pages</span>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
