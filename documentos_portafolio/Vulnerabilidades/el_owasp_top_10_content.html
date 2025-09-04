@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OWASP Top 10</title>
+  <meta name="description" content="Documento de referencia profesional para el análisis y prevención de vulnerabilidades en aplicaciones web." />
+  <meta name="theme-color" content="#0b1220" />
+  <style>
+    /* Estilos básicos para que se vea similar a otros documentos del portafolio */
+    :root{
+      --bg:#0b1220; --panel:#0f172a; --muted:#94a3b8; --text:#e5e7eb; --brand:#38bdf8; --accent:#22c55e; --danger:#ef4444; --card:#111827;
+      --ring: rgba(56,189,248,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(1200px 600px at 75% -10%,#0d1b2a00 30%,#0d1b2a66 60%,#0b1220 100%),var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(10px);background:rgba(11,18,32,.6);border-bottom:1px solid #1f2937;z-index:50}
+    .nav{max-width:1100px;margin:auto;display:flex;align-items:center;gap:16px;padding:10px 16px}
+    .nav .logo{font-weight:700;letter-spacing:.4px}
+    .nav a{color:#cbd5e1;margin-left:auto}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0 0 0 24px;padding:0}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid #1f2937;background:linear-gradient(180deg,#111827,#0b1220);color:#e5e7eb}
+    .btn:hover{box-shadow:0 0 0 4px var(--ring)}
+    .btn.brand{border-color:#0ea5e9;background:linear-gradient(180deg,#0ea5e933,#0ea5e908)}
+    .btn.ghost{background:transparent;border-color:#1f2937}
+    .container{max-width:1100px;margin:auto;padding:56px 16px}
+    .hero{padding:80px 16px 72px;background:radial-gradient(1000px 400px at 10% -10%,#0ea5e922,transparent),radial-gradient(800px 500px at 90% 10%,#22c55e22,transparent)}
+    .hero h1{font-size:clamp(32px,4.5vw,56px);line-height:1.1;margin:0 0 14px}
+    .hero p.lead{color:var(--muted);font-size:clamp(16px,2.2vw,20px);max-width:800px}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #1f2937;background:#0d1322;color:#a5b4fc;font-size:12px;letter-spacing:.4px}
+    .stack{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{background:linear-gradient(180deg,#0f172a,#0b1220);border:1px solid #172036;border-radius:16px;padding:18px}
+    .shadow{box-shadow:0 10px 30px -15px rgba(0,0,0,.5)}
+    .section-title{font-size:22px;margin:0 0 6px}
+    .muted{color:var(--muted)}
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skill{padding:8px 10px;border:1px solid #1f2937;background:#0b1220;border-radius:10px}
+    .kpis{display:flex;gap:16px;flex-wrap:wrap;margin:14px 0}
+    .kpi{flex:1 1 160px;border:1px solid #172036;background:#0b1220;border-radius:14px;padding:14px;text-align:center}
+    .kpi b{font-size:22px}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .pill{font-size:12px;border:1px solid #1f2937;border-radius:999px;padding:4px 8px;color:#93c5fd}
+    footer{border-top:1px solid #1f2937;padding:40px 16px;color:#94a3b8}
+    .timeline{position:relative;padding-left:22px}
+    .timeline:before{content:"";position:absolute;left:9px;top:0;bottom:0;width:2px;background:#1f2937}
+    .tl{position:relative;margin:0 0 18px}
+    .tl:before{content:"";position:absolute;left:-2px;top:5px;width:10px;height:10px;border-radius:50%;background:#38bdf8;box-shadow:0 0 0 3px #0b1220}
+    .badge-row{display:flex;gap:8px;flex-wrap:wrap}
+    .bad{background:#0b1220;border:1px solid #1f2937;border-radius:8px;padding:6px 8px;font-size:12px;color:#cbd5e1}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    @media (max-width:680px){.nav ul{display:none}}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #1f2937;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">🔐 Michel Macías</div>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Sección 1</a></li>
+        <li><a href="#">Sección 2</a></li>
+      </ul>
+      <a class="btn" href="#">Botón</a>
+    </nav>
+  </header>
+
+  <section class="container">
+    <div class="markdown-body">
+      <h1>OWASP Top 10</h1>
+      <p>Documento de referencia profesional para el análisis y prevención de vulnerabilidades en aplicaciones web</p>
+
+      <h2>Introducción</h2>
+      <p>En el ámbito de la ciberseguridad, comprender y anticiparse a las vulnerabilidades más comunes en el desarrollo de aplicaciones es fundamental para proteger los sistemas, los datos y la reputación de las organizaciones. Para ello, existen varios recursos clave, entre ellos el proyecto OWASP (Open Worldwide Application Security Project) y su reconocida publicación: el OWASP Top 10.</p>
+      <p>Este documento está dirigido a profesionales en formación, técnicos de ciberseguridad y desarrolladores, con el objetivo de ofrecer una referencia práctica y comprensible sobre el OWASP Top 10, facilitando su incorporación en auditorías, desarrollo seguro y cultura de ciberseguridad organizacional.</p>
+
+      <h2>¿Qué es OWASP?</h2>
+      <p>OWASP es una organización sin ánimo de lucro y de código abierto, creada para mejorar la seguridad del software. Su comunidad está compuesta por miles de profesionales de todo el mundo que contribuyen con investigaciones, herramientas, guías y documentación técnica orientada a proteger aplicaciones web.</p>
+      <p>Entre sus iniciativas más influyentes se encuentra el OWASP Top 10, una clasificación periódica de las vulnerabilidades más críticas en aplicaciones web, basada en datos reales aportados por múltiples organizaciones, análisis de riesgo y frecuencia de aparición.</p>
+
+      <h2>¿Qué es el OWASP Top 10?</h2>
+      <p>El OWASP Top 10 es un documento de referencia que enumera y describe las diez vulnerabilidades más comunes y peligrosas en aplicaciones web. Su propósito es concienciar a desarrolladores, responsables de seguridad y auditores sobre los fallos más relevantes, promoviendo su detección temprana y mitigación desde las fases iniciales del desarrollo.</p>
+      <p>Importancia práctica:</p>
+      <ul>
+        <li>Utilizado por organizaciones globales como estándar de seguridad.</li>
+        <li>Referencia habitual en auditorías y cumplimiento normativo.</li>
+        <li>Herramienta clave en la educación en ciberseguridad y desarrollo seguro.</li>
+      </ul>
+
+      <h3>Actualización:</h3>
+      <p>El OWASP Top 10 se actualiza cada 3 o 4 años, integrando nuevas tendencias y amenazas, como ocurrió en su edición de 2021, que introdujo cambios significativos en la estructura y enfoque de las categorías.</p>
+
+      <h2>Las 10 vulnerabilidades más críticas según OWASP</h2>
+
+      <h3>1. Broken Access Control (Control de Acceso Roto)</h3>
+      <p>Cuando las aplicaciones no aplican correctamente restricciones sobre lo que los usuarios pueden ver o hacer, los atacantes pueden acceder, modificar o eliminar información que no les pertenece.</p>
+      <p>Ejemplo: Un usuario sin privilegios que consigue acceder al panel de administración modificando la URL.</p>
+
+      <h3>2. Cryptographic Failures (Fallos Criptográficos)</h3>
+      <p>Errores al proteger los datos sensibles, como usar algoritmos de cifrado obsoletos, no aplicar cifrado en tránsito o en reposo, o almacenar contraseñas en texto plano.</p>
+      <p>Ejemplo: Utilizar MD5 o SHA-1 para hashear contraseñas.</p>
+
+      <h3>3. Injection (Inyecciones)</h3>
+      <p>Ocurren cuando una aplicación permite la inserción de código malicioso (SQL, NoSQL, LDAP, OS, etc.) a través de entradas no validadas, lo que puede comprometer la integridad o confidencialidad de los datos.</p>
+      <p>Ejemplo: Ataques SQL Injection en formularios de login mal protegidos.</p>
+
+      <h3>4. Insecure Design (Diseño Inseguro)</h3>
+      <p>Falta de principios de seguridad en el diseño arquitectónico. Esta categoría pone énfasis en la necesidad de aplicar prácticas de “Security by Design" y análisis de amenazas desde las etapas iniciales.</p>
+      <p>Ejemplo: Una API que permite operaciones sin autenticación previa.</p>
+
+      <h3>5. Security Misconfiguration (Desconfiguración de Seguridad)</h3>
+      <p>Errores en la configuración de servidores, aplicaciones, contenedores, firewalls u otros componentes que dejan huecos de seguridad abiertos.</p>
+      <p>Ejemplo: Dejar activada la cuenta "admin" con credenciales por defecto.</p>
+
+      <h3>6. Vulnerable and Outdated Components (Componentes Vulnerables y Obsoletos)</h3>
+      <p>Uso de librerías, dependencias o plugins con vulnerabilidades conocidas y sin mantenimiento actualizado.</p>
+      <p>Ejemplo: Utilizar versiones antiguas de Log4j o jQuery en producción.</p>
+
+      <h3>7. Identification and Authentication Failures (Fallos en Autenticación e Identificación)</h3>
+      <p>Problemas en los mecanismos para verificar la identidad de los usuarios, como contraseñas débiles, falta de MFA (autenticación multifactor) o sesiones inseguras.</p>
+      <p>Ejemplo: Tokens de sesión sin expiración o predecibles.</p>
+
+      <h3>8. Software and Data Integrity Failures (Fallos en la Integridad del Software y los Datos)</h3>
+      <p>Uso de código fuente, actualizaciones o pipelines sin verificación de integridad, que pueden ser manipulados por atacantes (ataques a la cadena de suministro).</p>
+      <p>Ejemplo: El incidente de SolarWinds (2020), donde se inyectó malware en las actualizaciones legítimas.</p>
+
+      <h3>9. Security Logging and Monitoring Failures (Fallos en Registro y Monitoreo de Seguridad)</h3>
+      <p>Falta de registros adecuados, alertas o respuestas ante actividades sospechosas. Esto impide detectar y contener incidentes a tiempo.</p>
+      <p>Ejemplo: No registrar los intentos fallidos de acceso o no alertar ante cambios no autorizados.</p>
+
+      <h3>10. Server-Side Request Forgery (SSRF - Falsificación de Peticiones del Lado del Servidor)</h3>
+      <p>Una SSRF ocurre cuando una aplicación web es manipulada para hacer peticiones internas no autorizadas en nombre del servidor, accediendo a recursos internos.</p>
+      <p>Ejemplo: Acceder a la metadata de una instancia EC2 de AWS desde una URL maliciosa enviada por un atacante.</p>
+
+      <h2>Diferencias entre OWASP Top 10 y la lista CVE</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>OWASP Top 10</th>
+            <th>CVE (Common Vulnerabilities and Exposures)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Objetivo</td>
+            <td>Educación y prevención</td>
+            <td>Inventario de vulnerabilidades específicas</td>
+          </tr>
+          <tr>
+            <td>Alcance</td>
+            <td>Tipos genéricos de fallos de seguridad</td>
+            <td>Fallos puntuales en productos concretos</td>
+          </tr>
+          <tr>
+            <td>Actualización</td>
+            <td>Cada 3-4 años</td>
+            <td>Diaria/semanal</td>
+          </tr>
+          <tr>
+            <td>Aplicación práctica</td>
+            <td>Desarrollo seguro, auditorías, formación</td>
+            <td>Gestión de parches y actualizaciones</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Recomendaciones profesionales</h2>
+      <ul>
+        <li>Integrar OWASP en el ciclo de vida del desarrollo (SDLC): Adoptar prácticas de desarrollo seguro como revisión de código, pruebas dinámicas y análisis estático.</li>
+        <li>Formar a los equipos técnicos: Asegurar que los desarrolladores y administradores de sistemas conozcan y apliquen medidas contra las vulnerabilidades del Top 10.</li>
+        <li>Automatizar escaneos y controles de seguridad: Usar herramientas como OWASP ZAP, SonarQube, Snyk o GitHub Dependabot.</li>
+        <li>Aplicar principios de mínima exposición y privilegio: Solo otorgar los permisos imprescindibles a usuarios y servicios.</li>
+      </ul>
+
+      <h2>Conclusión</h2>
+      <p>El OWASP Top 10 representa un pilar fundamental en la defensa de la seguridad web moderna. Estudiarlo, comprenderlo y aplicarlo es una inversión estratégica para cualquier profesional de la ciberseguridad. Al mantenernos actualizados y conscientes de estas amenazas, no solo fortalecemos nuestras aplicaciones, sino también nuestras carreras y el ecosistema digital global.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Michel Macías · Ciberseguridad
+      <span class="muted" style="float:right">Hecho con GitHub Pages</span>
+    </div>
+  </footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
