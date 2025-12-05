@@ -25,15 +25,15 @@ const About = () => {
         <div className="min-h-screen py-20">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header with Profile Image */}
-                <div className="text-center mb-16 animate-fadeIn">
+                <div className="flex flex-col items-center justify-center mb-16 animate-fadeIn">
                     <div className="flex flex-col items-center mb-6">
                         {/* Profile Image - Smaller and more subtle */}
-                        <div className="relative mb-6">
+                        <div className="relative mb-6" style={{ width: '192px', height: '192px' }}>
                             <div className="absolute inset-0 bg-gradient-primary rounded-full blur-lg opacity-20"></div>
                             <img
                                 src="/Portfolio-Ciberseguridad/perfil.jpg"
                                 alt="Michel Macías"
-                                className="relative w-24 h-24 md:w-28 md:h-28 object-cover rounded-full border-2 border-[var(--color-primary)]/20 shadow-md"
+                                className="relative w-full h-full object-cover rounded-full border-2 border-[var(--color-primary)]/20 shadow-md"
                             />
                         </div>
                         <h1 className="text-5xl font-bold mb-4">Sobre Mí</h1>
