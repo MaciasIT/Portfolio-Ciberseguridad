@@ -1,18 +1,35 @@
-import Header from './components/Header'; // New import
-import MarkdownViewer from './components/MarkdownViewer';
-import './App.css'; // Keep existing CSS if any
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import Projects from './pages/Projects';
+import ProjectDetail from './pages/ProjectDetail';
+import Documentation from './pages/Documentation';
+import DocumentDetail from './pages/DocumentDetail';
+import Contact from './pages/Contact';
+import './App.css';
 
 function App() {
   return (
-    <div className="min-h-screen bg-red-500 text-gray-800 font-sans flex flex-col"> {/* Añadido bg-red-500 */}
-      <Header />
-      <main className="flex-grow flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-8">
-          <MarkdownViewer />
-        </div>
-      </main>
-    </div>
+    <Router>
+      <div className="min-h-screen flex flex-col bg-[var(--color-bg-primary)]">
+        <Header />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:projectId" element={<ProjectDetail />} />
+            <Route path="/docs" element={<Documentation />} />
+            <Route path="/docs/:documentId" element={<DocumentDetail />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
-export default App;;;;
+export default App;
