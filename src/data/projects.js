@@ -4,7 +4,7 @@ export const projects = [
     {
         id: 'port-scanner',
         title: 'Port Scanner en Python',
-        description: 'Escáner de puertos TCP con interfaz CLI profesional. Permite escanear rangos de puertos personalizados con timeout configurable y manejo robusto de errores.',
+        description: 'Escáner de puertos TCP con interfaz CLI. Permite escanear rangos de puertos personalizados con timeout configurable y manejo robusto de errores.',
         category: 'Herramientas',
         technologies: ['Python', 'Socket Programming', 'CLI'],
         filePath: '/src/portfolio_content/programacion/port_scanner.py',

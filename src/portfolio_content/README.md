@@ -8,13 +8,13 @@
 ![Cybersecurity](https://img.shields.io/badge/Cybersecurity-FF0000?style=for-the-badge&logo=protonvpn&logoColor=white)
 
 👋 ¡Bienvenido! Este repositorio recoge mis **proyectos, prácticas y documentos** en el ámbito de la **ciberseguridad ofensiva y defensiva**.  
-Mi enfoque combina **curiosidad tecnológica, ética profesional y aprendizaje continuo**.
+Mi enfoque combina **curiosidad tecnológica, ética en la práctica y aprendizaje continuo**.
 
 ---
 
 ## 🧑‍💻 Sobre mí
 - 🎓 Formación en **Administración de Sistemas Informáticos**.  
-- 🔐 Especialización autodidacta en **seguridad informática** y **hacking ético**.  
+- 🔐 Estudio autodidacta de **seguridad informática** y **hacking ético**.  
 - 🐳 Uso de **Docker** y automatización para crear entornos seguros.  
 - 🌍 Comprometido con la **confianza digital** y la **concienciación en seguridad**.  
 

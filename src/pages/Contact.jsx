@@ -23,7 +23,7 @@ const Contact = () => {
             icon: FiLinkedin,
             label: 'LinkedIn',
             value: 'Michel Macías',
-            description: 'Red profesional',
+            description: 'Red de contactos',
             href: 'https://linkedin.com/in/michelmacias',
             external: true
         }
@@ -58,7 +58,7 @@ const Contact = () => {
                         <h1 className="text-5xl font-bold mb-4">Contacto</h1>
                     </div>
                     <p className="text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-                        ¿Interesado en colaborar? Estoy disponible para proyectos de ciberseguridad, consultoría y oportunidades profesionales
+                        ¿Interesado en colaborar? Estoy disponible para proyectos de ciberseguridad y oportunidades de aprendizaje
                     </p>
                 </div>
 

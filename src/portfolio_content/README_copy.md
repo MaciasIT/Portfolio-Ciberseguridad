@@ -1,14 +1,14 @@
 # 💻 Portafolio de Ciberseguridad
 
-¡Hola! Soy un profesional en transición al mundo de la **ciberseguridad**, con una sólida trayectoria en operaciones y gestión, y una creciente experiencia técnica en seguridad informática, automatización y contenedores.
+¡Hola! Soy un estudiante de **ciberseguridad**, con una sólida trayectoria en operaciones y gestión, y una creciente experiencia técnica en seguridad informática, automatización y contenedores.
 
-Este repositorio recoge mis avances, proyectos y aprendizajes en el ámbito de la ciberseguridad ofensiva y defensiva. Mi enfoque combina la **curiosidad tecnológica**, la **ética profesional**, y un **compromiso continuo con el aprendizaje**.
+Este repositorio recoge mis avances, proyectos y aprendizajes en el ámbito de la ciberseguridad ofensiva y defensiva. Mi enfoque combina la **curiosidad tecnológica**, la **ética en la práctica**, y un **compromiso continuo con el aprendizaje**.
 
 ---
 
 ## 🚀 Sobre mí
 
-- 📍 Formación en Administración de TI y especialización autodidacta en **seguridad informática**.
+- 📍 Formación en Administración de TI y estudio autodidacta en **seguridad informática**.
 - 🔐 Interés profundo en la **protección de datos**, el **hacking ético**, y la **educación en buenas prácticas digitales**.
 - 📦 Uso de tecnologías como **Docker** para crear entornos seguros y automatizar tareas de seguridad.
 - 👥 Apasionado por fomentar la **confianza digital** y la **concienciación en seguridad**.
