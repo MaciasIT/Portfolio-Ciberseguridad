@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
     const [displayText, setDisplayText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
-    const fullText = 'Especialista en Ciberseguridad';
+    const fullText = 'Estudiante de Ciberseguridad';
 
     const stats = [
         { value: '5+', label: 'Proyectos' },

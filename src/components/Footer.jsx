@@ -41,7 +41,7 @@ const Footer = () => {
                             Michel Macías
                         </h3>
                         <p className="text-[var(--color-text-secondary)] text-sm">
-                            Profesional de ciberseguridad especializado en seguridad ofensiva y defensiva,
+                            Estudiante de ciberseguridad enfocado en seguridad ofensiva y defensiva,
                             hacking ético y automatización de procesos de seguridad.
                         </p>
                     </div>
