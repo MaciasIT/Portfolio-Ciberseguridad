@@ -13,16 +13,22 @@ const ProjectDetail = () => {
 
     useEffect(() => {
         if (project) {
-            // Cargar el archivo del proyecto
+            // Cargar el archivo del proyecto usando fetch (funciona en producción)
             const loadCode = async () => {
                 try {
-                    // Convertir la ruta del proyecto a ruta importable
-                    const filePath = project.filePath.replace('/src/', '../');
-                    const module = await import(`${filePath}?raw`);
-                    setCode(module.default);
+                    // Construir la URL completa con el base path de Vite
+                    const basePath = import.meta.env.BASE_URL || '/';
+                    const fileUrl = `${basePath}${project.filePath.startsWith('/') ? project.filePath.slice(1) : project.filePath}`;
+
+                    const response = await fetch(fileUrl);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const text = await response.text();
+                    setCode(text);
                 } catch (error) {
                     console.error('Error loading code:', error);
-                    setCode('// Error al cargar el archivo');
+                    setCode('// Error al cargar el archivo\n// Intenta ver el código en GitHub');
                 } finally {
                     setLoading(false);
                 }
@@ -109,7 +115,7 @@ const ProjectDetail = () => {
                         <h2 className="text-2xl font-bold">Código Fuente</h2>
                         <div className="flex gap-3">
                             <a
-                                href={`https://github.com/MaciasIT/Portfolio-Ciberseguridad/blob/main${project.filePath}`}
+                                href={`https://github.com/MaciasIT/Portfolio-Ciberseguridad/blob/main/public${project.filePath}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="px-4 py-2 rounded-lg bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-elevated)] transition-all flex items-center gap-2"
