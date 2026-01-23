@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MatrixBackground from './components/MatrixBackground';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -13,7 +14,8 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-[var(--color-bg-primary)]">
+      <MatrixBackground />
+      <div className="min-h-screen flex flex-col bg-[var(--color-bg-primary)]/80 relative z-0">
         <Header />
         <main className="flex-grow">
           <Routes>

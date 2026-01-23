@@ -82,7 +82,7 @@ const DocumentDetail = () => {
                         <div className="prose prose-invert max-w-none">
                             <ReactMarkdown
                                 components={{
-                                    a: ({ node, children, href, ...props }) => {
+                                    a: ({ children, href, ...props }) => {
                                         // Si el enlace es a un PDF, abrirlo en nueva pestaña
                                         if (href && href.endsWith('.pdf')) {
                                             return (

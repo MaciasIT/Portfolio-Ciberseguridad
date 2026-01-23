@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { FiTerminal, FiCode } from 'react-icons/fi';
+import { FiTerminal, FiCode, FiCpu, FiShield } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
     const [displayText, setDisplayText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
-    const fullText = 'Estudiante de Ciberseguridad';
+    const fullText = '> Inicializando protocolo de seguridad...';
 
+    // Stats data
     const stats = [
-        { value: '5+', label: 'Proyectos' },
-        { value: '20+', label: 'Documentos' },
-        { value: '4', label: 'Scripts' },
-        { value: '100%', label: 'Dedicación' }
+        { value: '5+', label: 'Proyectos Activos', icon: <FiCode /> },
+        { value: '20+', label: 'Docs de Auditoría', icon: <FiShield /> },
+        { value: '100%', label: 'Uptime del Sistema', icon: <FiCpu /> },
     ];
 
     useEffect(() => {
@@ -19,72 +19,82 @@ const Hero = () => {
             const timeout = setTimeout(() => {
                 setDisplayText(prev => prev + fullText[currentIndex]);
                 setCurrentIndex(prev => prev + 1);
-            }, 100);
+            }, 50);
             return () => clearTimeout(timeout);
         }
     }, [currentIndex]);
 
     return (
-        <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Animated Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-bg-primary)] via-[var(--color-bg-secondary)] to-[var(--color-bg-primary)]">
-                <div className="absolute inset-0 opacity-20">
-                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[var(--color-primary)] rounded-full filter blur-3xl animate-pulse"></div>
-                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[var(--color-secondary)] rounded-full filter blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-                </div>
+        <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--color-bg-primary)]">
+
+            {/* Background Details - Hex Grid or specialized graphic */}
+            <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+                <div className="absolute top-[10%] left-[5%] w-64 h-64 border border-[var(--color-primary)] rounded-full animate-pulse"></div>
+                <div className="absolute bottom-[10%] right-[5%] w-96 h-96 border border-[var(--color-secondary)] rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
             </div>
 
             {/* Content */}
             <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+
                     {/* Text Content */}
-                    <div className="flex-1 text-center lg:text-left animate-fadeIn">
-                        <div className="flex items-center justify-center lg:justify-start gap-3 mb-6">
-                            <FiTerminal className="text-[var(--color-primary)] text-4xl" />
-                            <h1 className="text-5xl md:text-7xl font-bold gradient-text">
-                                Michel Macías
-                            </h1>
+                    <div className="flex-1 text-center lg:text-left">
+                        {/* Terminal Header */}
+                        <div className="inline-block mb-4 px-3 py-1 bg-[rgba(0,255,136,0.1)] border border-[var(--color-primary)] rounded font-mono text-sm text-[var(--color-primary)] animate-fadeIn">
+                            <span className="animate-pulse mr-2">●</span>SYSTEM_READY
                         </div>
 
-                        <div className="mb-8">
-                            <p className="text-2xl md:text-3xl text-[var(--color-text-secondary)] mb-2">
-                                {displayText}
-                                <span className="animate-pulse">|</span>
-                            </p>
-                            <p className="text-lg text-[var(--color-text-muted)]">
-                                Transformando la seguridad digital con código y análisis
-                            </p>
+                        <h1 className="text-6xl md:text-8xl font-bold mb-6 tracking-tighter" style={{ fontFamily: 'var(--font-mono)' }}>
+                            <div className="glitch-text" data-text="MICHEL">MICHEL</div>
+                            <div className="text-[var(--color-text-secondary)] text-5xl md:text-7xl mt-2">MACÍAS</div>
+                        </h1>
+
+                        <div className="h-16 mb-8 font-mono text-xl md:text-2xl text-[var(--color-primary)]">
+                            {displayText}
+                            <span className="animate-pulse">_</span>
                         </div>
+
+                        <p className="text-lg text-[var(--color-text-muted)] mb-10 max-w-2xl mx-auto lg:mx-0 border-l-4 border-[var(--color-secondary)] pl-4">
+                            Especialista en Ciberseguridad enfocado en protección de infraestructuras,
+                            auditoría de sistemas y desarrollo de soluciones seguras.
+                        </p>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-12">
+                        <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-16">
                             <Link
                                 to="/projects"
-                                className="px-8 py-4 rounded-lg bg-gradient-primary text-white font-semibold hover:shadow-lg hover:shadow-[var(--color-primary)]/50 transition-all duration-300 flex items-center gap-2"
+                                className="group relative px-8 py-4 bg-[var(--color-primary)] text-[var(--color-bg-primary)] font-bold font-mono overflow-hidden transition-all hover:shadow-[0_0_20px_rgba(0,255,136,0.4)]"
                             >
-                                <FiCode size={20} />
-                                Ver Proyectos
+                                <div className="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                                <span className="relative flex items-center gap-2">
+                                    <FiTerminal /> EJECUTAR_PROYECTOS.EXE
+                                </span>
                             </Link>
+
                             <Link
                                 to="/contact"
-                                className="px-8 py-4 rounded-lg glass border border-[var(--color-primary)]/30 text-[var(--color-primary)] font-semibold hover:bg-[var(--color-primary)]/10 transition-all duration-300"
+                                className="group px-8 py-4 border border-[var(--color-primary)] text-[var(--color-primary)] font-mono font-bold hover:bg-[rgba(0,255,136,0.1)] transition-all"
                             >
-                                Contactar
+                                <span className="flex items-center gap-2">
+                                    CONTACTAR_ROOT
+                                </span>
                             </Link>
                         </div>
 
-                        {/* Stats */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        {/* Stats Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             {stats.map((stat, index) => (
                                 <div
                                     key={index}
-                                    className="glass rounded-lg p-4 text-center hover:glow-primary transition-all duration-300"
-                                    style={{ animationDelay: `${index * 0.1}s` }}
+                                    className="p-4 border border-[var(--color-border)] bg-[var(--color-bg-secondary)]/50 backdrop-blur-sm hover:border-[var(--color-primary)] transition-colors group"
                                 >
-                                    <div className="text-3xl font-bold gradient-text mb-1">
+                                    <div className="text-[var(--color-primary)] mb-2 group-hover:scale-110 transition-transform origin-left">
+                                        {stat.icon}
+                                    </div>
+                                    <div className="text-2xl font-bold font-mono text-[var(--color-text-primary)]">
                                         {stat.value}
                                     </div>
-                                    <div className="text-sm text-[var(--color-text-muted)]">
+                                    <div className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">
                                         {stat.label}
                                     </div>
                                 </div>
@@ -92,15 +102,27 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Profile Image - Small avatar size */}
-                    <div className="flex-shrink-0 animate-fadeIn" style={{ animationDelay: '0.3s' }}>
-                        <div className="relative" style={{ width: '120px', height: '120px' }}>
-                            <img
-                                src="/Portfolio-Ciberseguridad/perfil.jpg?v=2"
-                                alt="Michel Macías"
-                                className="w-full h-full object-cover rounded-full border-2 border-[var(--color-primary)]/20 shadow-md"
-                                style={{ width: '120px', height: '120px' }}
-                            />
+                    {/* Visual Element / Avatar */}
+                    <div className="hidden lg:block relative animate-fadeIn" style={{ animationDelay: '0.5s' }}>
+                        <div className="relative w-80 h-80">
+                            {/* Rotating rings */}
+                            <div className="absolute inset-0 border-2 border-[var(--color-primary)]/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                            <div className="absolute inset-4 border-2 border-dashed border-[var(--color-secondary)]/30 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+
+                            {/* Profile Image with Glitch/Cyber effects */}
+                            <div className="absolute inset-8 rounded-full overflow-hidden border-4 border-[var(--color-bg-elevated)] shadow-[0_0_30px_rgba(0,255,136,0.2)]">
+                                <img
+                                    src="/Portfolio-Ciberseguridad/perfil.jpg?v=2"
+                                    alt="Michel Macías"
+                                    className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] to-transparent opacity-60"></div>
+                            </div>
+
+                            {/* Decorative elements */}
+                            <div className="absolute -top-4 -right-4 px-3 py-1 bg-[var(--color-bg-elevated)] border border-[var(--color-primary)] text-[var(--color-primary)] text-xs font-mono">
+                                ADMIN
+                            </div>
                         </div>
                     </div>
                 </div>
