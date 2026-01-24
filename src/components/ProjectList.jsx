@@ -1,17 +1,17 @@
-import React from 'react';
 import { FiCode, FiExternalLink, FiTerminal, FiShield, FiCpu, FiBook, FiLayout } from 'react-icons/fi';
-import { SiPython, SiJavascript, SiWindowsterminal, SiGnubash, SiDocker, SiJupyter, SiGooglecloud, SiStreamlit, SiFastapi } from 'react-icons/si';
+import { SiPython, SiJavascript, SiGnubash, SiDocker, SiJupyter, SiGooglegemini, SiStreamlit, SiFastapi } from 'react-icons/si';
+import { VscTerminalPowershell } from 'react-icons/vsc';
 import { projects } from '../data/projects';
 
 const getTechIcon = (tech) => {
     const iconMap = {
         'Python': <SiPython />,
         'JavaScript': <SiJavascript />,
-        'PowerShell': <SiWindowsterminal />,
+        'PowerShell': <VscTerminalPowershell />,
         'Bash': <SiGnubash />,
         'Docker': <SiDocker />,
         'Jupyter': <SiJupyter />,
-        'Gemini AI': <SiGooglecloud />,
+        'Gemini AI': <SiGooglegemini />,
         'Streamlit': <SiStreamlit />,
         'FastAPI': <SiFastapi />,
     };
