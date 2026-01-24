@@ -15,7 +15,7 @@
     .\harden_windows.ps1 -Check
     Ejecuta el script en modo de solo verificación, mostrando un informe sin aplicar cambios.
 .NOTES
-    Autor: Gemini
+    Autor: Michel Macias con Antigravity
     ADVERTENCIA: Este script realiza cambios en la configuración de seguridad.
     Ejecútalo con precaución y asegúrate de entender los cambios que realiza.
 #>

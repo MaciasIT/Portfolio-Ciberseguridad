@@ -1,4 +1,5 @@
 # NIST SP 800-30 Rev. 1
+**Autor:** Michel Macias con Antigravity
 
 ## Guía para la evaluación de riesgos
 

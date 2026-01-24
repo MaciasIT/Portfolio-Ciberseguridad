@@ -1,4 +1,5 @@
 # 🛡️ Portafolio Profesional de Ciberseguridad
+**Autor:** Michel Macias con Antigravity
 
 Bienvenido/a a mi portafolio de ciberseguridad. Este repositorio ha sido creado como parte de mi formación profesional y certificación en ciberseguridad, con el objetivo de documentar y mostrar mis **habilidades técnicas**, **proyectos prácticos** y **experiencia en seguridad informática**.
 

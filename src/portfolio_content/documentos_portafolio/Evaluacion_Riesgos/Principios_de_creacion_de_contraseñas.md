@@ -1,5 +1,6 @@
 
 # Principios de creación de contraseñas
+**Autor:** Michel Macias con Antigravity
 
 ### ¿Qué elementos considerarías más importantes al crear una contraseña y por qué?
 

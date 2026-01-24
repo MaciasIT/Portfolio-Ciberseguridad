@@ -1,6 +1,7 @@
 
 
 # Categorías de control
+**Autor:** Michel Macias con Antigravity
 
 Los controles dentro de la ciberseguridad se agrupan en tres categorías principales:
 

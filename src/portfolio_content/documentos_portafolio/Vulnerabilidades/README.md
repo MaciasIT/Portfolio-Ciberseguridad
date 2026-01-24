@@ -1,4 +1,5 @@
 # Vulnerabilidades - OWASP Top 10
+**Autor:** Michel Macias con Antigravity
 
 Esta sección contiene documentación sobre las vulnerabilidades más críticas en aplicaciones web según el proyecto OWASP (Open Web Application Security Project).
 

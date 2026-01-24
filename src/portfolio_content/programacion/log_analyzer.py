@@ -8,6 +8,7 @@ def print_banner():
     """Imprime un banner de bienvenida."""
     print("-" * 60)
     print("        Analizador de Logs en Python")
+    print("      Autor: Michel Macias con Antigravity")
     print("     Busca patrones de ataques comunes en logs web")
     print("-" * 60)
 

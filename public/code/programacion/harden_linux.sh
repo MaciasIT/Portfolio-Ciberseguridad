@@ -4,7 +4,7 @@
 # Script de Hardening para Sistemas Linux (Basado en Debian/Ubuntu)
 # Versión: 2.0
 #
-# Autor: Gemini
+# Autor: Michel Macias con Antigravity
 # Basado en: secure_linux_guide.md del portafolio.
 #
 # ADVERTENCIA: Este script realiza cambios significativos en la configuración

@@ -52,7 +52,7 @@ Mi enfoque combina **curiosidad tecnológica, ética en la práctica y aprendiza
 
 ## 📬 Contacto
 - ✉️ **Email**: michelmacias.it@gmail.com  
-- 💼 **LinkedIn**: [linkedin.com/in/tu-perfil](https://linkedin.com/in/tu-perfil)  
+- 💼 **LinkedIn**: [Miguel Ángel Macías Vargas](https://www.linkedin.com/in/miguel-%C3%A1ngel-mac%C3%ADas-vargas-87902990/)  
 - 🌐 **GitHub**: [github.com/MaciasIT](https://github.com/MaciasIT)  
 
 ---

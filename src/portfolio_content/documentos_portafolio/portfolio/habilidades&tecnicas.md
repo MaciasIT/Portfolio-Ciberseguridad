@@ -1,4 +1,5 @@
 # Habilidades transferibles y técnicas en ciberseguridad
+**Autor:** Michel Macias con Antigravity
 
 Anteriormente, aprendió que los analistas de ciberseguridad necesitan desarrollar ciertas habilidades básicas para tener éxito en el trabajo. Las **habilidades transferibles** son habilidades de otras áreas que pueden aplicarse a diferentes carreras. Las **habilidades técnicas**, por otro lado, requieren conocimientos específicos de herramientas, procedimientos y políticas.
 

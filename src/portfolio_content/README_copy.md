@@ -1,66 +1,58 @@
-# 💻 Portafolio de Ciberseguridad
+# 💻 Portafolio de Ciberseguridad — *Michel Macías*
 
-¡Hola! Soy un estudiante de **ciberseguridad**, con una sólida trayectoria en operaciones y gestión, y una creciente experiencia técnica en seguridad informática, automatización y contenedores.
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![SQL](https://img.shields.io/badge/SQL-003B57?style=for-the-badge&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Nmap](https://img.shields.io/badge/Nmap-00457C?style=for-the-badge&logo=gnu-bash&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![Cybersecurity](https://img.shields.io/badge/Cybersecurity-FF0000?style=for-the-badge&logo=protonvpn&logoColor=white)
 
-Este repositorio recoge mis avances, proyectos y aprendizajes en el ámbito de la ciberseguridad ofensiva y defensiva. Mi enfoque combina la **curiosidad tecnológica**, la **ética en la práctica**, y un **compromiso continuo con el aprendizaje**.
+👋 ¡Bienvenido! Este repositorio recoge mis **proyectos, prácticas y documentos** en el ámbito de la **ciberseguridad ofensiva y defensiva**.  
+Mi enfoque combina **curiosidad tecnológica, ética en la práctica y aprendizaje continuo**.
 
 ---
 
-## 🚀 Sobre mí
-
-- 📍 Formación en Administración de TI y estudio autodidacta en **seguridad informática**.
-- 🔐 Interés profundo en la **protección de datos**, el **hacking ético**, y la **educación en buenas prácticas digitales**.
-- 📦 Uso de tecnologías como **Docker** para crear entornos seguros y automatizar tareas de seguridad.
-- 👥 Apasionado por fomentar la **confianza digital** y la **concienciación en seguridad**.
+## 🧑‍💻 Sobre mí
+- 🎓 Formación en **Administración de Sistemas Informáticos**.  
+- 🔐 Estudio autodidacta de **seguridad informática** y **hacking ético**.  
+- 🐳 Uso de **Docker** y automatización para crear entornos seguros.  
+- 🌍 Comprometido con la **confianza digital** y la **concienciación en seguridad**.  
 
 ---
 
 ## 🧰 Habilidades Técnicas
-
-- **Seguridad informática**: Análisis de vulnerabilidades, pruebas de penetración, configuración de sistemas seguros.
-- **Programación y scripting**: Scripts básicos en Python, Bash y PowerShell para tareas de automatización.
-- **Redes**: Configuración y protección de redes, firewalls, VPNs y segmentación de red.
-- **Sistemas operativos**: Trabajo en entornos Linux (Ubuntu, Kali) y Windows.
-- **Contenedores**: Uso de Docker para entornos aislados y seguros.
-
----
-
-## 📚 Habilidades Personales
-
-- 📅 **Gestión del tiempo**: Organización eficiente en proyectos críticos.
-- 📈 **Aprendizaje continuo**: Siempre explorando nuevas herramientas, amenazas y soluciones en ciberseguridad.
-- 💡 **Adaptabilidad**: Experiencia en entornos exigentes y capacidad para enfrentar nuevos desafíos.
+- **Ciberseguridad**: Nmap, OWASP Top 10, gestión de riesgos.  
+- **Linux & SQL**: Permisos, consultas, hardening.  
+- **Auditoría**: Informes, acuerdos de pruebas, alcance y planificación.  
+- **Gestión de riesgos**: NIST, análisis de vulnerabilidades, contraseñas seguras.  
+- **Contenedores & Automatización**: Docker, scripting.  
 
 ---
 
-## 🏁 Objetivos
-
-- 🎯 Obtener certificaciones reconocidas como **CompTIA Security+**, **OSCP**, o **CEH**.
-- ⚙️ Desarrollar proyectos reales en ciberseguridad ofensiva y defensiva.
-- 🧠 Contribuir a la concienciación en ciberseguridad a través de contenido educativo y colaboraciones.
+## 📂 Contenido del Portfolio
+- 🛡️ **Auditoría** → [Ejemplo de informes y alcance](documentos_portafolio/Auditoria/)  
+- ⚖️ **Evaluación de riesgos** → [Guías, contraseñas, risk register](documentos_portafolio/Evaluacion_Riesgos/)  
+- 🐧 **Linux & SQL** → [Consultas, permisos y ejercicios prácticos](documentos_portafolio/SQL&LINUX/)  
+- 🔍 **Vulnerabilidades** → [OWASP Top 10 y vectores de ataque](documentos_portafolio/Vulnerabilidades/)  
+- 📜 **Ética & Habilidades** → [Código ético y técnicas personales](documentos_portafolio/portfolio/)  
 
 ---
 
-## 🌍 Público objetivo
+## ⭐ Proyectos Destacados
+- 🔎 **Análisis de riesgos en Botium Toys** → [Informe completo](documentos_portafolio/Auditoria/Botium_Toys_Alcance_objetivos_e_informe.md)  
+- 🐧 **Seguridad en Linux** → [Gestión de permisos y usuarios](documentos_portafolio/portfolio/File%20permissions%20in%20Linux.pdf)  
+- 🛡️ **Detección de vulnerabilidades** con Nmap y OWASP.  
 
-Este portafolio está pensado para:
+---
 
-- 👨‍💼 Reclutadores en tecnología o consultoras de ciberseguridad.
-- 🏢 PYMEs interesadas en estrategias de seguridad eficaces y accesibles.
-- 🏛️ Instituciones educativas o gubernamentales que valoren el compromiso y la ética en seguridad digital.
+## 📄 Currículum
+📌 [Descargar PDF](curriculum/michel%20macias.pdf)  
 
 ---
 
 ## 📬 Contacto
-
-¿Te interesa colaborar, proponer un proyecto o simplemente charlar sobre ciberseguridad?
-
-- ✉️ **Email**: michelmacias.it@gmail.com
-- 🌐 **LinkedIn**: https://www.linkedin.com/in/miguel-%C3%A1ngel-mac%C3%ADas-vargas-87902990/
-- 🧑‍💻 **GitHub**: https://github.com/MaciasIT
+- ✉️ **Email**: michelmacias.it@gmail.com  
+- 💼 **LinkedIn**: [Miguel Ángel Macías Vargas](https://www.linkedin.com/in/miguel-%C3%A1ngel-mac%C3%ADas-vargas-87902990/)  
+- 🌐 **GitHub**: [github.com/MaciasIT](https://github.com/MaciasIT)  
 
 ---
-
-> "Mi misión es aportar valor protegiendo entornos digitales, educando a otros y aprendiendo cada día más sobre cómo hacer de la tecnología un espacio seguro para todos."
-
-

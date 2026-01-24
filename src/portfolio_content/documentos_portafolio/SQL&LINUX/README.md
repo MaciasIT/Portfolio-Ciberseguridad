@@ -1,4 +1,5 @@
 # SQL & Linux - Documentación
+**Autor:** Michel Macias con Antigravity
 
 Esta sección contiene documentación práctica sobre consultas SQL aplicadas a ciberseguridad y gestión de sistemas Linux.
 
