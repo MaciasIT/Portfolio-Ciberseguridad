@@ -1,5 +1,6 @@
 
 # Botium Toys: Alcance, objetivos e informe de evaluación de riesgos
+**Autor:** Michel Macias con Antigravity
 
 ## Alcance y objetivos de la auditoría
 

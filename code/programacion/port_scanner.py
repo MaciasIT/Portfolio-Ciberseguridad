@@ -9,7 +9,7 @@ def print_banner():
     """Imprime un banner de bienvenida."""
     print("-" * 60)
     print("          Analizador de Puertos en Python")
-    print("                Autor: Gemini & Usuario")
+    print("                Autor: Michel Macias con Antigravity")
     print("-" * 60)
 
 def get_arguments():
