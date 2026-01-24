@@ -42,7 +42,7 @@ const ProjectList = () => {
                         {/* Links */}
                         <div className="flex items-center gap-6 opacity-60 group-hover:opacity-100 transition-opacity">
                             <a
-                                href={`https://github.com/MaciasIT/Portfolio-Ciberseguridad/blob/main${project.filePath}`}
+                                href={`https://github.com/MaciasIT/Portfolio-Ciberseguridad/blob/master${project.filePath}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 text-sm font-bold text-[var(--color-text-primary)] hover:text-[var(--color-primary)] hover:underline"
