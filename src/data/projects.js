@@ -125,6 +125,51 @@ export const projects = [
             'Automatización de Docs',
             'Interfaz Streamlit'
         ]
+    },
+    {
+        id: 'shapeshifter',
+        title: 'Shapeshifter Detector',
+        description: 'Inspector de archivos binarios que utiliza Magic Numbers para detectar archivos maliciosos o con extensiones falsificadas (Masquerade detection).',
+        category: 'Ciberseguridad',
+        technologies: ['Python', 'Forense', 'Binary Analysis'],
+        repoUrl: 'https://github.com/Michel-Macias/Shapeshifter-Detector',
+        featured: true,
+        highlights: [
+            'Detección por Magic Numbers',
+            'Análisis Forense Digital',
+            'Prevención de Malware',
+            'Identificación de Extensiones'
+        ]
+    },
+    {
+        id: 'optitech-v2',
+        title: 'OptiTech System Optimizer',
+        description: 'Suite integral de optimización para Windows 11. Automatiza limpieza, gestión de servicios y ajustes de rendimiento en entornos profesionales.',
+        category: 'IT Ops',
+        technologies: ['Python', 'PowerShell', 'Windows Internals'],
+        repoUrl: 'https://github.com/Michel-Macias/OptiTech-System-Optimizer-V2',
+        featured: true,
+        highlights: [
+            'Optimización de Rendimiento',
+            'Gestión de Servicios Críticos',
+            'Ajustes de Registro Seguros',
+            'Interfaz Modular'
+        ]
+    },
+    {
+        id: 'malware-intro',
+        title: 'Manual: Iniciación al Análisis de Malware',
+        description: 'Guía técnica y plan de estudio estructurado sobre los fundamentos del análisis de malware, basada en el curso Hacker Ético de Cisco.',
+        category: 'Formación',
+        technologies: ['Malware Analysis', 'Documentation', 'Cyber Training'],
+        repoUrl: 'https://github.com/Michel-Macias/Iniciacion-al-analisis-de-malware',
+        featured: true,
+        highlights: [
+            'Fundamentos de Análisis',
+            'Metodología Estructurada',
+            'Guía de Herramientas',
+            'Resúmenes Técnicos'
+        ]
     }
 ];
 
@@ -133,7 +178,9 @@ export const projectCategories = [
     { id: 'Herramientas', name: 'Herramientas', icon: 'tool' },
     { id: 'Hardening', name: 'Hardening', icon: 'shield' },
     { id: 'Auditoría', name: 'Auditoría', icon: 'clipboard' },
-    { id: 'IA & Ops', name: 'IA & Ops', icon: 'cpu' }
+    { id: 'IA & Ops', name: 'IA & Ops', icon: 'cpu' },
+    { id: 'IT Ops', name: 'IT Ops', icon: 'settings' },
+    { id: 'Formación', name: 'Formación', icon: 'book' }
 ];
 
 export const getFeaturedProjects = () => projects.filter(p => p.featured);
