@@ -22,10 +22,13 @@ function App() {
             </h2>
             <div className="prose prose-invert max-w-none text-lg text-[var(--color-text-secondary)] leading-relaxed">
               <p className="mb-6">
-                <span className="text-[var(--color-primary)] font-bold">Hola, soy Michel.</span> Un apasionado de la ciberseguridad con un enfoque híbrido entre la ofensiva y la defensiva. Mi objetivo es desmitificar la seguridad informática y construir sistemas más resilientes.
+                <span className="text-[var(--color-primary)] font-bold">¡Hola! Soy Michel Macías.</span> Un profesional en transición al mundo de la <span className="text-[var(--color-primary)]">ciberseguridad</span>, con una sólida trayectoria en operaciones y gestión, y una creciente experiencia técnica en seguridad informática, automatización y contenedores.
+              </p>
+              <p className="mb-6">
+                Mi enfoque combina la curiosidad tecnológica, la ética profesional y un compromiso continuo con el aprendizaje. Actualmente utilizo tecnologías como <span className="text-[var(--color-primary)]">Docker</span> para entornos seguros y desarrollo scripts en Python y PowerShell para automatizar tareas críticas.
               </p>
               <p>
-                Actualmente me dedico a auditar sistemas, automatizar tareas de seguridad con Python y PowerShell, y documentar mis hallazgos para compartir conocimiento con la comunidad.
+                Mi misión es aportar valor protegiendo entornos digitales, educando a otros y aprendiendo cada día más sobre cómo hacer de la tecnología un espacio seguro para todos.
               </p>
             </div>
 
@@ -82,7 +85,7 @@ function App() {
               Estoy siempre abierto a nuevas oportunidades y colaboraciones. Si tienes un proyecto en mente o simplemente quieres saludar, mi bandeja de entrada está abierta.
             </p>
             <a
-              href="mailto:contact@example.com"
+              href="mailto:michelmacias.it@gmail.com"
               className="inline-block px-8 py-4 border border-[var(--color-primary)] text-[var(--color-primary)] font-mono text-lg hover:bg-[rgba(0,255,136,0.1)] transition-all w-max"
             >
               ENVIAR_MENSAJE()

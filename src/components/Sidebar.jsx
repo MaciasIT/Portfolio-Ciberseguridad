@@ -30,10 +30,10 @@ const Sidebar = () => {
                     </h1>
                     <h2 className="text-xl lg:text-2xl text-[var(--color-text-secondary)] font-mono mt-4 flex items-center gap-2">
                         <span className="animate-pulse text-[var(--color-primary)]">&gt;</span>
-                        Cyber Security Engineer
+                        Ciberseguridad & IT Ops
                     </h2>
                     <p className="mt-6 text-[var(--color-text-muted)] max-w-sm leading-relaxed">
-                        Especializado en seguridad ofensiva, auditoría de sistemas y desarrollo de herramientas de defensa automatizada.
+                        Profesional en transición a la ciberseguridad, con enfoque en seguridad técnica, automatización y contenedores.
                     </p>
 
                     <div className="flex items-center gap-2 mt-4 text-sm text-[var(--color-text-muted)]">
@@ -57,13 +57,13 @@ const Sidebar = () => {
 
                 {/* Social Links */}
                 <div className="flex gap-6">
-                    <a href="#" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors transform hover:scale-110">
+                    <a href="https://github.com/MaciasIT" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors transform hover:scale-110">
                         <FiGithub size={24} />
                     </a>
-                    <a href="#" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors transform hover:scale-110">
+                    <a href="https://www.linkedin.com/in/miguel-%C3%A1ngel-mac%C3%ADas-vargas-87902990/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors transform hover:scale-110">
                         <FiLinkedin size={24} />
                     </a>
-                    <a href="mailto:contact@example.com" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors transform hover:scale-110">
+                    <a href="mailto:michelmacias.it@gmail.com" className="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors transform hover:scale-110">
                         <FiMail size={24} />
                     </a>
                 </div>
