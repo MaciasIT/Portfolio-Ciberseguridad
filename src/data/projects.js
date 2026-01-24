@@ -80,6 +80,51 @@ export const projects = [
             'Controles de seguridad',
             'Recomendaciones estratégicas'
         ]
+    },
+    {
+        id: 'scantxungo-qr',
+        title: 'ScanTxungoQR',
+        description: 'PWA diseñada para combatir el "Quishing". Analiza URLs de códigos QR mediante la API de VirusTotal para detectar amenazas antes de acceder a ellas.',
+        category: 'Herramientas',
+        technologies: ['JavaScript', 'PWA', 'Cloudflare Workers', 'VirusTotal API'],
+        repoUrl: 'https://github.com/MaciasIT/ScanTxungoQR-PWA-Project',
+        featured: true,
+        highlights: [
+            'Protección contra Quishing',
+            'Integración con VirusTotal',
+            'Arquitectura Serverless',
+            'Modo Offline (PWA)'
+        ]
+    },
+    {
+        id: 'python-cyber',
+        title: 'Python para Ciberseguridad',
+        description: 'Biblioteca de herramientas de automatización para tareas de seguridad. Incluye detección de IoCs, análisis de logs y scripts defensivos en Jupyter Notebooks.',
+        category: 'Herramientas',
+        technologies: ['Python', 'Jupyter', 'Security Automation'],
+        repoUrl: 'https://github.com/MaciasIT/Python-Ciberseguridad',
+        featured: true,
+        highlights: [
+            'Scripts interactivos',
+            'Análisis de IoCs',
+            'Automatización defensiva',
+            'Documentación integrada'
+        ]
+    },
+    {
+        id: 'doc-squad-ai',
+        title: 'Doc Squad AI',
+        description: 'Sistema multi-agente de IA para la generación automática de documentación técnica profesional a partir de fuentes multimedia.',
+        category: 'IA & Ops',
+        technologies: ['Python', 'Gemini AI', 'Streamlit', 'FastAPI'],
+        repoUrl: 'https://github.com/MaciasIT/Proyecto_Final_Kagle_5_Days_IA',
+        featured: true,
+        highlights: [
+            'Multi-Agent System',
+            'Google Gemini Integration',
+            'Automatización de Docs',
+            'Interfaz Streamlit'
+        ]
     }
 ];
 
@@ -87,7 +132,8 @@ export const projectCategories = [
     { id: 'all', name: 'Todos', icon: 'grid' },
     { id: 'Herramientas', name: 'Herramientas', icon: 'tool' },
     { id: 'Hardening', name: 'Hardening', icon: 'shield' },
-    { id: 'Auditoría', name: 'Auditoría', icon: 'clipboard' }
+    { id: 'Auditoría', name: 'Auditoría', icon: 'clipboard' },
+    { id: 'IA & Ops', name: 'IA & Ops', icon: 'cpu' }
 ];
 
 export const getFeaturedProjects = () => projects.filter(p => p.featured);
