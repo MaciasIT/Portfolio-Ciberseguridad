@@ -1,6 +1,6 @@
-# 🛡️ Portafolio de Estudios en Ciberseguridad
+# 🛡️ Portafolio Profesional de Ciberseguridad
 
-Bienvenido/a a mi portafolio de ciberseguridad. Este repositorio ha sido creado como parte de mi formación académica y certificación en ciberseguridad, con el objetivo de documentar y mostrar mis **habilidades técnicas**, **proyectos prácticos** y **experiencia en seguridad informática**.
+Bienvenido/a a mi portafolio de ciberseguridad. Este repositorio ha sido creado como parte de mi formación profesional y certificación en ciberseguridad, con el objetivo de documentar y mostrar mis **habilidades técnicas**, **proyectos prácticos** y **experiencia en seguridad informática**.
 
 ---
 
@@ -16,7 +16,7 @@ Este portafolio es más que un simple currículum. Aquí presento de forma organ
 
 ## 🧰 Estructura del Portafolio
 
-Aquí encontrarás subcarpetas y archivos organizados por áreas clave del conocimiento y la práctica:
+Aquí encontrarás subcarpetas y archivos organizados por áreas clave del conocimiento y la práctica profesional:
 
 - 📄 `curriculum/`: Mi currículum vitae actualizado.
 - 🎓 `educacion/`: Certificados, diplomas y formación relevante.
@@ -41,7 +41,7 @@ Existen múltiples formas de presentar tu portafolio. Estas son algunas opciones
 
 Durante mi formación y práctica en ciberseguridad, he desarrollado los siguientes proyectos, muchos de los cuales están documentados aquí:
 
-- ✍️ Declaración de estudiante de ciberseguridad.
+- ✍️ Declaración profesional de ciberseguridad.
 - 🕵️ Auditorías de seguridad.
 - 🌐 Análisis de redes y evaluación de estructuras seguras.
 - 🔍 Identificación y reporte de vulnerabilidades en entornos simulados.
@@ -54,13 +54,13 @@ Durante mi formación y práctica en ciberseguridad, he desarrollado los siguien
 
 ## ⚠️ Consideraciones
 
-> ⚠️ **Privacidad y propiedad intelectual:** Este portafolio no contiene información confidencial ni documentos protegidos por derechos de autor. Todo el contenido ha sido creado con fines educativos. Mantengo el repositorio en privado hasta que esté completamente listo para compartirlo con reclutadores o colaboradores.
+> ⚠️ **Privacidad y propiedad intelectual:** Este portafolio no contiene información confidencial ni documentos protegidos por derechos de autor. Todo el contenido ha sido creado con fines educativos y profesionales. Mantengo el repositorio en privado hasta que esté completamente listo para compartirlo con reclutadores o colaboradores.
 
 ---
 
-## 🧭 Objetivo de formación
+## 🧭 Objetivo profesional
 
-Mi misión es seguir formándome en ciberseguridad, aplicando lo aprendido para contribuir a la protección de datos, mejorar entornos digitales y fortalecer la conciencia en seguridad dentro de organizaciones y comunidades tecnológicas.
+Mi misión es seguir desarrollándome como profesional en ciberseguridad, aplicando lo aprendido para contribuir a la protección de datos, mejorar entornos digitales y fortalecer la conciencia en seguridad dentro de organizaciones y comunidades tecnológicas.
 
 ---
 

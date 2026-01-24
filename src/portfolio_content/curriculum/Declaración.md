@@ -1,8 +1,8 @@
-# Declaración de Estudiante
+# Declaración Profesional
 
 ## Habilidades
 
-### Habilidades Técnicas en Desarrollo
+### Habilidades Técnicas y Profesionales
 
 - **Conocimientos en seguridad informática**: Familiaridad con herramientas y prácticas como análisis de vulnerabilidades, pruebas de penetración, y configuración de sistemas seguros.
 - **Programación y scripting**: Experiencia básica en lenguajes como Python, Bash o Powershell, esenciales para automatizar tareas de seguridad y análisis.
@@ -17,7 +17,7 @@
 
 ## Compromisos y Objetivos en Desarrollo
 
-- **Estudio de ciberseguridad**: Desarrollo continuo de competencias en seguridad ofensiva (hacking ético) y defensiva.
+- **Especialización en ciberseguridad**: Desarrollo continuo de competencias en seguridad ofensiva (hacking ético) y defensiva.
 - **Obtención de certificaciones**: Compromiso con obtener certificaciones relevantes (por ejemplo, CompTIA Security+, OSCP, CEH).
 
 ---
@@ -35,7 +35,7 @@
 - **Compromiso con el aprendizaje continuo**: Asegurar que las habilidades y conocimientos estén actualizados para enfrentar las amenazas emergentes.
 - **Transparencia**: Creer en la comunicación honesta y abierta en la gestión de riesgos de seguridad con clientes, compañeros y empleadores.
 
-### Valores en mi Formación
+### Valores Profesionales
 
 - **Excelencia en el servicio**: Proveer soluciones de alta calidad que se alineen con las necesidades y objetivos del cliente.
 
@@ -49,7 +49,7 @@
 - La educación y concienciación en seguridad para usuarios no técnicos, ayudándolos a adoptar buenas prácticas digitales.
 - El análisis y mitigación de vulnerabilidades en sistemas y redes.
 
-### ¿Quién es el público al que va dirigida mi declaración?
+### ¿Quién es el público al que va dirigida mi declaración profesional?
 
 - Reclutadores de empresas de tecnología o consultoras de ciberseguridad interesadas en perfiles técnicos y proactivos.
 - Pymes que necesitan implementar estrategias de seguridad robustas en sus sistemas sin disponer de grandes presupuestos.
