@@ -170,6 +170,21 @@ export const projects = [
             'Guía de Herramientas',
             'Resúmenes Técnicos'
         ]
+    },
+    {
+        id: 'lynis-hardening',
+        title: 'Hardening con Lynis',
+        description: 'Ciclo completo de auditoría y hardening en sistemas Linux. Automatización de reportes Lynis y aplicación de remediaciones en SSH, Kernel y políticas PAM.',
+        category: 'Hardening',
+        technologies: ['Lynis', 'Bash', 'Fail2Ban', 'Security Policy'],
+        repoUrl: 'https://github.com/Michel-Macias/lynis',
+        featured: true,
+        highlights: [
+            'Automatización de Auditorías',
+            'Remediación de Vulnerabilidades',
+            'Hardening de Kernel y SSH',
+            'Mejora de Índice de Seguridad'
+        ]
     }
 ];
 
