@@ -1,63 +1,85 @@
 import React from 'react';
-import { FiCode, FiExternalLink, FiShield } from 'react-icons/fi';
+import { FiCode, FiExternalLink, FiTerminal, FiShield, FiCpu, FiBook, FiLayout } from 'react-icons/fi';
+import { SiPython, SiJavascript, SiWindowsterminal, SiGnubash, SiDocker, SiJupyter, SiGooglecloud, SiStreamlit, SiFastapi } from 'react-icons/si';
 import { projects } from '../data/projects';
+
+const getTechIcon = (tech) => {
+    const iconMap = {
+        'Python': <SiPython />,
+        'JavaScript': <SiJavascript />,
+        'PowerShell': <SiWindowsterminal />,
+        'Bash': <SiGnubash />,
+        'Docker': <SiDocker />,
+        'Jupyter': <SiJupyter />,
+        'Gemini AI': <SiGooglecloud />,
+        'Streamlit': <SiStreamlit />,
+        'FastAPI': <SiFastapi />,
+    };
+    return iconMap[tech] || null;
+};
 
 const ProjectList = () => {
     return (
-        <div className="flex flex-col gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project) => (
                 <div
                     key={project.id}
-                    className="group relative border-l-2 border-[var(--color-border)] hover:border-[var(--color-primary)] pl-6 py-2 transition-all duration-300"
+                    className="group relative glass p-8 rounded-3xl border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-500 overflow-hidden flex flex-col h-full"
                 >
-                    {/* Hover Glow Background */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[var(--color-primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none rounded-r-xl"></div>
+                    {/* Hover Glow Effect */}
+                    <div className="absolute -top-24 -right-24 w-48 h-48 bg-[var(--color-primary)] opacity-0 group-hover:opacity-10 blur-[80px] transition-opacity duration-500"></div>
 
-                    <div className="relative z-10">
-                        <div className="flex items-center gap-3 mb-2">
-                            <span className="text-xs font-mono text-[var(--color-primary)] border border-[var(--color-primary)]/30 px-2 py-0.5 rounded">
-                                {project.category.toUpperCase()}
+                    <div className="relative z-10 flex flex-col h-full">
+                        <div className="flex justify-between items-start mb-6">
+                            <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-[var(--color-primary)] uppercase glass px-3 py-1 rounded-full border border-[var(--color-primary)]/20">
+                                {project.category}
                             </span>
-                            <h3 className="text-2xl font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-primary)] transition-colors">
-                                {project.title}
-                            </h3>
                             {project.featured && (
-                                <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse"></span>
+                                <div className="flex items-center gap-1.5 text-[var(--color-accent)] animate-pulse">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span>
+                                    <span className="text-[10px] font-bold font-mono">LIVE_V3</span>
+                                </div>
                             )}
                         </div>
 
-                        <p className="text-[var(--color-text-secondary)] mb-4 max-w-2xl leading-relaxed group-hover:text-[var(--color-text-primary)] transition-colors">
+                        <h3 className="text-2xl font-bold text-[var(--color-text-primary)] mb-4 group-hover:text-[var(--color-primary)] transition-colors duration-300">
+                            {project.title}
+                        </h3>
+
+                        <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed mb-8 flex-grow">
                             {project.description}
                         </p>
 
-                        {/* Tech Stack Minimal */}
-                        <div className="flex flex-wrap gap-x-4 gap-y-2 mb-4 text-sm font-mono text-[var(--color-text-muted)]">
-                            {project.technologies.slice(0, 5).map(tech => (
-                                <span key={tech} className="hover:text-[var(--color-primary)] cursor-default transition-colors">
-                                    # {tech}
-                                </span>
+                        {/* Tech Icons Row */}
+                        <div className="flex flex-wrap gap-4 mb-8">
+                            {project.technologies.map(tech => (
+                                <div key={tech} className="flex items-center gap-2 text-[var(--color-text-muted)] group-hover:text-[var(--color-text-secondary)] transition-colors">
+                                    <span className="text-lg">
+                                        {getTechIcon(tech) || <div className="w-1h-1 rounded-full bg-current opacity-40"></div>}
+                                    </span>
+                                </div>
                             ))}
                         </div>
 
-                        {/* Links */}
-                        <div className="flex items-center gap-6 opacity-60 group-hover:opacity-100 transition-opacity">
+                        {/* Action Link */}
+                        <div className="mt-auto pt-6 border-t border-[var(--color-border)]">
                             {project.repoUrl ? (
                                 <a
                                     href={project.repoUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-sm font-bold text-[var(--color-text-primary)] hover:text-[var(--color-primary)] hover:underline"
+                                    className="inline-flex items-center gap-2 text-xs font-bold font-mono text-[var(--color-primary)] hover:translate-x-2 transition-transform duration-300"
                                 >
-                                    <FiCode /> GITHUB_REPO
+                                    GET_CODE_REPOSITORY <FiExternalLink />
                                 </a>
                             ) : (
                                 <a
                                     href={`https://github.com/MaciasIT/Portfolio-Ciberseguridad/blob/master${project.filePath}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 text-sm font-bold text-[var(--color-text-primary)] hover:text-[var(--color-primary)] hover:underline"
+                                    className="inline-flex items-center gap-2 text-xs font-bold font-mono text-[var(--color-primary)] hover:translate-x-2 transition-transform duration-300"
                                 >
-                                    <FiCode /> VIEW_SOURCE
+                                    VIEW_RESOURCE_MANUAL <FiCode />
                                 </a>
                             )}
                         </div>
@@ -69,3 +91,4 @@ const ProjectList = () => {
 };
 
 export default ProjectList;
+

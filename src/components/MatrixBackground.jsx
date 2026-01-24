@@ -20,43 +20,38 @@ const MatrixBackground = () => {
         const chars = 'ABCDEF0123456789アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
         const charArray = chars.split('');
 
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-
-        // Array para guardar la posición Y de cada columna
+        const fontSize = 16;
+        const columns = Math.ceil(canvas.width / fontSize);
         const drops = [];
+        const speeds = [];
+
         for (let i = 0; i < columns; i++) {
-            drops[i] = 1;
+            drops[i] = Math.random() * -100;
+            speeds[i] = 1 + Math.random() * 2;
         }
 
         const draw = () => {
-            // Fondo semitransparente para el efecto de estela
-            ctx.fillStyle = 'rgba(10, 14, 39, 0.05)';
+            ctx.fillStyle = 'rgba(5, 8, 16, 0.1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#0F0'; // Color base verde matrix
-            ctx.font = `${fontSize}px monospace`;
+            ctx.font = `${fontSize}px var(--font-mono)`;
 
             for (let i = 0; i < drops.length; i++) {
-                // Color aleatorio sutil para variación
-                const isHead = Math.random() > 0.975;
-                ctx.fillStyle = isHead ? '#FFF' : '#00ff88'; // Cabeza blanca, cuerpo verde
+                const isHead = Math.random() > 0.98;
+                ctx.fillStyle = isHead ? '#fff' : 'rgba(0, 255, 157, 0.35)';
 
-                // Caracter aleatorio
                 const text = charArray[Math.floor(Math.random() * charArray.length)];
-
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-                // Reiniciar caída aleatoriamente o si sale de la pantalla
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
                     drops[i] = 0;
                 }
 
-                drops[i]++;
+                drops[i] += speeds[i] * 0.5;
             }
         };
 
-        const interval = setInterval(draw, 33);
+        const interval = setInterval(draw, 30);
 
         return () => {
             clearInterval(interval);
