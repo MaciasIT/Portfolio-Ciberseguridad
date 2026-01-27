@@ -21,11 +21,11 @@ const ProjectDetail = () => {
                     const fileUrl = `${basePath}${project.filePath.startsWith('/') ? project.filePath.slice(1) : project.filePath}`;
 
                     const response = await fetch(fileUrl);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
+                    if (!response || !response.ok) {
+                        throw new Error(`HTTP error! status: ${response ? response.status : 'no response'}`);
                     }
                     const text = await response.text();
-                    setCode(text);
+                    setCode(text || '// El archivo está vacío');
                 } catch (error) {
                     console.error('Error loading code:', error);
                     setCode('// Error al cargar el archivo\n// Intenta ver el código en GitHub');

@@ -55,7 +55,7 @@ const ProjectList = () => {
                             {project.technologies.map(tech => (
                                 <div key={tech} className="flex items-center gap-2 text-[var(--color-text-muted)] group-hover:text-[var(--color-text-secondary)] transition-colors">
                                     <span className="text-lg">
-                                        {getTechIcon(tech) || <div className="w-1h-1 rounded-full bg-current opacity-40"></div>}
+                                        {getTechIcon(tech) || <div className="w-1 h-1 rounded-full bg-current opacity-40"></div>}
                                     </span>
                                 </div>
                             ))}

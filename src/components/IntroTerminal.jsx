@@ -25,16 +25,23 @@ const IntroTerminal = ({ onComplete }) => {
 
             if (currentIdx < sequence.length) {
                 const item = sequence[currentIdx];
-                setLines(prev => [...prev, item.text]);
-                currentIdx++;
-                timer = setTimeout(processSequence, item.delay);
+                if (item && item.text) {
+                    setLines(prev => [...prev, item.text]);
+                    currentIdx++;
+                    timer = setTimeout(processSequence, item.delay || 500);
+                } else {
+                    currentIdx++;
+                    processSequence();
+                }
             } else {
                 // Terminado el texto, esperar un poco y salir
                 timer = setTimeout(() => {
                     if (mounted) {
                         setIsExiting(true);
                         timer = setTimeout(() => {
-                            if (mounted) onComplete();
+                            if (mounted && typeof onComplete === 'function') {
+                                onComplete();
+                            }
                         }, 1000);
                     }
                 }, 1000);

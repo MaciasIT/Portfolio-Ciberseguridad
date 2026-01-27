@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import FloatingNavbar from './components/FloatingNavbar';
 import ProjectList from './components/ProjectList';
@@ -9,8 +9,8 @@ import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiChevronDown, FiShield, FiCpu,
 import './App.css';
 
 function App() {
-  // TEMP: Desactivar terminal para diagnóstico
-  const [showTerminal, setShowTerminal] = useState(false);
+  // Volver a activar terminal para funcionamiento normal
+  const [showTerminal, setShowTerminal] = useState(true);
 
   useEffect(() => {
     if (showTerminal) return;
@@ -33,9 +33,9 @@ function App() {
     return () => observer.disconnect();
   }, [showTerminal]);
 
-  const handleTerminalComplete = () => {
+  const handleTerminalComplete = useCallback(() => {
     setShowTerminal(false);
-  };
+  }, []);
 
   if (showTerminal) {
     return <IntroTerminal onComplete={handleTerminalComplete} />;
