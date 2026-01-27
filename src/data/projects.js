@@ -2,6 +2,51 @@
 
 export const projects = [
     {
+        id: 'vuln-red-cisco',
+        title: 'Vulnerabilidades Basadas en Red',
+        description: 'Guía de estudio del módulo Cisco Ethical Hacker sobre vulnerabilidades de red. Laboratorios de Active Directory, SMB, DNS Poisoning, Pass-the-Hash, Kerberoasting, SSL Stripping y ataques DoS.',
+        category: 'Formación',
+        technologies: ['Kali Linux', 'Active Directory', 'Wireshark', 'Metasploit'],
+        repoUrl: 'https://github.com/Michel-Macias/Vulnerabilidades-basadas-en-red',
+        featured: true,
+        highlights: [
+            'Lab Active Directory',
+            'Kerberoasting y Pass-the-Hash',
+            'DNS Poisoning y SSL Strip',
+            'Ataques de Capa 2 y 3'
+        ]
+    },
+    {
+        id: 'vuln-apps-cisco',
+        title: 'Vulnerabilidades en Aplicaciones Web',
+        description: 'Guía de estudio y laboratorios prácticos del módulo Cisco Ethical Hacker. Incluye ejercicios de OWASP Top 10, escaneo con Nikto/GVM, ataques a autenticación y sesiones web con Burp Suite.',
+        category: 'Formación',
+        technologies: ['Kali Linux', 'Docker', 'Burp Suite', 'Nikto', 'GVM'],
+        repoUrl: 'https://github.com/Michel-Macias/Vulnerabilidades-basadas-en-aplicaciones',
+        featured: true,
+        highlights: [
+            'Laboratorios OWASP Top 10',
+            'Escaneo con Nikto y GVM',
+            'Ataques a Sesiones Web',
+            'Guía de Pentesting Profesional'
+        ]
+    },
+    {
+        id: 'web-vuln-scanner',
+        title: 'Web Vulnerability Scanner',
+        description: 'Escáner de vulnerabilidades web profesional con motor inteligente, crawler asíncrono, modo sigilo para evasión de WAF, y dashboard con reportes PDF. Detecta SQLi, XSS, Command Injection y más.',
+        category: 'Ciberseguridad',
+        technologies: ['Python', 'Playwright', 'Streamlit', 'aiohttp', 'Asyncio'],
+        repoUrl: 'https://github.com/Michel-Macias/Escaner-de-vulnerabilidades-web',
+        featured: true,
+        highlights: [
+            'Motor Headless (Playwright)',
+            'Evasión de WAF (Stealth Mode)',
+            'Reportes PDF Ejecutivos',
+            'Detección SQLi, XSS, RCE'
+        ]
+    },
+    {
         id: 'port-scanner',
         title: 'Port Scanner en Python',
         description: 'Escáner de puertos TCP con interfaz CLI. Permite escanear rangos de puertos personalizados con timeout configurable y manejo robusto de errores.',

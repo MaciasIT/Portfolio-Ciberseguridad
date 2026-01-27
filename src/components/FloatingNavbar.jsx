@@ -39,20 +39,68 @@ const FloatingNavbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    const navStyle = {
+        position: 'fixed',
+        bottom: '24px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 50,
+        padding: '16px 32px',
+        borderRadius: '9999px',
+        background: 'rgba(5, 8, 16, 0.85)',
+        backdropFilter: 'blur(20px)',
+        border: '1px solid rgba(0, 255, 157, 0.2)',
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5), 0 0 60px rgba(0, 255, 157, 0.1)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '12px'
+    };
+
+    const buttonStyle = (isActive) => ({
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px',
+        padding: '12px 20px',
+        borderRadius: '9999px',
+        background: isActive ? 'rgba(0, 255, 157, 0.15)' : 'transparent',
+        border: isActive ? '1px solid rgba(0, 255, 157, 0.3)' : '1px solid transparent',
+        color: isActive ? '#00ff9d' : '#94a3b8',
+        fontFamily: 'monospace',
+        fontSize: '13px',
+        fontWeight: 600,
+        textTransform: 'uppercase',
+        letterSpacing: '0.05em',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+        whiteSpace: 'nowrap'
+    });
+
+    const iconStyle = {
+        fontSize: '18px'
+    };
+
     return (
-        <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3 rounded-full glass border border-[var(--color-border)] shadow-2xl flex items-center gap-8 md:bottom-auto md:top-6 md:gap-12 animate-fadeIn">
+        <nav style={navStyle}>
             {navItems.map((item) => (
                 <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className={`flex flex-col items-center gap-1 transition-all duration-300 group ${activeSection === item.id ? 'text-[var(--color-primary)] scale-110' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
-                        }`}
+                    style={buttonStyle(activeSection === item.id)}
+                    onMouseEnter={(e) => {
+                        if (activeSection !== item.id) {
+                            e.currentTarget.style.color = '#e2e8f0';
+                            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                        }
+                    }}
+                    onMouseLeave={(e) => {
+                        if (activeSection !== item.id) {
+                            e.currentTarget.style.color = '#94a3b8';
+                            e.currentTarget.style.background = 'transparent';
+                        }
+                    }}
                 >
-                    <span className="text-xl md:text-2xl">{item.icon}</span>
-                    <span className="text-[10px] uppercase tracking-tighter font-mono font-bold md:hidden">{item.label}</span>
-                    {activeSection === item.id && (
-                        <span className="absolute -bottom-1 w-1 h-1 bg-[var(--color-primary)] rounded-full glow-primary"></span>
-                    )}
+                    <span style={iconStyle}>{item.icon}</span>
+                    <span>{item.label}</span>
                 </button>
             ))}
         </nav>

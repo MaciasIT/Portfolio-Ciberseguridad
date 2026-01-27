@@ -89,32 +89,41 @@ function App() {
 
             {/* Name */}
             <h1 style={{
-              fontSize: 'clamp(48px, 12vw, 140px)',
+              fontSize: 'clamp(42px, 10vw, 100px)',
               fontWeight: 900,
-              lineHeight: 0.9,
-              letterSpacing: '-0.04em',
-              marginBottom: '32px'
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              marginBottom: '24px',
+              background: 'linear-gradient(135deg, #e2e8f0 0%, #00ff9d 50%, #00d4ff 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
             }}>
-              <span style={{ color: '#e2e8f0' }}>MICHEL</span>
-              <br />
-              <span style={{
-                background: 'linear-gradient(135deg, #00ff9d, #00d4ff, #00ff9d)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}>
-                MACÍAS
-              </span>
+              Michel Macias
             </h1>
 
-            {/* Role */}
+            {/* Role - English */}
             <p style={{
-              fontSize: 'clamp(18px, 3vw, 28px)',
+              fontSize: 'clamp(20px, 3.5vw, 32px)',
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              background: 'linear-gradient(135deg, #00ff9d, #00d4ff)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              marginBottom: '8px'
+            }}>
+              SysAdmin SecOps
+            </p>
+
+            {/* Role - Spanish */}
+            <p style={{
+              fontSize: 'clamp(16px, 2.5vw, 22px)',
               fontFamily: 'monospace',
               color: '#94a3b8',
               marginBottom: '40px'
             }}>
-              Cybersecurity Specialist & Developer
+              Administrador de Sistemas | Operaciones de Seguridad
             </p>
 
             {/* Description */}
@@ -125,10 +134,9 @@ function App() {
               lineHeight: 1.8,
               marginBottom: '48px'
             }}>
-              Especialista en <span style={{ color: '#00ff9d' }}>seguridad ofensiva</span>,
-              <span style={{ color: '#00d4ff' }}> auditorías</span> y
-              <span style={{ color: '#ff007b' }}> automatización</span>.
-              Transformo vulnerabilidades en fortalezas.
+              Apasionado por la <span style={{ color: '#00ff9d' }}>ciberseguridad</span> con base sólida en
+              <span style={{ color: '#00d4ff' }}> administración de sistemas</span>. Formándome como
+              <span style={{ color: '#ff007b' }}> Analista de Seguridad</span> para proteger infraestructuras digitales.
             </p>
 
             {/* CTA Buttons */}
@@ -189,7 +197,7 @@ function App() {
             }}>
               {[
                 { href: 'https://github.com/MaciasIT', icon: <FiGithub size={22} /> },
-                { href: 'https://linkedin.com/in/michelmaciasgonzalez', icon: <FiLinkedin size={22} /> },
+                { href: 'https://es.linkedin.com/in/miguel-%C3%A1ngel-mac%C3%ADas-vargas', icon: <FiLinkedin size={22} /> },
                 { href: 'mailto:michelmacias.it@gmail.com', icon: <FiMail size={22} /> }
               ].map((link, i) => (
                 <a
@@ -221,7 +229,7 @@ function App() {
               fontFamily: 'monospace'
             }}>
               <FiMapPin style={{ color: '#00ff9d' }} />
-              <span>Bizkaia, España</span>
+              <span>Mendigorria, Navarra, España</span>
             </div>
 
             {/* Scroll Indicator */}

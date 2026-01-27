@@ -5,53 +5,54 @@ export const skills = [
         category: 'Ciberseguridad',
         icon: 'shield',
         items: [
-            { name: 'Hacking Ético', level: 70 },
-            { name: 'Pentesting', level: 65 },
-            { name: 'Análisis de Vulnerabilidades', level: 70 },
-            { name: 'OWASP Top 10', level: 75 },
-            { name: 'Gestión de Riesgos', level: 70 },
-            { name: 'Auditoría de Seguridad', level: 65 }
+            { name: 'OWASP Top 10', level: 55 },
+            { name: 'Análisis de Vulnerabilidades', level: 50 },
+            { name: 'Auditoría de Seguridad', level: 45 },
+            { name: 'Análisis de Malware (Básico)', level: 40 },
+            { name: 'Gestión de Riesgos', level: 45 }
         ]
     },
     {
         category: 'Sistemas Operativos',
         icon: 'desktop',
         items: [
-            { name: 'Linux (Ubuntu, Kali)', level: 75 },
-            { name: 'Windows Server', level: 60 },
-            { name: 'Hardening de Sistemas', level: 70 },
-            { name: 'Gestión de Permisos', level: 75 }
+            { name: 'Linux (Ubuntu, Kali)', level: 60 },
+            { name: 'Windows 10/11 & Server', level: 55 },
+            { name: 'Hardening de Sistemas', level: 50 },
+            { name: 'Active Directory', level: 45 }
         ]
     },
     {
         category: 'Programación',
         icon: 'code',
         items: [
-            { name: 'Python', level: 70 },
-            { name: 'Bash Scripting', level: 75 },
-            { name: 'PowerShell', level: 65 },
-            { name: 'SQL', level: 60 }
+            { name: 'Python', level: 55 },
+            { name: 'Bash Scripting', level: 50 },
+            { name: 'PowerShell', level: 50 },
+            { name: 'SQL', level: 40 }
         ]
     },
     {
-        category: 'Redes',
+        category: 'Redes & Protocolos',
         icon: 'network',
         items: [
-            { name: 'TCP/IP', level: 70 },
-            { name: 'Firewalls (UFW, iptables)', level: 65 },
-            { name: 'VPN', level: 60 },
-            { name: 'Nmap', level: 70 },
-            { name: 'Wireshark', level: 60 }
+            { name: 'TCP/IP & DNS', level: 55 },
+            { name: 'SMB & Kerberos', level: 45 },
+            { name: 'Firewalls (UFW)', level: 50 },
+            { name: 'Ataques de Red (MitM, DoS)', level: 40 }
         ]
     },
     {
         category: 'Herramientas',
         icon: 'tool',
         items: [
-            { name: 'Docker', level: 65 },
-            { name: 'Git & GitHub', level: 70 },
-            { name: 'SIEM (Splunk, QRadar)', level: 55 },
-            { name: 'Burp Suite', level: 60 }
+            { name: 'Burp Suite', level: 45 },
+            { name: 'OWASP ZAP', level: 45 },
+            { name: 'Nikto & Nmap', level: 50 },
+            { name: 'Wireshark', level: 45 },
+            { name: 'Chronicle SIEM (Google)', level: 40 },
+            { name: 'Docker', level: 50 },
+            { name: 'Git & GitHub', level: 60 }
         ]
     }
 ];
@@ -61,13 +62,13 @@ export const certifications = [
         name: 'Google Cybersecurity Certificate',
         issuer: 'Google',
         status: 'En progreso',
-        year: 2024
+        year: 2026
     },
     {
-        name: 'CompTIA Security+',
-        issuer: 'CompTIA',
-        status: 'Objetivo',
-        year: 2025
+        name: 'Cisco Ethical Hacker',
+        issuer: 'Cisco',
+        status: 'En progreso',
+        year: 2026
     }
 ];
 
