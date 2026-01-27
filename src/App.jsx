@@ -5,7 +5,7 @@ import ProjectList from './components/ProjectList';
 import MatrixBackground from './components/MatrixBackground';
 import IntroTerminal from './components/IntroTerminal';
 import { skills } from './data/skills';
-import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiShield, FiCpu, FiTerminal, FiDatabase, FiCode, FiLock } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiShield, FiCpu, FiTerminal, FiDatabase, FiCode, FiLock, FiChevronDown } from 'react-icons/fi';
 import './App.css';
 
 function App() {
@@ -14,7 +14,6 @@ function App() {
 
   useEffect(() => {
     if (showTerminal) return;
-
     // Scroll automático al hero después de la intro
     if (heroRef.current) {
       heroRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -31,188 +30,377 @@ function App() {
 
   return (
     <Router>
-      <div className="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] selection:bg-[var(--color-primary)] selection:text-black min-h-screen">
+      <div style={{
+        backgroundColor: '#050810',
+        color: '#e2e8f0',
+        minHeight: '100vh',
+        fontFamily: 'Inter, sans-serif'
+      }}>
 
         {/* BACKGROUND LAYER */}
-        <div className="fixed inset-0 z-0 opacity-25">
+        <div style={{ position: 'fixed', inset: 0, zIndex: 0, opacity: 0.2 }}>
           <MatrixBackground />
         </div>
 
         {/* FLOATING NAVIGATION */}
         <FloatingNavbar />
 
-        {/* MAIN SCROLL CONTAINER */}
-        <main className="relative z-10">
+        {/* MAIN CONTENT */}
+        <main style={{ position: 'relative', zIndex: 10 }}>
 
-          {/* ===== HERO SECTION - CENTERED ===== */}
-          <section ref={heroRef} id="about" className="min-h-screen flex flex-col items-center justify-center relative px-8 md:px-16 lg:px-24">
-            {/* Background Orbs */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] bg-[radial-gradient(circle,var(--color-primary-glow),transparent_50%)] opacity-10 blur-3xl pointer-events-none"></div>
+          {/* ===== HERO SECTION ===== */}
+          <section
+            ref={heroRef}
+            id="about"
+            style={{
+              minHeight: '100vh',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+              padding: '80px 24px'
+            }}
+          >
+            {/* Status Badge */}
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '12px',
+              marginBottom: '40px'
+            }}>
+              <span style={{
+                width: '12px',
+                height: '12px',
+                borderRadius: '50%',
+                backgroundColor: '#00ff9d',
+                boxShadow: '0 0 20px #00ff9d'
+              }}></span>
+              <span style={{
+                fontSize: '14px',
+                fontFamily: 'monospace',
+                color: '#00ff9d',
+                textTransform: 'uppercase',
+                letterSpacing: '0.15em'
+              }}>
+                Disponible para proyectos
+              </span>
+            </div>
 
-            <div className="text-center max-w-4xl mx-auto animate-fadeIn">
-              {/* Status Badge */}
-              <div className="inline-flex items-center gap-3 mb-10">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-primary)] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-[var(--color-primary)]"></span>
-                </span>
-                <span className="text-sm font-mono text-[var(--color-primary)] uppercase tracking-widest">
-                  Disponible para proyectos
-                </span>
-              </div>
+            {/* Name */}
+            <h1 style={{
+              fontSize: 'clamp(48px, 12vw, 140px)',
+              fontWeight: 900,
+              lineHeight: 0.9,
+              letterSpacing: '-0.04em',
+              marginBottom: '32px'
+            }}>
+              <span style={{ color: '#e2e8f0' }}>MICHEL</span>
+              <br />
+              <span style={{
+                background: 'linear-gradient(135deg, #00ff9d, #00d4ff, #00ff9d)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}>
+                MACÍAS
+              </span>
+            </h1>
 
-              {/* Name */}
-              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-[0.9] tracking-tighter mb-8">
-                <span className="text-[var(--color-text-primary)]">MICHEL</span>
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-primary)]">
-                  MACÍAS
-                </span>
-              </h1>
+            {/* Role */}
+            <p style={{
+              fontSize: 'clamp(18px, 3vw, 28px)',
+              fontFamily: 'monospace',
+              color: '#94a3b8',
+              marginBottom: '40px'
+            }}>
+              Cybersecurity Specialist & Developer
+            </p>
 
-              {/* Role */}
-              <p className="text-xl md:text-2xl font-mono text-[var(--color-text-secondary)] mb-10">
-                Cybersecurity Specialist & Developer
-              </p>
+            {/* Description */}
+            <p style={{
+              fontSize: '18px',
+              color: '#64748b',
+              maxWidth: '600px',
+              lineHeight: 1.8,
+              marginBottom: '48px'
+            }}>
+              Especialista en <span style={{ color: '#00ff9d' }}>seguridad ofensiva</span>,
+              <span style={{ color: '#00d4ff' }}> auditorías</span> y
+              <span style={{ color: '#ff007b' }}> automatización</span>.
+              Transformo vulnerabilidades en fortalezas.
+            </p>
 
-              {/* Description */}
-              <p className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto leading-relaxed mb-14">
-                Especialista en <span className="text-[var(--color-primary)] font-medium">seguridad ofensiva</span>,
-                <span className="text-[var(--color-secondary)] font-medium"> auditorías</span> y
-                <span className="text-[var(--color-accent)] font-medium"> automatización</span>.
-                Transformo vulnerabilidades en fortalezas.
-              </p>
+            {/* CTA Buttons */}
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              gap: '20px',
+              marginBottom: '48px'
+            }}>
+              <a
+                href="#projects"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  padding: '18px 36px',
+                  backgroundColor: '#00ff9d',
+                  color: '#050810',
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  fontSize: '14px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s'
+                }}
+              >
+                <FiCode size={18} /> Ver Proyectos
+              </a>
+              <a
+                href="mailto:michelmacias.it@gmail.com"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  padding: '18px 36px',
+                  border: '2px solid #334155',
+                  color: '#e2e8f0',
+                  fontFamily: 'monospace',
+                  fontSize: '14px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s'
+                }}
+              >
+                <FiMail size={18} /> Contactar
+              </a>
+            </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-wrap justify-center gap-6 mb-14">
+            {/* Social Links */}
+            <div style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '16px',
+              marginBottom: '32px'
+            }}>
+              {[
+                { href: 'https://github.com/MaciasIT', icon: <FiGithub size={22} /> },
+                { href: 'https://linkedin.com/in/michelmaciasgonzalez', icon: <FiLinkedin size={22} /> },
+                { href: 'mailto:michelmacias.it@gmail.com', icon: <FiMail size={22} /> }
+              ].map((link, i) => (
                 <a
-                  href="#projects"
-                  className="group relative px-10 py-5 bg-[var(--color-primary)] text-[var(--color-bg-primary)] font-bold font-mono text-sm uppercase tracking-wider overflow-hidden transition-all duration-300 hover:shadow-[0_0_50px_rgba(0,255,157,0.4)]"
+                  key={i}
+                  href={link.href}
+                  target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                  rel="noopener noreferrer"
+                  style={{
+                    padding: '16px',
+                    border: '1px solid #334155',
+                    color: '#94a3b8',
+                    display: 'flex',
+                    transition: 'all 0.3s'
+                  }}
                 >
-                  <span className="relative z-10 flex items-center gap-3">
-                    <FiCode size={18} /> Ver Proyectos
-                  </span>
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                  {link.icon}
                 </a>
-                <a
-                  href="mailto:michelmacias.it@gmail.com"
-                  className="px-10 py-5 border-2 border-[var(--color-border)] text-[var(--color-text-primary)] font-mono text-sm uppercase tracking-wider hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all duration-300"
-                >
-                  <span className="flex items-center gap-3">
-                    <FiMail size={18} /> Contactar
-                  </span>
-                </a>
-              </div>
+              ))}
+            </div>
 
-              {/* Social Links */}
-              <div className="flex justify-center gap-6 mb-8">
-                <a href="https://github.com/MaciasIT" target="_blank" rel="noopener noreferrer"
-                  className="p-4 border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:shadow-[0_0_25px_rgba(0,255,157,0.2)] transition-all duration-300">
-                  <FiGithub size={22} />
-                </a>
-                <a href="https://linkedin.com/in/michelmaciasgonzalez" target="_blank" rel="noopener noreferrer"
-                  className="p-4 border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-secondary)] hover:text-[var(--color-secondary)] hover:shadow-[0_0_25px_rgba(0,212,255,0.2)] transition-all duration-300">
-                  <FiLinkedin size={22} />
-                </a>
-                <a href="mailto:michelmacias.it@gmail.com"
-                  className="p-4 border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-[0_0_25px_rgba(255,0,123,0.2)] transition-all duration-300">
-                  <FiMail size={22} />
-                </a>
-              </div>
-
-              {/* Location */}
-              <div className="flex items-center justify-center gap-2 text-sm text-[var(--color-text-muted)]">
-                <FiMapPin className="text-[var(--color-primary)]" />
-                <span className="font-mono">Bizkaia, España</span>
-              </div>
+            {/* Location */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              fontSize: '14px',
+              color: '#64748b',
+              fontFamily: 'monospace'
+            }}>
+              <FiMapPin style={{ color: '#00ff9d' }} />
+              <span>Bizkaia, España</span>
             </div>
 
             {/* Scroll Indicator */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 animate-bounce">
-              <span className="text-xs font-mono text-[var(--color-text-muted)] uppercase tracking-widest">Scroll</span>
-              <div className="w-7 h-12 border-2 border-[var(--color-primary)]/40 rounded-full flex items-start justify-center p-2">
-                <div className="w-1.5 h-3 bg-[var(--color-primary)] rounded-full animate-pulse"></div>
-              </div>
+            <div style={{
+              position: 'absolute',
+              bottom: '48px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '8px',
+              animation: 'bounce 2s infinite'
+            }}>
+              <span style={{
+                fontSize: '11px',
+                fontFamily: 'monospace',
+                color: '#64748b',
+                textTransform: 'uppercase',
+                letterSpacing: '0.2em'
+              }}>Scroll</span>
+              <FiChevronDown style={{ color: '#00ff9d', fontSize: '24px' }} />
             </div>
           </section>
 
           {/* ===== SKILLS SECTION ===== */}
-          <section id="skills" className="py-40 px-8 md:px-16 lg:px-24">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-20">
-                <span className="inline-block px-5 py-2.5 mb-6 text-xs font-mono font-bold text-[var(--color-secondary)] border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/5 uppercase tracking-[0.3em]">
-                  Tech Stack
-                </span>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[var(--color-text-primary)] mb-8">
-                  Arsenal de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]">Habilidades</span>
-                </h2>
-                <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto text-lg leading-relaxed">
-                  Herramientas y conocimientos para proteger, analizar y construir sistemas seguros.
-                </p>
-              </div>
+          <section id="skills" style={{
+            padding: '160px 24px',
+            maxWidth: '1200px',
+            margin: '0 auto'
+          }}>
+            <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+              <span style={{
+                display: 'inline-block',
+                padding: '12px 20px',
+                marginBottom: '24px',
+                fontSize: '12px',
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                color: '#00d4ff',
+                border: '1px solid rgba(0,212,255,0.3)',
+                backgroundColor: 'rgba(0,212,255,0.05)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.3em'
+              }}>
+                Tech Stack
+              </span>
+              <h2 style={{
+                fontSize: 'clamp(32px, 6vw, 56px)',
+                fontWeight: 900,
+                color: '#e2e8f0',
+                marginBottom: '24px'
+              }}>
+                Arsenal de <span style={{
+                  background: 'linear-gradient(135deg, #00ff9d, #00d4ff)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent'
+                }}>Habilidades</span>
+              </h2>
+              <p style={{
+                fontSize: '18px',
+                color: '#64748b',
+                maxWidth: '600px',
+                margin: '0 auto',
+                lineHeight: 1.7
+              }}>
+                Herramientas y conocimientos para proteger y construir sistemas seguros.
+              </p>
+            </div>
 
-              {/* Skills Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {skills.map((category, index) => {
-                  const icons = {
-                    'shield': <FiShield className="text-2xl" />,
-                    'desktop': <FiCpu className="text-2xl" />,
-                    'code': <FiTerminal className="text-2xl" />,
-                    'network': <FiDatabase className="text-2xl" />,
-                    'tool': <FiLock className="text-2xl" />
-                  };
+            {/* Skills Grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '32px'
+            }}>
+              {skills.map((category) => (
+                <div
+                  key={category.category}
+                  style={{
+                    padding: '32px',
+                    backgroundColor: 'rgba(30, 41, 59, 0.4)',
+                    border: '1px solid #334155',
+                    backdropFilter: 'blur(10px)',
+                    transition: 'all 0.3s'
+                  }}
+                >
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '16px',
+                    marginBottom: '28px'
+                  }}>
+                    <div style={{
+                      padding: '14px',
+                      border: '1px solid #334155',
+                      color: '#00ff9d'
+                    }}>
+                      <FiShield size={24} />
+                    </div>
+                    <h3 style={{
+                      fontSize: '18px',
+                      fontWeight: 700,
+                      color: '#e2e8f0'
+                    }}>{category.category}</h3>
+                  </div>
 
-                  return (
-                    <div
-                      key={category.category}
-                      className="group relative p-8 bg-[var(--color-bg-secondary)]/40 backdrop-blur-sm border border-[var(--color-border)] hover:border-[var(--color-primary)]/40 transition-all duration-500 overflow-hidden"
-                    >
-                      {/* Hover Glow */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                      <div className="relative z-10">
-                        <div className="flex items-center gap-5 mb-8">
-                          <div className="p-4 border border-[var(--color-border)] text-[var(--color-primary)] group-hover:border-[var(--color-primary)]/50 group-hover:shadow-[0_0_25px_rgba(0,255,157,0.1)] transition-all duration-300">
-                            {icons[category.icon] || <FiShield className="text-2xl" />}
-                          </div>
-                          <h3 className="text-xl font-bold text-[var(--color-text-primary)]">{category.category}</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    {category.items.slice(0, 4).map(skill => (
+                      <div key={skill.name}>
+                        <div style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          fontSize: '14px',
+                          marginBottom: '8px'
+                        }}>
+                          <span style={{ color: '#94a3b8' }}>{skill.name}</span>
+                          <span style={{ color: '#64748b', fontFamily: 'monospace' }}>{skill.level}%</span>
                         </div>
-
-                        <div className="space-y-5">
-                          {category.items.slice(0, 4).map(skill => (
-                            <div key={skill.name}>
-                              <div className="flex justify-between text-sm mb-2">
-                                <span className="text-[var(--color-text-secondary)]">{skill.name}</span>
-                                <span className="text-[var(--color-text-muted)] font-mono">{skill.level}%</span>
-                              </div>
-                              <div className="h-2 bg-[var(--color-bg-tertiary)] overflow-hidden">
-                                <div
-                                  className="h-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] transition-all duration-1000"
-                                  style={{ width: `${skill.level}%` }}
-                                ></div>
-                              </div>
-                            </div>
-                          ))}
+                        <div style={{
+                          height: '6px',
+                          backgroundColor: '#1e293b',
+                          overflow: 'hidden'
+                        }}>
+                          <div style={{
+                            height: '100%',
+                            width: `${skill.level}%`,
+                            background: 'linear-gradient(90deg, #00ff9d, #00d4ff)'
+                          }}></div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
 
           {/* ===== PROJECTS SECTION ===== */}
-          <section id="projects" className="py-40 px-8 md:px-16 lg:px-24 bg-[var(--color-bg-secondary)]/20">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-20">
-                <span className="inline-block px-5 py-2.5 mb-6 text-xs font-mono font-bold text-[var(--color-accent)] border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 uppercase tracking-[0.3em]">
+          <section id="projects" style={{
+            padding: '160px 24px',
+            backgroundColor: 'rgba(30, 41, 59, 0.15)'
+          }}>
+            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+              <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+                <span style={{
+                  display: 'inline-block',
+                  padding: '12px 20px',
+                  marginBottom: '24px',
+                  fontSize: '12px',
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  color: '#ff007b',
+                  border: '1px solid rgba(255,0,123,0.3)',
+                  backgroundColor: 'rgba(255,0,123,0.05)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.3em'
+                }}>
                   Proyectos
                 </span>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[var(--color-text-primary)] mb-8">
-                  Misiones <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-primary)]">Completadas</span>
+                <h2 style={{
+                  fontSize: 'clamp(32px, 6vw, 56px)',
+                  fontWeight: 900,
+                  color: '#e2e8f0',
+                  marginBottom: '24px'
+                }}>
+                  Misiones <span style={{
+                    background: 'linear-gradient(135deg, #ff007b, #00ff9d)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                  }}>Completadas</span>
                 </h2>
-                <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto text-lg leading-relaxed">
+                <p style={{
+                  fontSize: '18px',
+                  color: '#64748b',
+                  maxWidth: '600px',
+                  margin: '0 auto',
+                  lineHeight: 1.7
+                }}>
                   Cada proyecto es una misión. De scripts defensivos a plataformas completas.
                 </p>
               </div>
@@ -221,85 +409,77 @@ function App() {
             </div>
           </section>
 
-          {/* ===== EXPERIENCE SECTION ===== */}
-          <section id="experience" className="py-40 px-8 md:px-16 lg:px-24">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-20">
-                <span className="inline-block px-5 py-2.5 mb-6 text-xs font-mono font-bold text-[var(--color-primary)] border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/5 uppercase tracking-[0.3em]">
-                  Trayectoria
-                </span>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[var(--color-text-primary)] mb-8">
-                  Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]">Path</span>
-                </h2>
-              </div>
-
-              <div className="relative">
-                {/* Timeline Line */}
-                <div className="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-accent)]"></div>
-
-                {/* Timeline Items */}
-                <div className="space-y-16">
-                  {/* Item 1 */}
-                  <div className="relative flex flex-col md:flex-row gap-8 md:gap-16">
-                    <div className="md:w-1/2 md:text-right md:pr-16">
-                      <span className="text-sm font-mono text-[var(--color-primary)]">2024 - Presente</span>
-                    </div>
-                    <div className="absolute left-4 md:left-1/2 w-5 h-5 rounded-full bg-[var(--color-primary)] border-4 border-[var(--color-bg-primary)] shadow-[0_0_25px_var(--color-primary-glow)] transform -translate-x-1/2"></div>
-                    <div className="md:w-1/2 md:pl-16 pl-12">
-                      <div className="p-8 bg-[var(--color-bg-secondary)]/40 border border-[var(--color-border)] hover:border-[var(--color-primary)]/30 transition-all duration-300">
-                        <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-4">Formación en Ciberseguridad</h3>
-                        <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                          Certificación Google Cybersecurity. Proyectos de seguridad ofensiva y defensiva. Automatización con Python y Bash.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Item 2 */}
-                  <div className="relative flex flex-col md:flex-row gap-8 md:gap-16">
-                    <div className="md:w-1/2 md:text-right md:pr-16 md:order-1">
-                      <div className="p-8 bg-[var(--color-bg-secondary)]/40 border border-[var(--color-border)] hover:border-[var(--color-secondary)]/30 transition-all duration-300">
-                        <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-4">Desarrollo Full-Stack</h3>
-                        <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                          Desarrollo web y móvil. Implementación de soluciones seguras y escalables. Gestión de infraestructura y DevOps.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="absolute left-4 md:left-1/2 w-5 h-5 rounded-full bg-[var(--color-secondary)] border-4 border-[var(--color-bg-primary)] shadow-[0_0_25px_var(--color-secondary-glow)] transform -translate-x-1/2"></div>
-                    <div className="md:w-1/2 md:pl-16 md:order-2 pl-12">
-                      <span className="text-sm font-mono text-[var(--color-secondary)]">2020 - 2024</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* ===== CONTACT SECTION ===== */}
-          <section id="contact" className="py-40 px-8 md:px-16 lg:px-24 bg-[var(--color-bg-secondary)]/20">
-            <div className="max-w-3xl mx-auto text-center">
-              <span className="inline-block px-5 py-2.5 mb-6 text-xs font-mono font-bold text-[var(--color-accent)] border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 uppercase tracking-[0.3em]">
-                Contacto
-              </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[var(--color-text-primary)] mb-8">
-                ¿Conectamos?
-              </h2>
-              <p className="text-xl text-[var(--color-text-muted)] max-w-xl mx-auto mb-14 leading-relaxed">
-                ¿Buscas un perfil técnico comprometido con la seguridad? Mi terminal siempre responde.
-              </p>
-              <a
-                href="mailto:michelmacias.it@gmail.com"
-                className="group inline-flex items-center gap-4 px-14 py-6 bg-[var(--color-primary)] text-[var(--color-bg-primary)] font-mono text-lg font-bold transition-all duration-300 hover:shadow-[0_0_60px_rgba(0,255,157,0.4)] hover:scale-105"
-              >
-                <FiMail className="text-xl" />
-                ESTABLECER_CONEXIÓN()
-              </a>
-            </div>
+          <section id="contact" style={{
+            padding: '160px 24px',
+            textAlign: 'center'
+          }}>
+            <span style={{
+              display: 'inline-block',
+              padding: '12px 20px',
+              marginBottom: '24px',
+              fontSize: '12px',
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              color: '#ff007b',
+              border: '1px solid rgba(255,0,123,0.3)',
+              backgroundColor: 'rgba(255,0,123,0.05)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.3em'
+            }}>
+              Contacto
+            </span>
+            <h2 style={{
+              fontSize: 'clamp(32px, 6vw, 56px)',
+              fontWeight: 900,
+              color: '#e2e8f0',
+              marginBottom: '32px'
+            }}>
+              ¿Conectamos?
+            </h2>
+            <p style={{
+              fontSize: '20px',
+              color: '#64748b',
+              maxWidth: '500px',
+              margin: '0 auto 48px auto',
+              lineHeight: 1.7
+            }}>
+              ¿Buscas un perfil técnico comprometido con la seguridad? Mi terminal siempre responde.
+            </p>
+            <a
+              href="mailto:michelmacias.it@gmail.com"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '16px',
+                padding: '24px 48px',
+                backgroundColor: '#00ff9d',
+                color: '#050810',
+                fontFamily: 'monospace',
+                fontSize: '18px',
+                fontWeight: 700,
+                textDecoration: 'none',
+                transition: 'all 0.3s'
+              }}
+            >
+              <FiMail size={22} />
+              ESTABLECER_CONEXIÓN()
+            </a>
           </section>
 
           {/* Footer */}
-          <footer className="py-16 text-center border-t border-[var(--color-border)]">
-            <p className="text-[var(--color-text-muted)] text-xs font-mono uppercase tracking-[0.3em]">
+          <footer style={{
+            padding: '64px 24px',
+            textAlign: 'center',
+            borderTop: '1px solid #1e293b'
+          }}>
+            <p style={{
+              fontSize: '12px',
+              fontFamily: 'monospace',
+              color: '#64748b',
+              textTransform: 'uppercase',
+              letterSpacing: '0.3em'
+            }}>
               Michel Macías © 2026 // Portfolio v3.0
             </p>
           </footer>
