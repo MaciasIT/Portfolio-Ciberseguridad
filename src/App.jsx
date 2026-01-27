@@ -15,22 +15,16 @@ function App() {
   useEffect(() => {
     if (showTerminal) return;
 
-    const observerOptions = {
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, observerOptions);
-
+    // Forzar visibilidad de todos los elementos reveal
     const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach(el => observer.observe(el));
+    revealElements.forEach(el => el.classList.add('active'));
 
-    return () => observer.disconnect();
+    // Logger de errores global para ayudar al diagnóstico
+    window.onerror = (msg, url, line, col, error) => {
+      console.log(`[FATAL_ERROR] ${msg} at ${line}:${col}`);
+      // Guardar en un lugar accesible si es necesario
+      return false;
+    };
   }, [showTerminal]);
 
   const handleTerminalComplete = useCallback(() => {
@@ -62,7 +56,7 @@ function App() {
             {/* Cyber Glowing Orb - Simple Gradient */}
             <div className="absolute top-1/4 -right-48 w-[600px] h-[600px] bg-[radial-gradient(circle,var(--color-primary-glow),transparent_70%)] opacity-20 blur-3xl pointer-events-none"></div>
 
-            <div className="text-center max-w-5xl reveal">
+            <div className="text-center max-w-5xl animate-fadeIn">
               <span className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[var(--color-primary)] mb-8 px-4 py-2 rounded-full glass border border-[var(--color-primary)]/20 animate-fadeIn uppercase tracking-[0.3em]">
                 <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse"></span>
                 SECURITY SPECIALIST // FULL-STACK
