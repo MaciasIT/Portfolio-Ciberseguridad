@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FiUser, FiCode, FiBriefcase, FiMail } from 'react-icons/fi';
+import { FiUser, FiCode, FiBriefcase, FiMail, FiShield } from 'react-icons/fi';
 
 const FloatingNavbar = () => {
     const [activeSection, setActiveSection] = useState('about');
