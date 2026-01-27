@@ -1,30 +1,28 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import FloatingNavbar from './components/FloatingNavbar';
 import ProjectList from './components/ProjectList';
 import MatrixBackground from './components/MatrixBackground';
 import IntroTerminal from './components/IntroTerminal';
 import { skills } from './data/skills';
-import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiChevronDown, FiShield, FiCpu, FiTerminal, FiDatabase } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiChevronDown, FiShield, FiCpu, FiTerminal, FiDatabase, FiArrowDown, FiCode, FiLock } from 'react-icons/fi';
 import './App.css';
 
 function App() {
-  // Volver a activar terminal para funcionamiento normal
   const [showTerminal, setShowTerminal] = useState(true);
+  const heroRef = useRef(null);
 
   useEffect(() => {
     if (showTerminal) return;
 
+    // Scroll automático al hero después de la intro
+    if (heroRef.current) {
+      heroRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+
     // Forzar visibilidad de todos los elementos reveal
     const revealElements = document.querySelectorAll('.reveal');
     revealElements.forEach(el => el.classList.add('active'));
-
-    // Logger de errores global para ayudar al diagnóstico
-    window.onerror = (msg, url, line, col, error) => {
-      console.log(`[FATAL_ERROR] ${msg} at ${line}:${col}`);
-      // Guardar en un lugar accesible si es necesario
-      return false;
-    };
   }, [showTerminal]);
 
   const handleTerminalComplete = useCallback(() => {
@@ -35,13 +33,12 @@ function App() {
     return <IntroTerminal onComplete={handleTerminalComplete} />;
   }
 
-  // Renderizar el contenido del portfolio
   return (
     <Router>
-      <div className="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] selection:bg-[var(--color-primary)] selection:text-black">
+      <div className="bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] selection:bg-[var(--color-primary)] selection:text-black min-h-screen">
 
         {/* BACKGROUND LAYER */}
-        <div className="fixed inset-0 z-0 opacity-40">
+        <div className="fixed inset-0 z-0 opacity-30">
           <MatrixBackground />
         </div>
 
@@ -51,109 +48,211 @@ function App() {
         {/* MAIN SCROLL CONTAINER */}
         <main className="relative z-10">
 
-          {/* ===== HERO SECTION ===== */}
-          <section id="about" className="min-h-screen flex flex-col items-center justify-center relative px-6 py-20 snap-start">
-            {/* Cyber Glowing Orb - Simple Gradient */}
-            <div className="absolute top-1/4 -right-48 w-[600px] h-[600px] bg-[radial-gradient(circle,var(--color-primary-glow),transparent_70%)] opacity-20 blur-3xl pointer-events-none"></div>
+          {/* ===== HERO SECTION - SPLIT LAYOUT ===== */}
+          <section ref={heroRef} id="about" className="min-h-screen flex items-center relative overflow-hidden">
+            {/* Background Orbs */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[radial-gradient(circle,var(--color-primary-glow),transparent_60%)] opacity-15 blur-3xl pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[radial-gradient(circle,var(--color-secondary-glow),transparent_60%)] opacity-10 blur-3xl pointer-events-none"></div>
 
-            <div className="text-center max-w-5xl animate-fadeIn">
-              <span className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[var(--color-primary)] mb-8 px-4 py-2 rounded-full glass border border-[var(--color-primary)]/20 animate-fadeIn uppercase tracking-[0.3em]">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] animate-pulse"></span>
-                SECURITY SPECIALIST // FULL-STACK
-              </span>
+            <div className="container mx-auto px-6 lg:px-12">
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-screen py-24">
 
-              <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-[var(--color-text-primary)] leading-[0.9] tracking-tighter mb-8">
-                MICHEL <br />
-                <span className="gradient-text">MACÍAS</span>
-              </h1>
+                {/* LEFT SIDE - TEXT CONTENT */}
+                <div className="order-2 lg:order-1 animate-fadeIn">
+                  {/* Status Badge */}
+                  <div className="inline-flex items-center gap-3 mb-8">
+                    <span className="relative flex h-3 w-3">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-primary)] opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-3 w-3 bg-[var(--color-primary)]"></span>
+                    </span>
+                    <span className="text-sm font-mono text-[var(--color-primary)] uppercase tracking-widest">
+                      Disponible para proyectos
+                    </span>
+                  </div>
 
-              <p className="text-xl md:text-2xl text-[var(--color-text-secondary)] max-w-3xl mx-auto leading-relaxed mb-12 font-light">
-                Especialista en <span className="text-[var(--color-primary)] font-semibold">ciberseguridad</span> y desarrollo.
-                Auditorías de seguridad, pentesting y automatización de infraestructuras.
-                Protegiendo sistemas, un vulnerability a la vez.
-              </p>
+                  {/* Name */}
+                  <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black leading-[0.95] tracking-tight mb-6">
+                    <span className="text-[var(--color-text-primary)]">MICHEL</span>
+                    <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-primary)]">
+                      MACÍAS
+                    </span>
+                  </h1>
 
-              <div className="flex flex-wrap justify-center gap-4 mb-16">
-                <a href="https://github.com/MaciasIT" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-6 py-3 glass rounded-full border border-[var(--color-border)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all duration-300 group">
-                  <FiGithub className="text-xl group-hover:rotate-12 transition-transform" />
-                  <span className="font-mono text-sm">GITHUB</span>
-                </a>
-                <a href="https://linkedin.com/in/michelmaciasgonzalez" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-6 py-3 glass rounded-full border border-[var(--color-border)] hover:border-[var(--color-secondary)] hover:text-[var(--color-secondary)] transition-all duration-300 group">
-                  <FiLinkedin className="text-xl group-hover:rotate-12 transition-transform" />
-                  <span className="font-mono text-sm">LINKEDIN</span>
-                </a>
-                <a href="mailto:michelmacias.it@gmail.com"
-                  className="flex items-center gap-3 px-6 py-3 glass rounded-full border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300 group">
-                  <FiMail className="text-xl group-hover:rotate-12 transition-transform" />
-                  <span className="font-mono text-sm">EMAIL</span>
-                </a>
-              </div>
+                  {/* Role */}
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="h-px flex-1 max-w-[60px] bg-gradient-to-r from-[var(--color-primary)] to-transparent"></div>
+                    <span className="text-lg sm:text-xl font-mono text-[var(--color-text-secondary)]">
+                      Cybersecurity Specialist
+                    </span>
+                  </div>
 
-              <div className="flex items-center justify-center gap-2 text-[var(--color-text-muted)] font-mono text-sm">
-                <FiMapPin className="text-[var(--color-primary)]" />
-                <span>Bizkaia, España</span>
+                  {/* Description */}
+                  <p className="text-lg text-[var(--color-text-muted)] max-w-lg leading-relaxed mb-10">
+                    Especialista en <span className="text-[var(--color-primary)] font-medium">seguridad ofensiva</span> y
+                    <span className="text-[var(--color-secondary)] font-medium"> automatización</span>.
+                    Transformo vulnerabilidades en fortalezas y código en escudos digitales.
+                  </p>
+
+                  {/* CTA Buttons */}
+                  <div className="flex flex-wrap gap-4 mb-10">
+                    <a
+                      href="#projects"
+                      className="group relative px-8 py-4 bg-[var(--color-primary)] text-[var(--color-bg-primary)] font-bold font-mono text-sm uppercase tracking-wider overflow-hidden transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,255,157,0.4)]"
+                    >
+                      <span className="relative z-10 flex items-center gap-2">
+                        <FiCode /> Ver Proyectos
+                      </span>
+                      <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </a>
+                    <a
+                      href="mailto:michelmacias.it@gmail.com"
+                      className="px-8 py-4 border-2 border-[var(--color-border)] text-[var(--color-text-primary)] font-mono text-sm uppercase tracking-wider hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all duration-300"
+                    >
+                      <span className="flex items-center gap-2">
+                        <FiMail /> Contactar
+                      </span>
+                    </a>
+                  </div>
+
+                  {/* Social Links */}
+                  <div className="flex items-center gap-6">
+                    <span className="text-xs text-[var(--color-text-muted)] font-mono uppercase tracking-widest">Links:</span>
+                    <div className="flex gap-4">
+                      <a href="https://github.com/MaciasIT" target="_blank" rel="noopener noreferrer"
+                        className="p-3 border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:shadow-[0_0_20px_rgba(0,255,157,0.2)] transition-all duration-300">
+                        <FiGithub size={20} />
+                      </a>
+                      <a href="https://linkedin.com/in/michelmaciasgonzalez" target="_blank" rel="noopener noreferrer"
+                        className="p-3 border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-secondary)] hover:text-[var(--color-secondary)] hover:shadow-[0_0_20px_rgba(0,212,255,0.2)] transition-all duration-300">
+                        <FiLinkedin size={20} />
+                      </a>
+                      <a href="mailto:michelmacias.it@gmail.com"
+                        className="p-3 border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-[0_0_20px_rgba(255,0,123,0.2)] transition-all duration-300">
+                        <FiMail size={20} />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Location */}
+                  <div className="flex items-center gap-2 mt-8 text-sm text-[var(--color-text-muted)]">
+                    <FiMapPin className="text-[var(--color-primary)]" />
+                    <span className="font-mono">Bizkaia, España</span>
+                  </div>
+                </div>
+
+                {/* RIGHT SIDE - VISUAL ELEMENT */}
+                <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-fadeIn" style={{ animationDelay: '0.3s' }}>
+                  <div className="relative w-full max-w-md lg:max-w-lg">
+                    {/* Terminal Window */}
+                    <div className="relative bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-lg overflow-hidden shadow-2xl shadow-black/50">
+                      {/* Terminal Header */}
+                      <div className="flex items-center gap-2 px-4 py-3 bg-[var(--color-bg-tertiary)] border-b border-[var(--color-border)]">
+                        <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                        <span className="ml-4 text-xs font-mono text-[var(--color-text-muted)]">macias@kali:~</span>
+                      </div>
+                      {/* Terminal Content */}
+                      <div className="p-6 font-mono text-sm space-y-2 min-h-[300px]">
+                        <div className="text-[var(--color-text-muted)]">$ whoami</div>
+                        <div className="text-[var(--color-primary)]">michel_macias</div>
+                        <div className="text-[var(--color-text-muted)] mt-4">$ cat skills.txt</div>
+                        <div className="text-[var(--color-text-secondary)]">
+                          <span className="text-[var(--color-secondary)]">[+]</span> Pentesting & Ethical Hacking<br />
+                          <span className="text-[var(--color-secondary)]">[+]</span> Security Audits<br />
+                          <span className="text-[var(--color-secondary)]">[+]</span> Python & Bash Automation<br />
+                          <span className="text-[var(--color-secondary)]">[+]</span> Linux Hardening<br />
+                          <span className="text-[var(--color-secondary)]">[+]</span> SIEM & Log Analysis
+                        </div>
+                        <div className="text-[var(--color-text-muted)] mt-4">$ status --availability</div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-green-400">●</span>
+                          <span className="text-[var(--color-primary)]">READY_FOR_HIRE</span>
+                        </div>
+                        <div className="flex items-center gap-1 mt-4 text-[var(--color-text-muted)]">
+                          <span>$</span>
+                          <span className="w-2 h-4 bg-[var(--color-primary)] animate-pulse"></span>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Decorative Elements */}
+                    <div className="absolute -top-4 -right-4 w-20 h-20 border border-[var(--color-primary)]/30 rounded-lg"></div>
+                    <div className="absolute -bottom-4 -left-4 w-20 h-20 border border-[var(--color-secondary)]/30 rounded-lg"></div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
-              <FiChevronDown className="text-3xl text-[var(--color-primary)]" />
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+              <span className="text-xs font-mono text-[var(--color-text-muted)] uppercase tracking-widest">Scroll</span>
+              <div className="w-6 h-10 border-2 border-[var(--color-primary)]/50 rounded-full flex items-start justify-center p-1">
+                <div className="w-1.5 h-3 bg-[var(--color-primary)] rounded-full animate-pulse"></div>
+              </div>
             </div>
           </section>
 
-          {/* ===== SKILLS SECTION - BENTO GRID ===== */}
-          <section id="skills" className="min-h-screen py-32 px-6 snap-start">
+          {/* ===== SKILLS SECTION ===== */}
+          <section id="skills" className="py-32 px-6 relative">
             <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-20 reveal">
-                <span className="text-xs font-mono font-bold text-[var(--color-secondary)] tracking-[0.3em] uppercase mb-4 block">TECH_STACK</span>
-                <h2 className="text-5xl md:text-6xl font-black text-[var(--color-text-primary)] mb-6">
-                  Arsenal de <span className="gradient-text">Habilidades</span>
+              <div className="text-center mb-16">
+                <span className="inline-block px-4 py-2 mb-4 text-xs font-mono font-bold text-[var(--color-secondary)] border border-[var(--color-secondary)]/30 bg-[var(--color-secondary)]/5 uppercase tracking-[0.3em]">
+                  Tech Stack
+                </span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[var(--color-text-primary)] mb-6">
+                  Arsenal de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]">Habilidades</span>
                 </h2>
-                <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto">
-                  Herramientas y conocimientos que utilizo para proteger, analizar y construir sistemas seguros.
+                <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto text-lg">
+                  Herramientas y conocimientos para proteger, analizar y construir sistemas seguros.
                 </p>
               </div>
 
-              {/* Bento Grid */}
-              <div className="bento-grid reveal">
+              {/* Skills Grid - Modern Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {skills.map((category, index) => {
                   const icons = {
-                    'shield': <FiShield className="text-3xl text-[var(--color-primary)]" />,
-                    'desktop': <FiCpu className="text-3xl text-[var(--color-secondary)]" />,
-                    'code': <FiTerminal className="text-3xl text-[var(--color-accent)]" />,
-                    'network': <FiDatabase className="text-3xl text-[var(--color-primary)]" />,
-                    'tool': <FiCpu className="text-3xl text-[var(--color-secondary)]" />
+                    'shield': <FiShield className="text-2xl" />,
+                    'desktop': <FiCpu className="text-2xl" />,
+                    'code': <FiTerminal className="text-2xl" />,
+                    'network': <FiDatabase className="text-2xl" />,
+                    'tool': <FiLock className="text-2xl" />
                   };
-                  const isLarge = index === 0;
+                  const colors = ['var(--color-primary)', 'var(--color-secondary)', 'var(--color-accent)'];
+                  const color = colors[index % 3];
 
                   return (
                     <div
                       key={category.category}
-                      className={`bento-item ${isLarge ? 'bento-large' : index % 3 === 1 ? 'bento-wide' : ''}`}
+                      className="group relative p-6 bg-[var(--color-bg-secondary)]/50 backdrop-blur-sm border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 transition-all duration-500 overflow-hidden"
                     >
-                      <div className="absolute -top-12 -right-12 w-32 h-32 bg-[var(--color-primary)] opacity-5 blur-[60px] group-hover:opacity-10 transition-opacity"></div>
+                      {/* Hover Glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                      <div className="flex items-center gap-4 mb-6">
-                        {icons[category.icon] || <FiShield className="text-3xl text-[var(--color-primary)]" />}
-                        <h3 className="text-xl font-bold text-[var(--color-text-primary)]">{category.category}</h3>
-                      </div>
-
-                      <div className="space-y-3">
-                        {category.items.slice(0, isLarge ? 6 : 4).map(skill => (
-                          <div key={skill.name} className="group/skill">
-                            <div className="flex justify-between text-sm mb-1">
-                              <span className="text-[var(--color-text-secondary)]">{skill.name}</span>
-                              <span className="text-[var(--color-text-muted)] font-mono text-xs">{skill.level}%</span>
-                            </div>
-                            <div className="h-1 bg-[var(--color-bg-tertiary)] rounded-full overflow-hidden">
-                              <div
-                                className="h-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] rounded-full transition-all duration-1000 group-hover/skill:shadow-[0_0_10px_var(--color-primary-glow)]"
-                                style={{ width: `${skill.level}%` }}
-                              ></div>
-                            </div>
+                      <div className="relative z-10">
+                        <div className="flex items-center gap-4 mb-6">
+                          <div className="p-3 border border-[var(--color-border)] text-[var(--color-primary)] group-hover:border-[var(--color-primary)]/50 group-hover:shadow-[0_0_20px_rgba(0,255,157,0.1)] transition-all duration-300">
+                            {icons[category.icon] || <FiShield className="text-2xl" />}
                           </div>
-                        ))}
+                          <h3 className="text-lg font-bold text-[var(--color-text-primary)]">{category.category}</h3>
+                        </div>
+
+                        <div className="space-y-4">
+                          {category.items.slice(0, 4).map(skill => (
+                            <div key={skill.name}>
+                              <div className="flex justify-between text-sm mb-2">
+                                <span className="text-[var(--color-text-secondary)]">{skill.name}</span>
+                                <span className="text-[var(--color-text-muted)] font-mono">{skill.level}%</span>
+                              </div>
+                              <div className="h-1.5 bg-[var(--color-bg-tertiary)] overflow-hidden">
+                                <div
+                                  className="h-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] transition-all duration-1000"
+                                  style={{ width: `${skill.level}%` }}
+                                ></div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   );
@@ -163,59 +262,71 @@ function App() {
           </section>
 
           {/* ===== PROJECTS SECTION ===== */}
-          <section id="projects" className="min-h-screen py-32 px-6 snap-start">
+          <section id="projects" className="py-32 px-6 relative bg-[var(--color-bg-secondary)]/30">
             <div className="max-w-7xl mx-auto">
-              <div className="text-center mb-20 reveal">
-                <span className="text-xs font-mono font-bold text-[var(--color-accent)] tracking-[0.3em] uppercase mb-4 block">MISSION_LOG</span>
-                <h2 className="text-5xl md:text-6xl font-black text-[var(--color-text-primary)] mb-6">
-                  Proyectos <span className="gradient-text">Destacados</span>
+              <div className="text-center mb-16">
+                <span className="inline-block px-4 py-2 mb-4 text-xs font-mono font-bold text-[var(--color-accent)] border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 uppercase tracking-[0.3em]">
+                  Proyectos
+                </span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[var(--color-text-primary)] mb-6">
+                  Misiones <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-primary)]">Completadas</span>
                 </h2>
-                <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto">
-                  Cada proyecto es una misión completada. De scripts a plataformas completas.
+                <p className="text-[var(--color-text-muted)] max-w-2xl mx-auto text-lg">
+                  Cada proyecto es una misión. De scripts defensivos a plataformas completas.
                 </p>
               </div>
 
-              <div className="reveal">
-                <ProjectList />
-              </div>
+              <ProjectList />
             </div>
           </section>
 
           {/* ===== EXPERIENCE SECTION ===== */}
-          <section id="experience" className="min-h-screen py-32 px-6 snap-start">
-            <div className="max-w-5xl mx-auto">
-              <div className="text-center mb-20 reveal">
-                <span className="text-xs font-mono font-bold text-[var(--color-primary)] tracking-[0.3em] uppercase mb-4 block">CAREER_PATH</span>
-                <h2 className="text-5xl md:text-6xl font-black text-[var(--color-text-primary)] mb-6">
-                  Trayectoria <span className="gradient-text">Profesional</span>
+          <section id="experience" className="py-32 px-6 relative">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <span className="inline-block px-4 py-2 mb-4 text-xs font-mono font-bold text-[var(--color-primary)] border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/5 uppercase tracking-[0.3em]">
+                  Trayectoria
+                </span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[var(--color-text-primary)] mb-6">
+                  Career <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)]">Path</span>
                 </h2>
               </div>
 
-              <div className="relative reveal">
-                <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-accent)]"></div>
+              <div className="relative">
+                {/* Timeline Line */}
+                <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[var(--color-primary)] via-[var(--color-secondary)] to-[var(--color-accent)]"></div>
 
-                <div className="space-y-16">
-                  <div className="relative pl-20">
-                    <div className="absolute left-6 w-5 h-5 rounded-full bg-[var(--color-primary)] border-4 border-[var(--color-bg-primary)] shadow-[0_0_20px_var(--color-primary-glow)]"></div>
-                    <div className="glass p-8 rounded-3xl border border-[var(--color-border)] hover:border-[var(--color-primary)]/30 transition-all duration-500">
-                      <span className="text-xs font-mono text-[var(--color-primary)] mb-2 block">2024 - PRESENTE</span>
-                      <h3 className="text-2xl font-bold text-[var(--color-text-primary)] mb-3">Formación en Ciberseguridad</h3>
-                      <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                        Certificación Google Cybersecurity en progreso. Desarrollo de proyectos prácticos de
-                        seguridad ofensiva y defensiva. Automatización de auditorías con Python y Bash.
-                      </p>
+                {/* Timeline Items */}
+                <div className="space-y-12">
+                  {/* Item 1 */}
+                  <div className="relative flex flex-col md:flex-row gap-8">
+                    <div className="md:w-1/2 md:text-right md:pr-12">
+                      <span className="text-sm font-mono text-[var(--color-primary)]">2024 - Presente</span>
+                    </div>
+                    <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-[var(--color-primary)] border-4 border-[var(--color-bg-primary)] shadow-[0_0_20px_var(--color-primary-glow)] transform -translate-x-1/2"></div>
+                    <div className="md:w-1/2 md:pl-12">
+                      <div className="p-6 bg-[var(--color-bg-secondary)]/50 border border-[var(--color-border)] hover:border-[var(--color-primary)]/30 transition-all duration-300">
+                        <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Formación en Ciberseguridad</h3>
+                        <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+                          Certificación Google Cybersecurity. Proyectos de seguridad ofensiva y defensiva. Automatización con Python y Bash.
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="relative pl-20">
-                    <div className="absolute left-6 w-5 h-5 rounded-full bg-[var(--color-secondary)] border-4 border-[var(--color-bg-primary)] shadow-[0_0_20px_var(--color-secondary-glow)]"></div>
-                    <div className="glass p-8 rounded-3xl border border-[var(--color-border)] hover:border-[var(--color-secondary)]/30 transition-all duration-500">
-                      <span className="text-xs font-mono text-[var(--color-secondary)] mb-2 block">2020 - 2024</span>
-                      <h3 className="text-2xl font-bold text-[var(--color-text-primary)] mb-3">Desarrollo Full-Stack</h3>
-                      <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                        Experiencia en desarrollo web y móvil. Implementación de soluciones seguras
-                        y escalables. Gestión de infraestructura y DevOps.
-                      </p>
+                  {/* Item 2 */}
+                  <div className="relative flex flex-col md:flex-row gap-8">
+                    <div className="md:w-1/2 md:text-right md:pr-12 md:order-1">
+                      <div className="p-6 bg-[var(--color-bg-secondary)]/50 border border-[var(--color-border)] hover:border-[var(--color-secondary)]/30 transition-all duration-300">
+                        <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-2">Desarrollo Full-Stack</h3>
+                        <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+                          Desarrollo web y móvil. Implementación de soluciones seguras y escalables. Gestión de infraestructura y DevOps.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="absolute left-0 md:left-1/2 w-4 h-4 rounded-full bg-[var(--color-secondary)] border-4 border-[var(--color-bg-primary)] shadow-[0_0_20px_var(--color-secondary-glow)] transform -translate-x-1/2"></div>
+                    <div className="md:w-1/2 md:pl-12 md:order-2">
+                      <span className="text-sm font-mono text-[var(--color-secondary)]">2020 - 2024</span>
                     </div>
                   </div>
                 </div>
@@ -224,29 +335,32 @@ function App() {
           </section>
 
           {/* ===== CONTACT SECTION ===== */}
-          <section id="contact" className="min-h-screen flex flex-col items-center justify-center py-32 px-6 snap-start">
-            <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-[radial-gradient(circle,var(--color-accent-glow),transparent_70%)] opacity-10 blur-3xl pointer-events-none"></div>
-
-            <span className="text-xs font-mono font-bold text-[var(--color-accent)] tracking-[0.3em] uppercase mb-4 block reveal">INIT_CONNECTION</span>
-            <h2 className="text-5xl md:text-7xl font-black text-[var(--color-text-primary)] mb-8 text-center reveal">
-              ¿Conectamos?
-            </h2>
-            <p className="text-xl text-[var(--color-text-secondary)] max-w-2xl mb-12 leading-relaxed text-center reveal">
-              ¿Buscas un perfil técnico comprometido con la seguridad y la eficiencia? Mi terminal siempre responde a peticiones legítimas.
-            </p>
-            <a
-              href="mailto:michelmacias.it@gmail.com"
-              className="group relative inline-flex items-center gap-4 px-16 py-6 bg-[var(--color-primary)] text-black font-mono text-2xl font-black rounded-3xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_50px_rgba(0,255,157,0.3)] hover:rotate-1 reveal"
-            >
-              ESTABLECER_CONEXIÓN();
-              <span className="absolute inset-0 rounded-3xl border-4 border-white/20 group-hover:scale-110 opacity-0 group-hover:opacity-100 transition-all"></span>
-            </a>
+          <section id="contact" className="py-32 px-6 relative bg-[var(--color-bg-secondary)]/30">
+            <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] to-transparent pointer-events-none"></div>
+            <div className="max-w-4xl mx-auto text-center relative z-10">
+              <span className="inline-block px-4 py-2 mb-4 text-xs font-mono font-bold text-[var(--color-accent)] border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/5 uppercase tracking-[0.3em]">
+                Contacto
+              </span>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[var(--color-text-primary)] mb-6">
+                ¿Conectamos?
+              </h2>
+              <p className="text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-12">
+                ¿Buscas un perfil técnico comprometido con la seguridad? Mi terminal siempre responde.
+              </p>
+              <a
+                href="mailto:michelmacias.it@gmail.com"
+                className="group inline-flex items-center gap-4 px-12 py-5 bg-[var(--color-primary)] text-[var(--color-bg-primary)] font-mono text-lg font-bold transition-all duration-300 hover:shadow-[0_0_60px_rgba(0,255,157,0.4)] hover:scale-105"
+              >
+                <FiMail className="text-xl" />
+                ESTABLECER_CONEXIÓN()
+              </a>
+            </div>
           </section>
 
-          {/* Footer Minimal */}
-          <footer className="py-20 text-center border-t border-[var(--color-border)] opacity-60">
-            <p className="text-[var(--color-text-muted)] text-xs font-mono uppercase tracking-[0.5em]">
-              MICHEL MACÍAS &copy; 2026 // PREMIUM PORTFOLIO v3.0 // CODED WITH PRIDE
+          {/* Footer */}
+          <footer className="py-12 text-center border-t border-[var(--color-border)]">
+            <p className="text-[var(--color-text-muted)] text-xs font-mono uppercase tracking-[0.3em]">
+              Michel Macías © 2026 // Portfolio v3.0
             </p>
           </footer>
 
