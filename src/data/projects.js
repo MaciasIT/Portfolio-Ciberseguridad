@@ -234,7 +234,137 @@ export const projects = [
             'Gestión de Identidades',
             'Análisis de Entropía',
             'LastPass vs 1Password',
-            'Best Practices'
+            'Linux Hardening',
+            'Digital Forensics'
+        ]
+    },
+    {
+        id: 'linux-offensive-defensive',
+        title: 'Linux: Ofensiva y Defensiva',
+        description: 'Colección de guías técnicas sobre seguridad en Linux. Cubre desde la gestión crítica de permisos de archivos hasta técnicas avanzadas de escalada de privilegios y vectores de ataque.',
+        category: 'Hardening',
+        technologies: ['Privilege Escalation', 'File Permissions', 'SUID/SGID', 'Linux Security'],
+        filePath: '/src/portfolio_content/documentos_portafolio/portfolio/Linux_Privilege_Escalation.pdf',
+        language: 'pdf',
+        featured: false,
+        highlights: [
+            'Escalada de Privilegios',
+            'Permisos Avanzados',
+            'Hardening de Sistema',
+            'Vectores de Ataque'
+        ]
+    },
+    {
+        id: 'usb-attack-vectors',
+        title: 'Análisis de Vectores de Ataque USB',
+        description: 'Investigación sobre la seguridad física y los riesgos asociados a dispositivos USB. Identificación de vectores de ataque como BadUSB y estrategias de mitigación.',
+        category: 'Auditoría',
+        technologies: ['Physical Security', 'BadUSB', 'Social Engineering', 'Hardware Hacking'],
+        filePath: '/src/portfolio_content/documentos_portafolio/portfolio/USB_Attack_Vectors.pdf',
+        language: 'pdf',
+        featured: false,
+        highlights: [
+            'Seguridad Física',
+            'Ataques HID',
+            'Mitigación de Riesgos',
+            'Concienciación'
+        ]
+    },
+    {
+        id: 'hacker-ethics-code',
+        title: 'Código de Ética Profesional',
+        description: 'Declaración personal de principios éticos para el hacking. Establece el marco de responsabilidad, integridad y legalidad bajo el cual se realizan todas las pruebas de seguridad.',
+        category: 'Formación',
+        technologies: ['Ethical Hacking', 'Compliance', 'Professional Integrity', 'Legal Framework'],
+        filePath: '/src/portfolio_content/documentos_portafolio/portfolio/Hacker_Code_of_Ethics.pdf',
+        language: 'pdf',
+        featured: false,
+        highlights: [
+            'Responsabilidad',
+            'Integridad Profesional',
+            'Marco Legal',
+
+            'Buenas Prácticas'
+        ]
+    },
+    {
+        id: 'nmap-scan-techniques',
+        title: 'Técnicas de Escaneo con NMAP',
+        description: 'Guía avanzada sobre los diferentes tipos de análisis de red utilizando NMAP. Detalla técnicas de descubrimiento de hosts, escaneo de puertos, detección de versiones y evasión de firewalls.',
+        category: 'Herramientas',
+        technologies: ['NMAP', 'Network Scanning', 'Reconnaissance', 'Firewall Evasion'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Herramientas/NMAP_Scan_Techniques.pdf',
+        language: 'pdf',
+        featured: false,
+        highlights: [
+            'Escaneo de Puertos',
+            'Detección de OS',
+            'Scripts NSE',
+            'Optimización de Escaneos'
+        ]
+    },
+    {
+        id: 'incibe-incident-guide',
+        title: 'Guía Nacional de Notificación de Incidentes (INCIBE)',
+        description: 'Marco de referencia para la gestión y notificación de ciberincidentes según el INCIBE. Protocolos de actuación, clasificación de incidentes y obligaciones legales de reporte.',
+        category: 'Auditoría',
+        technologies: ['Incident Response', 'Compliance', 'INCIBE', 'Legal Framework'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/INCIBE_Incident_Notification_Guide.pdf',
+        language: 'pdf',
+        featured: false,
+        highlights: [
+            'Protocolos de Notificación',
+            'Clasificación de Incidentes',
+            'Marco Legal Español',
+            'Gestión de Crisis'
+        ]
+    },
+    {
+        id: 'risk-management-stages',
+        title: 'Etapas de la Gestión de Riesgos',
+        description: 'Visualización y explicación detallada de las etapas del ciclo de vida de la gestión de riesgos. Complemento visual para la planificación y ejecución de análisis de riesgos.',
+        category: 'Auditoría',
+        technologies: ['Risk Management', 'Lifecycle', 'Analysis', 'Mitigation'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/Risk_Management_Stages.pdf',
+        language: 'pdf',
+        featured: false,
+        highlights: [
+            'Ciclo de Vida del Riesgo',
+            'Identificación y Análisis',
+            'Tratamiento de Riesgos',
+            'Monitoreo Continuo'
+        ]
+    },
+    {
+        id: 'security-domains-overview',
+        title: 'Dominios de Seguridad - Visión General',
+        description: 'Mapa conceptual de los dominios clave de la seguridad de la información. Recurso educativo para comprender la amplitud del campo y las interrelaciones entre áreas.',
+        category: 'Formación',
+        technologies: ['Security Domains', 'CISSP', 'InfoSec Overview', 'Education'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Security_Domains_Overview.pdf',
+        language: 'pdf',
+        featured: false,
+        highlights: [
+            'Mapa Conceptual',
+            'Áreas de Conocimiento',
+            'Fundamentos de InfoSec',
+            'Estructura de Dominios'
+        ]
+    },
+    {
+        id: 'siem-tools-overview',
+        title: 'Panorama de Herramientas SIEM',
+        description: 'Análisis comparativo de las principales soluciones SIEM del mercado (Splunk, QRadar, Elastic, etc.). Guía para seleccionar la herramienta adecuada según las necesidades organizacionales.',
+        category: 'Herramientas',
+        technologies: ['SIEM', 'Splunk', 'QRadar', 'Elastic Stack', 'Log Analysis'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Herramientas/SIEM_Tools_Overview.md',
+        language: 'markdown',
+        featured: false,
+        highlights: [
+            'Comparativa de Herramientas',
+            'Casos de Uso',
+            'Splunk vs ELK',
+            'Estrategias de Monitoreo'
         ]
     },
     {
