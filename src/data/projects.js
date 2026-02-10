@@ -127,6 +127,22 @@ export const projects = [
         ]
     },
     {
+        id: 'incident-response-journal',
+        title: 'Diario de Respuesta a Incidentes',
+        description: 'Bitácora detallada de gestión de incidentes de seguridad simulados y reales. Documentación de detección, contención y erradicación siguiendo el marco de trabajo del NIST. Casos de Ransomware, Phishing y Análisis de Tráfico.',
+        category: 'Auditoría',
+        technologies: ['NIST Framework', 'Incident Response', 'Digital Forensics', 'Wazuh', 'Wireshark'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/Incident_Response_Journal.md',
+        language: 'markdown',
+        featured: true,
+        highlights: [
+            'Ciclo de Vida NIST',
+            'Análisis de Ransomware',
+            'Investigación de Phishing',
+            'Análisis de Tráfico de Red'
+        ]
+    },
+    {
         id: 'scantxungo-qr',
         title: 'ScanTxungoQR',
         description: 'PWA diseñada para combatir el "Quishing". Analiza URLs de códigos QR mediante la API de VirusTotal para detectar amenazas antes de acceder a ellas.',

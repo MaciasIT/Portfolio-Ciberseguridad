@@ -53,7 +53,6 @@
 
 - Reclutadores de empresas de tecnología o consultoras de ciberseguridad interesadas en perfiles técnicos y proactivos.
 - Pymes que necesitan implementar estrategias de seguridad robustas en sus sistemas sin disponer de grandes presupuestos.
-- Organizaciones gubernamentales o entidades educativas que buscan personal dedicado al desarrollo de políticas y herramientas de seguridad.
 
 ### ¿De qué manera mis fortalezas, valores e intereses en la ciberseguridad pueden respaldar los objetivos de seguridad de varias organizaciones?
 
