@@ -32,6 +32,22 @@ export const projects = [
         ]
     },
     {
+        id: 'auditoria-seguridad-controls',
+        title: 'Controles de Seguridad (Administrative, Technical, Physical)',
+        description: 'Guía de referencia sobre la implementación de controles de seguridad en capas. Define y categoriza controles administrativos, técnicos y físicos para una defensa en profundidad.',
+        category: 'Auditoría',
+        technologies: ['Security Controls', 'Defense in Depth', 'Access Control', 'Physical Security'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/Auditoria_Seguridad.md',
+        language: 'markdown',
+        featured: false,
+        highlights: [
+            'Controles Administrativos',
+            'Seguridad Física',
+            'Defensa en Profundidad',
+            'Gestión de Accesos'
+        ]
+    },
+    {
         id: 'web-vuln-scanner',
         title: 'Web Vulnerability Scanner',
         description: 'Escáner de vulnerabilidades web profesional con motor inteligente, crawler asíncrono, modo sigilo para evasión de WAF, y dashboard con reportes PDF. Detecta SQLi, XSS, Command Injection y más.',
@@ -116,7 +132,7 @@ export const projects = [
         description: 'Análisis completo de riesgos y auditoría de seguridad para Botium Toys. Incluye evaluación de controles, análisis de cumplimiento y recomendaciones de mejora.',
         category: 'Auditoría',
         technologies: ['Risk Assessment', 'Compliance', 'Security Controls'],
-        filePath: '/code/auditoria/Botium_Toys_Alcance_objetivos_e_informe.md',
+        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/Botium_Toys_Alcance_objetivos_e_informe.md',
         language: 'markdown',
         featured: true,
         highlights: [
@@ -124,6 +140,22 @@ export const projects = [
             'Análisis de cumplimiento',
             'Controles de seguridad',
             'Recomendaciones estratégicas'
+        ]
+    },
+    {
+        id: 'pentest-planning-bundle',
+        title: 'Kit de Planificación de Pentesting',
+        description: 'Documentación esencial para la fase de pre-compromiso de un test de penetración. Incluye plantillas de Acuerdo de Pentesting y Planificación de Alcance (Scope).',
+        category: 'Auditoría',
+        technologies: ['Pentesting', 'Legal & Compliance', 'Scope Definition', 'Rules of Engagement'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/Pre_Engagement_Scope_Planning.pdf',
+        language: 'pdf',
+        featured: false,
+        highlights: [
+            'Acuerdos Legales',
+            'Definición de Alcance',
+            'Reglas de Compromiso',
+            'Planificación Previa'
         ]
     },
     {
