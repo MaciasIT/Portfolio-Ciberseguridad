@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardianes Digitales 2026 - Guía de Phishing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <img src="cyber_shield_header.png" alt="Escudo Digital" class="hero-icon">
+            <h1>Guardianes Digitales 2026</h1>
+            <p>La ciberseguridad ya no es solo software; es tu capacidad de ver lo que el algoritmo intenta ocultar.</p>
+            <br>
+            <a href="#challenge" class="btn">Empezar Entrenamiento</a>
+        </div>
+    </header>
+
+    <!-- Context Section -->
+    <section class="section reveal">
+        <div class="container">
+            <h2 class="section-title">El Nuevo Rostro del Phishing (IA)</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Anomalía del Contexto</h3>
+                    <p>¿Es normal recibir este pedido a esta hora? El 90% de los ataques modernos usan datos reales de
+                        LinkedIn para generar confianza.</p>
+                </div>
+                <div class="card">
+                    <h3>Typosquatting 2.0</h3>
+                    <p>Ya no son errores obvios. Usan caracteres Unicode similares (empręsa.com vs empresa.com) para
+                        engañar al ojo humano.</p>
+                </div>
+                <div class="card">
+                    <h3>Urgencia Fabricada</h3>
+                    <p>Frases diseñadas para activar el pánico y desactivar tu pensamiento crítico. "Acción necesaria o
+                        suspensión de nómina".</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Challenge -->
+    <section id="challenge" class="section reveal">
+        <div class="container">
+            <h2 class="section-title">Desafío: ¿Puedes Detectar la Amenaza?</h2>
+            <p style="text-align: center; margin-bottom: 1rem;">Haz clic sobre las 4 banderas rojas en este email.</p>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <span id="found-counter" style="font-size: 1.5rem; color: var(--accent-emerald);">0 / 4</span>
+                encontrados
+            </div>
+
+            <div class="challenge-box">
+                <div class="email-header">
+                    <p><strong>De:</strong> Nómina Empresa &lt;<span class="hotspot"
+                            data-explanation="Dominio engañoso: La 'ę' en 'empręsa' es un carácter especial Unicode.">no-reply@empręsa.com</span>&gt;
+                    </p>
+                    <p><strong>Asunto:</strong> ACTUALIZACIÓN OBLIGATORIA: Nueva Política de Retribución Flexible 2026
+                    </p>
+                </div>
+                <div class="email-body">
+                    <p>Estimado empleado,</p>
+                    <br>
+                    <p>Tras la reciente auditoría bajo el marco ISO 27001, hemos actualizado el portal de beneficios. Es
+                        <span class="hotspot"
+                            data-explanation="Presión innecesaria: El uso de términos como 'imprescindible' y límites de tiempo cortos son clásicos de ingeniería social.">imprescindible</span>
+                        que valides tus datos bancarios en las próximas 24 horas.</p>
+                    <br>
+                    <p>De lo contrario, <span class="hotspot"
+                            data-explanation="Amenaza velada: Los atacantes usan consecuencias negativas (retención de pago) para forzar una acción rápida.">tu
+                            pago podría quedar retenido</span> hasta el próximo ciclo de facturación.</p>
+                    <br>
+                    <div style="text-align: center;">
+                        <a href="#" class="btn hotspot" onclick="return false;"
+                            data-explanation="Enlace Externo: Al pasar por encima verías que redirige a un dominio '.net' no oficial en lugar del dominio corporativo."
+                            style="background: #333; color: #fff;">👉 ACCEDER AL PORTAL DE EMPLEADO</a>
+                    </div>
+                </div>
+            </div>
+            <div id="challenge-feedback"></div>
+        </div>
+    </section>
+
+    <!-- Malware Section -->
+    <section class="section reveal" style="background: var(--bg-secondary);">
+        <div class="container">
+            <h2 class="section-title">Signos de Malware Invisible</h2>
+            <div class="grid">
+                <div class="card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📦</div>
+                    <h3>Adjuntos Disfrazados</h3>
+                    <p>Desconfía de archivos .zip o .iso protegidos con contraseña enviada en el mismo correo. Es un
+                        truco para evadir antivirus.</p>
+                </div>
+                <div class="card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📜</div>
+                    <h3>Scripts y Macros</h3>
+                    <p>Si un PDF o Word te pide "Habilitar Contenido", trátalo como una infección confirmada. Es la
+                        puerta de entrada para Ransomware.</p>
+                </div>
+                <div class="card">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">📱</div>
+                    <h3>Fatiga de MFA</h3>
+                    <p>¿Recibes avisos de Doble Factor que no has solicitado? No los aceptes. Reporta inmediatamente el
+                        intento de acceso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Protocol Section -->
+    <section class="section reveal">
+        <div class="container">
+            <h2 class="section-title">Protocolo: Detecta, Detén y Notifica</h2>
+
+            <div class="protocol-step">
+                <div class="step-num">01</div>
+                <div>
+                    <h3>¡No interactúes!</h3>
+                    <p>No abras enlaces, no descargues adjuntos y sobre todo, no respondas. Responder confirma al
+                        atacante que tu cuenta existe.</p>
+                </div>
+            </div>
+
+            <div class="protocol-step">
+                <div class="step-num">02</div>
+                <div>
+                    <h3>Reporte Oficial</h3>
+                    <p>Usa el botón "Reportar Phishing" de tu correo. Esto envía metadatos técnicos cruciales al equipo
+                        de SOC.</p>
+                </div>
+            </div>
+
+            <div class="protocol-step">
+                <div class="step-num">03</div>
+                <div>
+                    <h3>¿Ya hiciste clic?</h3>
+                    <p>Cero pánico. Desconecta internet, llama a soporte y cambia tus contraseñas desde otro
+                        dispositivo. La rapidez es la clave.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="section reveal" style="text-align: center;">
+        <div class="container">
+            <h3>Material de Apoyo</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Descarga la presentación completa para
+                compartirla con tu equipo.</p>
+            <a href="Guardianes_Digitales_2026.pdf" class="btn" download>📥 Descargar PDF (Guardianes 2026)</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding: 50px 0; border-top: 1px solid var(--glass-border); text-align: center;">
+        <div class="container">
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">"Reportar no es una molestia, es tu superpoder
+                cibernético."</p>
+            <p style="color: var(--text-secondary);">Ciberseguridad & IA - 2026 | Cultura de Cero Culpa</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

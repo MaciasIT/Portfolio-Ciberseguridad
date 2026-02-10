@@ -444,6 +444,38 @@ export const projects = [
         ]
     },
     {
+        id: 'ai-cyber-ops-guide',
+        title: 'Guía Operativa: IA en Ciberseguridad',
+        description: 'Manual estratégico sobre la aplicación de Inteligencia Artificial Generativa (GenAI) en operaciones de seguridad. Incluye frameworks de prompting (T-C-R-E-I), casos de uso en NIST y respuesta a incidentes.',
+        category: 'IA & Ops',
+        technologies: ['GenAI', 'Prompt Engineering', 'NIST Framework', 'SOC Automation'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/AI_Cybersecurity_Operational_Guide.pdf',
+        language: 'pdf',
+        featured: true,
+        highlights: [
+            'Prompt Engineering',
+            'Automatización SOC',
+            'Análisis de Vulnerabilidades',
+            'Ética en IA'
+        ]
+    },
+    {
+        id: 'intro-ai-cyber',
+        title: 'Introducción a la IA en Ciberseguridad',
+        description: 'Artículo técnico que explora los fundamentos de la IA defensiva y ofensiva. Analiza cómo los LLMs transforman la detección de amenazas, la revisión de código y la gestión de riesgos.',
+        category: 'Formación',
+        technologies: ['Artificial Intelligence', 'LLMs', 'Threat Intelligence', 'Code Review'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Intro_to_AI_in_Cybersecurity.md',
+        language: 'markdown',
+        featured: false,
+        highlights: [
+            'Fundamentos de IA',
+            'IA Ofensiva vs Defensiva',
+            'Casos de Uso',
+            'Riesgos de GenAI'
+        ]
+    },
+    {
         id: 'malware-intro',
         title: 'Manual: Iniciación al Análisis de Malware',
         description: 'Guía técnica y plan de estudio estructurado sobre los fundamentos del análisis de malware, basada en el curso Hacker Ético de Cisco.',
