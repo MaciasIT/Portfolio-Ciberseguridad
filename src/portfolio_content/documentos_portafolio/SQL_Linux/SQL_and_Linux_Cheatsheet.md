@@ -9,27 +9,27 @@ Esta sección contiene documentación práctica sobre consultas SQL aplicadas a 
 
 Los siguientes documentos PDF contienen información detallada sobre el uso de SQL en contextos de seguridad:
 
-1. **Consultas SQL en Ciberseguridad** - [`Consultas_SQL_Ciberseguridad.pdf`](/Portfolio-Ciberseguridad/pdfs/sql-linux/Consultas_SQL_Ciberseguridad.pdf)
+1. **Consultas SQL en Ciberseguridad** - [`Consultas_SQL_Ciberseguridad.pdf`](Consultas_SQL_Ciberseguridad.pdf)
    - Consultas básicas y avanzadas
    - Filtrado de datos de seguridad
    - Análisis de logs con SQL
 
-2. **Aplicando Filtros SQL** - [`Aplicando filtros SQL.pdf`](/Portfolio-Ciberseguridad/pdfs/sql-linux/Aplicando%20filtros%20SQL.pdf)
+2. **Aplicando Filtros SQL** - [`Aplicando filtros SQL.pdf`](Aplicando%20filtros%20SQL.pdf)
    - Técnicas de filtrado avanzado
    - Operadores lógicos y de comparación
    - Optimización de consultas
 
-3. **SQL Avanzado para Ciberseguridad** - [`Doc AIStudio SQL avanzado ciber.pdf`](/Portfolio-Ciberseguridad/pdfs/sql-linux/Doc%20AIStudio%20SQL%20avanzado%20ciber.pdf)
+3. **SQL Avanzado para Ciberseguridad** - [`Doc AIStudio SQL avanzado ciber.pdf`](Doc%20AIStudio%20SQL%20avanzado%20ciber.pdf)
    - Joins y subconsultas
    - Agregaciones y funciones
    - Análisis de datos de seguridad
 
-4. **Ejercicio Online** - [`Ejercicio Online.pdf`](/Portfolio-Ciberseguridad/pdfs/sql-linux/Ejercicio%20Online.pdf)
+4. **Ejercicio Online** - [`Ejercicio Online.pdf`](Ejercicio%20Online.pdf)
    - Ejercicios prácticos
    - Casos de uso reales
    - Soluciones comentadas
 
-5. **Portfolio SQL & Filtros** - [`Portfolio Ciberseguridad. SQL & Filtros-1.pdf`](/Portfolio-Ciberseguridad/pdfs/sql-linux/Portfolio%20Ciberseguridad.%20SQL%20%26%20Filtros-1.pdf)
+5. **Portfolio SQL & Filtros** - [`Portfolio Ciberseguridad. SQL & Filtros-1.pdf`](Portfolio%20Ciberseguridad.%20SQL%20%26%20Filtros-1.pdf)
    - Ejemplos de portfolio
    - Proyectos demostrativos
    - Mejores prácticas
@@ -83,7 +83,7 @@ ps aux | grep -v root
 ## 📖 Recursos Adicionales
 
 Para acceder a los documentos PDF completos, consulta la carpeta:
-`/src/portfolio_content/documentos_portafolio/SQL&LINUX/`
+`/src/portfolio_content/documentos_portafolio/SQL_Linux/`
 
 ## 🔗 Temas Relacionados
 

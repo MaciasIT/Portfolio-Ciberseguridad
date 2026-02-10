@@ -158,6 +158,70 @@ export const projects = [
         ]
     },
     {
+        id: 'nist-risk-assessment',
+        title: 'Guía de Evaluación de Riesgos (NIST SP 800-30)',
+        description: 'Documentación técnica basada en NIST SP 800-30 Rev. 1. Incluye identificación de fuentes de amenaza, eventos, cálculo de probabilidad e impacto, y estrategias de mitigación.',
+        category: 'Auditoría',
+        technologies: ['NIST SP 800-30', 'Risk Management', 'GRC', 'Threat Modeling'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Evaluacion_Riesgos/NIST_Risk_Assessment_Guide.md',
+        language: 'markdown',
+        featured: false,
+        highlights: [
+            'Metodología NIST',
+            'Cálculo de Riesgos',
+            'Modelado de Amenazas',
+            'Estrategias de Mitigación'
+        ]
+    },
+    {
+        id: 'risk-register-audit',
+        title: 'Registro de Riesgos (Risk Register)',
+        description: 'Ejemplo real de un Registro de Riesgos para la gestión de activos y vulnerabilidades. Documento clave para el cumplimiento normativo y la priorización de remediaciones.',
+        category: 'Auditoría',
+        technologies: ['Risk Assessment', 'Asset Management', 'Compliance', 'ISO 27001'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Evaluacion_Riesgos/Risk_Register.pdf',
+        language: 'pdf',
+        featured: false,
+        highlights: [
+            'Gestión de Activos',
+            'Priorización de Riesgos',
+            'Cumplimiento Normativo',
+            'Plan de Remediación'
+        ]
+    },
+    {
+        id: 'password-security-principles',
+        title: 'Principios de Seguridad de Contraseñas',
+        description: 'Guía de concienciación sobre mejores prácticas en gestión de identidades. Comparativa técnica entre gestores de contraseñas (LastPass vs 1Password) y principios de entropía.',
+        category: 'Formación',
+        technologies: ['Security Awareness', 'Identity Management', 'Password Managers', 'Entropy'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Evaluacion_Riesgos/Password_Security_Principles.md',
+        language: 'markdown',
+        featured: false,
+        highlights: [
+            'Gestión de Identidades',
+            'Análisis de Entropía',
+            'LastPass vs 1Password',
+            'Best Practices'
+        ]
+    },
+    {
+        id: 'sql-linux-security-hub',
+        title: 'SQL & Linux Security Hub',
+        description: 'Centro de recursos técnicos que combina consultas SQL para Ciberseguridad y Hardening de Linux. Incluye PDFs sobre inyecciones SQL, análisis de logs y permisos avanzados.',
+        category: 'Formación',
+        technologies: ['SQL Injection Prevention', 'Log Analysis', 'Linux Hardening', 'Digital Forensics'],
+        filePath: '/src/portfolio_content/documentos_portafolio/SQL_Linux/SQL_and_Linux_Cheatsheet.md',
+        language: 'markdown',
+        featured: true,
+        highlights: [
+            'Consultas de Seguridad',
+            'Análisis Forense con SQL',
+            'Linux Hardening',
+            'Cheat Sheets'
+        ]
+    },
+    {
         id: 'python-cyber',
         title: 'Python para Ciberseguridad',
         description: 'Biblioteca de herramientas de automatización para tareas de seguridad. Incluye detección de IoCs, análisis de logs y scripts defensivos en Jupyter Notebooks.',
