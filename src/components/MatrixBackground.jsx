@@ -31,14 +31,14 @@ const MatrixBackground = () => {
         }
 
         const draw = () => {
-            ctx.fillStyle = 'rgba(5, 8, 16, 0.1)';
+            ctx.fillStyle = 'rgba(10, 10, 12, 0.1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             ctx.font = `${fontSize}px var(--font-mono)`;
 
             for (let i = 0; i < drops.length; i++) {
                 const isHead = Math.random() > 0.98;
-                ctx.fillStyle = isHead ? '#fff' : 'rgba(0, 255, 157, 0.35)';
+                ctx.fillStyle = isHead ? '#fff' : 'rgba(255, 62, 62, 0.35)';
 
                 const text = charArray[Math.floor(Math.random() * charArray.length)];
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);

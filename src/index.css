@@ -1,27 +1,27 @@
 :root {
-  /* Color Palette - Vibrant Cybersecurity Theme */
-  --color-bg-primary: #050810;
-  --color-bg-secondary: #0d111d;
-  --color-bg-tertiary: #151a2e;
-  --color-bg-elevated: #1c233a;
+  /* Color Palette - Red Team Ops Theme */
+  --color-bg-primary: #0a0a0c;
+  --color-bg-secondary: #141417;
+  --color-bg-tertiary: #1e1e24;
+  --color-bg-elevated: #2a2a35;
 
-  --color-primary: #00ff9d;
-  /* Más vibrante */
-  --color-primary-glow: rgba(0, 255, 157, 0.4);
-  --color-secondary: #00d4ff;
-  --color-secondary-glow: rgba(0, 212, 255, 0.4);
-  --color-accent: #ff007b;
-  --color-accent-glow: rgba(255, 0, 123, 0.4);
+  --color-primary: #ff3e3e;
+  /* glowing red */
+  --color-primary-glow: rgba(255, 62, 62, 0.4);
+  --color-secondary: #ffca28;
+  --color-secondary-glow: rgba(255, 202, 40, 0.4);
+  --color-accent: #8b0000;
+  --color-accent-glow: rgba(139, 0, 0, 0.4);
 
-  --color-text-primary: #f8fafc;
+  --color-text-primary: #e2e8f0;
   --color-text-secondary: #94a3b8;
   --color-text-muted: #64748b;
 
   --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(0, 255, 157, 0.3);
+  --color-border-hover: rgba(255, 62, 62, 0.3);
 
   /* Glassmorphism Levels */
-  --glass-bg: rgba(13, 17, 29, 0.7);
+  --glass-bg: rgba(20, 20, 23, 0.7);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-blur: blur(12px);
 

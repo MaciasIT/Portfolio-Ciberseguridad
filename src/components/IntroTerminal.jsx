@@ -57,18 +57,18 @@ const IntroTerminal = ({ onComplete }) => {
     }, [onComplete]);
 
     return (
-        <div className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#050810] transition-all duration-1000 ${isExiting ? 'opacity-0 scale-110 pointer-events-none' : 'opacity-100'}`}>
+        <div className={`fixed inset-0 z-[100] flex items-center justify-center bg-[var(--color-bg-primary)] transition-all duration-1000 ${isExiting ? 'opacity-0 scale-110 pointer-events-none' : 'opacity-100'}`}>
             <div className="w-full max-w-2xl p-8 font-mono text-sm md:text-lg">
                 <div className="flex flex-col gap-2">
                     {lines.map((line, i) => (
                         <div key={i} className="flex gap-4">
                             <span className="text-slate-500 select-none">[{new Date().toLocaleTimeString()}]</span>
-                            <span className={line && (line.includes('[OK]') || line.includes('[SUCCESS]')) ? 'text-[#00ff9d]' : 'text-slate-100'}>
+                            <span className={line && (line.includes('[OK]') || line.includes('[SUCCESS]')) ? 'text-[var(--color-primary)]' : 'text-slate-100'}>
                                 {line}
                             </span>
                         </div>
                     ))}
-                    <span className="inline-block w-2 h-5 bg-[#00ff9d] animate-pulse ml-1 align-middle"></span>
+                    <span className="inline-block w-2 h-5 bg-[var(--color-primary)] animate-pulse ml-1 align-middle"></span>
                 </div>
             </div>
 
