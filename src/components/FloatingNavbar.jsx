@@ -39,25 +39,54 @@ const FloatingNavbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Estilos migrados a Tailwind para ser 100% responsive
+    // Rediseño a Command Bar Superior (Premium SOC Style)
     return (
-        <nav className="fixed bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1 md:gap-2 p-2 md:p-3 lg:p-4 rounded-full bg-[var(--color-bg-primary)]/90 backdrop-blur-xl border border-[var(--color-primary)]/20 shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_60px_var(--color-primary-glow)] max-w-[95vw] overflow-x-auto overflow-y-hidden" style={{ scrollbarWidth: 'none' }}>
-            {navItems.map((item) => {
-                const isActive = activeSection === item.id;
-                return (
-                    <button
-                        key={item.id}
-                        onClick={() => scrollToSection(item.id)}
-                        className={`flex items-center gap-2 px-3 py-3 md:px-5 md:py-3 rounded-full font-mono text-xs md:text-sm font-semibold uppercase tracking-wider transition-all whitespace-nowrap ${isActive
-                                ? 'bg-[var(--color-primary)]/15 border border-[var(--color-primary)]/40 text-[var(--color-primary)]'
-                                : 'border border-transparent text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-white/5'
-                            }`}
-                    >
-                        <span className="text-xl md:text-lg">{item.icon}</span>
-                        <span className="hidden sm:inline">{item.label}</span>
-                    </button>
-                )
-            })}
+        <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-4 pointer-events-none">
+            <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
+
+                {/* Brand / Logo Area */}
+                <div className="hidden lg:flex items-center gap-3 px-4 py-2 bg-[var(--color-bg-secondary)]/80 backdrop-blur-md border border-[var(--color-border)] rounded-sm">
+                    <div className="w-2 h-2 bg-[var(--color-primary)] animate-pulse rounded-full"></div>
+                    <span className="font-mono text-[10px] font-bold tracking-[0.3em] text-[var(--color-text-primary)] uppercase">
+                        Operator: <span className="text-[var(--color-primary)]">MACIAS.IT</span>
+                    </span>
+                </div>
+
+                {/* Main Navigation - Integrated Command Center */}
+                <div className="flex items-center gap-1 p-1 bg-[var(--color-bg-secondary)]/90 backdrop-blur-xl border border-[var(--color-border)] rounded-md shadow-2xl">
+                    {navItems.map((item) => {
+                        const isActive = activeSection === item.id;
+                        return (
+                            <button
+                                key={item.id}
+                                onClick={() => scrollToSection(item.id)}
+                                className={`
+                                    relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-sm font-mono text-[10px] md:text-[11px] font-bold uppercase tracking-widest transition-all
+                                    ${isActive
+                                        ? 'text-[var(--color-primary)] bg-[var(--color-primary)]/5'
+                                        : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-white/5'
+                                    }
+                                `}
+                            >
+                                <span className={`${isActive ? 'opacity-100' : 'opacity-50'}`}>{item.icon}</span>
+                                <span className="hidden sm:inline">{item.label}</span>
+                                {isActive && (
+                                    <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-[var(--color-primary)] shadow-[0_0_8px_var(--color-primary)]"></span>
+                                )}
+                            </button>
+                        );
+                    })}
+                </div>
+
+                {/* System Status - Right Side (Desktop) */}
+                <div className="hidden lg:flex items-center gap-6 px-4 py-2 bg-[var(--color-bg-secondary)]/80 backdrop-blur-md border border-[var(--color-border)] rounded-sm">
+                    <div className="flex flex-col items-end">
+                        <span className="font-mono text-[9px] text-[var(--color-text-muted)] leading-none uppercase tracking-tighter">System_Status</span>
+                        <span className="font-mono text-[10px] text-[var(--color-secondary)] leading-none font-bold uppercase tracking-widest mt-1">Operational</span>
+                    </div>
+                </div>
+
+            </div>
         </nav>
     );
 };

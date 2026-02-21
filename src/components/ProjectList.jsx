@@ -28,21 +28,24 @@ const ProjectList = () => {
 
     return (
         <div className="flex flex-col gap-12">
-            {/* Category Filter Tabs */}
-            <div className="flex flex-wrap justify-center gap-4">
+            {/* Category Filter - Modern Dashboard Tabs */}
+            <div className="flex flex-wrap items-center justify-center p-1.5 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-lg max-w-fit mx-auto shadow-inner">
                 {projectCategories.map((category) => (
                     <button
                         key={category.id}
                         onClick={() => setActiveCategory(category.id)}
                         className={`
-                            px-6 py-3 rounded-full font-mono text-sm font-bold tracking-wider transition-all duration-300 border
+                            relative px-5 py-2.5 rounded-md font-mono text-[11px] md:text-xs font-bold uppercase tracking-[0.15em] transition-all duration-300
                             ${activeCategory === category.id
-                                ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow-[0_0_20px_var(--color-primary-glow)] transform scale-105'
-                                : 'bg-transparent text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
+                                ? 'bg-[var(--color-primary)]/10 text-[var(--color-primary)] shadow-sm'
+                                : 'bg-transparent text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
                             }
                         `}
                     >
-                        {category.name}
+                        {activeCategory === category.id && (
+                            <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-primary)] animate-pulse"></span>
+                        )}
+                        <span className="relative z-10">{category.name}</span>
                     </button>
                 ))}
             </div>
