@@ -25,7 +25,7 @@ export default {
         sans: ['var(--font-sans)', 'sans-serif'],
       },
       backgroundImage: {
-        'cyber-grid': "linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px)",
+        'cyber-grid': "linear-gradient(rgba(255, 62, 62, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 62, 62, 0.03) 1px, transparent 1px)",
       }
     },
   },

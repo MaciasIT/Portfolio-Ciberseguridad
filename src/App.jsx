@@ -31,8 +31,8 @@ function App() {
   return (
     <Router>
       <div style={{
-        backgroundColor: '#050810',
-        color: '#e2e8f0',
+        backgroundColor: 'var(--color-bg-primary)',
+        color: 'var(--color-text-primary)',
         minHeight: '100vh',
         fontFamily: 'Inter, sans-serif'
       }}>
@@ -73,13 +73,13 @@ function App() {
                 width: '12px',
                 height: '12px',
                 borderRadius: '50%',
-                backgroundColor: '#00ff9d',
-                boxShadow: '0 0 20px #00ff9d'
+                backgroundColor: 'var(--color-primary)',
+                boxShadow: '0 0 20px var(--color-primary-glow)'
               }}></span>
               <span style={{
                 fontSize: '14px',
                 fontFamily: 'monospace',
-                color: '#00ff9d',
+                color: 'var(--color-primary)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.15em'
               }}>
@@ -94,7 +94,7 @@ function App() {
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
               marginBottom: '24px',
-              background: 'linear-gradient(135deg, #e2e8f0 0%, #00ff9d 50%, #00d4ff 100%)',
+              background: 'linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-primary) 50%, var(--color-secondary) 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -107,7 +107,7 @@ function App() {
               fontSize: 'clamp(20px, 3.5vw, 32px)',
               fontFamily: 'monospace',
               fontWeight: 700,
-              background: 'linear-gradient(135deg, #00ff9d, #00d4ff)',
+              background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -134,9 +134,9 @@ function App() {
               lineHeight: 1.8,
               marginBottom: '48px'
             }}>
-              Apasionado por la <span style={{ color: '#00ff9d' }}>ciberseguridad</span> con base sólida en
-              <span style={{ color: '#00d4ff' }}> administración de sistemas</span>. Formándome como
-              <span style={{ color: '#ff007b' }}> Analista de Seguridad</span> para proteger infraestructuras digitales.
+              Apasionado por la <span style={{ color: 'var(--color-primary)' }}>ciberseguridad</span> con base sólida en
+              <span style={{ color: 'var(--color-secondary)' }}> administración de sistemas</span>. Formándome como
+              <span style={{ color: 'var(--color-accent)' }}> Analista de Seguridad</span> para proteger infraestructuras digitales.
             </p>
 
             {/* CTA Buttons */}
@@ -154,8 +154,8 @@ function App() {
                   alignItems: 'center',
                   gap: '12px',
                   padding: '18px 36px',
-                  backgroundColor: '#00ff9d',
-                  color: '#050810',
+                  backgroundColor: 'var(--color-primary)',
+                  color: 'white',
                   fontFamily: 'monospace',
                   fontWeight: 700,
                   fontSize: '14px',
@@ -228,7 +228,7 @@ function App() {
               color: '#64748b',
               fontFamily: 'monospace'
             }}>
-              <FiMapPin style={{ color: '#00ff9d' }} />
+              <FiMapPin style={{ color: 'var(--color-primary)' }} />
               <span>Mendigorria, Navarra, España</span>
             </div>
 
@@ -251,7 +251,7 @@ function App() {
                 textTransform: 'uppercase',
                 letterSpacing: '0.2em'
               }}>Scroll</span>
-              <FiChevronDown style={{ color: '#00ff9d', fontSize: '24px' }} />
+              <FiChevronDown style={{ color: 'var(--color-primary)', fontSize: '24px' }} />
             </div>
           </section>
 
@@ -269,9 +269,9 @@ function App() {
                 fontSize: '12px',
                 fontFamily: 'monospace',
                 fontWeight: 700,
-                color: '#00d4ff',
-                border: '1px solid rgba(0,212,255,0.3)',
-                backgroundColor: 'rgba(0,212,255,0.05)',
+                color: 'var(--color-secondary)',
+                border: '1px solid var(--color-secondary-glow)',
+                backgroundColor: 'rgba(255, 202, 40, 0.05)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.3em'
               }}>
@@ -284,7 +284,7 @@ function App() {
                 marginBottom: '24px'
               }}>
                 Arsenal de <span style={{
-                  background: 'linear-gradient(135deg, #00ff9d, #00d4ff)',
+                  background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent'
                 }}>Habilidades</span>
@@ -326,7 +326,7 @@ function App() {
                     <div style={{
                       padding: '14px',
                       border: '1px solid #334155',
-                      color: '#00ff9d'
+                      color: 'var(--color-primary)'
                     }}>
                       <FiShield size={24} />
                     </div>
@@ -357,7 +357,7 @@ function App() {
                           <div style={{
                             height: '100%',
                             width: `${skill.level}%`,
-                            background: 'linear-gradient(90deg, #00ff9d, #00d4ff)'
+                            background: 'linear-gradient(90deg, var(--color-primary), var(--color-secondary))'
                           }}></div>
                         </div>
                       </div>
@@ -382,9 +382,9 @@ function App() {
                   fontSize: '12px',
                   fontFamily: 'monospace',
                   fontWeight: 700,
-                  color: '#ff007b',
-                  border: '1px solid rgba(255,0,123,0.3)',
-                  backgroundColor: 'rgba(255,0,123,0.05)',
+                  color: 'var(--color-accent)',
+                  border: '1px solid var(--color-accent-glow)',
+                  backgroundColor: 'rgba(139, 0, 0, 0.1)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.3em'
                 }}>
@@ -397,7 +397,7 @@ function App() {
                   marginBottom: '24px'
                 }}>
                   Misiones <span style={{
-                    background: 'linear-gradient(135deg, #ff007b, #00ff9d)',
+                    background: 'linear-gradient(135deg, var(--color-accent), var(--color-primary))',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent'
                   }}>Completadas</span>
@@ -429,9 +429,9 @@ function App() {
               fontSize: '12px',
               fontFamily: 'monospace',
               fontWeight: 700,
-              color: '#ff007b',
-              border: '1px solid rgba(255,0,123,0.3)',
-              backgroundColor: 'rgba(255,0,123,0.05)',
+              color: 'var(--color-accent)',
+              border: '1px solid var(--color-accent-glow)',
+              backgroundColor: 'rgba(139, 0, 0, 0.1)',
               textTransform: 'uppercase',
               letterSpacing: '0.3em'
             }}>
@@ -461,8 +461,8 @@ function App() {
                 alignItems: 'center',
                 gap: '16px',
                 padding: '24px 48px',
-                backgroundColor: '#00ff9d',
-                color: '#050810',
+                backgroundColor: 'var(--color-primary)',
+                color: 'white',
                 fontFamily: 'monospace',
                 fontSize: '18px',
                 fontWeight: 700,
@@ -494,7 +494,7 @@ function App() {
 
         </main>
       </div>
-    </Router>
+    </Router >
   );
 }
 

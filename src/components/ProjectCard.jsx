@@ -24,12 +24,12 @@ const ProjectCard = ({ project }) => {
             <div className="relative h-full bg-[var(--color-bg-secondary)] border border-[var(--color-border)] p-6 rounded-xl flex flex-col clip-path-cyber hover:transform hover:-translate-y-1 transition-all duration-300 shadow-xl overflow-hidden">
 
                 {/* Background Grid Pattern Subtle */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,136,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,136,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,62,62,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,62,62,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none"></div>
 
                 {/* Header */}
                 <div className="relative z-10 flex items-start justify-between mb-4">
                     <div className="flex items-center space-x-3">
-                        <div className="p-2 rounded bg-[rgba(0,255,136,0.1)] text-[var(--color-primary)] ring-1 ring-[var(--color-primary)]/40">
+                        <div className="p-2 rounded bg-[var(--color-primary)]/10 text-[var(--color-primary)] ring-1 ring-[var(--color-primary)]/40">
                             {project.category.toLowerCase().includes('auditoria') || project.category.toLowerCase().includes('security') ? <FiShield size={20} /> : <FiCode size={20} />}
                         </div>
                         <div>
@@ -75,7 +75,7 @@ const ProjectCard = ({ project }) => {
                 <div className="absolute inset-x-0 bottom-0 p-4 bg-[var(--color-bg-elevated)]/95 backdrop-blur-sm border-t border-[var(--color-primary)]/30 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20 flex gap-3">
                     <Link
                         to={`/projects/${project.id}`}
-                        className="flex-1 py-2 rounded bg-[var(--color-primary)] text-[var(--color-bg-primary)] font-bold text-center text-sm font-mono hover:bg-[var(--color-primary-light)] transition-colors shadow-[0_0_10px_rgba(0,255,136,0.3)]"
+                        className="flex-1 py-2 rounded bg-[var(--color-primary)] text-white font-bold text-center text-sm font-mono hover:bg-[var(--color-primary)]/80 transition-colors shadow-[0_0_10px_var(--color-primary-glow)]"
                     >
                         ACCEDER_SISTEMA
                     </Link>

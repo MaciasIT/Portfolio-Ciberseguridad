@@ -40,7 +40,7 @@ const Hero = () => {
                     {/* Text Content */}
                     <div className="flex-1 text-center lg:text-left">
                         {/* Terminal Header */}
-                        <div className="inline-block mb-4 px-3 py-1 bg-[rgba(0,255,136,0.1)] border border-[var(--color-primary)] rounded font-mono text-sm text-[var(--color-primary)] animate-fadeIn">
+                        <div className="inline-block mb-4 px-3 py-1 bg-[var(--color-primary)]/10 border border-[var(--color-primary)] rounded font-mono text-sm text-[var(--color-primary)] animate-fadeIn">
                             <span className="animate-pulse mr-2">●</span>SYSTEM_READY
                         </div>
 
@@ -63,7 +63,7 @@ const Hero = () => {
                         <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-16">
                             <Link
                                 to="/projects"
-                                className="group relative px-8 py-4 bg-[var(--color-primary)] text-[var(--color-bg-primary)] font-bold font-mono overflow-hidden transition-all hover:shadow-[0_0_20px_rgba(0,255,136,0.4)]"
+                                className="group relative px-8 py-4 bg-[var(--color-primary)] text-white font-bold font-mono overflow-hidden transition-all hover:shadow-[0_0_20px_var(--color-primary-glow)]"
                             >
                                 <div className="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                                 <span className="relative flex items-center gap-2">
@@ -73,7 +73,7 @@ const Hero = () => {
 
                             <Link
                                 to="/contact"
-                                className="group px-8 py-4 border border-[var(--color-primary)] text-[var(--color-primary)] font-mono font-bold hover:bg-[rgba(0,255,136,0.1)] transition-all"
+                                className="group px-8 py-4 border border-[var(--color-primary)] text-[var(--color-primary)] font-mono font-bold hover:bg-[var(--color-primary)]/10 transition-all"
                             >
                                 <span className="flex items-center gap-2">
                                     CONTACTAR_ROOT
@@ -110,7 +110,7 @@ const Hero = () => {
                             <div className="absolute inset-4 border-2 border-dashed border-[var(--color-secondary)]/30 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
 
                             {/* Profile Image with Glitch/Cyber effects */}
-                            <div className="absolute inset-8 rounded-full overflow-hidden border-4 border-[var(--color-bg-elevated)] shadow-[0_0_30px_rgba(0,255,136,0.2)]">
+                            <div className="absolute inset-8 rounded-full overflow-hidden border-4 border-[var(--color-bg-elevated)] shadow-[0_0_30px_var(--color-primary-glow)]">
                                 <img
                                     src="/Portfolio-Ciberseguridad/perfil.jpg?v=2"
                                     alt="Michel Macías"

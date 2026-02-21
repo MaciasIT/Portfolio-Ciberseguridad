@@ -37,7 +37,7 @@ const ProjectList = () => {
                         className={`
                             px-6 py-3 rounded-full font-mono text-sm font-bold tracking-wider transition-all duration-300 border
                             ${activeCategory === category.id
-                                ? 'bg-[var(--color-primary)] text-[#050810] border-[var(--color-primary)] shadow-[0_0_20px_rgba(0,255,157,0.4)] transform scale-105'
+                                ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow-[0_0_20px_var(--color-primary-glow)] transform scale-105'
                                 : 'bg-transparent text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
                             }
                         `}
@@ -52,7 +52,7 @@ const ProjectList = () => {
                 {filteredProjects.map((project) => (
                     <div
                         key={project.id}
-                        className="group relative glass p-8 rounded-3xl border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-500 overflow-hidden flex flex-col h-full hover:shadow-[0_0_30px_rgba(0,255,157,0.1)]"
+                        className="group relative glass p-8 rounded-3xl border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-all duration-500 overflow-hidden flex flex-col h-full hover:shadow-[0_0_30px_var(--color-primary-glow)]"
                     >
                         {/* Hover Glow Effect */}
                         <div className="absolute -top-24 -right-24 w-48 h-48 bg-[var(--color-primary)] opacity-0 group-hover:opacity-10 blur-[80px] transition-opacity duration-500"></div>
