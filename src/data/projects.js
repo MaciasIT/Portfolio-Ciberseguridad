@@ -32,6 +32,71 @@ export const projects = [
         ]
     },
     {
+        id: 'cisco-lab-beef-xss',
+        title: 'Hooking de Navegadores con BeEF (XSS)',
+        description: 'Laboratorio avanzado de post-explotación utilizando BeEF. Demuestra cómo tomar el control de un navegador remoto mediante la inyección de hooks en vulnerabilidades XSS persistentes.',
+        category: 'Formación',
+        technologies: ['BeEF', 'Kali Linux', 'XSS', 'Post-Exploitation'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_4.4_BeEF_XSS_Hooking.md',
+        language: 'markdown',
+        featured: true,
+        highlights: [
+            'Hooking de Navegadores',
+            'Inyección de Payloads JS',
+            'Control Remoto (C2)',
+            'Estrategias de Mitigación'
+        ]
+    },
+    {
+        id: 'cisco-lab-set-phishing',
+        title: 'Ataque de Credenciales con SET',
+        description: 'Simulación de ataque de ingeniería social utilizando Social-Engineer Toolkit (SET). Configuración de sitios clonados para el robo de credenciales en entornos controlados.',
+        category: 'Formación',
+        technologies: ['SET', 'Social Engineering', 'Credential Harvesting', 'Cloning'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_4.3_SET_Credential_Harvester.md',
+        language: 'markdown',
+        featured: false,
+        highlights: [
+            'Social-Engineer Toolkit',
+            'Credential Harvester',
+            'Clonación de Sitios Web',
+            'Análisis de Riesgos'
+        ]
+    },
+    {
+        id: 'cisco-lab-industrial-scanning',
+        title: 'Escaneo de Sistemas Industriales (ICS/SCADA)',
+        description: 'Análisis de seguridad y escaneo de vulnerabilidades en infraestructuras críticas y sistemas de control industrial. Identificación de protocolos inseguros y vectores de ataque.',
+        category: 'Formación',
+        technologies: ['Nmap', 'ICS/SCADA', 'Vulnerability Scanning', 'Nessus'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_3.3.1_Industrial_Scanning.md',
+        language: 'markdown',
+        featured: false,
+        highlights: [
+            'Escaneo de Redes ICS',
+            'Protocolos Industriales',
+            'Seguridad en SCADA',
+            'Análisis de Superficie de Ataque'
+        ]
+    },
+    {
+        id: 'cisco-lab-dns-recon',
+        title: 'Reconocimiento y Enumeración de DNS',
+        description: 'Guía técnica sobre recolección de información DNS. Uso de herramientas para enumeración de registros A, MX, NS y técnicas de transferencia de zona.',
+        category: 'Formación',
+        technologies: ['DNSrecon', 'Dig', 'Nmap', 'Information Gathering'],
+        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_3.1.2_DNS_Recon.md',
+        language: 'markdown',
+        featured: false,
+        highlights: [
+            'Enumeración de Registros',
+            'Transferencia de Zona',
+            'Análisis de Subdominios',
+            'Footprinting de Infraestructura'
+        ]
+    },
+
+    {
         id: 'auditoria-seguridad-controls',
         title: 'Controles de Seguridad (Administrative, Technical, Physical)',
         description: 'Guía de referencia sobre la implementación de controles de seguridad en capas. Define y categoriza controles administrativos, técnicos y físicos para una defensa en profundidad.',
