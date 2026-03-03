@@ -1,7 +1,7 @@
 {
-  "name": "temp_vite_project",
+  "name": "portfolio-ciberseguridad",
   "private": true,
-  "version": "0.0.0",
+  "version": "3.0.0",
   "type": "module",
   "homepage": "https://MaciasIT.github.io/Portfolio-Ciberseguridad",
   "scripts": {
@@ -31,6 +31,7 @@
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "eslint-plugin-security": "^4.0.0",
     "gh-pages": "^6.3.0",
     "globals": "^16.3.0",
     "postcss": "^8.5.6",
@@ -38,7 +39,6 @@
     "vite": "^7.1.2"
   },
   "overrides": {
-    "ajv": "^8.18.0",
     "minimatch": "^10.2.1"
   }
 }

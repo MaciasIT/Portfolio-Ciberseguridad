@@ -62,7 +62,7 @@ dev.target.local.	604800	IN	A	172.30.0.20
 ftp.target.local.	604800	IN	A	172.30.0.40
 mail.target.local.	604800	IN	A	172.30.0.11
 ns1.target.local.	604800	IN	A	172.30.0.10
-secret.target.local.	604800	IN	TXT	"INTERNAL_TOKEN=9922-XDFG-OOPA"
+secret.target.local.	604800	IN	TXT	"INTERNAL_TOKEN=<REDACTED>"
 www.target.local.	604800	IN	A	172.30.0.10
 target.local.		604800	IN	SOA	ns1.target.local. admin.target.local. 2 604800 86400 2419200 604800
 ;; Query time: 1 msec

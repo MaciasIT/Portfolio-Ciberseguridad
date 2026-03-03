@@ -65,7 +65,7 @@ Inmediatamente después de que la víctima hace clic en "Entrar", SET captura lo
    URL=http://172.31.0.20
    <url>
       <param>username=omar.sanchez@pixelparadise.com</param>
-      <param>password=MiContraseñaSegura123!</param>
+      <param>password=<REDACTED></param>
    </url>
 </harvester>
 ```

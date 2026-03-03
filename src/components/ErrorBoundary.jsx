@@ -6,7 +6,7 @@ class ErrorBoundary extends React.Component {
         this.state = { hasError: false, error: null, errorInfo: null };
     }
 
-    static getDerivedStateFromError(error) {
+    static getDerivedStateFromError(_error) {
         return { hasError: true };
     }
 
@@ -20,6 +20,7 @@ class ErrorBoundary extends React.Component {
 
     render() {
         if (this.state.hasError) {
+            const isDev = import.meta.env.DEV;
             return (
                 <div style={{
                     minHeight: '100vh',
@@ -31,31 +32,39 @@ class ErrorBoundary extends React.Component {
                     <h1 style={{ color: '#00ff9d', marginBottom: '20px' }}>
                         ⚠️ ERROR DE RENDERIZADO
                     </h1>
-                    <div style={{
-                        backgroundColor: '#1c1c1c',
-                        padding: '20px',
-                        borderRadius: '8px',
-                        border: '1px solid #ff6b6b',
-                        marginBottom: '20px',
-                        overflowX: 'auto'
-                    }}>
-                        <h2 style={{ color: '#ff6b6b' }}>Error:</h2>
-                        <pre style={{ whiteSpace: 'pre-wrap', color: '#fff' }}>
-                            {this.state.error && this.state.error.toString()}
-                        </pre>
-                    </div>
-                    <div style={{
-                        backgroundColor: '#1c1c1c',
-                        padding: '20px',
-                        borderRadius: '8px',
-                        border: '1px solid #666',
-                        overflowX: 'auto'
-                    }}>
-                        <h2 style={{ color: '#00d4ff' }}>Stack Trace:</h2>
-                        <pre style={{ whiteSpace: 'pre-wrap', color: '#94a3b8', fontSize: '12px' }}>
-                            {this.state.errorInfo && this.state.errorInfo.componentStack}
-                        </pre>
-                    </div>
+                    {isDev ? (
+                        <>
+                            <div style={{
+                                backgroundColor: '#1c1c1c',
+                                padding: '20px',
+                                borderRadius: '8px',
+                                border: '1px solid #ff6b6b',
+                                marginBottom: '20px',
+                                overflowX: 'auto'
+                            }}>
+                                <h2 style={{ color: '#ff6b6b' }}>Error:</h2>
+                                <pre style={{ whiteSpace: 'pre-wrap', color: '#fff' }}>
+                                    {this.state.error && this.state.error.toString()}
+                                </pre>
+                            </div>
+                            <div style={{
+                                backgroundColor: '#1c1c1c',
+                                padding: '20px',
+                                borderRadius: '8px',
+                                border: '1px solid #666',
+                                overflowX: 'auto'
+                            }}>
+                                <h2 style={{ color: '#00d4ff' }}>Stack Trace:</h2>
+                                <pre style={{ whiteSpace: 'pre-wrap', color: '#94a3b8', fontSize: '12px' }}>
+                                    {this.state.errorInfo && this.state.errorInfo.componentStack}
+                                </pre>
+                            </div>
+                        </>
+                    ) : (
+                        <p style={{ color: '#94a3b8', fontSize: '16px', marginBottom: '20px' }}>
+                            Ha ocurrido un error inesperado. Por favor, recarga la página.
+                        </p>
+                    )}
                     <button
                         onClick={() => window.location.reload()}
                         style={{

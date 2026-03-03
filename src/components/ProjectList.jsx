@@ -1,23 +1,6 @@
 import { useState } from 'react';
 import { FiCode, FiExternalLink, FiTerminal, FiShield, FiCpu, FiBook, FiLayout, FiFilter } from 'react-icons/fi';
-import { SiPython, SiJavascript, SiGnubash, SiDocker, SiJupyter, SiGooglegemini, SiStreamlit, SiFastapi } from 'react-icons/si';
-import { VscTerminalPowershell } from 'react-icons/vsc';
 import { projects, projectCategories } from '../data/projects';
-
-const getTechIcon = (tech) => {
-    const iconMap = {
-        'Python': <SiPython />,
-        'JavaScript': <SiJavascript />,
-        'PowerShell': <VscTerminalPowershell />,
-        'Bash': <SiGnubash />,
-        'Docker': <SiDocker />,
-        'Jupyter': <SiJupyter />,
-        'Gemini AI': <SiGooglegemini />,
-        'Streamlit': <SiStreamlit />,
-        'FastAPI': <SiFastapi />,
-    };
-    return iconMap[tech] || null;
-};
 
 const ProjectList = () => {
     const [activeCategory, setActiveCategory] = useState('all');

@@ -22,7 +22,7 @@ Se ha realizado una prueba de concepto de hooking de navegadores utilizando el f
 ![Despliegue de Infraestructura BeEF](../Capturas_para_labs/labs04/2026-03-02_13-38.png)
 
 ### 2.2. Configuración del Servidor C2 (BeEF)
-Se configuró BeEF para operar en el puerto 3000 con un password robusto (`Cisco_Lab_2026!`) y se reubicó el puerto del proxy al 6791 para evitar conflictos de red. El servidor se estabilizó mediante un script de bootstrap personalizado.
+Se configuró BeEF para operar en el puerto 3000 con un password robusto (`<REDACTED>`) y se reubicó el puerto del proxy al 6791 para evitar conflictos de red. El servidor se estabilizó mediante un script de bootstrap personalizado.
 
 ---
 
