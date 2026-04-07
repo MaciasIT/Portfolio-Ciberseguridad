@@ -12,6 +12,7 @@ import ProjectDetail from './pages/ProjectDetail';
 import { FiChevronDown } from 'react-icons/fi';
 import './App.css';
 
+// M1TXEL SECURITY LAB - V5.0.1 PREMIUM
 function App() {
   console.log('[PORTFOLIO] Renderizando App...');
   const [showTerminal, setShowTerminal] = useState(false);
