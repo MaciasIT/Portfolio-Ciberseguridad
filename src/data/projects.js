@@ -3,106 +3,118 @@
 export const projects = [
     {
         id: 'vuln-red-cisco',
-        title: 'Vulnerabilidades Basadas en Red',
-        description: 'Guía de estudio del módulo Cisco Ethical Hacker sobre vulnerabilidades de red. Laboratorios de Active Directory, SMB, DNS Poisoning, Pass-the-Hash, Kerberoasting, SSL Stripping y ataques DoS.',
-        category: 'Formación',
+        title: 'Auditoría de Vulnerabilidades de Red',
+        description: 'Análisis técnico detallado sobre vulnerabilidades de red basado en el marco de Cisco Ethical Hacker. Incluye auditorías de Active Directory, SMB, DNS Poisoning, Pass-the-Hash, Kerberoasting y SSL Stripping.',
+        category: 'Auditorías Técnicas',
         technologies: ['Kali Linux', 'Active Directory', 'Wireshark', 'Metasploit'],
         repoUrl: 'https://github.com/Michel-Macias/Vulnerabilidades-basadas-en-red',
         featured: true,
+        status: 'DOCUMENTADO',
+        lab: {
+            objective: "Comprender los vectores de ataque en entornos de red corporativos y la importancia de la segmentación.",
+            methodology: "Simulación de entorno Active Directory, captura de tráfico con Wireshark y explotación controlada de protocolos inseguros.",
+            learning: "La seguridad de red no es solo perimetral; la configuración interna de protocolos es el eslabón más crítico."
+        },
         highlights: [
-            'Lab Active Directory',
-            'Kerberoasting y Pass-the-Hash',
-            'DNS Poisoning y SSL Strip',
-            'Ataques de Capa 2 y 3'
+            'Auditoría Active Directory',
+            'Análisis Kerberoasting',
+            'Mitigación DNS Poisoning',
+            'Seguridad en Capas 2 y 3'
         ]
     },
     {
         id: 'vuln-apps-cisco',
-        title: 'Vulnerabilidades en Aplicaciones Web',
-        description: 'Guía de estudio y laboratorios prácticos del módulo Cisco Ethical Hacker. Incluye ejercicios de OWASP Top 10, escaneo con Nikto/GVM, ataques a autenticación y sesiones web con Burp Suite.',
-        category: 'Formación',
+        title: 'Auditoría de Aplicaciones Web (OWASP)',
+        description: 'Evaluación de seguridad en aplicaciones web siguiendo la metodología OWASP Top 10. Pruebas de penetración con Burp Suite, escaneo de vulnerabilidades con Nikto/GVM y análisis de sesiones.',
+        category: 'Auditorías Técnicas',
         technologies: ['Kali Linux', 'Docker', 'Burp Suite', 'Nikto', 'GVM'],
         repoUrl: 'https://github.com/Michel-Macias/Vulnerabilidades-basadas-en-aplicaciones',
         featured: true,
+        status: 'DOCUMENTADO',
+        lab: {
+            objective: "Identificar y mitigar las 10 vulnerabilidades más críticas en aplicaciones web según el estándar OWASP.",
+            methodology: "Uso de proxies de interceptación (Burp Suite) para manipular peticiones y análisis estático/dinámico de código.",
+            learning: "La validación de entrada en el lado del servidor es la defensa más robusta contra inyecciones."
+        },
         highlights: [
-            'Laboratorios OWASP Top 10',
-            'Escaneo con Nikto y GVM',
-            'Ataques a Sesiones Web',
-            'Guía de Pentesting Profesional'
+            'Metodología OWASP Top 10',
+            'Escaneo de Vulnerabilidades',
+            'Análisis de Sesiones Web',
+            'Informe Técnico de Pentesting'
         ]
     },
     {
         id: 'cisco-lab-beef-xss',
-        title: 'Hooking de Navegadores con BeEF (XSS)',
-        description: 'Laboratorio avanzado de post-explotación utilizando BeEF. Demuestra cómo tomar el control de un navegador remoto mediante la inyección de hooks en vulnerabilidades XSS persistentes.',
-        category: 'Formación',
+        title: 'Análisis de Post-Explotación: Hooking BeEF',
+        description: 'Laboratorio técnico sobre vectores de ataque XSS persistentes y control de navegadores mediante BeEF. Demostración de riesgos y estrategias de mitigación en entornos corporativos.',
+        category: 'Auditorías Técnicas',
         technologies: ['BeEF', 'Kali Linux', 'XSS', 'Post-Exploitation'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_4.4_BeEF_XSS_Hooking.md',
+        filePath: '/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_4.4_BeEF_XSS_Hooking.md',
         language: 'markdown',
         featured: true,
         highlights: [
-            'Hooking de Navegadores',
-            'Inyección de Payloads JS',
-            'Control Remoto (C2)',
+            'Análisis de Vectores XSS',
+            'Control de Navegadores',
+            'Riesgos de Post-Explotación',
             'Estrategias de Mitigación'
         ]
     },
     {
         id: 'cisco-lab-set-phishing',
-        title: 'Ataque de Credenciales con SET',
-        description: 'Simulación de ataque de ingeniería social utilizando Social-Engineer Toolkit (SET). Configuración de sitios clonados para el robo de credenciales en entornos controlados.',
-        category: 'Formación',
+        title: 'Auditoría de Ingeniería Social con SET',
+        description: 'Simulación controlada de ataques de ingeniería social utilizando Social-Engineer Toolkit (SET). Evaluación de la concienciación del usuario y robustez de los controles de acceso.',
+        category: 'Auditorías Técnicas',
         technologies: ['SET', 'Social Engineering', 'Credential Harvesting', 'Cloning'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_4.3_SET_Credential_Harvester.md',
+        filePath: '/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_4.3_SET_Credential_Harvester.md',
         language: 'markdown',
         featured: false,
         highlights: [
             'Social-Engineer Toolkit',
-            'Credential Harvester',
-            'Clonación de Sitios Web',
-            'Análisis de Riesgos'
+            'Análisis de Credenciales',
+            'Simulación de Phishing',
+            'Evaluación de Riesgos'
         ]
     },
     {
         id: 'cisco-lab-industrial-scanning',
-        title: 'Escaneo de Sistemas Industriales (ICS/SCADA)',
-        description: 'Análisis de seguridad y escaneo de vulnerabilidades en infraestructuras críticas y sistemas de control industrial. Identificación de protocolos inseguros y vectores de ataque.',
-        category: 'Formación',
+        title: 'Auditoría de Sistemas Industriales (ICS/SCADA)',
+        description: 'Evaluación de seguridad en infraestructuras críticas y sistemas de control industrial. Identificación de protocolos inseguros y vectores de ataque en redes SCADA.',
+        category: 'Auditorías Técnicas',
         technologies: ['Nmap', 'ICS/SCADA', 'Vulnerability Scanning', 'Nessus'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_3.3.1_Industrial_Scanning.md',
+        filePath: '/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_3.3.1_Industrial_Scanning.md',
         language: 'markdown',
         featured: false,
         highlights: [
-            'Escaneo de Redes ICS',
+            'Seguridad en Redes ICS',
             'Protocolos Industriales',
-            'Seguridad en SCADA',
+            'Auditoría SCADA',
             'Análisis de Superficie de Ataque'
         ]
     },
     {
         id: 'cisco-lab-dns-recon',
-        title: 'Reconocimiento y Enumeración de DNS',
-        description: 'Guía técnica sobre recolección de información DNS. Uso de herramientas para enumeración de registros A, MX, NS y técnicas de transferencia de zona.',
-        category: 'Formación',
+        title: 'Reconocimiento y Enumeración DNS',
+        description: 'Análisis técnico de infraestructura DNS. Uso de herramientas para la enumeración de registros y detección de configuraciones inseguras (transferencia de zona).',
+        category: 'Auditorías Técnicas',
         technologies: ['DNSrecon', 'Dig', 'Nmap', 'Information Gathering'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_3.1.2_DNS_Recon.md',
+        filePath: '/portfolio_content/documentos_portafolio/Formacion/Cisco_Labs/Memoria_Lab_3.1.2_DNS_Recon.md',
         language: 'markdown',
         featured: false,
         highlights: [
             'Enumeración de Registros',
-            'Transferencia de Zona',
-            'Análisis de Subdominios',
-            'Footprinting de Infraestructura'
+            'Análisis de Transferencia de Zona',
+            'Footprinting de Infraestructura',
+            'Detección de Subdominios'
         ]
     },
 
     {
         id: 'auditoria-seguridad-controls',
-        title: 'Controles de Seguridad (Administrative, Technical, Physical)',
-        description: 'Guía de referencia sobre la implementación de controles de seguridad en capas. Define y categoriza controles administrativos, técnicos y físicos para una defensa en profundidad.',
+        title: 'Marco de Controles de Seguridad',
+        description: 'Guía técnica sobre la implementación de controles de seguridad en capas (Administrativos, Técnicos y Físicos) para una estrategia de defensa en profundidad.',
         category: 'Auditoría',
         technologies: ['Security Controls', 'Defense in Depth', 'Access Control', 'Physical Security'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/Auditoria_Seguridad.md',
+        filePath: '/portfolio_content/documentos_portafolio/Auditoria/Auditoria_Seguridad.md',
         language: 'markdown',
         featured: false,
         highlights: [
@@ -114,153 +126,159 @@ export const projects = [
     },
     {
         id: 'web-vuln-scanner',
-        title: 'Web Vulnerability Scanner',
-        description: 'Escáner de vulnerabilidades web profesional con motor inteligente, crawler asíncrono, modo sigilo para evasión de WAF, y dashboard con reportes PDF. Detecta SQLi, XSS, Command Injection y más.',
-        category: 'Ciberseguridad',
+        title: 'Analizador de Vulnerabilidades Web',
+        description: 'Herramienta profesional de auditoría web con motor headless, crawler asíncrono y evasión de WAF. Genera reportes técnicos detallados sobre SQLi, XSS y RCE.',
+        category: 'Seguridad Defensiva',
         technologies: ['Python', 'Playwright', 'Streamlit', 'aiohttp', 'Asyncio'],
         repoUrl: 'https://github.com/Michel-Macias/Escaner-de-vulnerabilidades-web',
         featured: true,
         highlights: [
             'Motor Headless (Playwright)',
             'Evasión de WAF (Stealth Mode)',
-            'Reportes PDF Ejecutivos',
-            'Detección SQLi, XSS, RCE'
+            'Reportes Técnicos PDF',
+            'Detección de Vulnerabilidades Críticas'
         ]
     },
     {
         id: 'port-scanner',
-        title: 'Port Scanner en Python',
-        description: 'Escáner de puertos TCP con interfaz CLI. Permite escanear rangos de puertos personalizados con timeout configurable y manejo robusto de errores.',
+        title: 'Escáner de Puertos Técnico',
+        description: 'Herramienta de auditoría de red para el descubrimiento de servicios y puertos abiertos. Implementación robusta con manejo de timeouts y concurrencia.',
         category: 'Herramientas',
         technologies: ['Python', 'Socket Programming', 'CLI'],
         filePath: '/code/programacion/port_scanner.py',
         language: 'python',
         featured: true,
         highlights: [
-            'Escaneo de puertos TCP',
+            'Descubrimiento de Servicios',
             'CLI con argparse',
-            'Timeout configurable',
-            'Manejo de errores robusto'
+            'Optimización de Timeouts',
+            'Manejo de Errores Robusto'
         ]
     },
     {
         id: 'log-analyzer',
-        title: 'Analizador de Logs',
-        description: 'Herramienta de análisis de logs de servidores web para detectar patrones de ataque comunes como SQLi, XSS, escaneo de directorios e inyección de comandos.',
+        title: 'Analizador de Logs de Seguridad',
+        description: 'Herramienta de análisis forense y detección de intrusiones basada en logs. Identifica patrones de ataque SQLi, XSS e inyección de comandos en servidores web.',
         category: 'Herramientas',
         technologies: ['Python', 'Regex', 'Security Analysis'],
         filePath: '/code/programacion/log_analyzer.py',
         language: 'python',
         featured: true,
         highlights: [
-            'Detección de SQLi y XSS',
-            'Análisis de logs Apache/Nginx',
-            'Expresiones regulares',
-            'Reporte detallado de amenazas'
+            'Detección de Amenazas Web',
+            'Análisis Forense de Logs',
+            'Expresiones Regulares Avanzadas',
+            'Reporte de Incidentes'
         ]
     },
     {
         id: 'harden-linux',
-        title: 'Script de Hardening para Linux',
-        description: 'Script de Bash para automatizar la securización de servidores Debian/Ubuntu. Implementa actualizaciones automáticas, configuración SSH segura, gestión de usuarios y firewall UFW.',
+        title: 'Automatización de Hardening Linux',
+        description: 'Script profesional para la securización de servidores Debian/Ubuntu. Implementa actualizaciones críticas, configuración SSH endurecida y gestión de firewall.',
         category: 'Hardening',
         technologies: ['Bash', 'Linux', 'SSH', 'UFW'],
         filePath: '/code/programacion/harden_linux.sh',
         language: 'bash',
         featured: true,
         highlights: [
-            'Actualizaciones automáticas',
-            'Configuración SSH segura',
-            'Gestión de usuarios',
-            'Firewall UFW'
+            'Securización de SSH',
+            'Gestión de Firewall UFW',
+            'Actualizaciones Automáticas',
+            'Políticas de Usuarios'
         ]
     },
     {
         id: 'harden-windows',
-        title: 'Script de Hardening para Windows',
-        description: 'Script de PowerShell para verificar y aplicar configuraciones de seguridad en Windows 10/11 y Server 2016+. Incluye firewall, antivirus, UAC y deshabilitación de SMBv1.',
+        title: 'Automatización de Hardening Windows',
+        description: 'Script de PowerShell para la auditoría y aplicación de configuraciones de seguridad en entornos Windows. Gestión de Defender, UAC y protocolos inseguros.',
         category: 'Hardening',
         technologies: ['PowerShell', 'Windows', 'Security'],
         filePath: '/code/programacion/harden_windows.ps1',
         language: 'powershell',
         featured: true,
         highlights: [
-            'Firewall de Defender',
-            'Control de UAC',
+            'Configuración de Defender',
+            'Control de Cuentas (UAC)',
             'Deshabilitación de SMBv1',
-            'Política de ejecución'
+            'Auditoría de Políticas'
         ]
     },
     {
         id: 'botium-toys',
-        title: 'Auditoría de Seguridad - Botium Toys',
-        description: 'Análisis completo de riesgos y auditoría de seguridad para Botium Toys. Incluye evaluación de controles, análisis de cumplimiento y recomendaciones de mejora.',
+        title: 'Auditoría de Seguridad: Botium Toys',
+        description: 'Análisis integral de riesgos y auditoría de cumplimiento para Botium Toys. Evaluación de controles de seguridad y recomendaciones estratégicas de mejora.',
         category: 'Auditoría',
         technologies: ['Risk Assessment', 'Compliance', 'Security Controls'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/Botium_Toys_Alcance_objetivos_e_informe.md',
+        filePath: '/portfolio_content/documentos_portafolio/Auditoria/Botium_Toys_Alcance_objetivos_e_informe.md',
         language: 'markdown',
         featured: true,
         highlights: [
-            'Evaluación de riesgos',
-            'Análisis de cumplimiento',
-            'Controles de seguridad',
-            'Recomendaciones estratégicas'
+            'Evaluación de Riesgos',
+            'Análisis de Cumplimiento',
+            'Controles de Seguridad',
+            'Recomendaciones Estratégicas'
         ]
     },
     {
         id: 'pentest-planning-bundle',
-        title: 'Kit de Planificación de Pentesting',
-        description: 'Documentación esencial para la fase de pre-compromiso de un test de penetración. Incluye plantillas de Acuerdo de Pentesting y Planificación de Alcance (Scope).',
+        title: 'Kit de Planificación de Auditorías',
+        description: 'Documentación técnica para la fase de pre-compromiso de auditorías de seguridad. Incluye plantillas de acuerdos legales y definición de alcance (Scope).',
         category: 'Auditoría',
         technologies: ['Pentesting', 'Legal & Compliance', 'Scope Definition', 'Rules of Engagement'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/Pre_Engagement_Scope_Planning.pdf',
+        filePath: '/portfolio_content/documentos_portafolio/Auditoria/Pre_Engagement_Scope_Planning.pdf',
         language: 'pdf',
         featured: false,
         highlights: [
             'Acuerdos Legales',
             'Definición de Alcance',
             'Reglas de Compromiso',
-            'Planificación Previa'
+            'Planificación Técnica'
         ]
     },
     {
         id: 'incident-response-journal',
-        title: 'Diario de Respuesta a Incidentes',
-        description: 'Bitácora detallada de gestión de incidentes de seguridad simulados y reales. Documentación de detección, contención y erradicación siguiendo el marco de trabajo del NIST. Casos de Ransomware, Phishing y Análisis de Tráfico.',
+        title: 'Bitácora de Respuesta a Incidentes',
+        description: 'Registro detallado de gestión de incidentes siguiendo el marco NIST. Casos prácticos de Ransomware, Phishing y análisis forense de tráfico de red.',
         category: 'Auditoría',
         technologies: ['NIST Framework', 'Incident Response', 'Digital Forensics', 'Wazuh', 'Wireshark'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/Incident_Response_Journal.md',
+        filePath: '/portfolio_content/documentos_portafolio/Auditoria/Incident_Response_Journal.md',
         language: 'markdown',
         featured: true,
         highlights: [
             'Ciclo de Vida NIST',
             'Análisis de Ransomware',
             'Investigación de Phishing',
-            'Análisis de Tráfico de Red'
+            'Forense de Red'
         ]
     },
     {
-        id: 'scantxungo-qr',
-        title: 'ScanTxungoQR',
-        description: 'PWA diseñada para combatir el "Quishing". Analiza URLs de códigos QR mediante la API de VirusTotal para detectar amenazas antes de acceder a ellas.',
+        id: 'centinela-qr',
+        title: 'CentinelaQR: Protección Quishing',
+        description: 'Evolución de ScanTxungoQR. PWA avanzada para la mitigación de ataques de Quishing. Analiza URLs de códigos QR mediante la API de VirusTotal para detectar amenazas en tiempo real con una arquitectura más robusta.',
         category: 'Herramientas',
         technologies: ['JavaScript', 'PWA', 'Cloudflare Workers', 'VirusTotal API'],
-        repoUrl: 'https://github.com/MaciasIT/ScanTxungoQR-PWA-Project',
+        repoUrl: 'https://github.com/MaciasIT/Centinela_PWA',
         featured: true,
+        status: 'ACTIVO',
+        lab: {
+            objective: "Mitigar el riesgo de acceso a URLs maliciosas camufladas en códigos QR (Quishing).",
+            methodology: "Implementación de una PWA con integración de API de terceros y procesamiento serverless para análisis de reputación.",
+            learning: "La seguridad en el punto de acceso (endpoint) es vital ante vectores de ataque físicos como el QR."
+        },
         highlights: [
-            'Protección contra Quishing',
-            'Integración con VirusTotal',
+            'Mitigación de Quishing',
+            'Integración VirusTotal',
             'Arquitectura Serverless',
             'Modo Offline (PWA)'
         ]
     },
     {
         id: 'nist-risk-assessment',
-        title: 'Guía de Evaluación de Riesgos (NIST SP 800-30)',
-        description: 'Documentación técnica basada en NIST SP 800-30 Rev. 1. Incluye identificación de fuentes de amenaza, eventos, cálculo de probabilidad e impacto, y estrategias de mitigación.',
+        title: 'Evaluación de Riesgos (NIST SP 800-30)',
+        description: 'Guía técnica basada en el estándar NIST SP 800-30. Metodología para la identificación de amenazas, cálculo de impacto y estrategias de mitigación.',
         category: 'Auditoría',
         technologies: ['NIST SP 800-30', 'Risk Management', 'GRC', 'Threat Modeling'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Evaluacion_Riesgos/NIST_Risk_Assessment_Guide.md',
+        filePath: '/portfolio_content/documentos_portafolio/Evaluacion_Riesgos/NIST_Risk_Assessment_Guide.md',
         language: 'markdown',
         featured: false,
         highlights: [
@@ -272,11 +290,11 @@ export const projects = [
     },
     {
         id: 'risk-register-audit',
-        title: 'Registro de Riesgos (Risk Register)',
-        description: 'Ejemplo real de un Registro de Riesgos para la gestión de activos y vulnerabilidades. Documento clave para el cumplimiento normativo y la priorización de remediaciones.',
+        title: 'Registro de Riesgos Corporativos',
+        description: 'Ejemplo de gestión de activos y vulnerabilidades mediante un Registro de Riesgos. Documento clave para el cumplimiento normativo ISO 27001.',
         category: 'Auditoría',
         technologies: ['Risk Assessment', 'Asset Management', 'Compliance', 'ISO 27001'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Evaluacion_Riesgos/Risk_Register.pdf',
+        filePath: '/portfolio_content/documentos_portafolio/Evaluacion_Riesgos/Risk_Register.pdf',
         language: 'pdf',
         featured: false,
         highlights: [
@@ -288,28 +306,27 @@ export const projects = [
     },
     {
         id: 'password-security-principles',
-        title: 'Principios de Seguridad de Contraseñas',
-        description: 'Guía de concienciación sobre mejores prácticas en gestión de identidades. Comparativa técnica entre gestores de contraseñas (LastPass vs 1Password) y principios de entropía.',
-        category: 'Formación',
+        title: 'Gestión de Identidades y Contraseñas',
+        description: 'Análisis técnico sobre mejores prácticas en gestión de identidades. Comparativa de gestores de contraseñas y principios de entropía para la seguridad.',
+        category: 'Auditorías Técnicas',
         technologies: ['Security Awareness', 'Identity Management', 'Password Managers', 'Entropy'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Evaluacion_Riesgos/Password_Security_Principles.md',
+        filePath: '/portfolio_content/documentos_portafolio/Evaluacion_Riesgos/Password_Security_Principles.md',
         language: 'markdown',
         featured: false,
         highlights: [
             'Gestión de Identidades',
             'Análisis de Entropía',
-            'LastPass vs 1Password',
-            'Linux Hardening',
-            'Digital Forensics'
+            'Comparativa Técnica',
+            'Buenas Prácticas'
         ]
     },
     {
         id: 'linux-offensive-defensive',
-        title: 'Linux: Ofensiva y Defensiva',
-        description: 'Colección de guías técnicas sobre seguridad en Linux. Cubre desde la gestión crítica de permisos de archivos hasta técnicas avanzadas de escalada de privilegios y vectores de ataque.',
+        title: 'Seguridad en Linux: Ofensiva y Defensiva',
+        description: 'Guía técnica sobre seguridad en Linux. Cubre desde la gestión de permisos hasta técnicas de escalada de privilegios y vectores de ataque comunes.',
         category: 'Hardening',
         technologies: ['Privilege Escalation', 'File Permissions', 'SUID/SGID', 'Linux Security'],
-        filePath: '/src/portfolio_content/documentos_portafolio/portfolio/Linux_Privilege_Escalation.pdf',
+        filePath: '/portfolio_content/documentos_portafolio/portfolio/Linux_Privilege_Escalation.pdf',
         language: 'pdf',
         featured: false,
         highlights: [
@@ -322,43 +339,42 @@ export const projects = [
     {
         id: 'usb-attack-vectors',
         title: 'Análisis de Vectores de Ataque USB',
-        description: 'Investigación sobre la seguridad física y los riesgos asociados a dispositivos USB. Identificación de vectores de ataque como BadUSB y estrategias de mitigación.',
+        description: 'Investigación sobre riesgos asociados a dispositivos USB físicos. Identificación de ataques BadUSB y estrategias de mitigación técnica.',
         category: 'Auditoría',
         technologies: ['Physical Security', 'BadUSB', 'Social Engineering', 'Hardware Hacking'],
-        filePath: '/src/portfolio_content/documentos_portafolio/portfolio/USB_Attack_Vectors.pdf',
+        filePath: '/portfolio_content/documentos_portafolio/portfolio/USB_Attack_Vectors.pdf',
         language: 'pdf',
         featured: false,
         highlights: [
             'Seguridad Física',
             'Ataques HID',
             'Mitigación de Riesgos',
-            'Concienciación'
+            'Análisis de Hardware'
         ]
     },
     {
         id: 'hacker-ethics-code',
         title: 'Código de Ética Profesional',
-        description: 'Declaración personal de principios éticos para el hacking. Establece el marco de responsabilidad, integridad y legalidad bajo el cual se realizan todas las pruebas de seguridad.',
-        category: 'Formación',
+        description: 'Declaración de principios éticos para la práctica de la ciberseguridad. Marco de responsabilidad, integridad y legalidad en auditorías técnicas.',
+        category: 'Auditorías Técnicas',
         technologies: ['Ethical Hacking', 'Compliance', 'Professional Integrity', 'Legal Framework'],
-        filePath: '/src/portfolio_content/documentos_portafolio/portfolio/Hacker_Code_of_Ethics.pdf',
+        filePath: '/portfolio_content/documentos_portafolio/portfolio/Hacker_Code_of_Ethics.pdf',
         language: 'pdf',
         featured: false,
         highlights: [
-            'Responsabilidad',
-            'Integridad Profesional',
+            'Responsabilidad Profesional',
+            'Integridad Técnica',
             'Marco Legal',
-
             'Buenas Prácticas'
         ]
     },
     {
         id: 'nmap-scan-techniques',
-        title: 'Técnicas de Escaneo con NMAP',
-        description: 'Guía avanzada sobre los diferentes tipos de análisis de red utilizando NMAP. Detalla técnicas de descubrimiento de hosts, escaneo de puertos, detección de versiones y evasión de firewalls.',
+        title: 'Técnicas Avanzadas de Escaneo (NMAP)',
+        description: 'Guía técnica sobre análisis de red con NMAP. Técnicas de descubrimiento, detección de versiones y evasión de firewalls para auditorías de red.',
         category: 'Herramientas',
         technologies: ['NMAP', 'Network Scanning', 'Reconnaissance', 'Firewall Evasion'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Herramientas/NMAP_Scan_Techniques.pdf',
+        filePath: '/portfolio_content/documentos_portafolio/Herramientas/NMAP_Scan_Techniques.pdf',
         language: 'pdf',
         featured: false,
         highlights: [
@@ -370,11 +386,11 @@ export const projects = [
     },
     {
         id: 'incibe-incident-guide',
-        title: 'Guía Nacional de Notificación de Incidentes (INCIBE)',
-        description: 'Marco de referencia para la gestión y notificación de ciberincidentes según el INCIBE. Protocolos de actuación, clasificación de incidentes y obligaciones legales de reporte.',
+        title: 'Guía de Notificación de Incidentes (INCIBE)',
+        description: 'Marco de referencia para la gestión y notificación de ciberincidentes según protocolos nacionales. Clasificación y obligaciones legales de reporte.',
         category: 'Auditoría',
         technologies: ['Incident Response', 'Compliance', 'INCIBE', 'Legal Framework'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/INCIBE_Incident_Notification_Guide.pdf',
+        filePath: '/portfolio_content/documentos_portafolio/Auditoria/INCIBE_Incident_Notification_Guide.pdf',
         language: 'pdf',
         featured: false,
         highlights: [
@@ -386,15 +402,15 @@ export const projects = [
     },
     {
         id: 'risk-management-stages',
-        title: 'Etapas de la Gestión de Riesgos',
-        description: 'Visualización y explicación detallada de las etapas del ciclo de vida de la gestión de riesgos. Complemento visual para la planificación y ejecución de análisis de riesgos.',
+        title: 'Ciclo de Vida de Gestión de Riesgos',
+        description: 'Análisis detallado de las etapas de gestión de riesgos. Recurso para la planificación y ejecución de análisis de riesgos en entornos corporativos.',
         category: 'Auditoría',
         technologies: ['Risk Management', 'Lifecycle', 'Analysis', 'Mitigation'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Auditoria/Risk_Management_Stages.pdf',
+        filePath: '/portfolio_content/documentos_portafolio/Auditoria/Risk_Management_Stages.pdf',
         language: 'pdf',
         featured: false,
         highlights: [
-            'Ciclo de Vida del Riesgo',
+            'Ciclo del Riesgo',
             'Identificación y Análisis',
             'Tratamiento de Riesgos',
             'Monitoreo Continuo'
@@ -402,11 +418,11 @@ export const projects = [
     },
     {
         id: 'security-domains-overview',
-        title: 'Dominios de Seguridad - Visión General',
-        description: 'Mapa conceptual de los dominios clave de la seguridad de la información. Recurso educativo para comprender la amplitud del campo y las interrelaciones entre áreas.',
-        category: 'Formación',
+        title: 'Dominios de Seguridad: Visión Técnica',
+        description: 'Mapa conceptual de los dominios clave de la seguridad de la información. Comprensión de las interrelaciones entre áreas de conocimiento CISSP.',
+        category: 'Auditorías Técnicas',
         technologies: ['Security Domains', 'CISSP', 'InfoSec Overview', 'Education'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Security_Domains_Overview.pdf',
+        filePath: '/portfolio_content/documentos_portafolio/Formacion/Security_Domains_Overview.pdf',
         language: 'pdf',
         featured: false,
         highlights: [
@@ -418,16 +434,16 @@ export const projects = [
     },
     {
         id: 'siem-tools-overview',
-        title: 'Panorama de Herramientas SIEM',
-        description: 'Análisis comparativo de las principales soluciones SIEM del mercado (Splunk, QRadar, Elastic, etc.). Guía para seleccionar la herramienta adecuada según las necesidades organizacionales.',
+        title: 'Análisis de Soluciones SIEM',
+        description: 'Comparativa técnica de herramientas SIEM (Splunk, QRadar, Elastic). Guía para la selección de plataformas de monitoreo de seguridad.',
         category: 'Herramientas',
         technologies: ['SIEM', 'Splunk', 'QRadar', 'Elastic Stack', 'Log Analysis'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Herramientas/SIEM_Tools_Overview.md',
+        filePath: '/portfolio_content/documentos_portafolio/Herramientas/SIEM_Tools_Overview.md',
         language: 'markdown',
         featured: false,
         highlights: [
-            'Comparativa de Herramientas',
-            'Casos de Uso',
+            'Comparativa SIEM',
+            'Casos de Uso SOC',
             'Splunk vs ELK',
             'Estrategias de Monitoreo'
         ]
@@ -435,86 +451,86 @@ export const projects = [
     {
         id: 'sql-linux-security-hub',
         title: 'SQL & Linux Security Hub',
-        description: 'Centro de recursos técnicos que combina consultas SQL para Ciberseguridad y Hardening de Linux. Incluye PDFs sobre inyecciones SQL, análisis de logs y permisos avanzados.',
-        category: 'Formación',
+        description: 'Recursos técnicos para auditoría forense mediante SQL y hardening de Linux. Incluye análisis de inyecciones SQL y permisos avanzados.',
+        category: 'Auditorías Técnicas',
         technologies: ['SQL Injection Prevention', 'Log Analysis', 'Linux Hardening', 'Digital Forensics'],
-        filePath: '/src/portfolio_content/documentos_portafolio/SQL_Linux/SQL_and_Linux_Cheatsheet.md',
+        filePath: '/portfolio_content/documentos_portafolio/SQL_Linux/SQL_and_Linux_Cheatsheet.md',
         language: 'markdown',
         featured: true,
         highlights: [
             'Consultas de Seguridad',
-            'Análisis Forense con SQL',
+            'Análisis Forense SQL',
             'Linux Hardening',
-            'Cheat Sheets'
+            'Cheat Sheets Técnicos'
         ]
     },
     {
         id: 'python-cyber',
-        title: 'Python para Ciberseguridad',
-        description: 'Biblioteca de herramientas de automatización para tareas de seguridad. Incluye detección de IoCs, análisis de logs y scripts defensivos en Jupyter Notebooks.',
+        title: 'Automatización con Python',
+        description: 'Biblioteca de herramientas para la automatización de tareas de seguridad. Detección de IoCs, análisis de logs y scripts defensivos.',
         category: 'Herramientas',
         technologies: ['Python', 'Jupyter', 'Security Automation'],
         repoUrl: 'https://github.com/MaciasIT/Python-Ciberseguridad',
         featured: true,
         highlights: [
-            'Scripts interactivos',
+            'Scripts Interactivos',
             'Análisis de IoCs',
-            'Automatización defensiva',
-            'Documentación integrada'
+            'Automatización Defensiva',
+            'Documentación Técnica'
         ]
     },
     {
         id: 'doc-squad-ai',
-        title: 'Doc Squad AI',
-        description: 'Sistema multi-agente de IA para la generación automática de documentación técnica profesional a partir de fuentes multimedia.',
+        title: 'Doc Squad AI: Automatización de Docs',
+        description: 'Sistema multi-agente de IA para la generación de documentación técnica profesional. Optimización de procesos de reporte mediante GenAI.',
         category: 'IA & Ops',
         technologies: ['Python', 'Gemini AI', 'Streamlit', 'FastAPI'],
         repoUrl: 'https://github.com/MaciasIT/Proyecto_Final_Kagle_5_Days_IA',
         featured: true,
         highlights: [
             'Multi-Agent System',
-            'Google Gemini Integration',
-            'Automatización de Docs',
-            'Interfaz Streamlit'
+            'Integración Gemini AI',
+            'Automatización de Reportes',
+            'Interfaz Profesional'
         ]
     },
     {
         id: 'shapeshifter',
-        title: 'Shapeshifter Detector',
-        description: 'Inspector de archivos binarios que utiliza Magic Numbers para detectar archivos maliciosos o con extensiones falsificadas (Masquerade detection).',
-        category: 'Ciberseguridad',
+        title: 'Shapeshifter: Análisis Binario',
+        description: 'Herramienta forense para la detección de archivos maliciosos mediante Magic Numbers. Identificación de técnicas de enmascaramiento de extensiones.',
+        category: 'Seguridad Defensiva',
         technologies: ['Python', 'Forense', 'Binary Analysis'],
         repoUrl: 'https://github.com/Michel-Macias/Shapeshifter-Detector',
         featured: true,
         highlights: [
-            'Detección por Magic Numbers',
+            'Detección Magic Numbers',
             'Análisis Forense Digital',
             'Prevención de Malware',
-            'Identificación de Extensiones'
+            'Identificación de Amenazas'
         ]
     },
     {
         id: 'optitech-v2',
-        title: 'OptiTech System Optimizer',
-        description: 'Suite integral de optimización para Windows 11. Automatiza limpieza, gestión de servicios y ajustes de rendimiento en entornos profesionales.',
+        title: 'OptiTech: Optimización de Sistemas',
+        description: 'Suite de optimización para entornos Windows corporativos. Automatización de limpieza, gestión de servicios y ajustes de rendimiento.',
         category: 'IT Ops',
         technologies: ['Python', 'PowerShell', 'Windows Internals'],
         repoUrl: 'https://github.com/Michel-Macias/OptiTech-System-Optimizer-V2',
         featured: true,
         highlights: [
-            'Optimización de Rendimiento',
-            'Gestión de Servicios Críticos',
-            'Ajustes de Registro Seguros',
+            'Optimización de Sistemas',
+            'Gestión de Servicios',
+            'Ajustes de Registro',
             'Interfaz Modular'
         ]
     },
     {
         id: 'ai-cyber-ops-guide',
-        title: 'Guía Operativa: IA en Ciberseguridad',
-        description: 'Manual estratégico sobre la aplicación de Inteligencia Artificial Generativa (GenAI) en operaciones de seguridad. Incluye frameworks de prompting (T-C-R-E-I), casos de uso en NIST y respuesta a incidentes.',
+        title: 'IA en Operaciones de Ciberseguridad',
+        description: 'Manual estratégico sobre la aplicación de GenAI en SOC. Frameworks de prompting y casos de uso en respuesta a incidentes y cumplimiento NIST.',
         category: 'IA & Ops',
         technologies: ['GenAI', 'Prompt Engineering', 'NIST Framework', 'SOC Automation'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/AI_Cybersecurity_Operational_Guide.pdf',
+        filePath: '/portfolio_content/documentos_portafolio/Formacion/AI_Cybersecurity_Operational_Guide.pdf',
         language: 'pdf',
         featured: true,
         highlights: [
@@ -526,48 +542,48 @@ export const projects = [
     },
     {
         id: 'intro-ai-cyber',
-        title: 'Introducción a la IA en Ciberseguridad',
-        description: 'Artículo técnico que explora los fundamentos de la IA defensiva y ofensiva. Analiza cómo los LLMs transforman la detección de amenazas, la revisión de código y la gestión de riesgos.',
-        category: 'Formación',
+        title: 'Fundamentos de IA en Ciberseguridad',
+        description: 'Análisis técnico sobre la transformación de la detección de amenazas y gestión de riesgos mediante modelos de lenguaje (LLMs).',
+        category: 'Auditorías Técnicas',
         technologies: ['Artificial Intelligence', 'LLMs', 'Threat Intelligence', 'Code Review'],
-        filePath: '/src/portfolio_content/documentos_portafolio/Formacion/Intro_to_AI_in_Cybersecurity.md',
+        filePath: '/portfolio_content/documentos_portafolio/Formacion/Intro_to_AI_in_Cybersecurity.md',
         language: 'markdown',
         featured: false,
         highlights: [
             'Fundamentos de IA',
-            'IA Ofensiva vs Defensiva',
-            'Casos de Uso',
+            'IA Defensiva vs Ofensiva',
+            'Casos de Uso SOC',
             'Riesgos de GenAI'
         ]
     },
     {
         id: 'malware-intro',
-        title: 'Manual: Iniciación al Análisis de Malware',
-        description: 'Guía técnica y plan de estudio estructurado sobre los fundamentos del análisis de malware, basada en el curso Hacker Ético de Cisco.',
-        category: 'Formación',
+        title: 'Análisis de Malware: Fundamentos',
+        description: 'Guía técnica estructurada sobre el análisis de malware. Metodología de estudio basada en el marco de Cisco Ethical Hacker.',
+        category: 'Auditorías Técnicas',
         technologies: ['Malware Analysis', 'Documentation', 'Cyber Training'],
         repoUrl: 'https://github.com/Michel-Macias/Iniciacion-al-analisis-de-malware',
         featured: true,
         highlights: [
-            'Fundamentos de Análisis',
-            'Metodología Estructurada',
+            'Metodología de Análisis',
             'Guía de Herramientas',
-            'Resúmenes Técnicos'
+            'Resúmenes Técnicos',
+            'Plan de Estudio'
         ]
     },
     {
         id: 'lynis-hardening',
-        title: 'Hardening con Lynis',
-        description: 'Ciclo completo de auditoría y hardening en sistemas Linux. Automatización de reportes Lynis y aplicación de remediaciones en SSH, Kernel y políticas PAM.',
+        title: 'Auditoría y Hardening con Lynis',
+        description: 'Ciclo completo de auditoría de seguridad en Linux. Automatización de reportes Lynis y aplicación de remediaciones críticas en el sistema.',
         category: 'Hardening',
         technologies: ['Lynis', 'Bash', 'Fail2Ban', 'Security Policy'],
         repoUrl: 'https://github.com/Michel-Macias/lynis',
         featured: true,
         highlights: [
-            'Automatización de Auditorías',
+            'Auditoría Automatizada',
             'Remediación de Vulnerabilidades',
-            'Hardening de Kernel y SSH',
-            'Mejora de Índice de Seguridad'
+            'Hardening de Kernel/SSH',
+            'Índice de Seguridad'
         ]
     }
 ];
@@ -579,7 +595,8 @@ export const projectCategories = [
     { id: 'Auditoría', name: 'Auditoría', icon: 'clipboard' },
     { id: 'IA & Ops', name: 'IA & Ops', icon: 'cpu' },
     { id: 'IT Ops', name: 'IT Ops', icon: 'settings' },
-    { id: 'Formación', name: 'Formación', icon: 'book' }
+    { id: 'Auditorías Técnicas', name: 'Auditorías Técnicas', icon: 'book' },
+    { id: 'Seguridad Defensiva', name: 'Seguridad Defensiva', icon: 'shield' }
 ];
 
 export const getFeaturedProjects = () => projects.filter(p => p.featured);

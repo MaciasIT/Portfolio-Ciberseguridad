@@ -1,24 +1,26 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import FloatingNavbar from './components/FloatingNavbar';
 import ProjectList from './components/ProjectList';
-import MatrixBackground from './components/MatrixBackground';
 import IntroTerminal from './components/IntroTerminal';
-import { skills } from './data/skills';
-import { FiGithub, FiLinkedin, FiMail, FiMapPin, FiShield, FiCpu, FiTerminal, FiDatabase, FiCode, FiLock, FiChevronDown } from 'react-icons/fi';
+import TransitionTimeline from './components/TransitionTimeline';
+import SkillBridge from './components/SkillBridge';
+import BackgroundBeams from './components/BackgroundBeams';
+import About from './pages/About';
+import ProjectDetail from './pages/ProjectDetail';
+import { FiChevronDown } from 'react-icons/fi';
 import './App.css';
 
 function App() {
-  const [showTerminal, setShowTerminal] = useState(true);
-  const heroRef = useRef(null);
-
-  useEffect(() => {
-    if (showTerminal) return;
-    // Scroll automático al hero después de la intro
-    if (heroRef.current) {
-      heroRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [showTerminal]);
+  console.log('[PORTFOLIO] Renderizando App...');
+  const [showTerminal, setShowTerminal] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   const handleTerminalComplete = useCallback(() => {
     setShowTerminal(false);
@@ -30,471 +32,169 @@ function App() {
 
   return (
     <Router>
-      <div style={{
-        backgroundColor: 'var(--color-bg-primary)',
-        color: 'var(--color-text-primary)',
-        minHeight: '100vh',
-        fontFamily: 'Inter, sans-serif'
-      }}>
+      <div className="relative min-h-screen bg-[#000000] text-[#fafafa] font-sans selection:bg-[#3b82f6] selection:text-black overflow-x-hidden">
+        
+        {/* Scroll Progress Bar */}
+        <motion.div className="fixed top-0 left-0 right-0 h-1 bg-[#3b82f6] origin-left z-[100]" style={{ scaleX }} />
 
-        {/* BACKGROUND LAYER */}
-        <div style={{ position: 'fixed', inset: 0, zIndex: 0, opacity: 0.2 }}>
-          <MatrixBackground />
-        </div>
+        {/* PREMIUM BACKGROUND */}
+        <BackgroundBeams />
 
         {/* FLOATING NAVIGATION */}
         <FloatingNavbar />
 
         {/* MAIN CONTENT */}
-        <main style={{ position: 'relative', zIndex: 10 }}>
+        <main className="relative z-10 w-full">
+          <Routes>
+            <Route path="/" element={
+              <div className="flex flex-col items-center w-full">
+                {/* ===== HERO SECTION ===== */}
+                <section id="about" className="min-h-screen w-full flex flex-col items-center justify-center px-6 py-20 text-center">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="flex flex-col items-center w-full max-w-5xl mx-auto"
+                  >
+                    <motion.span 
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                      className="font-mono text-[#3b82f6] text-base md:text-lg tracking-[0.3em] mb-6"
+                    >
+                      Iniciando_Conciencia();
+                    </motion.span>
 
-          {/* ===== HERO SECTION ===== */}
-          <section
-            ref={heroRef}
-            id="about"
-            style={{
-              minHeight: '100vh',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              textAlign: 'center',
-              padding: '80px 24px'
-            }}
-          >
-            {/* Status Badge */}
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '12px',
-              marginBottom: '40px'
-            }}>
-              <span style={{
-                width: '12px',
-                height: '12px',
-                borderRadius: '50%',
-                backgroundColor: 'var(--color-primary)',
-                boxShadow: '0 0 20px var(--color-primary-glow)'
-              }}></span>
-              <span style={{
-                fontSize: '14px',
-                fontFamily: 'monospace',
-                color: 'var(--color-primary)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.15em'
-              }}>
-                Disponible para proyectos
-              </span>
-            </div>
+                    <motion.h1 
+                      initial={{ opacity: 0, filter: "blur(10px)" }}
+                      animate={{ opacity: 1, filter: "blur(0px)" }}
+                      transition={{ delay: 0.2, duration: 1 }}
+                      className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-10 text-gradient"
+                    >
+                      MICHEL MACIAS
+                    </motion.h1>
 
-            {/* Name */}
-            <h1 style={{
-              fontSize: 'clamp(42px, 10vw, 100px)',
-              fontWeight: 900,
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              marginBottom: '24px',
-              background: 'linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-primary) 50%, var(--color-secondary) 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}>
-              Michel Macias
-            </h1>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.8 }}
+                      className="max-w-3xl"
+                    >
+                      <p className="text-xl md:text-3xl text-[#d4d4d8] leading-relaxed mb-16 font-light">
+                        Fiabilidad forjada en <span className="text-white font-medium border-b border-[#3b82f6]/30">Gestión Senior</span>, aplicada con rigor a la <span className="text-[#3b82f6] font-medium">Ciberseguridad Técnica</span>.
+                      </p>
+                    </motion.div>
 
-            {/* Role - English */}
-            <p style={{
-              fontSize: 'clamp(20px, 3.5vw, 32px)',
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              marginBottom: '8px'
-            }}>
-              SysAdmin SecOps
-            </p>
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.2 }}
+                      className="flex flex-wrap justify-center gap-6"
+                    >
+                      <a href="#labs" className="px-8 py-4 bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-[#3b82f6] hover:text-white transition-all duration-300">
+                        Explorar Laboratorios
+                      </a>
+                      <a href="#contact" className="px-8 py-4 border border-[#27272a] text-white font-bold text-xs uppercase tracking-widest hover:border-white transition-all duration-300">
+                        Contactar
+                      </a>
+                    </motion.div>
+                  </motion.div>
 
-            {/* Role - Spanish */}
-            <p style={{
-              fontSize: 'clamp(16px, 2.5vw, 22px)',
-              fontFamily: 'monospace',
-              color: '#94a3b8',
-              marginBottom: '40px'
-            }}>
-              Administrador de Sistemas | Operaciones de Seguridad
-            </p>
+                  <motion.div 
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="absolute bottom-10 opacity-20"
+                  >
+                    <FiChevronDown size={24} />
+                  </motion.div>
+                </section>
 
-            {/* Description */}
-            <p style={{
-              fontSize: '18px',
-              color: '#64748b',
-              maxWidth: '600px',
-              lineHeight: 1.8,
-              marginBottom: '48px'
-            }}>
-              Apasionado por la <span style={{ color: 'var(--color-primary)' }}>ciberseguridad</span> con base sólida en
-              <span style={{ color: 'var(--color-secondary)' }}> administración de sistemas</span>. Formándome como
-              <span style={{ color: 'var(--color-accent)' }}> Analista de Seguridad</span> para proteger infraestructuras digitales.
-            </p>
-
-            {/* CTA Buttons */}
-            <div style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              gap: '20px',
-              marginBottom: '48px'
-            }}>
-              <a
-                href="#projects"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  padding: '18px 36px',
-                  backgroundColor: 'var(--color-primary)',
-                  color: 'white',
-                  fontFamily: 'monospace',
-                  fontWeight: 700,
-                  fontSize: '14px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  textDecoration: 'none',
-                  transition: 'all 0.3s'
-                }}
-              >
-                <FiCode size={18} /> Ver Proyectos
-              </a>
-              <a
-                href="mailto:michelmacias.it@gmail.com"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  padding: '18px 36px',
-                  border: '2px solid #334155',
-                  color: '#e2e8f0',
-                  fontFamily: 'monospace',
-                  fontSize: '14px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.1em',
-                  textDecoration: 'none',
-                  transition: 'all 0.3s'
-                }}
-              >
-                <FiMail size={18} /> Contactar
-              </a>
-            </div>
-
-            {/* Social Links */}
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '16px',
-              marginBottom: '32px'
-            }}>
-              {[
-                { href: 'https://github.com/MaciasIT', icon: <FiGithub size={22} /> },
-                { href: 'https://es.linkedin.com/in/miguel-%C3%A1ngel-mac%C3%ADas-vargas', icon: <FiLinkedin size={22} /> },
-                { href: 'mailto:michelmacias.it@gmail.com', icon: <FiMail size={22} /> }
-              ].map((link, i) => (
-                <a
-                  key={i}
-                  href={link.href}
-                  target={link.href.startsWith('mailto') ? undefined : '_blank'}
-                  rel="noopener noreferrer"
-                  style={{
-                    padding: '16px',
-                    border: '1px solid #334155',
-                    color: '#94a3b8',
-                    display: 'flex',
-                    transition: 'all 0.3s'
-                  }}
-                >
-                  {link.icon}
-                </a>
-              ))}
-            </div>
-
-            {/* Location */}
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              fontSize: '14px',
-              color: '#64748b',
-              fontFamily: 'monospace'
-            }}>
-              <FiMapPin style={{ color: 'var(--color-primary)' }} />
-              <span>Mendigorria, Navarra, España</span>
-            </div>
-
-            {/* Scroll Indicator */}
-            <div style={{
-              position: 'absolute',
-              bottom: '48px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: '8px',
-              animation: 'bounce 2s infinite'
-            }}>
-              <span style={{
-                fontSize: '11px',
-                fontFamily: 'monospace',
-                color: '#64748b',
-                textTransform: 'uppercase',
-                letterSpacing: '0.2em'
-              }}>Scroll</span>
-              <FiChevronDown style={{ color: 'var(--color-primary)', fontSize: '24px' }} />
-            </div>
-          </section>
-
-          {/* ===== SKILLS SECTION ===== */}
-          <section id="skills" style={{
-            padding: '160px 24px',
-            maxWidth: '1200px',
-            margin: '0 auto'
-          }}>
-            <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-              <span style={{
-                display: 'inline-block',
-                padding: '12px 20px',
-                marginBottom: '24px',
-                fontSize: '12px',
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                color: 'var(--color-secondary)',
-                border: '1px solid var(--color-secondary-glow)',
-                backgroundColor: 'rgba(255, 202, 40, 0.05)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.3em'
-              }}>
-                Tech Stack
-              </span>
-              <h2 style={{
-                fontSize: 'clamp(32px, 6vw, 56px)',
-                fontWeight: 900,
-                color: '#e2e8f0',
-                marginBottom: '24px'
-              }}>
-                Arsenal de <span style={{
-                  background: 'linear-gradient(135deg, var(--color-primary), var(--color-secondary))',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
-                }}>Habilidades</span>
-              </h2>
-              <p style={{
-                fontSize: '18px',
-                color: '#64748b',
-                maxWidth: '600px',
-                margin: '0 auto',
-                lineHeight: 1.7
-              }}>
-                Herramientas y conocimientos para proteger y construir sistemas seguros.
-              </p>
-            </div>
-
-            {/* Skills Grid */}
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-              gap: '32px'
-            }}>
-              {skills.map((category) => (
-                <div
-                  key={category.category}
-                  style={{
-                    padding: '32px',
-                    backgroundColor: 'rgba(30, 41, 59, 0.4)',
-                    border: '1px solid #334155',
-                    backdropFilter: 'blur(10px)',
-                    transition: 'all 0.3s'
-                  }}
-                >
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '16px',
-                    marginBottom: '28px'
-                  }}>
-                    <div style={{
-                      padding: '14px',
-                      border: '1px solid #334155',
-                      color: 'var(--color-primary)'
-                    }}>
-                      <FiShield size={24} />
-                    </div>
-                    <h3 style={{
-                      fontSize: '18px',
-                      fontWeight: 700,
-                      color: '#e2e8f0'
-                    }}>{category.category}</h3>
+                {/* ===== BITÁCORA SECTION ===== */}
+                <section id="bitacora" className="py-40 w-full">
+                  <div className="section-container">
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.8 }}
+                      className="mb-24 text-center md:text-left"
+                    >
+                      <span className="font-mono text-[#3b82f6] text-xs tracking-[0.2em] block mb-4 uppercase">&lt;Bitácora_de_Transición /&gt;</span>
+                      <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase">El Viaje Profesional</h2>
+                    </motion.div>
+                    <TransitionTimeline />
                   </div>
+                </section>
 
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                    {category.items.slice(0, 4).map(skill => (
-                      <div key={skill.name}>
-                        <div style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          fontSize: '14px',
-                          marginBottom: '8px'
-                        }}>
-                          <span style={{ color: '#94a3b8' }}>{skill.name}</span>
-                          <span style={{ color: '#64748b', fontFamily: 'monospace' }}>{skill.level}%</span>
-                        </div>
-                        <div style={{
-                          height: '6px',
-                          backgroundColor: '#1e293b',
-                          overflow: 'hidden'
-                        }}>
-                          <div style={{
-                            height: '100%',
-                            width: `${skill.level}%`,
-                            background: 'linear-gradient(90deg, var(--color-primary), var(--color-secondary))'
-                          }}></div>
-                        </div>
-                      </div>
-                    ))}
+                {/* ===== BRIDGE SECTION ===== */}
+                <section id="bridge" className="py-40 w-full border-y border-[#27272a] bg-[#09090b]">
+                  <div className="section-container">
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.8 }}
+                      className="mb-24 text-center"
+                    >
+                      <span className="font-mono text-[#22c55e] text-xs tracking-[0.2em] block mb-4 uppercase">&lt;Puente_de_Habilidades /&gt;</span>
+                      <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase">Transferencia de Valor</h2>
+                    </motion.div>
+                    <SkillBridge />
                   </div>
-                </div>
-              ))}
-            </div>
-          </section>
+                </section>
 
-          {/* ===== PROJECTS SECTION ===== */}
-          <section id="projects" style={{
-            padding: '160px 24px',
-            backgroundColor: 'rgba(30, 41, 59, 0.15)'
-          }}>
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-              <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-                <span style={{
-                  display: 'inline-block',
-                  padding: '12px 20px',
-                  marginBottom: '24px',
-                  fontSize: '12px',
-                  fontFamily: 'monospace',
-                  fontWeight: 700,
-                  color: 'var(--color-accent)',
-                  border: '1px solid var(--color-accent-glow)',
-                  backgroundColor: 'rgba(139, 0, 0, 0.1)',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.3em'
-                }}>
-                  Proyectos
-                </span>
-                <h2 style={{
-                  fontSize: 'clamp(32px, 6vw, 56px)',
-                  fontWeight: 900,
-                  color: '#e2e8f0',
-                  marginBottom: '24px'
-                }}>
-                  Misiones <span style={{
-                    background: 'linear-gradient(135deg, var(--color-accent), var(--color-primary))',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                  }}>Completadas</span>
-                </h2>
-                <p style={{
-                  fontSize: '18px',
-                  color: '#64748b',
-                  maxWidth: '600px',
-                  margin: '0 auto',
-                  lineHeight: 1.7
-                }}>
-                  Cada proyecto es una misión. De scripts defensivos a plataformas completas.
-                </p>
+                {/* ===== LABS SECTION ===== */}
+                <section id="labs" className="py-40 w-full">
+                  <div className="section-container">
+                    <motion.div
+                      initial={{ opacity: 0, y: 40 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.8 }}
+                      className="mb-24 text-center md:text-left"
+                    >
+                      <span className="font-mono text-[#3b82f6] text-xs tracking-[0.2em] block mb-4 uppercase">&lt;Laboratorios_Activos /&gt;</span>
+                      <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase">Investigación Técnica</h2>
+                    </motion.div>
+                    <ProjectList />
+                  </div>
+                </section>
+
+                {/* ===== CONTACT SECTION ===== */}
+                <section id="contact" className="py-60 w-full text-center">
+                  <div className="section-container">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8 }}
+                    >
+                      <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-12 text-gradient uppercase">¿Conectamos?</h2>
+                      <p className="text-xl text-[#a1a1aa] mb-16 max-w-2xl mx-auto font-light">
+                        Disponible para misiones de seguridad donde la madurez y el rigor técnico sean la prioridad.
+                      </p>
+                      <a href="mailto:michelmacias.it@gmail.com" className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black font-black text-lg uppercase tracking-widest hover:bg-[#3b82f6] hover:text-white transition-all duration-500">
+                        Establecer_Conexión();
+                      </a>
+                    </motion.div>
+                  </div>
+                </section>
               </div>
-
-              <ProjectList />
-            </div>
-          </section>
-
-          {/* ===== CONTACT SECTION ===== */}
-          <section id="contact" style={{
-            padding: '160px 24px',
-            textAlign: 'center'
-          }}>
-            <span style={{
-              display: 'inline-block',
-              padding: '12px 20px',
-              marginBottom: '24px',
-              fontSize: '12px',
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              color: 'var(--color-accent)',
-              border: '1px solid var(--color-accent-glow)',
-              backgroundColor: 'rgba(139, 0, 0, 0.1)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.3em'
-            }}>
-              Contacto
-            </span>
-            <h2 style={{
-              fontSize: 'clamp(32px, 6vw, 56px)',
-              fontWeight: 900,
-              color: '#e2e8f0',
-              marginBottom: '32px'
-            }}>
-              ¿Conectamos?
-            </h2>
-            <p style={{
-              fontSize: '20px',
-              color: '#64748b',
-              maxWidth: '500px',
-              margin: '0 auto 48px auto',
-              lineHeight: 1.7
-            }}>
-              ¿Buscas un perfil técnico comprometido con la seguridad? Mi terminal siempre responde.
-            </p>
-            <a
-              href="mailto:michelmacias.it@gmail.com"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '16px',
-                padding: '24px 48px',
-                backgroundColor: 'var(--color-primary)',
-                color: 'white',
-                fontFamily: 'monospace',
-                fontSize: '18px',
-                fontWeight: 700,
-                textDecoration: 'none',
-                transition: 'all 0.3s'
-              }}
-            >
-              <FiMail size={22} />
-              ESTABLECER_CONEXIÓN()
-            </a>
-          </section>
+            } />
+            <Route path="/about" element={<About />} />
+            <Route path="/project/:projectId" element={<ProjectDetail />} />
+          </Routes>
 
           {/* Footer */}
-          <footer style={{
-            padding: '64px 24px',
-            textAlign: 'center',
-            borderTop: '1px solid #1e293b'
-          }}>
-            <p style={{
-              fontSize: '12px',
-              fontFamily: 'monospace',
-              color: '#64748b',
-              textTransform: 'uppercase',
-              letterSpacing: '0.3em'
-            }}>
-              Michel Macías © 2026 // Portfolio v3.0
+          <footer className="py-20 w-full border-t border-[#27272a] text-center">
+            <p className="font-mono text-[10px] text-[#52525b] uppercase tracking-[0.5em]">
+              Michel Macías // M1TXEL SECURITY LAB // 2026
             </p>
           </footer>
 
         </main>
       </div>
-    </Router >
+    </Router>
   );
 }
 

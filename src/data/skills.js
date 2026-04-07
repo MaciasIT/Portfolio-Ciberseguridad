@@ -1,74 +1,76 @@
-// Habilidades técnicas organizadas por categorías
+// Habilidades técnicas y de gestión organizadas por categorías
 
 export const skills = [
     {
-        category: 'Ciberseguridad',
+        category: 'Gestión Senior (Transferible)',
+        icon: 'briefcase',
+        items: [
+            { name: 'Gestión de Crisis', level: 95 },
+            { name: 'Liderazgo de Equipos', level: 90 },
+            { name: 'Logística de Eventos', level: 90 },
+            { name: 'Comunicación con Stakeholders', level: 85 },
+            { name: 'Resolución de Problemas', level: 90 }
+        ]
+    },
+    {
+        category: 'Seguridad Defensiva',
         icon: 'shield',
         items: [
-            { name: 'OWASP Top 10', level: 55 },
-            { name: 'Análisis de Vulnerabilidades', level: 50 },
-            { name: 'Auditoría de Seguridad', level: 45 },
-            { name: 'Análisis de Malware (Básico)', level: 40 },
-            { name: 'Gestión de Riesgos', level: 45 }
+            { name: 'Análisis de Vulnerabilidades', level: 55 },
+            { name: 'OWASP Top 10', level: 50 },
+            { name: 'Hardening de Sistemas', level: 50 },
+            { name: 'Monitoreo (SIEM)', level: 45 },
+            { name: 'Gestión de Riesgos (NIST)', level: 50 }
         ]
     },
     {
-        category: 'Sistemas Operativos',
+        category: 'Sistemas y Redes',
         icon: 'desktop',
         items: [
-            { name: 'Linux (Ubuntu, Kali)', level: 60 },
-            { name: 'Windows 10/11 & Server', level: 55 },
-            { name: 'Hardening de Sistemas', level: 50 },
-            { name: 'Active Directory', level: 45 }
+            { name: 'Linux (Ubuntu, Kali)', level: 65 },
+            { name: 'Windows Server & AD', level: 55 },
+            { name: 'Docker & Contenedores', level: 50 },
+            { name: 'TCP/IP & Networking', level: 60 },
+            { name: 'Firewalls & VPNs', level: 55 }
         ]
     },
     {
-        category: 'Programación',
+        category: 'Automatización y Herramientas',
         icon: 'code',
         items: [
-            { name: 'Python', level: 55 },
-            { name: 'Bash Scripting', level: 50 },
-            { name: 'PowerShell', level: 50 },
-            { name: 'SQL', level: 40 }
-        ]
-    },
-    {
-        category: 'Redes & Protocolos',
-        icon: 'network',
-        items: [
-            { name: 'TCP/IP & DNS', level: 55 },
-            { name: 'SMB & Kerberos', level: 45 },
-            { name: 'Firewalls (UFW)', level: 50 },
-            { name: 'Ataques de Red (MitM, DoS)', level: 40 }
-        ]
-    },
-    {
-        category: 'Herramientas',
-        icon: 'tool',
-        items: [
+            { name: 'Python para Seguridad', level: 55 },
+            { name: 'Bash & PowerShell', level: 55 },
+            { name: 'Nmap & Wireshark', level: 60 },
             { name: 'Burp Suite', level: 45 },
-            { name: 'OWASP ZAP', level: 45 },
-            { name: 'Nikto & Nmap', level: 50 },
-            { name: 'Wireshark', level: 45 },
-            { name: 'Chronicle SIEM (Google)', level: 40 },
-            { name: 'Docker', level: 50 },
-            { name: 'Git & GitHub', level: 60 }
+            { name: 'Git & GitHub', level: 65 }
         ]
     }
 ];
 
 export const certifications = [
     {
-        name: 'Google Cybersecurity Certificate',
+        name: 'Google Cybersecurity Professional',
         issuer: 'Google',
-        status: 'En progreso',
-        year: 2026
+        status: 'Completado',
+        year: 2025
+    },
+    {
+        name: 'Google IT Support Professional',
+        issuer: 'Google',
+        status: 'Completado',
+        year: 2023
     },
     {
         name: 'Cisco Ethical Hacker',
         issuer: 'Cisco',
         status: 'En progreso',
         year: 2026
+    },
+    {
+        name: 'Cisco Networking & Endpoint Security',
+        issuer: 'Cisco',
+        status: 'Completado',
+        year: 2025
     }
 ];
 

@@ -1,93 +1,101 @@
 import React, { useState, useEffect } from 'react';
-import { FiUser, FiCode, FiBriefcase, FiMail, FiShield } from 'react-icons/fi';
+import { motion } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const FloatingNavbar = () => {
+    console.log('[PORTFOLIO] Renderizando FloatingNavbar...');
     const [activeSection, setActiveSection] = useState('about');
+    const [isScrolled, setIsScrolled] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const navItems = [
-        { id: 'about', icon: <FiUser />, label: 'Perfil' },
-        { id: 'skills', icon: <FiShield />, label: 'Stack' },
-        { id: 'projects', icon: <FiCode />, label: 'Proyectos' },
-        { id: 'experience', icon: <FiBriefcase />, label: 'Trayectoria' },
-        { id: 'contact', icon: <FiMail />, label: 'Contacto' },
+        { id: 'about', label: 'Perfil' },
+        { id: 'bitacora', label: 'Bitácora' },
+        { id: 'bridge', label: 'Puente' },
+        { id: 'labs', label: 'Laboratorios' },
+        { id: 'contact', label: 'Contacto' },
     ];
 
-    const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+    const handleNavClick = (id) => {
+        if (location.pathname !== '/') {
+            navigate('/');
+            // Esperar a que la navegación ocurra antes de hacer scroll
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        } else {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     };
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = navItems.map(item => document.getElementById(item.id));
-            const scrollPosition = window.scrollY + 200;
+            setIsScrolled(window.scrollY > 50);
+            if (location.pathname === '/') {
+                const sections = navItems.map(item => document.getElementById(item.id));
+                const scrollPosition = window.scrollY + 200;
 
-            sections.forEach(section => {
-                if (section) {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        setActiveSection(section.id);
+                sections.forEach(section => {
+                    if (section) {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.offsetHeight;
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                            setActiveSection(section.id);
+                        }
                     }
-                }
-            });
+                });
+            }
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [location.pathname]);
 
-    // Rediseño a Command Bar Superior (Premium SOC Style)
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-4 pointer-events-none">
-            <div className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
-
-                {/* Brand / Logo Area */}
-                <div className="hidden lg:flex items-center gap-3 px-4 py-2 bg-[var(--color-bg-secondary)]/80 backdrop-blur-md border border-[var(--color-border)] rounded-sm">
-                    <div className="w-2 h-2 bg-[var(--color-primary)] animate-pulse rounded-full"></div>
-                    <span className="font-mono text-[10px] font-bold tracking-[0.3em] text-[var(--color-text-primary)] uppercase">
-                        Operator: <span className="text-[var(--color-primary)]">MACIAS.IT</span>
-                    </span>
-                </div>
-
-                {/* Main Navigation - Integrated Command Center */}
-                <div className="flex items-center gap-1 p-1 bg-[var(--color-bg-secondary)]/90 backdrop-blur-xl border border-[var(--color-border)] rounded-md shadow-2xl">
-                    {navItems.map((item) => {
-                        const isActive = activeSection === item.id;
-                        return (
-                            <button
-                                key={item.id}
-                                onClick={() => scrollToSection(item.id)}
-                                className={`
-                                    relative flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 rounded-sm font-mono text-[10px] md:text-[11px] font-bold uppercase tracking-widest transition-all
-                                    ${isActive
-                                        ? 'text-[var(--color-primary)] bg-[var(--color-primary)]/5'
-                                        : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] hover:bg-white/5'
-                                    }
-                                `}
-                            >
-                                <span className={`${isActive ? 'opacity-100' : 'opacity-50'}`}>{item.icon}</span>
-                                <span className="hidden sm:inline">{item.label}</span>
-                                {isActive && (
-                                    <span className="absolute -bottom-1 left-0 w-full h-[1px] bg-[var(--color-primary)] shadow-[0_0_8px_var(--color-primary)]"></span>
-                                )}
-                            </button>
-                        );
-                    })}
-                </div>
-
-                {/* System Status - Right Side (Desktop) */}
-                <div className="hidden lg:flex items-center gap-6 px-4 py-2 bg-[var(--color-bg-secondary)]/80 backdrop-blur-md border border-[var(--color-border)] rounded-sm">
-                    <div className="flex flex-col items-end">
-                        <span className="font-mono text-[9px] text-[var(--color-text-muted)] leading-none uppercase tracking-tighter">System_Status</span>
-                        <span className="font-mono text-[10px] text-[var(--color-secondary)] leading-none font-bold uppercase tracking-widest mt-1">Operational</span>
-                    </div>
-                </div>
-
+        <motion.nav 
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="fixed top-0 left-0 right-0 z-[90] px-6 py-8 pointer-events-none flex justify-center"
+        >
+            <div className={`
+                flex items-center gap-1 p-1 rounded-full border transition-all duration-500 pointer-events-auto
+                ${isScrolled 
+                    ? 'bg-black/80 backdrop-blur-xl border-[#27272a] shadow-2xl' 
+                    : 'bg-transparent border-transparent'
+                }
+            `}>
+                {navItems.map((item) => {
+                    const isActive = location.pathname === '/' && activeSection === item.id;
+                    return (
+                        <button
+                            key={item.id}
+                            onClick={() => handleNavClick(item.id)}
+                            className={`
+                                relative px-5 py-2 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-300
+                                ${isActive
+                                    ? 'text-white'
+                                    : 'text-[#52525b] hover:text-[#a1a1aa]'
+                                }
+                            `}
+                        >
+                            {isActive && (
+                                <motion.div 
+                                    layoutId="nav-pill"
+                                    className="absolute inset-0 bg-[#18181b] rounded-full -z-10"
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
+                            <span className="relative z-10">{item.label}</span>
+                        </button>
+                    );
+                })}
             </div>
-        </nav>
+        </motion.nav>
     );
 };
 

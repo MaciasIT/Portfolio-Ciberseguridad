@@ -3,47 +3,46 @@ import { useParams, Link } from 'react-router-dom';
 import { getProjectById } from '../data/projects';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { FiArrowLeft, FiDownload, FiGithub } from 'react-icons/fi';
+import ReactMarkdown from 'react-markdown';
+import { FiArrowLeft, FiGithub, FiExternalLink } from 'react-icons/fi';
 
 const ProjectDetail = () => {
+    console.log('[PORTFOLIO] Renderizando ProjectDetail...');
     const { projectId } = useParams();
     const project = getProjectById(projectId);
-    const [code, setCode] = useState('');
+    const [content, setContent] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (project) {
-            // Cargar el archivo del proyecto usando fetch (funciona en producción)
-            const loadCode = async () => {
+        if (project && project.filePath) {
+            const loadContent = async () => {
                 try {
-                    // Construir la URL completa con el base path de Vite
                     const basePath = import.meta.env.BASE_URL || '/';
                     const fileUrl = `${basePath}${project.filePath.startsWith('/') ? project.filePath.slice(1) : project.filePath}`;
+                    console.log(`[PORTFOLIO] Intentando cargar: ${fileUrl}`);
 
                     const response = await fetch(fileUrl);
-                    if (!response || !response.ok) {
-                        throw new Error(`HTTP error! status: ${response ? response.status : 'no response'}`);
-                    }
+                    if (!response.ok) throw new Error('Failed to load file');
                     const text = await response.text();
-                    setCode(text || '// El archivo está vacío');
+                    setContent(text || '// El archivo está vacío');
                 } catch (error) {
-                    console.error('Error loading code:', error);
-                    setCode('// Error al cargar el archivo\n// Intenta ver el código en GitHub');
+                    console.error('Error loading content:', error);
+                    setContent('# Error\nNo se pudo cargar el contenido del archivo. Por favor, inténtalo de nuevo o consulta el repositorio en GitHub.');
                 } finally {
                     setLoading(false);
                 }
             };
-            loadCode();
+            loadContent();
         }
     }, [project]);
 
     if (!project) {
         return (
-            <div className="min-h-screen py-20">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl font-bold mb-4">Proyecto no encontrado</h1>
-                    <Link to="/projects" className="text-[var(--color-primary)] hover:underline">
-                        Volver a Proyectos
+            <div className="min-h-screen flex items-center justify-center bg-black">
+                <div className="text-center">
+                    <h1 className="text-4xl font-bold text-white mb-6 tracking-tighter">PROYECTO_NO_ENCONTRADO</h1>
+                    <Link to="/" className="text-[#3b82f6] hover:underline font-mono uppercase tracking-widest">
+                        Volver_al_Inicio();
                     </Link>
                 </div>
             </div>
@@ -51,103 +50,88 @@ const ProjectDetail = () => {
     }
 
     return (
-        <div className="min-h-screen py-20">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen py-32 bg-[#000000]">
+            <div className="max-w-5xl mx-auto px-6">
                 {/* Back Button */}
                 <Link
-                    to="/projects"
-                    className="inline-flex items-center gap-2 text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] transition-colors mb-8"
+                    to="/"
+                    className="inline-flex items-center gap-2 text-[#52525b] hover:text-white transition-colors mb-12 font-mono text-xs uppercase tracking-widest"
                 >
-                    <FiArrowLeft />
-                    Volver a Proyectos
+                    <FiArrowLeft /> Volver_a_Laboratorios();
                 </Link>
 
                 {/* Project Header */}
-                <div className="glass rounded-xl p-8 mb-8">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
+                <div className="mb-16">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
                         <div>
-                            <h1 className="text-4xl font-bold mb-2">{project.title}</h1>
-                            <p className="text-[var(--color-text-secondary)] text-lg">
-                                {project.description}
-                            </p>
-                        </div>
-                        {project.featured && (
-                            <span className="px-4 py-2 text-sm font-semibold rounded-full bg-[var(--color-primary)]/20 text-[var(--color-primary)] border border-[var(--color-primary)]/30 w-fit">
-                                Destacado
+                            <span className="text-[10px] font-mono text-[#3b82f6] uppercase tracking-[0.3em] block mb-4">
+                                // {project.category}
                             </span>
+                            <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-4">
+                                {project.title.toUpperCase()}
+                            </h1>
+                        </div>
+                        {project.repoUrl && (
+                            <a
+                                href={project.repoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="px-6 py-3 bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-[#3b82f6] hover:text-white transition-all flex items-center gap-2"
+                            >
+                                <FiGithub size={16} /> Repositorio_GitHub
+                            </a>
                         )}
                     </div>
+                    
+                    <p className="text-xl text-[#a1a1aa] leading-relaxed font-light mb-10">
+                        {project.description}
+                    </p>
 
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-4">
                         {project.technologies.map((tech) => (
                             <span
                                 key={tech}
-                                className="px-4 py-2 rounded-full bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] text-sm border border-[var(--color-border)]"
+                                className="px-4 py-2 text-xs font-mono rounded border border-[#27272a] text-[#a1a1aa] uppercase tracking-wider bg-white/5"
                             >
                                 {tech}
                             </span>
                         ))}
                     </div>
-
-                    {/* Highlights */}
-                    {project.highlights && (
-                        <div>
-                            <h3 className="text-xl font-bold mb-3">Características Principales</h3>
-                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                {project.highlights.map((highlight, index) => (
-                                    <li
-                                        key={index}
-                                        className="flex items-center text-[var(--color-text-secondary)]"
-                                    >
-                                        <span className="w-2 h-2 rounded-full bg-[var(--color-primary)] mr-3"></span>
-                                        {highlight}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
                 </div>
 
-                {/* Code Section */}
-                <div className="glass rounded-xl p-8">
-                    <div className="flex items-center justify-between mb-6">
-                        <h2 className="text-2xl font-bold">Código Fuente</h2>
-                        <div className="flex gap-3">
-                            <a
-                                href={`https://github.com/MaciasIT/Portfolio-Ciberseguridad/blob/main/public${project.filePath}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="px-4 py-2 rounded-lg bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] hover:bg-[var(--color-bg-elevated)] transition-all flex items-center gap-2"
-                            >
-                                <FiGithub size={18} />
-                                Ver en GitHub
-                            </a>
-                        </div>
-                    </div>
-
+                {/* Content Section */}
+                <div className="p-1 md:p-12 bg-[#09090b] border border-[#27272a] rounded-2xl overflow-hidden shadow-2xl">
                     {loading ? (
-                        <div className="text-center py-12">
-                            <div className="animate-pulse text-[var(--color-text-muted)]">
-                                Cargando código...
+                        <div className="text-center py-20">
+                            <div className="animate-pulse text-[#52525b] font-mono uppercase tracking-widest">
+                                [CARGANDO_CONTENIDO...]
                             </div>
                         </div>
                     ) : (
-                        <div className="rounded-lg overflow-hidden">
-                            <SyntaxHighlighter
-                                language={project.language}
-                                style={vscDarkPlus}
-                                customStyle={{
-                                    margin: 0,
-                                    padding: '1.5rem',
-                                    background: 'var(--color-bg-tertiary)',
-                                    fontSize: '0.9rem',
-                                    lineHeight: '1.6'
-                                }}
-                                showLineNumbers
-                            >
-                                {code}
-                            </SyntaxHighlighter>
+                        <div className="w-full">
+                            {project.language === 'markdown' ? (
+                                <div className="prose prose-invert max-w-none prose-headings:text-white prose-headings:tracking-tight prose-p:text-[#d4d4d8] prose-p:text-lg prose-p:leading-relaxed prose-strong:text-[#3b82f6] prose-li:text-[#d4d4d8] prose-li:text-lg prose-img:rounded-xl prose-img:border prose-img:border-[#27272a]">
+                                    <ReactMarkdown>{content}</ReactMarkdown>
+                                </div>
+                            ) : (
+                                <div className="rounded-xl overflow-hidden border border-[#27272a]">
+                                    <SyntaxHighlighter
+                                        language={project.language}
+                                        style={vscDarkPlus}
+                                        customStyle={{
+                                            margin: 0,
+                                            padding: '2.5rem',
+                                            background: '#000000',
+                                            fontSize: '0.95rem',
+                                            lineHeight: '1.8',
+                                            fontFamily: 'JetBrains Mono, monospace'
+                                        }}
+                                        showLineNumbers
+                                    >
+                                        {content}
+                                    </SyntaxHighlighter>
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
