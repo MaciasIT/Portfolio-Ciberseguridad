@@ -2,24 +2,48 @@
 
 export const projects = [
     {
-        id: 'hostel-english-audit',
-        title: 'Auditoría Técnica 360°: HostelEnglishPWA',
-        description: 'Análisis integral de seguridad, arquitectura y calidad de código de una aplicación PWA real. Evaluación de vulnerabilidades OWASP, cumplimiento de estándares y plan de remediación técnica detallado.',
-        category: 'Auditoría',
-        technologies: ['Security Audit', 'OWASP', 'React', 'PWA', 'Static Analysis'],
-        repoUrl: 'https://github.com/MaciasIT/HostelEnglishPWA',
+        id: 'web-vuln-scanner',
+        title: 'Analizador de Vulnerabilidades Web',
+        description: 'Herramienta profesional de auditoría web con motor headless, crawler asíncrono y evasión de WAF. Genera reportes técnicos detallados sobre SQLi, XSS y RCE.',
+        category: 'Seguridad Defensiva',
+        technologies: ['Python', 'Playwright', 'Streamlit', 'aiohttp', 'Asyncio'],
+        repoUrl: 'https://github.com/Michel-Macias/Escaner-de-vulnerabilidades-web',
         featured: true,
-        status: 'COMPLETADO',
-        lab: {
-            objective: "Evaluar la madurez técnica y la postura de seguridad de una aplicación web moderna (PWA) en un entorno de producción simulado.",
-            methodology: "Análisis estático de código, auditoría de dependencias (npm audit), revisión de arquitectura SOLID y evaluación de cumplimiento de seguridad (CSP, Anti-Clickjacking).",
-            learning: "La seguridad no es un parche, es un proceso que debe integrarse desde la arquitectura base y el pipeline de CI/CD."
-        },
         highlights: [
-            'Análisis de Arquitectura SOLID',
-            'Auditoría de Seguridad OWASP',
-            'Plan de Remediación Priorizado',
-            'Evaluación de Madurez Técnica'
+            'Motor Headless (Playwright)',
+            'Evasión de WAF (Stealth Mode)',
+            'Reportes Técnicos PDF',
+            'Detección de Vulnerabilidades Críticas'
+        ]
+    },
+    {
+        id: 'shapeshifter',
+        title: 'Shapeshifter: Análisis Binario',
+        description: 'Herramienta forense para la detección de archivos maliciosos mediante Magic Numbers. Identificación de técnicas de enmascaramiento de extensiones.',
+        category: 'Seguridad Defensiva',
+        technologies: ['Python', 'Forense', 'Binary Analysis'],
+        repoUrl: 'https://github.com/Michel-Macias/Shapeshifter-Detector',
+        featured: true,
+        highlights: [
+            'Detección Magic Numbers',
+            'Análisis Forense Digital',
+            'Prevención de Malware',
+            'Identificación de Amenazas'
+        ]
+    },
+    {
+        id: 'lynis-hardening',
+        title: 'Auditoría y Hardening con Lynis',
+        description: 'Ciclo completo de auditoría de seguridad en Linux. Automatización de reportes Lynis y aplicación de remediaciones críticas en el sistema.',
+        category: 'Hardening',
+        technologies: ['Lynis', 'Bash', 'Fail2Ban', 'Security Policy'],
+        repoUrl: 'https://github.com/Michel-Macias/lynis',
+        featured: true,
+        highlights: [
+            'Auditoría Automatizada',
+            'Remediación de Vulnerabilidades',
+            'Hardening de Kernel/SSH',
+            'Índice de Seguridad'
         ]
     },
     {
@@ -29,7 +53,7 @@ export const projects = [
         category: 'Security Research',
         technologies: ['Kali Linux', 'Active Directory', 'Wireshark', 'Metasploit'],
         repoUrl: 'https://github.com/Michel-Macias/Vulnerabilidades-basadas-en-red',
-        featured: true,
+        featured: false,
         status: 'DOCUMENTADO',
         lab: {
             objective: "Comprender los vectores de ataque en entornos de red corporativos y la importancia de la segmentación.",
@@ -50,7 +74,7 @@ export const projects = [
         category: 'Security Research',
         technologies: ['Kali Linux', 'Docker', 'Burp Suite', 'Nikto', 'GVM'],
         repoUrl: 'https://github.com/Michel-Macias/Vulnerabilidades-basadas-en-aplicaciones',
-        featured: true,
+        featured: false,
         status: 'DOCUMENTADO',
         lab: {
             objective: "Identificar y mitigar las 10 vulnerabilidades más críticas en aplicaciones web según el estándar OWASP.",
@@ -62,21 +86,6 @@ export const projects = [
             'Escaneo de Vulnerabilidades',
             'Análisis de Sesiones Web',
             'Informe Técnico de Pentesting'
-        ]
-    },
-    {
-        id: 'web-vuln-scanner',
-        title: 'Analizador de Vulnerabilidades Web',
-        description: 'Herramienta profesional de auditoría web con motor headless, crawler asíncrono y evasión de WAF. Genera reportes técnicos detallados sobre SQLi, XSS y RCE.',
-        category: 'Seguridad Defensiva',
-        technologies: ['Python', 'Playwright', 'Streamlit', 'aiohttp', 'Asyncio'],
-        repoUrl: 'https://github.com/Michel-Macias/Escaner-de-vulnerabilidades-web',
-        featured: true,
-        highlights: [
-            'Motor Headless (Playwright)',
-            'Evasión de WAF (Stealth Mode)',
-            'Reportes Técnicos PDF',
-            'Detección de Vulnerabilidades Críticas'
         ]
     },
     {
@@ -133,36 +142,6 @@ export const projects = [
         ]
     },
     {
-        id: 'shapeshifter',
-        title: 'Shapeshifter: Análisis Binario',
-        description: 'Herramienta forense para la detección de archivos maliciosos mediante Magic Numbers. Identificación de técnicas de enmascaramiento de extensiones.',
-        category: 'Seguridad Defensiva',
-        technologies: ['Python', 'Forense', 'Binary Analysis'],
-        repoUrl: 'https://github.com/Michel-Macias/Shapeshifter-Detector',
-        featured: true,
-        highlights: [
-            'Detección Magic Numbers',
-            'Análisis Forense Digital',
-            'Prevención de Malware',
-            'Identificación de Amenazas'
-        ]
-    },
-    {
-        id: 'lynis-hardening',
-        title: 'Auditoría y Hardening con Lynis',
-        description: 'Ciclo completo de auditoría de seguridad en Linux. Automatización de reportes Lynis y aplicación de remediaciones críticas en el sistema.',
-        category: 'Hardening',
-        technologies: ['Lynis', 'Bash', 'Fail2Ban', 'Security Policy'],
-        repoUrl: 'https://github.com/Michel-Macias/lynis',
-        featured: true,
-        highlights: [
-            'Auditoría Automatizada',
-            'Remediación de Vulnerabilidades',
-            'Hardening de Kernel/SSH',
-            'Índice de Seguridad'
-        ]
-    },
-    {
         id: 'python-cyber',
         title: 'Automatización con Python',
         description: 'Biblioteca de herramientas para la automatización de tareas de seguridad. Detección de IoCs, análisis de logs y scripts defensivos.',
@@ -181,7 +160,7 @@ export const projects = [
         id: 'doc-squad-ai',
         title: 'Doc Squad AI: Automatización de Docs',
         description: 'Sistema multi-agente de IA para la generación de documentación técnica profesional. Optimización de procesos de reporte mediante GenAI.',
-        category: 'IA & Ops',
+        category: 'Otros Intereses',
         technologies: ['Python', 'Gemini AI', 'Streamlit', 'FastAPI'],
         repoUrl: 'https://github.com/MaciasIT/Proyecto_Final_Kagle_5_Days_IA',
         featured: false,
@@ -196,7 +175,7 @@ export const projects = [
         id: 'optitech-v2',
         title: 'OptiTech: Optimización de Sistemas',
         description: 'Suite de optimización para entornos Windows corporativos. Automatización de limpieza, gestión de servicios y ajustes de rendimiento.',
-        category: 'IT Ops',
+        category: 'Otros Intereses',
         technologies: ['Python', 'PowerShell', 'Windows Internals'],
         repoUrl: 'https://github.com/Michel-Macias/OptiTech-System-Optimizer-V2',
         featured: false,
@@ -247,8 +226,7 @@ export const projectCategories = [
     { id: 'Seguridad Defensiva', name: 'Seguridad Defensiva', icon: 'shield' },
     { id: 'Hardening', name: 'Hardening', icon: 'shield' },
     { id: 'Herramientas', name: 'Herramientas', icon: 'tool' },
-    { id: 'IA & Ops', name: 'IA & Ops', icon: 'cpu' },
-    { id: 'IT Ops', name: 'IT Ops', icon: 'settings' }
+    { id: 'Otros Intereses', name: 'Otros Intereses', icon: 'star' }
 ];
 
 export const getFeaturedProjects = () => projects.filter(p => p.featured);
