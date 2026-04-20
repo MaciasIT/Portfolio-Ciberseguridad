@@ -76,7 +76,7 @@ const FloatingNavbar = () => {
                             key={item.id}
                             onClick={() => handleNavClick(item.id)}
                             className={`
-                                relative px-5 py-2 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-300
+                                relative px-6 py-2.5 rounded-full font-mono text-xs font-bold uppercase tracking-widest transition-all duration-300
                                 ${isActive
                                     ? 'text-white'
                                     : 'text-[#52525b] hover:text-[#a1a1aa]'

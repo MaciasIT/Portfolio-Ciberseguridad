@@ -45,7 +45,7 @@ const About = () => {
                             className="relative w-40 h-40 object-cover rounded-full border border-white/10 grayscale hover:grayscale-0 transition-all duration-700"
                         />
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 text-white">SOBRE MÍ</h1>
+                    <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 text-white">SOBRE MÍ</h1>
                     <p className="text-xl text-[#a1a1aa] max-w-2xl mx-auto font-light">
                         Trayectoria de gestión senior aplicada con rigor a la ciberseguridad técnica.
                     </p>

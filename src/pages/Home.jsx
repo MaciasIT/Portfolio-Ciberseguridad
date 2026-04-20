@@ -37,28 +37,28 @@ const Home = () => {
             <Hero />
 
             {/* Highlights Section */}
-            <section className="py-20 bg-[var(--color-bg-secondary)]">
+            <section className="py-32 bg-[var(--color-bg-secondary)]">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold mb-4">Áreas de Estudio</h2>
-                        <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+                    <div className="text-center mb-24">
+                        <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tighter">Áreas de Estudio</h2>
+                        <p className="text-xl text-[var(--color-text-secondary)] max-w-3xl mx-auto font-medium">
                             Aprendizaje en múltiples áreas de la ciberseguridad, desde la ofensiva hasta la defensiva
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
                         {highlights.map((highlight, index) => (
                             <div
                                 key={index}
-                                className="glass rounded-xl p-6 hover:bg-[var(--color-bg-elevated)] transition-all duration-300 hover:glow-primary group"
+                                className="glass rounded-3xl p-10 hover:bg-[var(--color-bg-elevated)] transition-all duration-500 hover:glow-primary group border-white/5"
                             >
-                                <div className="w-12 h-12 rounded-lg bg-[var(--color-primary)]/10 flex items-center justify-center mb-4 group-hover:bg-[var(--color-primary)]/20 transition-colors">
-                                    <highlight.icon className="w-6 h-6 text-[var(--color-primary)]" />
+                                <div className="w-16 h-16 rounded-2xl bg-[var(--color-primary)]/10 flex items-center justify-center mb-8 group-hover:bg-[var(--color-primary)]/20 transition-colors">
+                                    <highlight.icon className="w-8 h-8 text-[var(--color-primary)]" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-2 text-[var(--color-text-primary)]">
+                                <h3 className="text-2xl font-bold mb-4 text-[var(--color-text-primary)]">
                                     {highlight.title}
                                 </h3>
-                                <p className="text-[var(--color-text-secondary)] text-sm">
+                                <p className="text-lg text-[var(--color-text-secondary)] leading-relaxed font-medium">
                                     {highlight.description}
                                 </p>
                             </div>
@@ -68,16 +68,16 @@ const Home = () => {
             </section>
 
             {/* Featured Projects Section */}
-            <section className="py-20">
+            <section className="py-32">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold mb-4">Proyectos Destacados</h2>
-                        <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+                    <div className="text-center mb-24">
+                        <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tighter">Proyectos Destacados</h2>
+                        <p className="text-xl text-[var(--color-text-secondary)] max-w-3xl mx-auto font-medium">
                             Una selección de mis mejores trabajos en ciberseguridad y automatización
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                         {featuredProjects.map((project) => (
                             <ProjectCard key={project.id} project={project} />
                         ))}
@@ -86,16 +86,16 @@ const Home = () => {
             </section>
 
             {/* Skills Overview */}
-            <section className="py-20 bg-[var(--color-bg-secondary)]">
+            <section className="py-32 bg-[var(--color-bg-secondary)]">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold mb-4">Habilidades Técnicas</h2>
-                        <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+                    <div className="text-center mb-24">
+                        <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tighter">Habilidades Técnicas</h2>
+                        <p className="text-xl text-[var(--color-text-secondary)] max-w-3xl mx-auto font-medium">
                             Competencias desarrolladas a través de formación continua y experiencia práctica
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                         {skills.slice(0, 3).map((skillCategory) => (
                             <div key={skillCategory.category} className="glass rounded-xl p-6">
                                 <h3 className="text-xl font-bold mb-4 text-[var(--color-primary)]">

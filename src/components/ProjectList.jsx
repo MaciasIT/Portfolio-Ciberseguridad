@@ -13,37 +13,39 @@ const ProjectList = () => {
         : projects.filter(project => project.category === activeCategory);
 
     return (
-        <div className="flex flex-col gap-16 w-full">
+        <div className="flex flex-col gap-16 w-full items-center">
             {/* Category Filter */}
-            <div className="flex flex-wrap items-center justify-center gap-2 p-2 bg-white/[0.02] border border-white/5 rounded-full max-w-fit mx-auto backdrop-blur-md">
-                {projectCategories.map((category) => (
-                    <button
-                        key={category.id}
-                        onClick={() => setActiveCategory(category.id)}
-                        className={`
-                            relative px-6 py-2 rounded-full font-mono text-[10px] font-bold uppercase tracking-widest transition-all duration-300
-                            ${activeCategory === category.id
-                                ? 'text-white'
-                                : 'text-white/40 hover:text-white/80'
-                            }
-                        `}
-                    >
-                        {activeCategory === category.id && (
-                            <motion.div 
-                                layoutId="active-cat"
-                                className="absolute inset-0 bg-white/10 rounded-full"
-                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                            />
-                        )}
-                        <span className="relative z-10">{category.name}</span>
-                    </button>
-                ))}
+            <div className="w-full flex justify-center">
+                <div className="flex flex-wrap items-center justify-center gap-2 p-2 bg-white/[0.02] border border-white/5 rounded-full backdrop-blur-md shadow-2xl">
+                    {projectCategories.map((category) => (
+                        <button
+                            key={category.id}
+                            onClick={() => setActiveCategory(category.id)}
+                            className={`
+                                relative px-6 py-2.5 rounded-full font-mono text-xs font-bold uppercase tracking-widest transition-all duration-300
+                                ${activeCategory === category.id
+                                    ? 'text-white'
+                                    : 'text-white/40 hover:text-white/80'
+                                }
+                            `}
+                        >
+                            {activeCategory === category.id && (
+                                <motion.div 
+                                    layoutId="active-cat"
+                                    className="absolute inset-0 bg-white/10 rounded-full"
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
+                            <span className="relative z-10">{category.name}</span>
+                        </button>
+                    ))}
+                </div>
             </div>
 
             {/* Projects Grid */}
             <motion.div 
                 layout
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 w-full"
             >
                 <AnimatePresence mode='popLayout'>
                     {filteredProjects.map((project) => (

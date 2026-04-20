@@ -19,8 +19,8 @@
   --color-border-hover: #3f3f46; /* Zinc 700 */
 
   /* Typography */
-  --font-sans: 'Inter', 'Geist Sans', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 /* ============================================
@@ -36,7 +36,7 @@
 html {
   scroll-behavior: smooth;
   background-color: #000000;
-  font-size: 16px;
+  font-size: 18px; /* Aumentado de 16px para mejor legibilidad global */
 }
 
 body {

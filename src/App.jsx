@@ -48,20 +48,20 @@ function App() {
         <main className="relative z-10 w-full">
           <Routes>
             <Route path="/" element={
-              <div className="flex flex-col items-center w-full">
+              <div className="flex flex-col items-center w-full gap-y-32">
                 {/* ===== HERO SECTION ===== */}
                 <section id="about" className="min-h-screen w-full flex flex-col items-center justify-center px-6 py-20 text-center">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="flex flex-col items-center w-full max-w-5xl mx-auto"
+                    className="flex flex-col items-center w-full max-w-6xl mx-auto"
                   >
                     <motion.span 
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.5 }}
-                      className="font-mono text-[#3b82f6] text-base md:text-lg tracking-[0.3em] mb-6"
+                      className="font-mono text-[#3b82f6] text-lg md:text-xl tracking-[0.4em] mb-8 uppercase font-bold"
                     >
                       Iniciando_Conciencia();
                     </motion.span>
@@ -70,7 +70,7 @@ function App() {
                       initial={{ opacity: 0, filter: "blur(10px)" }}
                       animate={{ opacity: 1, filter: "blur(0px)" }}
                       transition={{ delay: 0.2, duration: 1 }}
-                      className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter mb-10 text-gradient"
+                      className="text-7xl md:text-9xl font-black tracking-tighter mb-12 text-gradient leading-none"
                     >
                       MICHEL MACIAS
                     </motion.h1>
@@ -79,10 +79,10 @@ function App() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.8 }}
-                      className="max-w-3xl"
+                      className="max-w-4xl"
                     >
-                      <p className="text-xl md:text-3xl text-[#d4d4d8] leading-relaxed mb-16 font-light">
-                        Fiabilidad forjada en <span className="text-white font-medium border-b border-[#3b82f6]/30">Gestión Senior</span>, aplicada con rigor a la <span className="text-[#3b82f6] font-medium">Ciberseguridad Técnica</span>.
+                      <p className="text-2xl md:text-4xl text-[#d4d4d8] leading-tight mb-20 font-light">
+                        Fiabilidad forjada en <span className="text-white font-medium border-b-2 border-[#3b82f6]/30">Gestión Senior</span>, aplicada con rigor a la <span className="text-[#3b82f6] font-bold">Ciberseguridad Técnica</span>.
                       </p>
                     </motion.div>
 
@@ -90,12 +90,12 @@ function App() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 1.2 }}
-                      className="flex flex-wrap justify-center gap-6"
+                      className="flex flex-wrap justify-center gap-8"
                     >
-                      <a href="#labs" className="px-8 py-4 bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-[#3b82f6] hover:text-white transition-all duration-300">
+                      <a href="#labs" className="px-10 py-5 bg-white text-black font-black text-sm uppercase tracking-widest hover:bg-[#3b82f6] hover:text-white transition-all duration-500 shadow-2xl">
                         Explorar Laboratorios
                       </a>
-                      <a href="#contact" className="px-8 py-4 border border-[#27272a] text-white font-bold text-xs uppercase tracking-widest hover:border-white transition-all duration-300">
+                      <a href="#contact" className="px-10 py-5 border-2 border-[#27272a] text-white font-black text-sm uppercase tracking-widest hover:border-white transition-all duration-300">
                         Contactar
                       </a>
                     </motion.div>
@@ -111,67 +111,68 @@ function App() {
                 </section>
 
                 {/* ===== BITÁCORA SECTION ===== */}
-                <section id="bitacora" className="py-40 w-full">
-                  <div className="section-container">
+                <section id="bitacora" className="py-80 w-full flex flex-col items-center">
+                  <div className="section-container flex flex-col items-center">
                     <motion.div
                       initial={{ opacity: 0, y: 40 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.2 }}
                       transition={{ duration: 0.8 }}
-                      className="mb-24 text-center md:text-left"
+                      className="mb-32 text-center flex flex-col items-center"
                     >
-                      <span className="font-mono text-[#3b82f6] text-xs tracking-[0.2em] block mb-4 uppercase">&lt;Bitácora_de_Transición /&gt;</span>
-                      <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase">El Viaje Profesional</h2>
+                      <span className="font-mono text-[#3b82f6] text-sm tracking-[0.3em] block mb-6 uppercase font-bold">&lt;Bitácora_de_Transición /&gt;</span>
+                      <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase leading-none">El Viaje Profesional</h2>
                     </motion.div>
                     <TransitionTimeline />
                   </div>
                 </section>
 
                 {/* ===== BRIDGE SECTION ===== */}
-                <section id="bridge" className="py-40 w-full border-y border-[#27272a] bg-[#09090b]">
-                  <div className="section-container">
+                <section id="bridge" className="py-80 w-full border-y border-[#27272a] bg-[#09090b] flex flex-col items-center">
+                  <div className="section-container flex flex-col items-center">
                     <motion.div
                       initial={{ opacity: 0, y: 40 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.2 }}
                       transition={{ duration: 0.8 }}
-                      className="mb-24 text-center"
+                      className="mb-32 text-center flex flex-col items-center"
                     >
-                      <span className="font-mono text-[#22c55e] text-xs tracking-[0.2em] block mb-4 uppercase">&lt;Puente_de_Habilidades /&gt;</span>
-                      <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase">Transferencia de Valor</h2>
+                      <span className="font-mono text-[#22c55e] text-sm tracking-[0.3em] block mb-6 uppercase font-bold">&lt;Puente_de_Habilidades /&gt;</span>
+                      <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase leading-none">Transferencia de Valor</h2>
                     </motion.div>
                     <SkillBridge />
                   </div>
                 </section>
 
                 {/* ===== LABS SECTION ===== */}
-                <section id="labs" className="py-40 w-full">
-                  <div className="section-container">
+                <section id="labs" className="py-80 w-full flex flex-col items-center">
+                  <div className="section-container flex flex-col items-center">
                     <motion.div
                       initial={{ opacity: 0, y: 40 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.2 }}
                       transition={{ duration: 0.8 }}
-                      className="mb-24 text-center md:text-left"
+                      className="mb-32 text-center flex flex-col items-center"
                     >
-                      <span className="font-mono text-[#3b82f6] text-xs tracking-[0.2em] block mb-4 uppercase">&lt;Laboratorios_Activos /&gt;</span>
-                      <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white uppercase">Investigación Técnica</h2>
+                      <span className="font-mono text-[#3b82f6] text-sm tracking-[0.3em] block mb-6 uppercase font-bold">&lt;Laboratorios_Activos /&gt;</span>
+                      <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase leading-none">Investigación Técnica</h2>
                     </motion.div>
                     <ProjectList />
                   </div>
                 </section>
 
                 {/* ===== CONTACT SECTION ===== */}
-                <section id="contact" className="py-60 w-full text-center">
-                  <div className="section-container">
+                <section id="contact" className="py-80 w-full flex flex-col items-center justify-center text-center">
+                  <div className="section-container flex flex-col items-center">
                     <motion.div
                       initial={{ opacity: 0, scale: 0.95 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.8 }}
+                      className="flex flex-col items-center w-full"
                     >
-                      <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-12 text-gradient uppercase">¿Conectamos?</h2>
-                      <p className="text-xl text-[#a1a1aa] mb-16 max-w-2xl mx-auto font-light">
+                      <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-12 text-gradient uppercase leading-none">¿Conectamos?</h2>
+                      <p className="text-xl md:text-2xl text-[#a1a1aa] mb-16 max-w-3xl mx-auto font-light text-center leading-relaxed">
                         Disponible para misiones de seguridad donde la madurez y el rigor técnico sean la prioridad.
                       </p>
                       <a href="mailto:michelmacias.it@gmail.com" className="inline-flex items-center gap-4 px-12 py-6 bg-white text-black font-black text-lg uppercase tracking-widest hover:bg-[#3b82f6] hover:text-white transition-all duration-500">
